@@ -1,0 +1,74 @@
+<div class="span12 carousel-content">
+  <span ng-switch="slide.active">
+      <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
+      <div  ng-switch-when="false"></div>
+     </span>
+    <h1> Versioning Info </h1>
+    <br>
+
+    <div class="form-group">
+        <label for="inputVersion">Version:</label>
+        <input type="text" class="form-control" id="inputVersion" placeholder="0.0.1"  >
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="inputPreviousVersion">Link to previous version:</label>
+        <input type="url" class="form-control" id="inputPreviousVersion" placeholder="http://">
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label for="inputUpdateFreq">Dataset update frequency:</label>
+        <select class="selectpicker" id='inputUpdateFreq' multiple title='Choose one of the following...'>
+            <option>Triennial </option>
+            <option>Biennial </option>
+            <option>Annual </option>
+            <option>Semiannual </option>
+            <option>Three times a year</option>
+            <option>Quarterly</option>
+            <option>Bimonthly </option>
+            <option>Monthly  </option>
+            <option>Semimonthly </option>
+            <option>Biweekly</option>
+            <option>Three times a month </option>
+            <option>Weekly   </option>
+            <option>Semiweekly  </option>
+            <option>Biweekly</option>
+            <option>Three times a week  </option>
+            <option>Monthly  </option>
+            <option>Daily  </option>
+            <option>Continuous </option>
+            <option>Irregular </option>
+            <option>Don't know</option>
+        </select>
+    </div>
+     <br>
+    <div class="form-group">
+        <label for="inputVocabUpdateFreq">Vocab update frequency::</label>
+        <select class="selectpicker" id='inputVocabUpdateFreq' multiple title='Choose one of the following...'>
+            <option>Triennial </option>
+            <option>Biennial </option>
+            <option>Annual </option>
+            <option>Semiannual </option>
+            <option>Three times a year</option>
+            <option>Quarterly</option>
+            <option>Bimonthly </option>
+            <option>Monthly  </option>
+            <option>Semimonthly </option>
+            <option>Biweekly</option>
+            <option>Three times a month </option>
+            <option>Weekly   </option>
+            <option>Semiweekly  </option>
+            <option>Biweekly</option>
+            <option>Three times a week  </option>
+            <option>Monthly  </option>
+            <option>Daily  </option>
+            <option>Continuous </option>
+            <option>Irregular </option>
+            <option>Don't know</option>
+        </select>
+    </div>
+
+
+</div>

@@ -1,0 +1,39 @@
+<div class="span12 carousel-content ">
+    <!--<div ng-if="slide.active">-->
+        <!--{{changeProgressBar(slide.progress)}}-->
+    <!--</div>-->
+     <span ng-switch="slide.active">
+      <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
+      <div  ng-switch-when="false"></div>
+     </span>
+    <h1> Core Info </h1>
+    <br>
+    <h3>Please complete the following</h3>
+    <div class="form-group">
+        <label for="inputTitle">Title:</label>
+        <input type="text" class="form-control" id="inputTitle" placeholder="">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="inputDescription">Description:</label>
+        <textarea  type="text" class="form-control"  rows="2" id="inputDescription" placeholder="What is this dataset about?"
+                   tooltip="A description of the dataset so someone else can understand what is going on."
+                   tooltip-trigger="focus"
+                   tooltip-placement="right">
+        </textarea>
+    </div>
+    <br>
+    <div class="form-group">
+    Type of which data is in:
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="rdf" checked>
+                RDF
+            </label>
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="non-rdf">
+                Non-RDF
+            </label>
+        </div>
+    </div>
+</div>

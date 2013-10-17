@@ -1,0 +1,57 @@
+<div class="span12 carousel-content">
+     <span ng-switch="slide.active">
+      <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
+      <div  ng-switch-when="false"></div>
+     </span>
+    <h1> Sources used </h1>
+    <br>
+    <div class="container-fluid"  ng-controller="sourceCtrl" >
+        <div class='span2'></div>
+        <div class="span3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Suggested sources</h3>
+                    </div>
+                        <div class="panel-body" id="accordion" >
+                            <accordion close-others="oneAtATime" ng-repeat="source in sources" >
+                                <accordion-group heading="{{source.title}}">
+                                    <ul>
+                                        <li ng-repeat="subset in source.subset | filter:noTitleFilter" class="thumbnail">
+                                            <div class="row-fluid">
+                                                {{ subset.title}}
+                                                <span class="glyphicon glyphicon-plus pull-right"
+                                                        ng-click="addToSelected( subset.title)">
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </accordion-group>
+                            </accordion>
+                   </div>
+                </div>
+            </div>
+
+         <div class="span1"> </div>
+            <div class="span3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Your sources</h3>
+                    </div>
+                    <div class="panel-body ">
+                        <ul class="list-group" >
+                            <li ng-repeat="source in userSources" class="thumbnail">
+                                <div class="row-fluid">
+                                    {{ source.title}}
+                                                <span class="glyphicon glyphicon-minus pull-right"
+                                                      ng-click="removeSelected( source.title)">
+                                                </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+             </div>
+
+
+    </div>
+</div>

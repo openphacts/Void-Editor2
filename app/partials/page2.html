@@ -1,0 +1,56 @@
+<div class="span12 carousel-content  ">
+      <span ng-switch="slide.active">
+      <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
+      <div  ng-switch-when="false"></div>
+     </span>
+    <h1> Publishing information </h1>
+    <br>
+
+
+        <div class="form-group">
+            <label for="inputPublisher">Who is the publisher?</label>
+            <input type="url" class="form-control" id="inputPublisher" placeholder="http://github.com/#me">
+        </div>
+        <br>
+
+      <div  class="form-group" ng-controller="DatepickerCtrl">
+            <label for="inputDateofPublishment">Date of publishment:</label>
+            <input type="text" id="inputDateofPublishment" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
+            <button class="btn" ng-click="open()"><i class="icon-calendar"></i></button>
+       </div>
+      <br>
+
+    <div class="form-group">
+        <label for="inputWebpage">Webpage:</label>
+        <input type="url" class="form-control" id="inputWebpage" placeholder="Of documentation">
+    </div>
+    <br>
+
+
+        <div class="form-group">
+            <label for="inputLicence">Licence used:</label>
+            <select class="selectpicker" id='inputLicence'>
+                    <option value="http://www.opendatacommons.org/licenses/pddl/">Public Domain for data/databases</option>
+                    <option value="http://www.opendatacommons.org/licenses/by/">Attribution for data/databases</option>
+                    <option value="http://www.opendatacommons.org/licenses/odbl/">Attribution Share-Alike for data/databases</option>
+                    <option value="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons public domain waiver</option>
+                    <option selected="selected" value="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike (CC-BY-SA)</option>
+                    <option value="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License (GFDL)</option>
+                    <option value="other">Other</option>
+                    <option>Don't know</option>
+            </select>
+        </div>
+        <br>
+      <div class="form-group">
+          <label for="inputDownload">Download data from:</label>
+           <input type="url" class="form-control" id="inputDownload" placeholder="http://">
+      </div>
+      <br>
+      <div class="form-group">
+            <label for="inputSparql">Sparql Endpoint:</label>
+            <input type="url" class="form-control" id="inputSparql" placeholder="http://">
+       </div>
+        <br>
+
+
+</div>
