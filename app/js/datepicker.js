@@ -1,3 +1,5 @@
+// from http://angular-ui.github.io/bootstrap/
+
 var DatepickerCtrl = function ($scope, $timeout) {
 
     $scope.today = function() {

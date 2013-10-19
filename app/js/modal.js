@@ -1,8 +1,9 @@
-angular.module('plunker', ['ui.bootstrap']);
-var ModalDemoCtrl = function ($scope, $modal, $log) {
+angular.module('app', ['ui.bootstrap']);
+// http://angular-ui.github.io/bootstrap/
+var ModalExportCtrl = function ($scope, $modal, $log) {
     $scope.open = function () {
 
-        var modalInstance = $modal.open({
+        $modal.open({
             templateUrl: 'myModalContent.html',
             controller: ModalInstanceCtrl,
             resolve: {
@@ -11,11 +12,8 @@ var ModalDemoCtrl = function ($scope, $modal, $log) {
                 }
             }
         });
-
-        modalInstance.result.then( function () {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
     };
+
 };
 
 var ModalInstanceCtrl = function ($scope, $modalInstance) {

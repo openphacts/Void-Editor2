@@ -26,12 +26,24 @@
     </alert>
     <![endif]-->
     <img class="pull-left" src="img/ops_logo.png" alt="Logo">
-    <h1><span ng-bind="title">...</span> <small>v2.0</small></h1>
+    <div class="span12">
+        <div class="row ">
+              <div class="pull-left">
+                <h1><span ng-bind="title">...</span> <small>v2.0</small></h1>
+              </div>
+        </div>
+        <div class="row">
+            <progress ng-controller="editorCarouselCtrl" percent="dynamicProgress"></progress>
+        </div>
+    </div>
+
 </header>
 
  <div class="container">
+
     <div ng-controller="editorCarouselCtrl">
-        <progress percent="dynamicProgress"></progress>
+
+
         <form role="form" class="form-inline" role="form">
             <carousel interval="interval"  class="carousel">
                 <slide ng-repeat="slide in slides " active="slide.active ">
@@ -46,7 +58,7 @@
     </div>
 
     <div class="container-fluid">
-        <div ng-controller="ModalDemoCtrl">
+        <div ng-controller="ModalExportCtrl">
             <script type="text/ng-template" id="myModalContent.html">
                 <div class="modal-header">
                     <h3>VoID Produced</h3>
@@ -57,17 +69,26 @@
                     <button  type="button" class="btn btn-default pull-left"> VoID</button>
                     <br>
                     <textarea class="field span12" rows="15">
-
                     </textarea>
+                    <!--
+                    <ul class="nav nav-pills nav-stacked pull-left" ng-controller="editorCarouselCtrl">
+                        <li ng-repeat="slide in slides">
+                            <button class="btn btn-mini" ng-class="{'btn-info': !slide.active, 'btn-success': slide.active}" ng-disabled="slide.active" ng-click="slide.active = true">select</button>
+                            {{$index}}: {{slide.text}}
+                        </li>
+                    </ul>
+                    -->
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
                 </div>
             </script>
+
             <button  type="button" class="btn btn-default pull-right" ng-click="open()"> Under the Hood</button>
         </div>
         <button  type="button" class="btn btn-default pull-left "  disabled="disabled"> Advanced User</button>
     </div>
+
  </div>
 
 <footer>

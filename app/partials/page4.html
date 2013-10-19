@@ -3,24 +3,35 @@
       <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
       <div  ng-switch-when="false"></div>
      </span>
-    <h1> Sources used </h1>
-    <br>
+    <div class="span8 offset2">
+        <div class="row">
+            <div class="span4 offset1">
+                <h1> Sources used </h1>
+                <br>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid"  ng-controller="sourceCtrl" >
         <div class='span2'></div>
         <div class="span3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Suggested sources</h3>
+                        <h4 class="panel-title">Suggested sources</h4>
                     </div>
                         <div class="panel-body" id="accordion" >
                             <accordion close-others="oneAtATime" ng-repeat="source in sources" >
-                                <accordion-group heading="{{source.title}}">
+                                <accordion-group>
+                                    <accordion-heading>
+                                        {{source.title}}
+                                        <span class="glyphicon glyphicon-plus pull-right" ng-click="addToSelected( source.title)">
+                                        </span>
+                                     </accordion-heading>
                                     <ul>
                                         <li ng-repeat="subset in source.subset | filter:noTitleFilter" class="thumbnail">
                                             <div class="row-fluid">
                                                 {{ subset.title}}
                                                 <span class="glyphicon glyphicon-plus pull-right"
-                                                        ng-click="addToSelected( subset.title)">
+                                                      ng-click="addToSelected( subset.title)">
                                                 </span>
                                             </div>
                                         </li>
@@ -35,7 +46,7 @@
             <div class="span3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Your sources</h3>
+                        <h4 class="panel-title">Your sources</h4>
                     </div>
                     <div class="panel-body ">
                         <ul class="list-group" >
