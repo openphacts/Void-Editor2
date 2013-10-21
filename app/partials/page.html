@@ -1,7 +1,15 @@
 <div class="span12 carousel-content">
     <span ng-switch="slide.active">
-      <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
-      <div  ng-switch-when="false"></div>
+      <div  ng-switch-when="true">
+          <script>
+              $(".carousel-control.left").hide();
+          </script>
+            {{changeProgressBar(slide.progress)}}</div>
+      <div  ng-switch-when="false">
+          <script>
+              $(".carousel-control.left").show();
+          </script>
+      </div>
      </span>
     <div class="container-fluid">
         <div class="span8 offset2">
@@ -36,6 +44,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 
