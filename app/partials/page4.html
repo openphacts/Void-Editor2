@@ -5,8 +5,8 @@
      </span>
     <div class="span8 offset2">
         <div class="row">
-            <div class="span4 offset1">
-                <h1> Sources used </h1>
+            <div class="span5 offset1">
+                <h1> Sources contained in your dataset </h1>
                 <br>
             </div>
         </div>
@@ -16,7 +16,10 @@
         <div class="span3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Suggested sources</h4>
+                        <h4 class="panel-title">Suggested sources
+                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                             popover=" Please add as many resources your dataset is contains by pressing the + symbol.
+                                        You may expand for further sub-sources.">  </h4>
                     </div>
                         <div class="panel-body" id="accordion" >
                             <accordion close-others="oneAtATime" ng-repeat="source in sources" >
@@ -46,7 +49,10 @@
             <div class="span3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Your sources</h4>
+                        <h4 class="panel-title">Your sources
+                            <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                 popover="Dataset sources your dataset includes.
+                              To remove one, please remove by pressing the - symbol."> </h4>
                     </div>
                     <div class="panel-body ">
                         <ul class="list-group" >

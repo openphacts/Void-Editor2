@@ -32,18 +32,17 @@
                 <h1><span ng-bind="title">...</span> <small>v2.0</small></h1>
               </div>
         </div>
-        <div class="row">
-            <progress ng-controller="editorCarouselCtrl" percent="dynamicProgress"></progress>
-        </div>
+
     </div>
 
 </header>
 
  <div class="container">
+     <div class="row span12">
+         <progress ng-controller="editorCarouselCtrl" percent="dynamicProgress"></progress>
+     </div>
 
-    <div ng-controller="editorCarouselCtrl">
-
-
+    <div ng-controller="editorCarouselCtrl"  class="row span12">
         <form role="form" class="form-inline" role="form">
             <carousel interval="interval"  class="carousel">
                 <slide ng-repeat="slide in slides " active="slide.active ">
@@ -69,6 +68,32 @@
                     <button  type="button" class="btn btn-default pull-left"> VoID</button>
                     <br>
                     <textarea class="field span12" rows="15">
+                        @prefix dcterms: <http://purl.org/dc/terms/> .
+                        @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+                        @prefix pav: <http://purl.org/pav/2.0/> .
+                        @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+                        @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+                        @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+                        @prefix void: <http://rdfs.org/ns/void#> .
+                        @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+                        @prefix : <#> .
+
+                        ## your VoID description
+                        <> rdf:type void:DatasetDescription ;
+                        dcterms:title "Example VoID Document"^^xsd:string ;
+                        dcterms:description """Example description of the VoID document"""^^xsd:string ;
+                        pav:createdBy <> ;
+                        pav:createdOn "2013-10-20"^^xsd:date ;
+                        foaf:primaryTopic :myDS .
+
+                        ## your dataset description
+                        :myDS rdf:type void:Dataset ;
+                        foaf:homepage <http://example.org/> ;
+                        dcterms:title "Example Dataset"^^xsd:string ;
+                        dcterms:description """A simple dataset in RDF."""^^xsd:string ;
+                        pav:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
+                        void:uriSpace "http://example.org/"^^xsd:string ;
+                        .     "
                     </textarea>
                     <!--
                     <ul class="nav nav-pills nav-stacked pull-left" ng-controller="editorCarouselCtrl">
@@ -85,17 +110,19 @@
             </script>
 
             <button  type="button" class="btn btn-default pull-right" ng-click="open()"> Under the Hood</button>
+            <button  type="button" class="btn btn-default pull-left "  disabled="disabled"> Advanced User</button>
         </div>
-        <button  type="button" class="btn btn-default pull-left "  disabled="disabled"> Advanced User</button>
+
     </div>
 
+     <div class="row span12">
+         <footer>
+             <small>
+                 <span class="muted"><span ng-bind="title">...</span> v2 copyright &copy; 2013 OpenPhacts</span>
+             </small>
+         </footer>
+     </div>
  </div>
-
-<footer>
-    <small>
-        <span class="muted pull-right"><span ng-bind="title">...</span> v2 copyright &copy; 2013 OpenPhacts</span>
-    </small>
-</footer>
 
 <script src="lib/jquery/jquery-1.10.2.js"></script>
 <script src="lib/angular/angular-stable.js">  </script>
