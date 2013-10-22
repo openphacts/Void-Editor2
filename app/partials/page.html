@@ -2,7 +2,7 @@
     <span ng-switch="slide.active">
       <div  ng-switch-when="true">
           <script>
-              $(".carousel-control.left").hide();
+            $(".carousel-control.left").hide();
           </script>
             {{changeProgressBar(slide.progress)}}</div>
       <div  ng-switch-when="false">
@@ -15,29 +15,34 @@
         <div class="span8 offset2">
             <div class="row">
                 <div class="span4 offset1">
-                   <h1>Welcome to VoID editor </h1>
-                   <br><br>
-                   <h3> Who are you?</h3>
+                    <h1>Welcome to VoID Creator </h1>
                 </div>
             </div>
+            <div class="row">
+                <div class="span6">
+                     <h3> Lets start making the VoID description!</h3>
+                    <br>
+                </div>
+             </div>
 
             <div class="form-group row">
                 <div class="span2 offset1">
-                    <label for="inputEmail">Name:</label>
+                    <label for="inputEmail">What is your full name? </label>
                 </div>
                 <div class="span3">
                     <input type="text" class="form-control" id="inputName" placeholder="Name">
-                    <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover="Please supply first and last name.">
+                    <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
+                                popover="Please supply first and last name.">
                 </div>
             </div>
             <br>
             <div class="form-group row">
                 <div class="span2 offset1">
-                    <label for="inputEmail">Email:</label>
+                    <label for="inputEmail">What is your email:</label>
                 </div>
                 <div class="span3">
                     <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
-                    <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                    <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                          popover="This information will be added to the dataset description.">
                  </div>
             </div>

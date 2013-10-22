@@ -1,72 +1,54 @@
 'use strict';
+//beforeEach(module('editorAppControllers'));
+//beforeEach(module('ui.bootstrap'));
 
 /* jasmine specs for controllers go here */
-describe('PhoneCat controllers', function() {
+describe('editorApp', function(){
+    var scope, rootScope, ctrl, $httpBackend;
 
-  beforeEach(function(){
-    this.addMatchers({
-      toEqualData: function(expected) {
-        return angular.equals(this.actual, expected);
-      }
-    });
-  });
+    beforeEach(module('editorApp'));
+    beforeEach(module('editorAppControllers'));
+    beforeEach(module('ui.bootstrap'));
 
-  beforeEach(module('phonecatApp'));
-  beforeEach(module('phonecatServices'));
+  describe('editorCtrl', function(){
 
-  describe('PhoneListCtrl', function(){
-    var scope, ctrl, $httpBackend;
+      beforeEach(inject(function( _$httpBackend_, $rootScope, $controller) {
+          $httpBackend = _$httpBackend_;
+          scope = $rootScope.$new();
+          ctrl = $controller('editorCtrl', {$scope: scope});
+      }));
 
-    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
-      $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('phones/phones.json').
-          respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
-
-      scope = $rootScope.$new();
-      ctrl = $controller('PhoneListCtrl', {$scope: scope});
-    }));
-
-
-    it('should create "phones" model with 2 phones fetched from xhr', function() {
-      expect(scope.phones).toEqual([]);
-      $httpBackend.flush();
-
-      expect(scope.phones).toEqualData(
-          [{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
-    });
-
-
-    it('should set the default value of orderProp model', function() {
-      expect(scope.orderProp).toBe('age');
-    });
+      it('test', function() {
+        expect(scope.title).toBe("VoID Editor");
+      });
   });
 
 
-  describe('PhoneDetailCtrl', function(){
-    var scope, $httpBackend, ctrl,
-        xyzPhoneData = function() {
-          return {
-            name: 'phone xyz',
-                images: ['image/url1.png', 'image/url2.png']
-          }
-        };
+  describe('editorCarouselCtrl', function(){
 
+      beforeEach(inject(function( _$httpBackend_, $rootScope, $controller) {
+          $httpBackend = _$httpBackend_;
+          scope = $rootScope.$new();
+          ctrl = $controller('editorCarouselCtrl', {$scope: scope , $rootScope :$rootScope });
+      }));
 
-    beforeEach(inject(function(_$httpBackend_, $rootScope, $routeParams, $controller) {
-      $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('phones/xyz.json').respond(xyzPhoneData());
-
-      $routeParams.phoneId = 'xyz';
-      scope = $rootScope.$new();
-      ctrl = $controller('PhoneDetailCtrl', {$scope: scope});
-    }));
-
-
-    it('should fetch phone detail', function() {
-      expect(scope.phone).toEqualData({});
-      $httpBackend.flush();
-
-      expect(scope.phone).toEqualData(xyzPhoneData());
+    it('should create "slides" array with more than 4 elements in',function() {
+         expect(scope.slides.length).toBeGreaterThan(4);
     });
-  });
+
+    it('should have index 0 for the first item and html page : page.html',function() {
+        expect(scope.slides[0].page).toEqual("/app/partials/page.html");
+        expect(scope.slides[0].index).toEqual(0);
+    });
+
+    it('should set the default value of dynamicProgress model to 0',function() {
+         expect(scope.dynamicProgress).toBe(0);
+    });
+
+    it('should change the default value of dynamicProgress model to 10', function() {
+        scope.changeProgressBar(10);
+        expect(scope.dynamicProgress).toBe(10);
+    });
+
+   });
 });

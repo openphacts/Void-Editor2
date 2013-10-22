@@ -4,7 +4,7 @@
       <div  ng-switch-when="false"></div>
      </span>
 
-    <div class="span8 offset2">
+    <div class="span10 offset2">
 
         <div class="row">
             <div class="span4 offset1">
@@ -14,12 +14,12 @@
         </div>
 
         <div class="form-group row">
-            <div class="span2 offset1">
-                <label class="label2" for="inputPublisher">Who is the publisher?</label>
+            <div class="span3 offset1">
+                <label class="label2" for="inputPublisher">Who is providing the data?</label>
              </div>
             <div class="span3">
-                <input type="url" class="form-control input-lg" id="inputPublisher" placeholder="http://github.com/#me">
-                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                <input type="url" class="form-control input-lg" id="inputPublisher" placeholder="http://">
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"   popover-trigger="mouseenter"
                      popover="Please provide the entity responsible for making the resource available.
                      For example : For ChEMBL, the publisher would be the EBI.">
             </div>
@@ -27,8 +27,8 @@
         <br>
 
         <div  class="form-group row" ng-controller="DatepickerCtrl">
-            <div class="span2 offset1">
-                <label class="label2" for="inputDateofPublishment">Date of publication:</label>
+            <div class="span3 offset1">
+                <label class="label2" for="inputDateofPublishment">When did you publish this data?</label>
             </div>
             <div class="span3">
                 <input type="text" id="inputDateofPublishment" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
@@ -38,12 +38,12 @@
         <br>
 
         <div class="form-group row">
-            <div class="span2 offset1">
+            <div class="span3 offset1">
                 <label class="label2" for="inputWebpage">Webpage:</label>
             </div>
             <div class="span3">
-                <input type="url" class="form-control input-lg" id="inputWebpage" placeholder="Of documentation">
-                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                <input type="url" class="form-control input-lg" id="inputWebpage" placeholder="Pointing to documentation">
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"       popover-trigger="mouseenter"
                      popover="A Web page that can be navigated to in a Web browser
                      to gain access to the dataset, its distributions and/or additional information.">
             </div>
@@ -52,8 +52,8 @@
 
 
         <div class="form-group row">
-            <div class="span2 offset1">
-                 <label class="label2" for="inputLicence">License to be applied to data set:</label>
+            <div class="span3 offset1">
+                 <label class="label2" for="inputLicence">License to be applied to dataset:</label>
             </div>
             <div class="span2">
                 <select class="selectpicker" id='inputLicence'>
@@ -70,23 +70,23 @@
         </div>
         <br>
         <div class="form-group row">
-            <div class="span2 offset1">
+            <div class="span3 offset1">
                 <label class="label2" for="inputDownload">Download data from:</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-lg" id="inputDownload" placeholder="http://">
-                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter"
                      popover="Where could we download the data from if we required to.">
             </div>
         </div>
         <br>
         <div class="form-group row">
-            <div class="span2 offset1">
+            <div class="span3 offset1">
                 <label  class="label2" for="inputSparql">Sparql Endpoint:</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-lg" id="inputSparql" placeholder="http://">
-                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"       popover-trigger="mouseenter"
                      popover="If you do not have one, please leave blank.">
             </div>
         </div>

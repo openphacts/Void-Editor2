@@ -1,5 +1,7 @@
+'use strict';
 // from http://angular-ui.github.io/bootstrap/
 
+/* Removed functions which I do not use */
 var DatepickerCtrl = function ($scope, $timeout) {
 
     $scope.today = function() {
@@ -16,15 +18,9 @@ var DatepickerCtrl = function ($scope, $timeout) {
         $scope.dt = null;
     };
 
-    // Disable weekend selection
-    /*$scope.disabled = function(date, mode) {
-        return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-    };    */
-
     $scope.toggleMin = function() {
         $scope.minDate = ( $scope.minDate ) ? null : new Date();
     };
-    //$scope.toggleMin();
 
     $scope.open = function() {
         $timeout(function() {

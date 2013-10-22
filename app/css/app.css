@@ -22,8 +22,8 @@ h1, h3{text-align: center; vertical-align: middle;}
     display: none;
 }
 
-.label1 { display: block; width: 100px; }
-.label2 { display: block; width: 200px;  }
+.label1 { display: block; width: 200px; }
+.label2 { display: block; width: 250px;  }
 
 footer {
     text-align: center;
