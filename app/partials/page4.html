@@ -5,63 +5,54 @@
      </span>
     <div class="span8 offset2">
         <div class="row">
-            <div class="span5 offset1">
-                <h1> Sources of information contained in your dataset </h1>
+            <div class="span7 ">
+                <!--<h1> Sources of information contained in your dataset </h1>-->
+                <h1>Is your dataset using other sources you can cite?</h1>
                 <br>
             </div>
         </div>
     </div>
     <div class="container-fluid"  ng-controller="sourceCtrl" >
-        <div class='span2'></div>
-        <div class="span3">
+        <div class="span2"></div>
+        <div class="span4">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Suggested sources
-                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
-                             popover=" Please add as many resources your dataset is contains by pressing the + symbol.
-                                        You may expand for further sub-sources.">  </h4>
+                        <h4 class="panel-title">Can you name them?
+                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter"
+                             popover="If you own data please continue to next step.">  </h4>
                     </div>
-                        <div class="panel-body" id="accordion" >
-                            <accordion close-others="oneAtATime" ng-repeat="source in sources" >
-                                <accordion-group>
-                                    <accordion-heading>
-                                        {{source.title}}
-                                        <span class="glyphicon glyphicon-plus pull-right" ng-click="addToSelected( source.title)">
-                                        </span>
-                                     </accordion-heading>
-                                    <ul>
-                                        <li ng-repeat="subset in source.subset | filter:noTitleFilter" class="thumbnail">
-                                            <div class="row-fluid">
-                                                {{ subset.title}}
-                                                <span class="glyphicon glyphicon-plus pull-right"
-                                                      ng-click="addToSelected( subset.title)">
-                                                </span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </accordion-group>
-                            </accordion>
-                   </div>
+                        <div class="panel-body" >
+                            <div class="input-group input-group-lg" >
+                                <input type="text" class="form-control input-lg"   placeholder="Source..."
+                                       typeahead-on-select="addToSelected(selected)"  ng-enter="addToSelected(selected)"
+                                       ng-model="selected"
+                                       typeahead="title for title in titles | filter:$viewValue | limitTo:8">
+                                <input type="Button" value="Add"  class="btn btn-primary"
+                                       data-ng-click="addToSelected(selected)">
+                            </div>
+                        </div>
                 </div>
             </div>
 
-         <div class="span1"> </div>
+         <!--<div class="span1"> </div>-->
             <div class="span3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Your sources
-                            <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
-                                 popover="Dataset sources your dataset includes.
-                              To remove one, please remove by pressing the - symbol."> </h4>
+                        <h4 class="panel-title">Inputted sources
+                            <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
+                                 popover="Dataset sources you are referencing.
+                              To remove one, please remove by pressing the - symbol.">
+                        </h4>
                     </div>
                     <div class="panel-body ">
+                        <!--{{result}}-->
                         <ul class="list-group" >
                             <li ng-repeat="source in userSources" class="thumbnail">
                                 <div class="row-fluid">
                                     {{ source.title}}
-                                                <span class="glyphicon glyphicon-minus pull-right"
+                                    <span class="glyphicon glyphicon-minus pull-right"
                                                       ng-click="removeSelected( source.title)">
-                                                </span>
+                                     </span>
                                 </div>
                             </li>
                         </ul>

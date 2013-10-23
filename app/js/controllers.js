@@ -33,6 +33,10 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope',  '$rootScope',
         $scope.changeProgressBar= function(change){
             $rootScope.dynamicProgress = change ;
         }
+
+        $scope.setActive = function(idx) {
+            $scope.slides[idx].active=true;
+        }
     }
 ]);
 
@@ -42,12 +46,34 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService',
         JsonService.get(function(data){
             $scope.oneAtATime = true;
             $scope.userSources = [];
+            $scope.selected = undefined;
 
             $scope.sources = data.result.primaryTopic.subset;
+            $scope.titles = [];
 
             $scope.noTitleFilter = function(item) {
                 return typeof item.title == 'string';
             };
+
+
+            $scope.extractTitlesOfSources = function (){
+
+                for (var i =0 ; i < $scope.sources.length ; i++){
+                    $scope.titles.push(  $scope.sources[i].title );
+                    if ( typeof $scope.sources[i].subset  !='undefined'){
+                        for (var j = 0 ; j <  $scope.sources[i].subset.length ;j++ ){
+                               if ($scope.sources[i].subset[j].title != null
+                                    && $scope.noTitleFilter($scope.sources[i].subset[j]) )
+                               {
+                                   $scope.titles.push(  $scope.sources[i].subset[j].title );
+                               }
+                        }
+                    }
+
+                }
+                console.log($scope.titles);
+            }
+            $scope.extractTitlesOfSources();
 
             $scope.addToSelected = function(value){
                 var found = 0;
@@ -57,6 +83,7 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService',
                 }
                 if ( !found) $scope.userSources.push({"title":value});
             }
+
 
             $scope.removeSelected = function(value){
                 var found = false;
