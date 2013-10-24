@@ -60,16 +60,7 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService',
 
                 for (var i =0 ; i < $scope.sources.length ; i++){
                     $scope.titles.push(  $scope.sources[i].title );
-                    if ( typeof $scope.sources[i].subset  !='undefined'){
-                        for (var j = 0 ; j <  $scope.sources[i].subset.length ;j++ ){
-                               if ($scope.sources[i].subset[j].title != null
-                                    && $scope.noTitleFilter($scope.sources[i].subset[j]) )
-                               {
-                                   $scope.titles.push(  $scope.sources[i].subset[j].title );
-                               }
-                        }
-                    }
-
+                    // Not going to the sub sets because Christine said they where linksets
                 }
                 console.log($scope.titles);
             }
@@ -81,7 +72,7 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService',
                 {
                     if ($scope.userSources[i].title == value ) found =1;
                 }
-                if ( !found) $scope.userSources.push({"title":value});
+                if ( !found && value != undefined) $scope.userSources.push({"title":value});
             }
 
 

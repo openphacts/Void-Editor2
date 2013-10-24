@@ -5,16 +5,16 @@
      </span>
     <div class="span8 offset2">
         <div class="row">
-            <div class="span7 ">
+            <div class="span8">
                 <!--<h1> Sources of information contained in your dataset </h1>-->
-                <h1>Is your dataset using other sources you can cite?</h1>
+                <h1>Is your dataset incorporating other sources you can cite?</h1>
                 <br>
             </div>
         </div>
     </div>
     <div class="container-fluid"  ng-controller="sourceCtrl" >
         <div class="span2"></div>
-        <div class="span4">
+        <div class="span3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">Can you name them?
@@ -34,29 +34,35 @@
                 </div>
             </div>
 
-         <!--<div class="span1"> </div>-->
-            <div class="span3">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Inputted sources
+            <div class="container">
+                <div class=" panel panel-primary span3" style="margin-left: 100px;">
+                   <h4 class="panel-title panel-heading">Inputted sources
                             <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                                  popover="Dataset sources you are referencing.
                               To remove one, please remove by pressing the - symbol.">
-                        </h4>
-                    </div>
-                    <div class="panel-body ">
-                        <!--{{result}}-->
-                        <ul class="list-group" >
+                   </h4>
+                        <ul class="list-group panel-body" >
                             <li ng-repeat="source in userSources" class="thumbnail">
-                                <div class="row-fluid">
-                                    {{ source.title}}
-                                    <span class="glyphicon glyphicon-minus pull-right"
-                                                      ng-click="removeSelected( source.title)">
-                                     </span>
-                                </div>
+                                    <table >
+                                        <tr>
+                                            <td class="span4">
+                                                {{ source.title}}
+                                            </td>
+                                            <td class="">
+                                                <select class="select-mini">
+                                                    <option>RDF</option>
+                                                    <option>Non-RDF</option>
+                                                </select>
+                                            </td>
+                                            <td class="">
+                                                 <span class="glyphicon glyphicon-minus pull-right"
+                                                          ng-click="removeSelected( source.title)">
+                                         </span>
+                                            </td>
+                                        </tr>
+                                    </table>
                             </li>
                         </ul>
-                    </div>
                 </div>
              </div>
 
