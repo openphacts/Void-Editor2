@@ -23,12 +23,12 @@
                     </div>
                         <div class="panel-body" >
                             <div class="input-group input-group-lg" >
-                                <input type="text" class="form-control input-lg"   placeholder="Source..."
-                                       typeahead-on-select="addToSelected(selected)"  ng-enter="addToSelected(selected)"
+                                <input type="text" class="form-control input-lg "   placeholder="Source..."
+                                       typeahead-on-select="addToSelected(selected); selected = '' "  ng-enter="addToSelected(selected);  selected = ''"
                                        ng-model="selected"
                                        typeahead="title for title in titles | filter:$viewValue | limitTo:8">
                                 <input type="Button" value="Add"  class="btn btn-primary"
-                                       data-ng-click="addToSelected(selected)">
+                                       data-ng-click="addToSelected(selected); selected = ''">
                             </div>
                         </div>
                 </div>
