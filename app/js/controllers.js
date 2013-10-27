@@ -72,7 +72,7 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService',
                 {
                     if ($scope.userSources[i].title == value ) found =1;
                 }
-                if ( !found && value != undefined) $scope.userSources.push({"title":value});
+                if ( !found && value != undefined &&  value != "") $scope.userSources.push({"title":value});
             }
 
 
