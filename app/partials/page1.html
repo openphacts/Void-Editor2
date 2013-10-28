@@ -1,4 +1,4 @@
-<div class="span12 carousel-content ">
+<div class="span12 carousel-content " ng-controller="editorFormCtrl">
 
      <span ng-switch="slide.active">
       <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
@@ -19,7 +19,7 @@
 
                 </div>
                 <div class="span3">
-                     <input type="text" class="form-control input-lg" id="inputTitle" placeholder="">
+                     <input type="text" class="form-control input-lg" id="inputTitle" placeholder="" ng-model="data.title">
                     <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                          popover="A name given for the data you are creating the VoID for.">
 
@@ -31,27 +31,13 @@
                     <label class="label1" for="inputDescription">Description of your data:</label>
                 </div>
                 <div class="span3">
-                    <textarea  type="text" class="form-control"  rows="5" id="inputDescription" placeholder="What is this dataset about?"></textarea>
+                    <textarea  type="text" class="form-control"  rows="5" id="inputDescription"
+                               placeholder="What is this dataset about?" ng-model="data.description"></textarea>
                     <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                          popover="A description of the dataset so we can understand it contains.">
                 </div>
             </div>
             <br>
-            <!--<div class="form-group row " >-->
-               <!--<div class="span2 offset1">-->
-                    <!--Is the data formatted as:-->
-                 <!--</div>-->
-                <!--<div class="radio span2">-->
-                    <!--<label>-->
-                        <!--<input type="radio" name="optionsRadios" id="optionsRadios1" value="rdf" checked>-->
-                        <!--RDF-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<input type="radio" name="optionsRadios" id="optionsRadios2" value="non-rdf">-->
-                        <!--Non-RDF-->
-                    <!--</label>-->
-                <!--</div>-->
-            <!--</div>-->
         </div>
     </div>
 </div>

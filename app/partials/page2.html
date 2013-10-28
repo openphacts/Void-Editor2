@@ -1,4 +1,4 @@
-<div class="span12 carousel-content  ">
+<div class="span12 carousel-content  " ng-controller="editorFormCtrl">
       <span ng-switch="slide.active">
       <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
       <div  ng-switch-when="false"></div>
@@ -19,7 +19,8 @@
              </div>
             <div class="span3">
                 <input type="url" class="form-control input-lg" id="inputPublisher" placeholder="http://">
-                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"   popover-trigger="mouseenter"
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  ng-model="data.publisher"
+                     popover-trigger="mouseenter" class="pull-right"
                      popover="Please provide the entity responsible for making the resource available.
                      For example : For ChEMBL, the publisher would be the EBI.">
             </div>
@@ -31,8 +32,18 @@
                 <label class="label2" for="inputDateofPublishment">When did this RDF data get published?</label>
             </div>
             <div class="span3">
-                <input type="text" id="inputDateofPublishment" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
-                <button class="btn" ng-click="open()"><i class="icon-calendar"></i></button>
+                <select class="select-mini" >
+                    <option ng-model="data.datePublish" value="date.name" ng-repeat="date in dates">{{date.name}}</option>
+                </select>
+                <select class="select-mini" >
+                    <option ng-model="data.monthPublish" value="month.name" ng-repeat="month in months">{{month.name}}</option>
+                </select>
+                <select class="select-mini" id="inputDateofPublishment">
+                    <option ng-model="data.yearPublish" value="year.name" ng-repeat="year in years">{{year.name}}</option>
+                </select>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover="If only aware of year please select 1st of January of the year.
+                                If aware of month only select 1st of that month.">
             </div>
         </div>
         <br>
@@ -42,8 +53,9 @@
                 <label class="label2" for="inputWebpage">Webpage of your dataset:</label>
             </div>
             <div class="span3">
-                <input type="url" class="form-control input-lg" id="inputWebpage" placeholder="http://">
-                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"       popover-trigger="mouseenter"
+                <input type="url" class="form-control input-lg" id="inputWebpage" ng-model="data.webpage"
+                       placeholder="http://" >
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
                      popover="A Web page that can be navigated to in a Web browser
                      to gain access to the dataset, its distributions and/or additional information.">
             </div>
@@ -55,17 +67,19 @@
             <div class="span3 offset1">
                  <label class="label2" for="inputLicence">License to be applied to the dataset:</label>
             </div>
-            <div class="span2">
+            <div class="span3">
                 <select class="selectpicker" id='inputLicence'>
-                        <option value="http://www.opendatacommons.org/licenses/pddl/">Public Domain for data/databases</option>
-                        <option value="http://www.opendatacommons.org/licenses/by/">Attribution for data/databases</option>
-                        <option value="http://www.opendatacommons.org/licenses/odbl/">Attribution Share-Alike for data/databases</option>
-                        <option value="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons public domain waiver</option>
-                        <option selected="selected" value="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike (CC-BY-SA)</option>
-                        <option value="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License (GFDL)</option>
-                        <option value="other">Other</option>
+                        <option ng-model="data.licence" value="http://www.opendatacommons.org/licenses/pddl/">Public Domain for data/databases</option>
+                        <option ng-model="data.licence" value="http://www.opendatacommons.org/licenses/by/">Attribution for data/databases</option>
+                        <option ng-model="data.licence" value="http://www.opendatacommons.org/licenses/odbl/">Attribution Share-Alike for data/databases</option>
+                        <option ng-model="data.licence" value="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons public domain waiver</option>
+                        <option ng-model="data.licence" selected="selected" value="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike (CC-BY-SA)</option>
+                        <option ng-model="data.licence" value="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License (GFDL)</option>
+                        <option ng-model="data.licence" value="other">Other</option>
                         <option>Don't know</option>
                 </select>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover="Please visit www.tldrlegal.com to view more information regarding licencing. ">
              </div>
         </div>
         <br>
@@ -74,8 +88,9 @@
                 <label class="label2" for="inputDownload">Where could we download your RDF from?</label>
             </div>
             <div class="span3">
-                <input type="url" class="form-control input-lg" id="inputDownload" placeholder="http://">
-                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter"
+                <input type="url" class="form-control input-lg" id="inputDownload"  ng-model="data.downloadFrom"
+                        placeholder="http://rdf.example.com">
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
                      popover="Where could we download the data from if we required to.">
             </div>
         </div>
@@ -85,8 +100,10 @@
                 <label  class="label2" for="inputSparql">Sparql Endpoint:</label>
             </div>
             <div class="span3">
-                <input type="url" class="form-control input-lg" id="inputSparql" placeholder="http://">
-                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"       popover-trigger="mouseenter"
+                <input type="url" class="form-control input-lg" id="inputSparql"
+                       ng-model="data.sparqlEndpoint" placeholder="http://">
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
+                     class="pull-right"
                      popover="If you do not have one, please leave blank.">
             </div>
         </div>

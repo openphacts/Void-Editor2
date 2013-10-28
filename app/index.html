@@ -43,7 +43,7 @@
      </div>
 
     <div ng-controller="editorCarouselCtrl"  class="row span12">
-        <form role="form" class="form-inline" role="form">
+        <form role="form" class="form-inline simple-form" role="form" novalidate>
             <carousel interval="interval"  class="carousel">
                 <slide ng-repeat="slide in slides" active="slide.active">
 
@@ -64,65 +64,17 @@
                 </div>
 
                 <div class="modal-body">
-                    <button  type="button" class="btn btn-default pull-left"> RDF</button>
-                    <button  type="button" class="btn btn-default pull-left"> VoID</button>
-                    <br>
                     <textarea class="field span8" rows="15" columns="15">
-                        @prefix dcterms: <http://purl.org/dc/terms/> .
-                        @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-                        @prefix pav: <http://purl.org/pav/2.0/> .
-                        @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-                        @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-                        @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-                        @prefix void: <http://rdfs.org/ns/void#> .
-                        @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-                        @prefix : <#> .
-
-                        ## your VoID description
-                        <> rdf:type void:DatasetDescription ;
-                        dcterms:title "Example VoID Document"^^xsd:string ;
-                        dcterms:description """Example description of the VoID document"""^^xsd:string ;
-                        pav:createdBy <> ;
-                        pav:createdOn "2013-10-20"^^xsd:date ;
-                        foaf:primaryTopic :myDS .
-
-                        ## your dataset description
-                        :myDS rdf:type void:Dataset ;
-                        foaf:homepage <http://example.org/> ;
-                        dcterms:title "Example Dataset"^^xsd:string ;
-                        dcterms:description """A simple dataset in RDF."""^^xsd:string ;
-                        pav:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
-                        void:uriSpace "http://example.org/"^^xsd:string ;
-                        .     "
+                       {{data}}
                     </textarea>
-                    <!--
-                    <ul class="nav nav-pills nav-stacked pull-left" ng-controller="editorCarouselCtrl">
-                        <li ng-repeat="slide in slides">
-                            <button class="btn btn-mini" ng-class="{'btn-info': !slide.active, 'btn-success': slide.active}" ng-disabled="slide.active" ng-click="slide.active = true">select</button>
-                            {{$index}}: {{slide.text}}
-                        </li>
-                    </ul>
-                    -->
+
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                    <button class="btn btn-warning" ng-click="close()">Close</button>
                 </div>
             </script>
 
             <button  type="button" class="btn btn-default pull-right" ng-click="open()"> Under the Hood</button>
-
-            <!--<div class="btn-group dropup" ng-controller="editorCarouselCtrl" >-->
-                <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
-                    <!--Advanced User <span class="caret"></span>-->
-                <!--</button>-->
-                <!--<ul  class="dropdown-menu" role="menu"  >-->
-                    <!--<li ng-repeat="slide in slides">-->
-                        <!--<button class="btn btn" ng-class="{'btn-info': !slide.active, 'btn-success': slide.active}" ng-disabled="slide.active" ng-click="setActive({{slide.index}})">-->
-                             <!--Go To Slide {{$index}}-->
-                        <!--</button>-->
-                    <!--</li>-->
-                <!--</ul>-->
-            <!--</div>-->
             <button  type="button" class="btn btn-default pull-left "  disabled="disabled"> Advanced User</button>
         </div>
 

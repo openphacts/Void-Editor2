@@ -2,34 +2,19 @@
 // from http://angular-ui.github.io/bootstrap/
 
 /* Removed functions which I do not use */
-var DatepickerCtrl = function ($scope, $timeout) {
+var DatepickerCtrl = function ($scope) {
 
-    $scope.today = function() {
-        $scope.dt = new Date();
-    };
-    $scope.today();
 
-    $scope.showWeeks = true;
-    $scope.toggleWeeks = function () {
-        $scope.showWeeks = ! $scope.showWeeks;
-    };
+    $scope.dates =[];
+    for (var i = 1 ; i <= 31 ; i++){
+        $scope.dates.push({"name": i});
+    }
+    $scope.dates.push({"name": "N/A"});
 
-    $scope.clear = function () {
-        $scope.dt = null;
-    };
+   $scope.months = [  {"name" : "Jan"} , {"name" : "Feb"} , {"name" : "Mar"} , {"name" : "Apr"},
+       {"name" : "May"}, {"name" : "Jun"}, {"name" : "Jul"}, {"name" : "Aug"}, {"name" : "Sep"},
+       {"name" : "Oct"}, {"name" : "Nov"}, {"name" : "Dec"}, {"name":"N/A"} ];
 
-    $scope.toggleMin = function() {
-        $scope.minDate = ( $scope.minDate ) ? null : new Date();
-    };
-
-    $scope.open = function() {
-        $timeout(function() {
-            $scope.opened = true;
-        });
-    };
-
-    $scope.dateOptions = {
-        'year-format': "'yy'",
-        'starting-day': 1
-    };
+    $scope.years = [  {"name" : "2013"} , {"name" : "2012"} , {"name" : "2011"} , {"name" : "2011"},
+                      {"name" : "2010"} , {"name" : "2009"} , {"name" : "2008"} , {"name" : "2007"}];
 };

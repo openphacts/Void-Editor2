@@ -1,4 +1,4 @@
-<div class="span12 carousel-content">
+<div class="span12 carousel-content" ng-controller="editorFormCtrl">
      <span ng-switch="slide.active">
       <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
       <div  ng-switch-when="false"></div>
@@ -19,7 +19,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">Can you name them?
                         <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter"
-                             popover="If you own data please continue to next step.">  </h4>
+                             popover="If you own this data, please skip this step.">  </h4>
                     </div>
                         <div class="panel-body" >
                             <div class="input-group input-group-lg" >
@@ -30,16 +30,26 @@
                                 <input type="Button" value="Add"  class="btn btn-primary"
                                        data-ng-click="addToSelected(selected); selected = ''">
                             </div>
+                            <br>
+                            <p>
+                                Please enter the names of the sources you would like to cite.
+                            </p>
+                            <p>
+                                This input will prompt you with some suggestions from Open PHACTs.
+                            </p>
+                            <p>
+                                Once a source is added to 'sources used', please define if this dataset is/was a RDF or Non-RDF resource.
+                            </p>
                         </div>
                 </div>
             </div>
 
             <div class="container">
                 <div class=" panel panel-primary span3" style="margin-left: 100px;">
-                   <h4 class="panel-title panel-heading">Inputted sources
+                   <h4 class="panel-title panel-heading">Sources used
                             <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                                  popover="Dataset sources you are referencing.
-                              To remove one, please remove by pressing the - symbol.">
+                              To remove one, please remove by pressing the '-' symbol.">
                    </h4>
                         <ul class="list-group panel-body" >
                             <li ng-repeat="source in userSources" class="thumbnail">

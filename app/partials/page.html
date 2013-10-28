@@ -1,4 +1,4 @@
-<div class="span12 carousel-content">
+<div class="span12 carousel-content" ng-controller="editorFormCtrl">
     <span ng-switch="slide.active">
       <div  ng-switch-when="true">
           <script>
@@ -30,22 +30,26 @@
                     <label for="inputEmail">What is your full name? </label>
                 </div>
                 <div class="span3">
-                    <input type="text" class="form-control" id="inputName" placeholder="Name">
+                    <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="data.userName">
                     <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                                 popover="Please supply first and last name.">
                 </div>
             </div>
+
             <br>
             <div class="form-group row">
                 <div class="span2 offset1">
                     <label for="inputEmail">What is your email?</label>
                 </div>
                 <div class="span3">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+                    <input type="email" class="form-control" id="inputEmail"  ng-model="data.userEmail"
+                           placeholder="Enter email">
                     <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                          popover="This information will be added to the dataset description.">
                  </div>
+
             </div>
+
 
         </div>
     </div>
