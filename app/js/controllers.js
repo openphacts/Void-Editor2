@@ -11,9 +11,13 @@ editorAppControllers.controller('editorCtrl', ['$rootScope' ,'$scope',
 }]);
 
 editorAppControllers.controller('editorFormCtrl', ['$rootScope' ,'$scope',
-    function($scope ){
-        $scope.data = {};
+    function($scope, $rootScope ){
+        $rootScope.data = {};
 
+
+        $rootScope.data.datePublish =1;
+        $rootScope.data.monthPublish =1;
+        $rootScope.data.yearPublish =2013;
     }]);
 
 

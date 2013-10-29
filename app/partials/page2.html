@@ -32,15 +32,19 @@
                 <label class="label2" for="inputDateofPublishment">When did this RDF data get published?</label>
             </div>
             <div class="span3">
-                <select class="select-mini" >
-                    <option ng-model="data.datePublish" value="date.name" ng-repeat="date in dates">{{date.name}}</option>
+                <select class="select-mini" ng-model="data.datePublish"  >
+                    <option  value="{{date.name}}" ng-repeat="date in dates">{{date.name}}</option>
                 </select>
-                <select class="select-mini" >
-                    <option ng-model="data.monthPublish" value="month.name" ng-repeat="month in months">{{month.name}}</option>
+
+                <select class="select-mini"  ng-change="checkDates(data.yearPublish,data.monthPublish )"  ng-model="data.monthPublish">
+                    <option value="{{month.name}}"  ng-repeat="month in months" >{{month.name}}</option>
                 </select>
-                <select class="select-mini" id="inputDateofPublishment">
-                    <option ng-model="data.yearPublish" value="year.name" ng-repeat="year in years">{{year.name}}</option>
+
+                <select class="select-mini" id="inputDateofPublishment" ng-model="data.yearPublish"
+                            ng-change="checkDates(data.yearPublish,data.monthPublish )">
+                    <option  value="{{year.name}}" ng-repeat="year in years">{{year.name}}</option>
                 </select>
+
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
                      popover="If only aware of year please select 1st of January of the year.
                                 If aware of month only select 1st of that month.">
