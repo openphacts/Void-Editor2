@@ -3,14 +3,14 @@ module.exports = function(config){
     basePath : '../',
 
     files : [
-        'app/lib/angular/angular.js'  ,
-        'app/lib/angular/angular-*.js',
-        'app/lib/ui-bootstrap/ui-bootstrap-tpl*.js',
-        'app/js/**/*.js',
+        'voidEditor/src/main/webapp/lib/angular/angular.js'  ,
+        'voidEditor/src/main/webapp/lib/angular/angular-*.js',
+        'voidEditor/src/main/webapp/lib/ui-bootstrap/ui-bootstrap-tpl*.js',
+        'voidEditor/src/main/webapp/js/**/*.js',
         'test/unit/*.js'
     ],
 
-    exclude: ['app/lib/angular/angular-scenario.js'],
+    exclude: ['voidEditor/src/main/webapp/lib/angular/angular-scenario.js'],
 
     autoWatch : true,
 

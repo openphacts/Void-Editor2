@@ -1,0 +1,34 @@
+<div class="span12 carousel-content" ng-controller="editorFormCtrl">
+     <span ng-switch="slide.active">
+      <div  ng-switch-when="true">
+          <script>
+              $(".carousel-control.right").hide();
+          </script>
+          {{changeProgressBar(slide.progress)}}
+      </div>
+      <div  ng-switch-when="false">
+          <script>
+              $(".carousel-control.right").show();
+          </script>
+      </div>
+     </span>
+    <div class="span8 offset2">
+
+        <div class="row">
+            <div class="span7">
+                 <br>
+                <h3> Congratulations you now have a dataset description!</h3>
+                <br>
+				<br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span4 offset2">
+                 <h4>Export it as :
+                     <button type="button" class="btn btn-primary btn-large"> RDF</button>
+                 </h4>
+            </div>
+        </div>
+
+        </div>
+</div>
