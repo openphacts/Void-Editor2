@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -18,15 +19,16 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.DCTerms;
+import com.hp.hpl.jena.vocabulary.DCTypes;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.XSD;
 
 import editor.ontologies.Biopax_level3;
+import editor.ontologies.DCAT;
 import editor.ontologies.Freq;
 import editor.ontologies.Gpml;
 import editor.ontologies.Pav;
 import editor.ontologies.Prov;
-import editor.ontologies.Voag;
 import editor.ontologies.Void;
 import editor.ontologies.Wp;
 
@@ -40,9 +42,9 @@ public class voidTurtle {
     private String title;
     private String description ; 
     private String publisher;
-    private String  datePublish;
-    private String  monthPublish;
-    private String  yearPublish;
+    private int  datePublish;
+    private int  monthPublish;
+    private int  yearPublish;
     private String  webpage;
     private String  licence;
     private String  downloadFrom;
@@ -51,6 +53,8 @@ public class voidTurtle {
     private String  previousVersion;
     private String updateFrequency;
 	private File output= null ;
+	private ArrayList sources = null;
+	private String URI;
 	
 	public voidTurtle(voidAttributes obj){
 		this.userName = obj.userName;
@@ -58,9 +62,6 @@ public class voidTurtle {
 		this.title = obj.title;
 		this.description = obj.description ; 
 		this.publisher = obj.publisher;
-	    this.datePublish =obj.datePublish;
-	    this.monthPublish = obj.monthPublish;
-	    this.yearPublish= obj.yearPublish ;
 	    this.webpage= obj.webpage ;
 	    this.licence = obj.licence;
 	    this.downloadFrom = obj.downloadFrom;
@@ -68,7 +69,31 @@ public class voidTurtle {
 	    this.version= obj.version ;
 	    this.previousVersion= obj.previousVersion ;
 	    this.updateFrequency = obj.updateFrequency;
-			
+	    this.sources = (ArrayList) obj.sources;
+	    this.URI = obj.URI;
+	    
+		System.out.println("=====>" + sources);
+		System.out.println("=====>" + sources.toString());
+		System.out.println("=========>" + obj.sources);
+		System.out.println("=========>" + obj.sources.toString());
+		
+	    if (obj.datePublish.equals("N/A") || obj.datePublish == "" || obj.datePublish ==null ){
+	    	this.datePublish =1 ;
+	    }else {
+	    	this.datePublish  = Integer.parseInt(obj.datePublish);
+	    }
+	    
+	    if (obj.monthPublish.equals("N/A") || obj.monthPublish == "" || obj.monthPublish ==null ){
+	    	this.monthPublish =1 ;
+	    }else {
+	    	this.monthPublish  = Integer.parseInt(obj.monthPublish);
+	    }
+	    
+	    if ( obj.yearPublish == "" || obj.yearPublish ==null ){
+	    	this.yearPublish =2013 ;
+	    }else {
+	    	this.yearPublish  = Integer.parseInt(obj.yearPublish);
+	    }
 	}
 	
 	
@@ -89,81 +114,155 @@ public class voidTurtle {
          voidModel.setNsPrefix("hmdb", "http://identifiers.org/hmdb/");
          voidModel.setNsPrefix("freq", Freq.getURI());
          voidModel.setNsPrefix("dc", DC.getURI());
-         
+         voidModel.setNsPrefix("dcat", DCAT.getURI());
+         voidModel.setNsPrefix("", "#");
          
          //Populate void.ttl
+         // Dataset Description info
+         
          Calendar now = Calendar.getInstance();
-         Literal nowLiteral = voidModel.createTypedLiteral(now);
+         Calendar publishmentDate = Calendar.getInstance();
+         publishmentDate.set(Calendar.DAY_OF_MONTH,datePublish );
+         publishmentDate.set(Calendar.MONTH, monthPublish);
+         publishmentDate.set(Calendar.YEAR, yearPublish);
+         
+         Resource voidDescriptionBase = voidModel.createResource("");
+         Literal titleDescriptionLiteral = voidModel.createLiteral("VoID Description", "en");
+         Literal descriptionDescriptionLiteral = voidModel.createLiteral("The VoID description for the RDF representation of this dataset.", "en");
+         Literal nowDescriptionLiteral = voidModel.createTypedLiteral(now);
+         Literal createdByNameLiteral = voidModel.createLiteral(userName, "en");
+         Literal createdByEmailLiteral = voidModel.createLiteral(userEmail, "en");
+         
+         Literal publishmentLiteral = voidModel.createTypedLiteral(publishmentDate);
          Literal titleLiteral = voidModel.createLiteral(title, "en");
          Literal descriptionLiteral = voidModel.createLiteral(description, "en");
-         
-         Resource voidBase = voidModel.createResource(webpage);
-         Resource identifiersOrg = voidModel.createResource(publisher);
-         Resource wpHomeBase = voidModel.createResource(webpage);
-         Resource authorResource = voidModel.createResource(userName);
-         //Resource apiResource = voidModel.createResource("http://www.wikipathways.org/wpi/webservice/webservice.php");
-         Resource mainDatadump = voidModel.createResource(downloadFrom);
-         Resource license = voidModel.createResource(licence);
-         //Resource instituteResource = voidModel.createResource("http://dbpedia.org/page/Maastricht_University");
-         Resource sparqlEndpointLoc = voidModel.createResource(sparqlEndpoint);
-         Resource versionUsed = voidModel.createResource(version);
-         Resource prevVersion = voidModel.createResource(previousVersion);
-         Resource updateFrequencyDef = voidModel.createResource(updateFrequency);
-         
+     
+         //initial data
+         Resource voidBase = voidModel.createResource(URI);
          voidBase.addProperty(RDF.type, Void.Dataset);
          voidBase.addProperty(DCTerms.title, titleLiteral);
          voidBase.addProperty(DCTerms.description, descriptionLiteral);
-         voidBase.addProperty(FOAF.homepage, wpHomeBase);
-         voidBase.addProperty(DCTerms.license, license);
+         voidBase.addProperty(DCTerms.issued, publishmentLiteral);
          
-         voidBase.addProperty(Void.sparqlEndpoint, sparqlEndpointLoc);
-         voidBase.addProperty(Pav.version, versionUsed);
-         voidBase.addProperty(Pav.previousVersion, prevVersion);
-         voidBase.addProperty(DCTerms.accrualPeriodicity, updateFrequencyDef);
+         // Creation of void
          
-         voidBase.addProperty(Void.uriSpace, voidBase);
-         voidBase.addProperty(Void.uriSpace, identifiersOrg);
-         voidBase.addProperty(Pav.importedBy, authorResource);
-        // voidBase.addProperty(Pav.importedFrom, apiResource);
-         voidBase.addProperty(Pav.importedOn, nowLiteral);
-         voidBase.addProperty(Void.dataDump, mainDatadump);
-         voidBase.addProperty(Voag.frequencyOfChange, Freq.Irregular);
-         voidBase.addProperty(Pav.createdBy, authorResource);
-        // voidBase.addProperty(Pav.createdAt, instituteResource);                 
-         voidBase.addLiteral(Pav.createdOn, nowLiteral);
+         voidDescriptionBase.addProperty(RDF.type, Void.DatasetDescription);
+         voidDescriptionBase.addProperty(DCTerms.title, titleDescriptionLiteral);
+         voidDescriptionBase.addProperty(DCTerms.description, descriptionDescriptionLiteral);
+         voidDescriptionBase.addProperty(Pav.createdBy, createdByNameLiteral);
+         voidDescriptionBase.addProperty(Pav.createdBy, createdByEmailLiteral);
+         
+         voidDescriptionBase.addLiteral(Pav.createdOn, nowDescriptionLiteral);
+         voidDescriptionBase.addProperty(FOAF.primaryTopic,voidBase );
+         
+         //Dataset void - conditional
+         if (publisher !=""){
+        	 Resource identifiersOrg = voidModel.createResource(publisher);
+        	 voidBase.addProperty(DCTerms.publisher, identifiersOrg);
+         }
+        
+         if (webpage !=""){
+        	 Resource landingPage = voidModel.createResource(webpage);
+        	 voidBase.addProperty(DCAT.landingPage, landingPage);
+         }
+         
+         if (downloadFrom !=""){
+        	   Resource mainDatadump = voidModel.createResource(downloadFrom);
+        	   voidBase.addProperty(Void.dataDump, mainDatadump);
+         }
+         
+         if (licence !=""){
+        	 Resource license = voidModel.createResource(licence);
+        	 voidBase.addProperty(DCTerms.license, license);
+         }
+         if (sparqlEndpoint !=""){
+        	 Resource sparqlEndpointLoc = voidModel.createResource(sparqlEndpoint);
+        	 voidBase.addProperty(Void.sparqlEndpoint, sparqlEndpointLoc);
+         }
+         if (version !=""){
+        	 Resource versionUsed = voidModel.createResource(version);
+        	 voidBase.addProperty(Pav.version, versionUsed);
+         }
+        
+         if (previousVersion !=""){
+        	 Resource prevVersion = voidModel.createResource(previousVersion);
+        	 voidBase.addProperty(Pav.previousVersion, prevVersion);
+         }
+        
+         if (updateFrequency !=""){
+        	 Resource updateFrequencyDef = voidModel.createResource(updateFrequency);
+             voidBase.addProperty(DCTerms.accrualPeriodicity, updateFrequencyDef);
+         }
+         
+         //Here will add sources
+         for (int i = 0; i < sources.size(); i++) {
+             System.out.println(sources.get(i)); //LinkedHashMap
+        	 String tmpValue = sources.get(i).toString();
+        	 String[] split1 = tmpValue.split(","); // getting title=Uniprot dataset | type=RDF | URI
+        	 String[] split2 = split1[2].split("="); 
+        	 System.out.println("-->" + split2[1]);
+        	 
+ 			 Resource source = voidModel.createResource(split2[1].replace("}","")); // URI
+             voidBase.addProperty(Pav.importedFrom, source);
+             
+             //Resource tmpBase = voidModel.createResource(source);
+             
+             // check if rdf resource or not
+             String[] splitType = split1[1].split("="); 
+             if (splitType[1].contains("-")) {
+            	 source.addProperty(RDF.type, DCTypes.Dataset);
+             }else{
+            	 source.addProperty(RDF.type, Void.Dataset);
+             }
+             String[] titleSplit = split1[0].split("="); 
+             Literal titleLiteralTmp = voidModel.createLiteral(titleSplit[1], "en");
+             source.addProperty(DCTerms.title, titleLiteralTmp);
+             
+ 		 }
+         
          //voidBase.addProperty(Void.exampleResource, voidModel.createResource("http://identifiers.org/ncbigene/2678"));
-     
-         //voidBase.addProperty(Void.vocabulary, FOAF.NAMESPACE);
-         //voidBase.addProperty(Void.vocabulary, Pav.NAMESPACE);
          
-         
+         BufferedWriter bw = null;
          try
          {
         	 output = File.createTempFile("void", ".tmp"); 
-     	    BufferedWriter bw = new BufferedWriter(new FileWriter(output));
+     	     bw = new BufferedWriter(new FileWriter(output));
      	    System.out.println("Temp file : " + output.getAbsolutePath());
      	    voidModel.write(bw,  "TURTLE");
-     	    bw.close();
      	    System.out.println("Done");
      	 }
          catch(IOException e){e.printStackTrace();}
+         finally { try {bw.close();} catch (IOException e) {e.printStackTrace();}
+         }
 	}
 	
 	public String getVoid(){
 		String outputString ="";
+		BufferedReader read = null;
 		try { 
-			BufferedReader read = new BufferedReader( new FileReader(output) ); 
+			read = new BufferedReader( new FileReader(output) ); 
 			String line; 
 			while ((line = read.readLine()) != null){ 
 				outputString += (line + '\n');
 			} 
+			read.close();
 		} catch (FileNotFoundException e) { 
 			e.printStackTrace(); 
 		} catch (IOException e) {
 			System.out.println("IOException --> Something went wrong with file");
 			e.printStackTrace();
-		} 
+		} finally{
+			try {read.close();} catch (IOException e) {	e.printStackTrace();}
+		}
 		return outputString;
+	}
+	
+	public String getLocation(){
+		return output.getAbsolutePath();
+	}
+	
+	public void deleteFile(){
+		output.delete();
 	}
 	
 }

@@ -1,4 +1,4 @@
-<div class="span12 carousel-content" ng-controller="editorFormCtrl">
+<div class="span12 carousel-content" ng-controller="editorFormCtrl" >
      <span ng-switch="slide.active">
       <div  ng-switch-when="true">
           <script>
@@ -22,11 +22,12 @@
 				<br>
             </div>
         </div>
-        <div class="row">
-            <div class="span4 offset2">
-                 <h4>Export it as :
-                     <button type="button" class="btn btn-primary btn-large"> RDF</button>
-                 </h4>
+        <div class="row-fluid">
+            <div class="span3 offset2" data-ng-init="createVoid()">
+                 <h4>Export it as : </h4>
+                  <!--<form method="get" action="/voidEditor/rest/void/file" ">-->
+					<button type="btn" class="btn btn-primary btn-large" ng-click="createVoidAndDownload()" class="pull-right" > RDF</button>
+				  <!--</form>-->
             </div>
         </div>
 
