@@ -9,73 +9,93 @@ var jsonService = angular.module('jsonService', ['ngResource'])
 
 var voidDataService = angular.module('voidDataService', [])
 .service('voidData', function($rootScope , $http , $window) {
-     var turtleData = "";
-	 var data = {};
+     var turtleData = "Loading...",
+         fileLocation ="",
+	     data = {};
+
 	 data.sources = [];
-	 var fileLocation ="";
-	    	this.setTurtle = function(value) {
-	    		turtleData = value;
-                $rootScope.$broadcast('TurtleChanged', turtleData);
-            }; 
-            this.getTurtle = function() {
-	    		return turtleData;
-            };
+
+	 this.setTurtle = function(value) {
+	 	turtleData = value;
+            $rootScope.$broadcast('TurtleChanged', turtleData);
+        };
+     this.getTurtle = function() {
+	    return turtleData;
+     };
             
-            this.setData = function(value) {
-            	data = value;
-                $rootScope.$broadcast('DataChanged', data);
-            };
+     this.setData = function(value) {
+      	data = value;
+        $rootScope.$broadcast('DataChanged', data);
+     };
 
-            this.getData = function() {
-	    		return data;
-            };
+     this.getData = function() {
+	 	return data;
+     };
     
-            this.createVoid = function (){
+     	this.createVoid = function (){
             	
-            	$rootScope.$broadcast('needData', data);
+        $rootScope.$broadcast('needData', data);
             	
-    	       	$http({method: 'POST', url: '/voidEditor/rest/void/output' , data: data}).
-    	       	  success(function(data, status, headers, config) {
-    	       		  	turtleData =  data;
-    	       		  	$rootScope.$broadcast('TurtleChanged', turtleData);
-    	       	  }).
-    	       	  error(function(data, status, headers, config) {
-    	       		  console.log("Error in creating void - Status: " + status + "   data=>" + data);
-    	       	  });
+    	$http({method: 'POST', url: '/voidEditor/rest/void/output' , data: data}).
+    	    success(function(data, status, headers, config) {
+    	        turtleData =  data;
+    	       	$rootScope.$broadcast('TurtleChanged', turtleData);
+    	    }).
+    	    error(function(data, status, headers, config) {
+    	        console.log("Error in creating void - Status: " + status + "   data=>" + data);
+    	    });
     	       	
-    	       	return turtleData;
-            };
+    	    return turtleData;
+        };
 
-            this.setSourceData = function(value) {
-                data.sources = value;
-                console.log("====");
-                console.log( data.sources);
-                $rootScope.$broadcast('DataSourcesChanged',  data.sources);
-            };
+        this.setSourceData = function(value) {
+            data.sources = value;
+            console.log("====");
+            console.log( data.sources);
+            console.log("====");
+            $rootScope.$broadcast('DataSourcesChanged',  data.sources);
+        };
 
-            this.getSourceData = function() {
-                return data.sources;
-            };
+        this.getSourceData = function() {
+            return data.sources;
+        };
+        
+        this.deleteFile = function() {
+        	$http({method: 'DELETE', url: '/voidEditor/rest/void/delete' }).
+    	    success(function(data, status, headers, config) {
+    	    	console.log("Deleted file");
+    	    }).
+    	    error(function(data, status, headers, config) {
+    	        console.log("Error in deleting void - Status: " + status + "   data=>" + data);
+    	    });
+        };
            
-            this.createVoidAndDownload = function (){
+        this.createVoidAndDownload = function (){
             	
-            	$rootScope.$broadcast('needData', data);
-            	
-    	       	$http({method: 'POST', url: '/voidEditor/rest/void/output' , data: data}).
-    	       	  success(function(data, status, headers, config) {
-    	       		  	turtleData =  data;
-    	       		  	$rootScope.$broadcast('TurtleChanged', turtleData);
-    	       		  	//$window.open("/voidEditor/rest/void/file");
-    	       		  	var link = document.createElement('a');
-			    	       	  angular.element(link).attr('href', "/voidEditor/rest/void/file");
-			    	       	    // Pretty much only works in chrome
-			    	    link.click();
-    	       	  }).
-    	       	  error(function(data, status, headers, config) {
-    	       		  console.log("Error in creating void - Status: " + status + "   data=>" + data);
-    	       	  });
-    	       	
-    	       	return turtleData;
-            };
+            $rootScope.$broadcast('needData', data);
+            
+            console.log("going to do ajax call.");
+            $.ajax({
+            	  type: 'POST',
+            	  url: '/voidEditor/rest/void/output',
+            	  data: JSON.stringify( data ),
+            	  contentType: "application/json",
+            	  beforeSend : function (){
+            		  $(".spinner").show();
+            		  console.log("beforesend in ajax call.");
+            	  },
+            	  success: function(){
+            		  console.log("post success");
+            		  $(".spinner").hide();
+            	  },
+            	  error: function(){
+            		 console.log("POST FAILED");
+            		 return false;
+            	  },
+            	  async:false
+            	});
+            return true;
+    	  
+        };
             
 });

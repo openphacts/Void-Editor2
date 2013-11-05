@@ -32,7 +32,15 @@ import editor.ontologies.Prov;
 import editor.ontologies.Void;
 import editor.ontologies.Wp;
 
-
+/**
+ *  This java class is based on work of : Andra Waagmeester 
+ *  This class is provided all the data specified in the voidAttributes {@link voidAttributes}.
+ *  The data is provided from that browser side of the project.
+ *  It places all data in the appropriate field of the dataset description.
+ * 
+ * @author Lefteris Tatakis
+ * @author Andra Waagmeester 
+ */
 
 @XmlRootElement
 public class voidTurtle {
@@ -55,7 +63,9 @@ public class voidTurtle {
 	private File output= null ;
 	private ArrayList sources = null;
 	private String URI;
-	
+	/**
+	 * @param obj This object provides all data extracted from Angular side.
+	 */
 	public voidTurtle(voidAttributes obj){
 		this.userName = obj.userName;
 		this.userEmail = obj.userEmail;
@@ -97,7 +107,9 @@ public class voidTurtle {
 	}
 	
 	
-	
+	/**
+	 * Using data from the constructor it creates dataset description.
+	 */
 	public void createVoid(){
 		
 		 Model voidModel = ModelFactory.createDefaultModel();
@@ -118,21 +130,23 @@ public class voidTurtle {
          voidModel.setNsPrefix("", "#");
          
          //Populate void.ttl
+         
          // Dataset Description info
          
-         Calendar now = Calendar.getInstance();
-         Calendar publishmentDate = Calendar.getInstance();
-         publishmentDate.set(Calendar.DAY_OF_MONTH,datePublish );
-         publishmentDate.set(Calendar.MONTH, monthPublish);
-         publishmentDate.set(Calendar.YEAR, yearPublish);
          
          Resource voidDescriptionBase = voidModel.createResource("");
          Literal titleDescriptionLiteral = voidModel.createLiteral("VoID Description", "en");
          Literal descriptionDescriptionLiteral = voidModel.createLiteral("The VoID description for the RDF representation of this dataset.", "en");
+         Calendar now = Calendar.getInstance();
          Literal nowDescriptionLiteral = voidModel.createTypedLiteral(now);
          Literal createdByNameLiteral = voidModel.createLiteral(userName, "en");
          Literal createdByEmailLiteral = voidModel.createLiteral(userEmail, "en");
          
+         
+         Calendar publishmentDate = Calendar.getInstance();
+         publishmentDate.set(Calendar.DAY_OF_MONTH,datePublish );
+         publishmentDate.set(Calendar.MONTH, monthPublish);
+         publishmentDate.set(Calendar.YEAR, yearPublish);
          Literal publishmentLiteral = voidModel.createTypedLiteral(publishmentDate);
          Literal titleLiteral = voidModel.createLiteral(title, "en");
          Literal descriptionLiteral = voidModel.createLiteral(description, "en");
@@ -145,7 +159,6 @@ public class voidTurtle {
          voidBase.addProperty(DCTerms.issued, publishmentLiteral);
          
          // Creation of void
-         
          voidDescriptionBase.addProperty(RDF.type, Void.DatasetDescription);
          voidDescriptionBase.addProperty(DCTerms.title, titleDescriptionLiteral);
          voidDescriptionBase.addProperty(DCTerms.description, descriptionDescriptionLiteral);
@@ -195,38 +208,41 @@ public class voidTurtle {
          }
          
          //Here will add sources
+         /**
+          *  Extracts data from datasources which the user provides.  
+          */
          for (int i = 0; i < sources.size(); i++) {
-             System.out.println(sources.get(i)); //LinkedHashMap
+        	 // Sources provided in wierd format - so manually do parsing.
         	 String tmpValue = sources.get(i).toString();
-        	 String[] split1 = tmpValue.split(","); // getting title=Uniprot dataset | type=RDF | URI
-        	 String[] split2 = split1[2].split("="); 
-        	 System.out.println("-->" + split2[1]);
         	 
- 			 Resource source = voidModel.createResource(split2[1].replace("}","")); // URI
+        	 String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val } 
+        	 // Extract source URI first to be able to create the correct structure in the void.
+        	 
+        	 // Source is placed as the 3rd element in the array
+        	 String[] sourceInfoToVariableAndValue = splitingSetsOfInfo[2].split("="); 
+ 			 Resource source = voidModel.createResource(sourceInfoToVariableAndValue[1].replace("}","")); // URI
              voidBase.addProperty(Pav.importedFrom, source);
              
-             //Resource tmpBase = voidModel.createResource(source);
-             
-             // check if rdf resource or not
-             String[] splitType = split1[1].split("="); 
+             // check if RDF resource or not
+             // Type is 2nd element
+             String[] splitType = splitingSetsOfInfo[1].split("="); 
              if (splitType[1].contains("-")) {
             	 source.addProperty(RDF.type, DCTypes.Dataset);
              }else{
             	 source.addProperty(RDF.type, Void.Dataset);
              }
-             String[] titleSplit = split1[0].split("="); 
+             
+             String[] titleSplit = splitingSetsOfInfo[0].split("="); 
              Literal titleLiteralTmp = voidModel.createLiteral(titleSplit[1], "en");
              source.addProperty(DCTerms.title, titleLiteralTmp);
              
  		 }
          
-         //voidBase.addProperty(Void.exampleResource, voidModel.createResource("http://identifiers.org/ncbigene/2678"));
-         
          BufferedWriter bw = null;
          try
          {
-        	 output = File.createTempFile("void", ".tmp"); 
-     	     bw = new BufferedWriter(new FileWriter(output));
+        	output = File.createTempFile("void", ".tmp"); 
+     	    bw = new BufferedWriter(new FileWriter(output));
      	    System.out.println("Temp file : " + output.getAbsolutePath());
      	    voidModel.write(bw,  "TURTLE");
      	    System.out.println("Done");
@@ -245,24 +261,21 @@ public class voidTurtle {
 			while ((line = read.readLine()) != null){ 
 				outputString += (line + '\n');
 			} 
-			read.close();
-		} catch (FileNotFoundException e) { 
-			e.printStackTrace(); 
-		} catch (IOException e) {
+			
+		} catch (FileNotFoundException e) { e.printStackTrace(); } catch (IOException e) {
 			System.out.println("IOException --> Something went wrong with file");
 			e.printStackTrace();
-		} finally{
-			try {read.close();} catch (IOException e) {	e.printStackTrace();}
-		}
+		} finally{try {read.close();} catch (IOException e) {	e.printStackTrace();}}
+		
+		output.delete();
+		
 		return outputString;
 	}
 	
 	public String getLocation(){
+		output.deleteOnExit();
 		return output.getAbsolutePath();
 	}
 	
-	public void deleteFile(){
-		output.delete();
-	}
 	
 }

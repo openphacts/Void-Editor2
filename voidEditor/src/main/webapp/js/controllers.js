@@ -10,15 +10,16 @@ editorAppControllers.controller('editorCtrl', ['$rootScope' ,'$scope',
 
 }]);
 
-editorAppControllers.controller('editorFormCtrl', ['$rootScope' ,'$scope',  'voidData',
-    function($scope, $rootScope , voidData ){
+editorAppControllers.controller('editorFormCtrl', ['$rootScope' ,'$scope', '$http', 'voidData',
+    function($scope, $rootScope ,$http, voidData ){
 		$rootScope.data = {};
-	    $rootScope.turtle = "default";
-        $rootScope.data.datePublish =1;
+	    $rootScope.turtle = "Loading...";
+        $rootScope.data.datePublish  =1;
         $rootScope.data.monthPublish =1;
-        $rootScope.data.yearPublish =2013;
+        $rootScope.data.yearPublish  =2013;
         $rootScope.fileLocation = "";
         $rootScope.data.sources = [];
+        $rootScope.postFinished = false;
 
         $rootScope.$on('TurtleChanged', function(event, x) {
         	$rootScope.turtle = x;
@@ -29,7 +30,6 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' ,'$scope',  'voi
         }); 
         
         $rootScope.$on('DataSourcesChanged', function(event, x) {
-        	console.log(typeof x)
         	$rootScope.data.sources = x;
         }); 
         
@@ -38,17 +38,18 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' ,'$scope',  'voi
         }); 
         
         $rootScope.createVoid = function (){
-        	console.log("==****");
-        	console.log($rootScope.data);
+        	console.log("** Create Void");
         	voidData.createVoid();
         }
         
-        $rootScope.createVoidAndDownload = function (){
+        $rootScope.downloadFile = function(){
         	voidData.createVoidAndDownload();
-        }
-  
+        	console.log("Going to open window");
+            window.open('/voidEditor/rest/void/file');
+        };
     }]);
 
+// This needs cleaning up - and to use json file to determine structure/ number of page
 editorAppControllers.controller('editorCarouselCtrl', ['$scope',  '$rootScope',
     function CarouselCtrl($scope, $rootScope) {
         $scope.interval = -1;
@@ -79,7 +80,6 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope',  '$rootScope',
     }
 ]);
 
-      /* This needs to change and become auto complete */
 editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService', 'voidData',
     function($scope, JsonService , voidData) {
         $scope.userSources = [];
@@ -93,13 +93,10 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService', 'voidData
         };
 
         $scope.extractTitlesOfSources = function (){
-
             for (var i =0 ; i < $scope.sources.length ; i++){
                 $scope.titles.push(  $scope.sources[i].title );
                 $scope.aboutOfTitles.push(  $scope.sources[i]._about );
-                // Not going to the sub sets because Christine said they where linksets
             }
-            console.log($scope.titles);
         }
 
         JsonService.get(function(data){
@@ -113,6 +110,7 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService', 'voidData
             {
                 if ($scope.userSources[i].title == value ) found =1;
             }
+
             if ( !found && value != undefined &&  value != ""){
 
                 var foundURI = -1;
@@ -125,7 +123,6 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService', 'voidData
                 if (foundURI != -1 ) _about =  $scope.aboutOfTitles[foundURI];
 
                 $scope.userSources.push({"title":value , "type": "RDF" , "URI" : _about});
-                console.log("Adding " + value +"  to userSources");
                 voidData.setSourceData($scope.userSources);
             }
         }
@@ -139,7 +136,6 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService', 'voidData
                 if ($scope.userSources[i].title == value ) found = true;
                 else i++;
             }
-            console.log(i);
             if (found) {
                 $scope.userSources.splice(i,1);
                 voidData.setSourceData($scope.userSources);

@@ -32,16 +32,13 @@
                 <h1><span ng-bind="title">...</span> <small>v2.0</small></h1>
               </div>
         </div>
-
     </div>
-
 </header>
 
  <div class="container">
      <div class="row span12">
          <progress ng-controller="editorCarouselCtrl" percent="dynamicProgress"></progress>
      </div>
-
     <div ng-controller="editorCarouselCtrl"  class="row span12">
         <form role="form" class="form-inline simple-form" role="form" novalidate>
             <carousel interval="interval"  class="carousel">
@@ -62,22 +59,18 @@
                 <div class="modal-header">
                     <h3>VoID Produced</h3>
                 </div>
-
                 <div class="modal-body" >
                     <textarea class="field span8" rows="15" columns="15">
                        {{data}}
                     </textarea>
-
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-warning" ng-click="close()">Close</button>
                 </div>
             </script>
-
             <button  type="button" class="btn btn-default pull-right" ng-click="open()"> Under the Hood</button>
             <button  type="button" class="btn btn-default pull-left "  disabled="disabled"> Advanced User</button>
         </div>
-
     </div>
     
      <div class="row span12">

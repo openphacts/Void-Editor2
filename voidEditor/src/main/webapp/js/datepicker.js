@@ -1,13 +1,11 @@
 'use strict';
-// from http://angular-ui.github.io/bootstrap/
 
-/* Removed functions which I do not use */
 var DatepickerCtrl = function ($scope ,$rootScope) {
-    $scope.dates =[];
-    for (var i = 1 ; i <= 31 ; i++){
-        $scope.dates.push({"name": i});
-    }
-    $scope.dates.push({"name": "N/A"});
+   $scope.dates =[];
+   for (var i = 1 ; i <= 31 ; i++){
+       $scope.dates.push({"name": i});
+   }
+   $scope.dates.push({"name": "N/A"});
 
    $scope.months = [  {"name" : "Jan"} , {"name" : "Feb"} , {"name" : "Mar"} , {"name" : "Apr"},
        {"name" : "May"}, {"name" : "Jun"}, {"name" : "Jul"}, {"name" : "Aug"}, {"name" : "Sep"},
