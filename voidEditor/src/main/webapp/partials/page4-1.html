@@ -1,0 +1,78 @@
+<div class="span12 carousel-content"  ng-controller="editorFormCtrl">
+         <span ng-switch="slide.active">
+      <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
+      <div  ng-switch-when="false"></div>
+     </span>
+    <h1>Is your dataset incorporating other sources you can cite?</h1>
+        <br>
+        <div class="container-fluid"  ng-controller="sourceCtrl" >
+            <div class='span2'></div>
+            <div class="span3">
+                    <div class="panel panel-primary">
+                       <div class="panel-heading">
+                            <h3 class="panel-title">Can you name them?
+                                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
+                                     popover="Dataset sources you are referencing.
+                              To remove one, please remove by pressing the '-' symbol.">
+                                </h3>
+                       </div>
+                            <div class="panel-body" id="accordion" >
+                                <ul class="list-group" >
+                                    <li ng-repeat="source in sources" class="thumbnail">
+                                        {{source.title}}
+                                            <span class="glyphicon glyphicon-plus pull-right"
+                                                  ng-click="addToSelected( source.title)">
+                                            </span>
+                                    </li>
+
+                                </ul>
+
+                               <input ng-model="source.title" type="text" placeholder="Any other source ...">
+                               <input type="Button" value="Add"  class="btn btn-primary"
+                                       data-ng-click="addToSelected(source.title);">
+                      </div>
+                    </div>
+                </div>
+
+             <div class="span1"> </div>
+                <div class="span3">
+                   <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Your sources</h3>
+                        </div>
+                        <div class="panel-body ">
+                            <ul class="list-group" >
+                               <li ng-repeat="source in userSources" class="thumbnail">
+                                   <table >
+                                       <tr>
+                                           <td class="span4">
+                                               {{ source.title}}
+                                           </td>
+                                           <td class="">
+                                               <select  class="select-mini">
+                                                   <option ng-model="source.type" ng-value="RDF" selected>RDF</option>
+                                                   <option ng-model="source.type"  ng-value="Non-RDF">Non-RDF</option>
+                                               </select>
+                                           </td>
+                                           <td class="">
+                                                 <span class="glyphicon glyphicon-minus pull-right"
+                                                       ng-click="removeSelected( source.title)">
+                                                </span>
+                                           </td>
+                                       </tr>
+                                   </table>
+                                   <div class="form-group row">
+                                       <div class="span3">
+                                           <input ng-show="source.noURI" ng-model="source.URI" type="url" placeholder="Please Specify URI...">
+                                           <img  ng-show="source.noURI" src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
+                                                 popover="Please make sure it contains 'http://'.">
+                                       </div>
+                                   </div>
+                                </li>
+                           </ul>
+                        </div>
+                    </div>
+                 </div>
+
+        </div>
+    </div>

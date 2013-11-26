@@ -14,12 +14,14 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' ,'$scope', '$htt
     function($scope, $rootScope ,$http, voidData ){
 		$rootScope.data = {};
 	    $rootScope.turtle = "Loading...";
+        $rootScope.showOther = false;
         $rootScope.data.datePublish  =1;
-        $rootScope.data.monthPublish =1;
+        $rootScope.data.monthPublish = "Jan";
         $rootScope.data.yearPublish  =2013;
         $rootScope.fileLocation = "";
         $rootScope.data.sources = [];
         $rootScope.postFinished = false;
+        $rootScope.data.licence = "http://creativecommons.org/licenses/by-sa/3.0/";
 
         $rootScope.$on('TurtleChanged', function(event, x) {
         	$rootScope.turtle = x;
@@ -47,6 +49,16 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' ,'$scope', '$htt
         	console.log("Going to open window");
             window.open('/voidEditor/rest/void/file');
         };
+
+        $rootScope.otherLicence = function(val){
+            if (val == "other"){
+                $rootScope.data.licence  = "";
+                $rootScope.showOther = true;
+            } else {
+                $rootScope.showOther = false;
+            }
+        }
+
     }]);
 
 // This needs cleaning up - and to use json file to determine structure/ number of page
@@ -57,18 +69,20 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope',  '$rootScope',
         $scope.wrap = false;
 
         var slides = $scope.slides = [];
-        $scope.addSlide = function(i) {
+        $scope.addSlide = function(i, title) {
             var temp;
             if ( i !=0)   temp = "partials/page" +i+".html";
             else  temp = "partials/page.html";
-            slides.push({'page': temp , 'index': i , 'progress': i*19.99 % 100});
+            slides.push({'page': temp , 'index': i , 'progress': i*19.99 % 100 , 'title' :title });
         };
-        $scope.addSlide(0);
-        $scope.addSlide(1);
-        $scope.addSlide(2);
-        $scope.addSlide(3);
-        $scope.addSlide(4);
-        $scope.addSlide(5);
+        $scope.addSlide(0,"User Info");
+        $scope.addSlide(1,"Core Info");
+        $scope.addSlide(2,"Publishing info");
+        $scope.addSlide(3,"Versioning");
+        $scope.addSlide(4,"Sources");
+        //$scope.addSlide('4-1');
+        //$scope.addSlide('4-2');
+        $scope.addSlide(5,"Export RDF");
 
         $scope.changeProgressBar= function(change){
             $rootScope.dynamicProgress = change ;
@@ -87,6 +101,7 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService', 'voidData
         $scope.titles = [];
         $scope.aboutOfTitles = [];
         $scope.sources = [];
+        $scope.showInputURI = false;
 
         $scope.noTitleFilter = function(item) {
             return typeof item.title == 'string';
@@ -120,9 +135,15 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService', 'voidData
                 }
 
                 var _about = value;
-                if (foundURI != -1 ) _about =  $scope.aboutOfTitles[foundURI];
+                if (foundURI != -1 ) {
+                    _about =  $scope.aboutOfTitles[foundURI];
+                    $scope.userSources.push({"title":value , "type": "RDF" , "URI" : _about , "noURI": false });
+                } else {
+                    $scope.showInputURI = true;
+                    $scope.userSources.push({"title":value , "type": "RDF" , "URI" : "" , "noURI" : true});
+                }
 
-                $scope.userSources.push({"title":value , "type": "RDF" , "URI" : _about});
+
                 voidData.setSourceData($scope.userSources);
             }
         }

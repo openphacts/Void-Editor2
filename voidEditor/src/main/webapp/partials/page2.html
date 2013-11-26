@@ -15,7 +15,7 @@
 
         <div class="form-group row">
             <div class="span3 offset1">
-                <label class="label2" for="inputPublisher">Who is providing the data?</label>
+                <label class="label3" for="inputPublisher">Who is providing the data?</label>
              </div>
             <div class="span3">
                 <input type="url" class="form-control input-lg" id="inputPublisher" placeholder="http://">
@@ -29,7 +29,7 @@
 
         <div  class="form-group row" ng-controller="DatepickerCtrl">
             <div class="span3 offset1">
-                <label class="label2" for="inputDateofPublishment">When did this RDF data get published?</label>
+                <label class="label3" for="inputDateofPublishment">When did this RDF data get published?</label>
             </div>
             <div class="span3">
                 <select class="select-mini" ng-model="data.datePublish"  >
@@ -54,10 +54,10 @@
 
         <div class="form-group row">
             <div class="span3 offset1">
-                <label class="label2" for="inputWebpage">Webpage of your dataset:</label>
+                <label class="label3" for="inputWebpage">Webpage of your dataset:</label>
             </div>
             <div class="span3">
-                <input type="url" class="form-control input-lg" id="inputWebpage" ng-model="data.webpage"
+                <input type="url" class="form-control" id="inputWebpage" ng-model="data.webpage"
                        placeholder="http://" >
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
                      popover="A Web page that can be navigated to in a Web browser
@@ -69,27 +69,28 @@
 
         <div class="form-group row">
             <div class="span3 offset1">
-                 <label class="label2" for="inputLicence">License to be applied to the dataset:</label>
+                 <label class="label3" for="inputLicence">License to be applied to the dataset:</label>
             </div>
             <div class="span3">
-                <select class="selectpicker" id='inputLicence'>
-                        <option ng-model="data.licence" value="http://www.opendatacommons.org/licenses/pddl/">Public Domain for data/databases</option>
-                        <option ng-model="data.licence" value="http://www.opendatacommons.org/licenses/by/">Attribution for data/databases</option>
-                        <option ng-model="data.licence" value="http://www.opendatacommons.org/licenses/odbl/">Attribution Share-Alike for data/databases</option>
-                        <option ng-model="data.licence" value="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons public domain waiver</option>
-                        <option ng-model="data.licence" selected="selected" value="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike (CC-BY-SA)</option>
-                        <option ng-model="data.licence" value="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License (GFDL)</option>
-                        <option ng-model="data.licence" value="other">Other</option>
-                        <option ng-model="data.licence" value="N/A">Don't know</option>
+                <select class="selectpicker" id='inputLicence' ng-model="data.licence" ng-change="otherLicence(data.licence)">
+                        <option  value="http://www.opendatacommons.org/licenses/pddl/">Public Domain for data/databases</option>
+                        <option  value="http://www.opendatacommons.org/licenses/by/">Attribution for data/databases</option>
+                        <option  value="http://www.opendatacommons.org/licenses/odbl/">Attribution Share-Alike for data/databases</option>
+                        <option  value="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons public domain waiver</option>
+                        <option  selected="selected" value="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike (CC-BY-SA)</option>
+                        <option  value="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License (GFDL)</option>
+                        <option  value="other" >Other</option>
+                        <option  value="N/A">Don't know</option>
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
                      popover="Please visit www.tldrlegal.com to view more information regarding licencing. ">
+                <input ng-show="showOther" ng-model="data.licence" type="text" placeholder="Please Specify...">
              </div>
         </div>
         <br>
         <div class="form-group row">
             <div class="span3 offset1">
-                <label class="label2" for="inputDownload">Where could we download your RDF from?</label>
+                <label class="label3" for="inputDownload">Where could we download your RDF from?</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-lg" id="inputDownload"  ng-model="data.downloadFrom"
@@ -101,7 +102,7 @@
         <br>
         <div class="form-group row">
             <div class="span3 offset1">
-                <label  class="label2" for="inputSparql">Sparql Endpoint:</label>
+                <label  class="label3" for="inputSparql">Sparql Endpoint:</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-lg" id="inputSparql"
