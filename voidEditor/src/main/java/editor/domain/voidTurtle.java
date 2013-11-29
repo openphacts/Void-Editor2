@@ -32,6 +32,7 @@ import editor.ontologies.Prov;
 import editor.ontologies.Void;
 import editor.ontologies.Wp;
 
+
 /**
  *  This java class is based on work of : Andra Waagmeester 
  *  This class is provided all the data specified in the voidAttributes {@link voidAttributes}.
@@ -87,23 +88,20 @@ public class voidTurtle {
 		System.out.println("=========>" + obj.sources);
 		System.out.println("=========>" + obj.sources.toString());
 		
-	    if (obj.datePublish.equals("N/A") || obj.datePublish == "" || obj.datePublish ==null ){
+		System.out.println(obj.datePublish);
+	    if (obj.datePublish.equals("N/A")){
 	    	this.datePublish =1 ;
 	    }else {
 	    	this.datePublish  = Integer.parseInt(obj.datePublish);
 	    }
 	    
-	    if (obj.monthPublish.equals("N/A") || obj.monthPublish == "" || obj.monthPublish ==null ){
-	    	this.monthPublish =1 ;
-	    }else {
-	    	this.monthPublish  = Integer.parseInt(obj.monthPublish);
-	    }
+	    System.out.println(obj.monthPublish);
+	    System.out.println( obj.monthPublish.getClass() );
+	    this.monthPublish  = Integer.parseInt(obj.monthPublish);
 	    
-	    if ( obj.yearPublish == "" || obj.yearPublish ==null ){
-	    	this.yearPublish =2013 ;
-	    }else {
-	    	this.yearPublish  = Integer.parseInt(obj.yearPublish);
-	    }
+	    System.out.println(obj.yearPublish);
+	    this.yearPublish  = Integer.parseInt(obj.yearPublish);
+	    
 	}
 	
 	
@@ -184,10 +182,11 @@ public class voidTurtle {
         	   voidBase.addProperty(Void.dataDump, mainDatadump);
          }
          
-         if (licence !=""){
+         if (licence !="" ){
         	 Resource license = voidModel.createResource(licence);
         	 voidBase.addProperty(DCTerms.license, license);
          }
+         
          if (sparqlEndpoint !=""){
         	 Resource sparqlEndpointLoc = voidModel.createResource(sparqlEndpoint);
         	 voidBase.addProperty(Void.sparqlEndpoint, sparqlEndpointLoc);
@@ -197,13 +196,13 @@ public class voidTurtle {
         	 voidBase.addProperty(Pav.version, versionUsed);
          }
         
-         if (previousVersion !=""){
-        	 Resource prevVersion = voidModel.createResource(previousVersion);
+         if (previousVersion !=""){ // Will validator allow it?
+        	 Literal prevVersion = voidModel.createLiteral(previousVersion);
         	 voidBase.addProperty(Pav.previousVersion, prevVersion);
          }
         
          if (updateFrequency !=""){
-        	 Resource updateFrequencyDef = voidModel.createResource(updateFrequency);
+        	 Literal updateFrequencyDef = voidModel.createLiteral(updateFrequency);
              voidBase.addProperty(DCTerms.accrualPeriodicity, updateFrequencyDef);
          }
          

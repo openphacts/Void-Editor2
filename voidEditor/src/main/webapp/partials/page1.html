@@ -1,5 +1,4 @@
 <div class="span12 carousel-content " ng-controller="editorFormCtrl">
-
      <span ng-switch="slide.active">
       <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
       <div  ng-switch-when="false"></div>
@@ -43,7 +42,7 @@
                     <label class="label1" for="inputDescription">Description of your data:</label>
                 </div>
                 <div class="span3">
-                    <textarea  type="text" class="form-control"  rows="15" id="inputDescription"
+                    <textarea  type="text" class="form-control"  rows="5" id="inputDescription"
                                placeholder="What is this dataset about?" ng-model="data.description"></textarea>
                     <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                          popover="A description of the dataset so we can understand it contains.">

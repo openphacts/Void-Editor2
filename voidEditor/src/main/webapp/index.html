@@ -51,50 +51,44 @@
                 </slide>
             </carousel>
         </form>
-
-        <button  type="button" class="btn btn-default pull-right" ng-click="open()"> Under the Hood</button>
-        <div class="btn-group dropup">
-            <button type="button" class="btn btn-default dropdown-toggle">Advanced User</button>
-            <ul class="dropdown-menu">
-
-                <li ng-repeat="slide in slides">
-                    <button class="btn btn-default btn-block" ng-click="slide.active = true">{{slide.title}}</button>
-
-                </li>
-            </ul>
-        </div>
-    </div>
-
         <div class="container-fluid">
-            <div ng-controller="ModalExportCtrl">
+            <div class="btn-group dropup">
+                <button type="button" class="btn btn-default dropdown-toggle">Advanced User</button>
+                <ul class="dropdown-menu">
+
+                    <li ng-repeat="slide in slides">
+                        <button class="btn btn-default btn-block" ng-click="slide.active = true">{{slide.title}}</button>
+                    </li>
+                </ul>
+            </div>
+            <div ng-controller="ModalExportCtrl" class="pull-right">
                 <script type="text/ng-template" id="myModalContent.html">
                     <div class="modal-header">
                         <h3>VoID Produced</h3>
                     </div>
                     <div class="modal-body" >
-                        <textarea class="field span8" rows="15" columns="15">
-                           {{data}}
+
+                        <textarea class="field span8" rows="15" id="modal" columns="15">
+                            {{data}}
                         </textarea>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-warning" ng-click="close()">Close</button>
                     </div>
                 </script>
-
-                <!--<button  type="button" class="btn btn-default pull-left "  disabled="disabled"> Advanced User</button>-->
-                 </div>
-             </div>
-             <div class="row span12">
-                 <footer>
-                     <small>
-                         <span class="muted"><span ng-bind="title">...</span> v2 copyright &copy; 2013 OpenPhacts</span>
-                     </small>
-                 </footer>
-             </div>
-         </div>
+                <button  type="button" class="btn btn-default pull-right" id="underTheHood" ng-click="open()"> Under the Hood</button>
+            </div>
+        <div class="row span12">
+            <footer>
+                <small>
+                    <span class="muted"><span ng-bind="title">...</span> v2 copyright &copy; 2013 OpenPhacts</span>
+                </small>
+            </footer>
         </div>
- </div>
+    </div>
 
+   </div>
+</div>
 <script src="lib/jquery/jquery-1.10.2.js"></script>
 <script src="lib/jquery-ui/jquery-ui-1.10.3.custom.js"></script>
 <script src="lib/angular/angular1.2.2.min.js">  </script>
