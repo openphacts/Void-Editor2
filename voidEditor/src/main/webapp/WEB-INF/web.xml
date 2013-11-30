@@ -4,6 +4,7 @@
 
 <web-app>
   	<display-name>Void Editor v2</display-name>
+
   	<servlet>
 	    <servlet-name>jersey-serlvet</servlet-name>
 	

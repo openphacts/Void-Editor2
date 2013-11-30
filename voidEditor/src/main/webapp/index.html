@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/bootstrap-combined.min.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/glyphicons.css">
+  <link rel="stylesheet" href="css/glyphicons.css">
 </head>
 <body>
 <header>
@@ -36,56 +36,67 @@
     </div>
 </header>
 
- <div class="container">
+ <div class="container" ng-controller="editorCarouselCtrl">
      <div class="row span12">
-         <progress ng-controller="editorCarouselCtrl" percent="dynamicProgress"></progress>
-     </div>
-    <div ng-controller="editorCarouselCtrl"  class="row span12">
-        <form role="form" class="form-inline simple-form" role="form" novalidate>
-            <carousel interval="interval"  class="carousel">
-                <slide ng-repeat="slide in slides" active="slide.active">
-                    <div class="custom_carousel" >
-                        <div class="include" ng-include="slide.page" >
-                        </div>
-                    </div>
-                </slide>
-            </carousel>
-        </form>
-        <div class="container-fluid">
-            <div class="btn-group dropup">
-                <button type="button" class="btn btn-default dropdown-toggle">Advanced User</button>
-                <ul class="dropdown-menu">
-
-                    <li ng-repeat="slide in slides">
-                        <button class="btn btn-default btn-block" ng-click="slide.active = true">{{slide.title}}</button>
-                    </li>
-                </ul>
-            </div>
-            <div ng-controller="ModalExportCtrl" class="pull-right">
-                <script type="text/ng-template" id="myModalContent.html">
-                    <div class="modal-header">
-                        <h3>VoID Produced</h3>
-                    </div>
-                    <div class="modal-body" >
-
-                        <textarea class="field span8" rows="15" id="modal" columns="15">
-                            {{data}}
-                        </textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-warning" ng-click="close()">Close</button>
-                    </div>
-                </script>
-                <button  type="button" class="btn btn-default pull-right" id="underTheHood" ng-click="open()"> Under the Hood</button>
-            </div>
+         <div class="progress">
+             <div class="bar" style="width:{{dynamicProgress}}%"></div>
+           <span>
+               <table style="width: 100%; text-align: center;" >
+                 <tr>
+                     <td class="curved" ng-repeat="slide in slides" style="width:{{dynamicProgressStep}}%;">
+                          <p ng-if="slide.progress <= dynamicProgress" class="thickWhite" ng-click="slide.active = true" >{{slide.title}} </p>
+                          <p ng-if="slide.progress > dynamicProgress" class="thickBlack" ng-click="slide.active = true">{{slide.title}} </p>
+                     </td>
+                 </tr>
+             </table>
+           </span>
+         </div>
+      </div>
         <div class="row span12">
-            <footer>
-                <small>
-                    <span class="muted"><span ng-bind="title">...</span> v2 copyright &copy; 2013 OpenPhacts</span>
-                </small>
-            </footer>
+            <form role="form" class="form-inline simple-form" role="form" novalidate>
+                <carousel interval="interval"  class="carousel">
+                    <slide ng-repeat="slide in slides" active="slide.active">
+                        <div class="custom_carousel" >
+                            <div class="include" ng-include="slide.page" >
+                            </div>
+                        </div>
+                    </slide>
+                </carousel>
+            </form>
+            <div class="container-fluid">
+                <div class="btn-group dropup">
+                    <button type="button" class="btn btn-default dropdown-toggle">Advanced User</button>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="slide in slides">
+                            <button class="btn btn-default btn-block" ng-click="slide.active = true">{{slide.title}}</button>
+                        </li>
+                    </ul>
+                </div>
+                <div ng-controller="ModalExportCtrl" class="pull-right">
+                    <script type="text/ng-template" id="myModalContent.html">
+                        <div class="modal-header">
+                            <h3>VoID Produced</h3>
+                        </div>
+                        <div class="modal-body" >
+
+                            <textarea class="field span8" rows="15" id="modal" columns="15">
+                                {{data}}
+                            </textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-warning" ng-click="close()">Close</button>
+                        </div>
+                    </script>
+                    <button  type="button" class="btn btn-default pull-right" id="underTheHood" ng-click="open()"> Under the Hood</button>
+                </div>
+            <div class="row span12">
+                <footer>
+                    <small>
+                        <span class="muted"><span ng-bind="title">...</span> v2 copyright &copy; 2013 OpenPhacts</span>
+                    </small>
+                </footer>
+            </div>
         </div>
-    </div>
 
    </div>
 </div>
@@ -103,5 +114,6 @@
 <script src="js/modal.js"></script>
 <script src="js/datepicker.js"></script>
 <script src="js/directives.js"></script>
+<script src="js/progressBar.js"></script>
 </body>
 </html>

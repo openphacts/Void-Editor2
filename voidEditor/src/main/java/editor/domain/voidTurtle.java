@@ -31,8 +31,7 @@ import editor.ontologies.Pav;
 import editor.ontologies.Prov;
 import editor.ontologies.Void;
 import editor.ontologies.Wp;
-
-
+//import editor.validator.*;
 /**
  *  This java class is based on work of : Andra Waagmeester 
  *  This class is provided all the data specified in the voidAttributes {@link voidAttributes}.
@@ -83,11 +82,7 @@ public class voidTurtle {
 	    this.sources = (ArrayList) obj.sources;
 	    this.URI = obj.URI;
 	    
-		System.out.println("=====>" + sources);
-		System.out.println("=====>" + sources.toString());
-		System.out.println("=========>" + obj.sources);
-		System.out.println("=========>" + obj.sources.toString());
-		
+
 		System.out.println(obj.datePublish);
 	    if (obj.datePublish.equals("N/A")){
 	    	this.datePublish =1 ;
@@ -96,7 +91,6 @@ public class voidTurtle {
 	    }
 	    
 	    System.out.println(obj.monthPublish);
-	    System.out.println( obj.monthPublish.getClass() );
 	    this.monthPublish  = Integer.parseInt(obj.monthPublish);
 	    
 	    System.out.println(obj.yearPublish);
@@ -142,9 +136,7 @@ public class voidTurtle {
          
          
          Calendar publishmentDate = Calendar.getInstance();
-         publishmentDate.set(Calendar.DAY_OF_MONTH,datePublish );
-         publishmentDate.set(Calendar.MONTH, monthPublish);
-         publishmentDate.set(Calendar.YEAR, yearPublish);
+         publishmentDate.set( yearPublish,monthPublish -1 , datePublish);
          Literal publishmentLiteral = voidModel.createTypedLiteral(publishmentDate);
          Literal titleLiteral = voidModel.createLiteral(title, "en");
          Literal descriptionLiteral = voidModel.createLiteral(description, "en");

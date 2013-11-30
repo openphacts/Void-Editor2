@@ -77,6 +77,7 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope',  '$rootScope',
     function CarouselCtrl($scope, $rootScope) {
         $scope.interval = -1;
         $rootScope.dynamicProgress = 0;
+        $rootScope.dynamicProgressStep = 0;
         $scope.wrap = false;
 
         var slides = $scope.slides = [];
@@ -84,8 +85,9 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope',  '$rootScope',
             var temp;
             if ( i !=0)   temp = "partials/page" +i+".html";
             else  temp = "partials/page.html";
-            var percentageOfChange = (100/5 )-0.0001;
-            slides.push({'page': temp , 'index': i , 'progress': i*percentageOfChange % 100 , 'title' :title });
+            var percentageOfChange = (100/6 )-0.0001;
+            $rootScope.dynamicProgressStep = percentageOfChange;
+            slides.push({'page': temp , 'index': i , 'progress': (i+1)*percentageOfChange % 100 , 'title' :title });
         };
         $scope.addSlide(0,"User Info");
         $scope.addSlide(1,"Core Info");
