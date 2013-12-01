@@ -26,17 +26,15 @@
         </div>
     </alert>
     <![endif]-->
-    <img class="pull-left" src="img/ops_logo.png" alt="Logo">
-    <div class="span12">
-        <div class="row ">
-              <div class="pull-left">
-                <h1><span ng-bind="title">...</span> <small>v2.0</small></h1>
-              </div>
-        </div>
-    </div>
 </header>
 
  <div class="container" ng-controller="editorCarouselCtrl">
+     <div class="row span12 pull-left">
+            <h1  class="pull-left">
+                <img class="pull-left" src="img/ops_logo.png" alt="Logo">
+                <span  ng-bind="title">...</span> <small>v2.0</small>
+            </h1>
+     </div>
      <div class="row span12">
          <div class="progress">
              <div class="bar" style="width:{{dynamicProgress}}%;"></div>
@@ -45,7 +43,7 @@
                  <tr>
                      <td class="progressBar" ng-repeat="slide in slides" style="width:{{dynamicProgressStep}}%;">
                           <p ng-if="slide.progress <= dynamicProgress" class="thickWhite" ng-click="slide.active = true" >{{slide.title}} </p>
-                          <p ng-if="slide.progress > dynamicProgress" class="thickBlack" ng-click="slide.active = true">{{slide.title}} </p>
+                          <p ng-if="slide.progress > dynamicProgress"  class="thickBlack"  ng-click="slide.active = true">{{slide.title}} </p>
                      </td>
                  </tr>
              </table>
@@ -116,6 +114,5 @@
 <script src="js/modal.js"></script>
 <script src="js/datepicker.js"></script>
 <script src="js/directives.js"></script>
-<script src="js/progressBar.js"></script>
 </body>
 </html>

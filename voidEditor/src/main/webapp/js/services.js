@@ -10,7 +10,7 @@ var voidDataService = angular.module('voidDataService', [])
     .service('voidData', function($rootScope , $http , $window) {
         var turtleData = "Loading...",
             fileLocation ="",
-            data = "Loading...",
+            data = {},
             uriForSourcesExist = "passed";
 
         data.sources = [];
@@ -63,6 +63,7 @@ var voidDataService = angular.module('voidDataService', [])
             data.sources = value;
             console.log("====");
             console.log( data.sources);
+            console.log( value);
             console.log("====");
             $rootScope.$broadcast('DataSourcesChanged',  data.sources);
         };

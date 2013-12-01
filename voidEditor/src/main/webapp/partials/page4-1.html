@@ -27,9 +27,12 @@
 
                                 </ul>
 
-                               <input ng-model="source.title" type="text" placeholder="Any other source ...">
-                               <input type="Button" value="Add"  class="btn btn-primary"
-                                       data-ng-click="addToSelected(source.title);">
+                                <input type="text" class="form-control input-large "   placeholder="Source..."
+                                       typeahead-on-select="addToSelected(selected); selected = '' "  ng-enter="addToSelected(selected);  selected = ''"
+                                       ng-model="selected"
+                                       typeahead="title for title in titles | filter:$viewValue | limitTo:8">
+                                <input type="Button" value="Add"  class="btn btn-primary"
+                                       data-ng-click="addToSelected(selected); selected = ''">
                       </div>
                     </div>
                 </div>
@@ -63,7 +66,8 @@
                                    </table>
                                    <div class="form-group row">
                                        <div class="span3">
-                                           <input ng-show="source.noURI" ng-model="source.URI" type="url" placeholder="Please Specify URI...">
+                                           <input class="input-large" ng-show="source.noURI" name="noURI" required
+                                                  ng-model="source.URI" type="url" placeholder="Please Specify URI...">
                                            <img  ng-show="source.noURI" src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                                                  popover="Please make sure it contains 'http://'.">
                                        </div>

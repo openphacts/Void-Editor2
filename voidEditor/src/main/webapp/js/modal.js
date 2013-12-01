@@ -5,9 +5,10 @@
 
 var modalControllers = angular.module('modalControllers', ['voidDataService']);
 
-modalControllers.controller('ModalExportCtrl', ['$rootScope' ,'$scope', '$modal','voidData',
+modalControllers.controller('ModalExportCtrl', ['$scope', '$rootScope' ,'$modal','voidData',
         function ($scope, $rootScope, $modal , voidData) {
             $scope.open = function () {
+
                 console.log("Going to open modal!!");
                 voidData.checkSources();
                 var result = voidData.checkIfUriForSourcesExist();
@@ -21,9 +22,8 @@ modalControllers.controller('ModalExportCtrl', ['$rootScope' ,'$scope', '$modal'
         }]);
 
 modalControllers.controller('ModalInstanceCtrl', ['$rootScope' ,'$scope', '$modalInstance', 'voidData',
-       function ($scope, $rootScope , $modalInstance , voidData) {
+       function ( $rootScope ,$scope, $modalInstance , voidData) {
            $scope.data = voidData.createVoid();
-
 
            $scope.$on('TurtleChanged', function(event, x) {
                console.log("turtle data of modal changed.");

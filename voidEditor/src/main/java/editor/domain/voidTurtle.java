@@ -88,16 +88,16 @@ public class voidTurtle {
 
 		System.out.println(obj.datePublish);
 	    if (obj.datePublish.equals("N/A")){
-	    	this.datePublish =1 ;
+	    	this.setDatePublish(1) ;
 	    }else {
-	    	this.datePublish  = Integer.parseInt(obj.datePublish);
+	    	this.setDatePublish(Integer.parseInt(obj.datePublish));
 	    }
 	    
 	    System.out.println(obj.monthPublish);
-	    this.monthPublish  = Integer.parseInt(obj.monthPublish);
+	    this.setMonthPublish(Integer.parseInt(obj.monthPublish));
 	    
 	    System.out.println(obj.yearPublish);
-	    this.yearPublish  = Integer.parseInt(obj.yearPublish);
+	    this.setYearPublish(Integer.parseInt(obj.yearPublish));
 	    
 	}
 	
@@ -139,7 +139,7 @@ public class voidTurtle {
          
          
          Calendar publishmentDate = Calendar.getInstance();
-         publishmentDate.set( yearPublish,monthPublish -1 , datePublish);
+         publishmentDate.set( getYearPublish(),getMonthPublish() -1 , getDatePublish());
          Literal publishmentLiteral = voidModel.createTypedLiteral(publishmentDate);
          Literal titleLiteral = voidModel.createLiteral(title, "en");
          Literal descriptionLiteral = voidModel.createLiteral(description, "en");
@@ -205,35 +205,34 @@ public class voidTurtle {
          /**
           *  Extracts data from datasources which the user provides.  
           */
-         for (int i = 0; i < sources.size(); i++) {
-        	 // Sources provided in wierd format - so manually do parsing.
-        	 String tmpValue = sources.get(i).toString();
-        	 System.out.println("Sources debugging!!");
-        	 System.out.println("====================");
-        	 System.out.println(tmpValue);
-        	 String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val } 
-        	 // Extract source URI first to be able to create the correct structure in the void.
-        	 
-        	 // Source is placed as the 3rd element in the array
-        	 String[] sourceInfoToVariableAndValue = splitingSetsOfInfo[2].split("="); 
- 			 Resource source = voidModel.createResource(sourceInfoToVariableAndValue[1].replace("}","")); // URI
-             voidBase.addProperty(Pav.importedFrom, source);
-             
-             // check if RDF resource or not
-             // Type is 2nd element
-             String[] splitType = splitingSetsOfInfo[1].split("="); 
-             if (splitType[1].contains("-")) {
-            	 source.addProperty(RDF.type, DCTypes.Dataset);
-             }else{
-            	 source.addProperty(RDF.type, Void.Dataset);
-             }
-             
-             String[] titleSplit = splitingSetsOfInfo[0].split("="); 
-             Literal titleLiteralTmp = voidModel.createLiteral(titleSplit[1], "en");
-             source.addProperty(DCTerms.title, titleLiteralTmp);
-             
- 		 }
-         
+         if (sources != null ){
+        	 for (int i = 0; i < sources.size(); i++) {
+	        	 // Sources provided in wierd format - so manually do parsing.
+	        	 String tmpValue = sources.get(i).toString();
+	        	 System.out.println(tmpValue);
+	        	 String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val } 
+	        	 // Extract source URI first to be able to create the correct structure in the void.
+	        	 
+	        	 // Source is placed as the 3rd element in the array
+	        	 String[] sourceInfoToVariableAndValue = splitingSetsOfInfo[2].split("="); 
+	 			 Resource source = voidModel.createResource(sourceInfoToVariableAndValue[1].replace("}","")); // URI
+	             voidBase.addProperty(Pav.importedFrom, source);
+	             
+	             // check if RDF resource or not
+	             // Type is 2nd element
+	             String[] splitType = splitingSetsOfInfo[1].split("="); 
+	             if (splitType[1].contains("-")) {
+	            	 source.addProperty(RDF.type, DCTypes.Dataset);
+	             }else{
+	            	 source.addProperty(RDF.type, Void.Dataset);
+	             }
+	             
+	             String[] titleSplit = splitingSetsOfInfo[0].split("="); 
+	             Literal titleLiteralTmp = voidModel.createLiteral(titleSplit[1], "en");
+	             source.addProperty(DCTerms.title, titleLiteralTmp);
+	             
+	 		 }
+         }
          BufferedWriter bw = null;
          try
          {
@@ -274,12 +273,10 @@ public class voidTurtle {
 			while ((line = read.readLine()) != null){ 
 				outputString += (line + '\n');
 			} 
-			
 		} catch (FileNotFoundException e) { e.printStackTrace(); } catch (IOException e) {
 			System.out.println("IOException --> Something went wrong with file");
 			e.printStackTrace();
 		} finally{try {read.close();} catch (IOException e) {	e.printStackTrace();}}
-		
 		output.delete();
 		
 		return outputString;
@@ -288,6 +285,36 @@ public class voidTurtle {
 	public String getLocation(){
 		output.deleteOnExit();
 		return output.getAbsolutePath();
+	}
+
+
+	public int getDatePublish() {
+		return datePublish;
+	}
+
+
+	public void setDatePublish(int datePublish) {
+		this.datePublish = datePublish;
+	}
+
+
+	public int getYearPublish() {
+		return yearPublish;
+	}
+
+
+	public void setYearPublish(int yearPublish) {
+		this.yearPublish = yearPublish;
+	}
+
+
+	public int getMonthPublish() {
+		return monthPublish;
+	}
+
+
+	public void setMonthPublish(int monthPublish) {
+		this.monthPublish = monthPublish;
 	}
 	
 	
