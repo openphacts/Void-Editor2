@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-var editorAppControllers = angular.module('editorAppControllers', ['jsonService' , 'voidDataService']);
+var editorAppControllers = angular.module('editorAppControllers', ['jsonService' , 'voidDataService' , 'modalControllers']);
 
 editorAppControllers.controller('editorCtrl', ['$rootScope' ,'$scope', 'voidData',
   function($scope , $rootScope , voidData ){
@@ -18,19 +18,14 @@ editorAppControllers.controller('editorCtrl', ['$rootScope' ,'$scope', 'voidData
     $rootScope.data.updateFrequency = "Annual";
     $rootScope.postFinished = false;
     $rootScope.data.licence = "http://creativecommons.org/licenses/by-sa/3.0/";
+    $rootScope.alerts = [];
 
     $rootScope.$on('TurtleChanged', function(event, x) {
         $rootScope.turtle = x;
-        console.log("=========");
-        console.log("Turtle Changed! " +event.name);
-        console.log($rootScope.turtle);
     });
 
     $rootScope.$on('DataSourcesChanged', function(event, x) {
        $rootScope.data.sources = x;
-       console.log("=========");
-       console.log("data.sources Changed! " + event.name);
-       console.log($rootScope.data.sources);
     });
 
     $rootScope.otherLicence = function(val){
@@ -44,17 +39,34 @@ editorAppControllers.controller('editorCtrl', ['$rootScope' ,'$scope', 'voidData
 
     $rootScope.$on('DataChanged', function(event, x) {
        $rootScope.data = x;
-       console.log("=========");
-       console.log("data Changed! " + event.name);
-       console.log($rootScope.data);
     });
 
-    $rootScope.$on('needData', function(event, x) { // typeOfCreate ){
-        voidData.setData($rootScope.data);// typeOfCreate );
-        console.log("=========");
-        console.log("NEED data " + event.name);
-        console.log($rootScope.data);
+    $rootScope.$on('needData', function(event, x) {
+        voidData.setData($rootScope.data);
     });
+
+      $rootScope.closeAlert = function(index) {
+          $rootScope.alerts.splice(index, 1);
+      };
+
+      $rootScope.$on('checkSources' , function( event) {
+          var noURI = -1;
+          var result ;
+          for (var i = 0 ; i < $rootScope.data.sources.length; i++)
+          {
+              if ($rootScope.data.sources[i].URI == "" ) noURI =i;
+          }
+          if (noURI != -1){
+              $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the source you cited! Please provide this information.' });
+              result = "failed";
+          }else if ( $rootScope.showOther == true && ( $rootScope.data.licence.indexOf("http") == -1)){
+              $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the licence you choose! Please provide this information.' });
+              result = "failed";
+          }else {
+              result = "passed";
+          }
+          voidData.setUriForSourcesExist(result);
+      });
   }]);
 
 editorAppControllers.controller('editorFormCtrl', ['$rootScope' ,'$scope', '$http', 'voidData',
@@ -69,6 +81,7 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' ,'$scope', '$htt
         	voidData.createVoidAndDownload();
         	console.log("Going to open window");
             window.open('/voidEditor/rest/void/file');
+            $rootScope.alerts.push({ type: 'success', msg: 'Well done! You successfully downloaded your void.ttl!' });
         };
     }]);
 
@@ -176,4 +189,5 @@ editorAppControllers.controller('sourceCtrl',[ '$scope','JsonService', 'voidData
 
         }
     }]);
+
 

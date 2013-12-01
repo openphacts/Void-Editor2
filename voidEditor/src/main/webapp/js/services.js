@@ -10,7 +10,8 @@ var voidDataService = angular.module('voidDataService', [])
     .service('voidData', function($rootScope , $http , $window) {
         var turtleData = "Loading...",
             fileLocation ="",
-            data = {};
+            data = "Loading...",
+            uriForSourcesExist = "passed";
 
         data.sources = [];
 
@@ -22,6 +23,10 @@ var voidDataService = angular.module('voidDataService', [])
             return turtleData;
         };
 
+        this.setUriForSourcesExist = function (value){
+            uriForSourcesExist = value;
+        }
+
         this.setData = function(value) {
             data = value;
             $rootScope.$broadcast('DataChanged', data);
@@ -31,20 +36,27 @@ var voidDataService = angular.module('voidDataService', [])
             return data;
         };
 
+        this.checkSources = function(){
+            $rootScope.$broadcast("checkSources");
+        }
+
+        this.checkIfUriForSourcesExist = function (){
+          return uriForSourcesExist;
+        }
+
         this.createVoid = function (){
-
             $rootScope.$broadcast('needData', data);
+            return $http({method: 'POST', url: '/voidEditor/rest/void/output' , data: data}).
+                      error(function(data, status, headers, config) {
+                               console.log("Error in creating void - Status: " + status + "   data=>" + data);
+                       }).
+                      then(function(data, status, headers, config) {
+                         turtleData =  data.data;
+                          console.log("In then of createVoid");
+                         $rootScope.$broadcast('TurtleChanged', turtleData);
+                        return turtleData;
+                     });
 
-            $http({method: 'POST', url: '/voidEditor/rest/void/output' , data: data}).
-                success(function(data, status, headers, config) {
-                    turtleData =  data;
-                    $rootScope.$broadcast('TurtleChanged', turtleData);
-                }).
-                error(function(data, status, headers, config) {
-                    console.log("Error in creating void - Status: " + status + "   data=>" + data);
-                });
-
-            return turtleData;
         };
 
         this.setSourceData = function(value) {

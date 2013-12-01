@@ -12,6 +12,9 @@ import java.util.Calendar;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.openrdf.rio.RDFHandlerException;
+import org.openrdf.rio.RDFParseException;
+
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -31,7 +34,7 @@ import editor.ontologies.Pav;
 import editor.ontologies.Prov;
 import editor.ontologies.Void;
 import editor.ontologies.Wp;
-//import editor.validator.*;
+import editor.validator.RdfChecker;
 /**
  *  This java class is based on work of : Andra Waagmeester 
  *  This class is provided all the data specified in the voidAttributes {@link voidAttributes}.
@@ -184,12 +187,12 @@ public class voidTurtle {
         	 voidBase.addProperty(Void.sparqlEndpoint, sparqlEndpointLoc);
          }
          if (version !=""){
-        	 Resource versionUsed = voidModel.createResource(version);
+        	 Literal versionUsed = voidModel.createLiteral(version);
         	 voidBase.addProperty(Pav.version, versionUsed);
          }
         
          if (previousVersion !=""){ // Will validator allow it?
-        	 Literal prevVersion = voidModel.createLiteral(previousVersion);
+        	 Resource prevVersion = voidModel.createResource(previousVersion);
         	 voidBase.addProperty(Pav.previousVersion, prevVersion);
          }
         
@@ -205,7 +208,9 @@ public class voidTurtle {
          for (int i = 0; i < sources.size(); i++) {
         	 // Sources provided in wierd format - so manually do parsing.
         	 String tmpValue = sources.get(i).toString();
-        	 
+        	 System.out.println("Sources debugging!!");
+        	 System.out.println("====================");
+        	 System.out.println(tmpValue);
         	 String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val } 
         	 // Extract source URI first to be able to create the correct structure in the void.
         	 
@@ -232,7 +237,7 @@ public class voidTurtle {
          BufferedWriter bw = null;
          try
          {
-        	output = File.createTempFile("void", ".tmp"); 
+        	output = File.createTempFile("void", ".ttl"); 
      	    bw = new BufferedWriter(new FileWriter(output));
      	    System.out.println("Temp file : " + output.getAbsolutePath());
      	    voidModel.write(bw,  "TURTLE");
@@ -241,6 +246,23 @@ public class voidTurtle {
          catch(IOException e){e.printStackTrace();}
          finally { try {bw.close();} catch (IOException e) {e.printStackTrace();}
          }
+         
+         RdfChecker checker = new RdfChecker();
+         try {
+			checker.check(output);
+	  	 } catch (RDFParseException e) {
+			System.err.println("Got a RDFParseException!! ");
+			e.printStackTrace();
+			System.out.println("==========================");
+		 } catch (RDFHandlerException e) {
+			System.out.println("Got a RDFHandlerException ");
+			e.printStackTrace();
+			System.out.println("==========================");
+		 } catch (IOException e) {
+			System.out.println("Got a IOException ");
+			e.printStackTrace();
+			System.out.println("==========================");
+		 }
 	}
 	
 	public String getVoid(){

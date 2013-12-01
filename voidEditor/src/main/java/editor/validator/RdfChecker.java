@@ -1,9 +1,11 @@
 package editor.validator;
 
 import info.aduna.lang.FileFormat;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
 import org.openrdf.rio.RDFFormat;
 import org.openrdf.rio.RDFHandler;
 import org.openrdf.rio.RDFHandlerException;
@@ -18,11 +20,11 @@ import org.openrdf.rio.helpers.RDFHandlerBase;
  *
  * @author Christian
  */
-public class RdfChecker extends RDFHandlerBase implements RDFHandler{
+public class RdfChecker extends RDFHandlerBase implements RDFHandler {
 
-    public static String DEFAULT_BASE_URI = "http://no/BaseURI/Set/";
+    public String DEFAULT_BASE_URI = "http://no/BaseURI/Set/";
 
-    private static RDFFormat getFormat(String fileName) {
+    private  RDFFormat getFormat(String fileName) {
         if (fileName.endsWith(".n3")){
             fileName = "try.ttl";
         }
@@ -36,18 +38,18 @@ public class RdfChecker extends RDFHandlerBase implements RDFHandler{
         }
     }
 
-    public static RDFParser getParser(RDFFormat format) {
+    public RDFParser getParser(RDFFormat format) {
         RDFParserRegistry reg = RDFParserRegistry.getInstance();
         RDFParserFactory factory = reg.get(format);
         return factory.getParser();
     }
 
-    public void check(String fileName) throws IOException, RDFParseException, RDFHandlerException {
-        File file = new File(fileName);
+    @SuppressWarnings("deprecation")
+	public void check(File file) throws IOException, RDFParseException, RDFHandlerException {
         System.out.println("Checking: " + file.getAbsolutePath());
         FileReader reader = null;
         reader = new FileReader(file);
-        RDFFormat rdfFormat = getFormat(fileName);
+        RDFFormat rdfFormat = getFormat(file.getName());
         RDFParser parser = getParser(rdfFormat);
         parser.setRDFHandler(this);
         ParseErrorCollector collector = new ParseErrorCollector();
@@ -72,8 +74,5 @@ public class RdfChecker extends RDFHandlerBase implements RDFHandler{
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        RdfChecker checker = new RdfChecker();
-        checker.check(args[0]);
-    }
+    public RdfChecker (){}
 }

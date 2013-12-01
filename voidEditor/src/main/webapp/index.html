@@ -39,11 +39,11 @@
  <div class="container" ng-controller="editorCarouselCtrl">
      <div class="row span12">
          <div class="progress">
-             <div class="bar" style="width:{{dynamicProgress}}%"></div>
+             <div class="bar" style="width:{{dynamicProgress}}%;"></div>
            <span>
                <table style="width: 100%; text-align: center;" >
                  <tr>
-                     <td class="curved" ng-repeat="slide in slides" style="width:{{dynamicProgressStep}}%;">
+                     <td class="progressBar" ng-repeat="slide in slides" style="width:{{dynamicProgressStep}}%;">
                           <p ng-if="slide.progress <= dynamicProgress" class="thickWhite" ng-click="slide.active = true" >{{slide.title}} </p>
                           <p ng-if="slide.progress > dynamicProgress" class="thickBlack" ng-click="slide.active = true">{{slide.title}} </p>
                      </td>
@@ -53,10 +53,12 @@
          </div>
       </div>
         <div class="row span12">
+
             <form role="form" class="form-inline simple-form" role="form" novalidate>
                 <carousel interval="interval"  class="carousel">
                     <slide ng-repeat="slide in slides" active="slide.active">
                         <div class="custom_carousel" >
+                            <alert class="myAlert" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
                             <div class="include" ng-include="slide.page" >
                             </div>
                         </div>
@@ -84,10 +86,10 @@
                             </textarea>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-warning" ng-click="close()">Close</button>
+                            <button class="btn btn-warning" ng-click="closeModal()">Close</button>
                         </div>
                     </script>
-                    <button  type="button" class="btn btn-default pull-right" id="underTheHood" ng-click="open()"> Under the Hood</button>
+                    <button  type="button" class="btn btn-default pull-right" id="underTheHood" ng-click="open();"> Under the Hood</button>
                 </div>
             <div class="row span12">
                 <footer>

@@ -3,12 +3,11 @@
       <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}} </div>
       <div  ng-switch-when="false"></div>
      </span>
+
     <div class="span8 offset2">
         <div class="row">
-            <div class="span8">
                 <h1>Is your dataset incorporating other sources you can cite?</h1>
                 <br>
-            </div>
         </div>
     </div>
     <div class="container-fluid"  ng-controller="sourceCtrl" >
@@ -36,23 +35,23 @@
                         </div>
                 </div>
             </div>
-
+            <div class="span1"></div>
             <div class="container">
-                <div class=" panel panel-primary span3" style="margin-left: 100px;">
-                        <div class="input-group input-group-lg" >
-                            <input type="text" class="form-control input-lg "   placeholder="Source..."
+                <div class=" panel panel-primary span3">
+                        <div class="input-group" >
+                            <input type="text" class="form-control input-large "   placeholder="Source..."
                                    typeahead-on-select="addToSelected(selected); selected = '' "  ng-enter="addToSelected(selected);  selected = ''"
                                    ng-model="selected"
                                    typeahead="title for title in titles | filter:$viewValue | limitTo:8">
                             <input type="Button" value="Add"  class="btn btn-primary"
                                    data-ng-click="addToSelected(selected); selected = ''">
                         </div>
-
+                        <br>
                         <ul class="list-group panel-body" >
-                            <li ng-repeat="source in userSources" class="thumbnail  pull-right">
+                            <li ng-repeat="source in userSources" class="thumbnail span3 pull-right">
                                     <table >
                                         <tr>
-                                            <td class="span4">
+                                            <td class="span3">
                                                 {{ source.title}}
                                             </td>
                                             <td class="">
@@ -69,17 +68,16 @@
                                         </tr>
                                     </table>
                                 <div class="form-group row">
-                                    <div class="span3">
-                                    <input ng-show="source.noURI" ng-model="source.URI" type="url" placeholder="Please Specify URI...">
-                                    <img  ng-show="source.noURI" src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
-                                                 popover="Please make sure it contains 'http://'.">
+                                    <div class="span3" style="text-align: center;">
+                                        <input class="input-large" ng-show="source.noURI" name="noURI" required
+                                               ng-model="source.URI" type="url" placeholder="Please Specify URI...">
+                                        <img  ng-show="source.noURI" src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
+                                                     popover="Please make sure it contains 'http://'.">
                                     </div>
                                 </div>
                             </li>
                         </ul>
                 </div>
              </div>
-
-
     </div>
 </div>
