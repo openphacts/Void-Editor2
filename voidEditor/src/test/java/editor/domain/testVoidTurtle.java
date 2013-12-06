@@ -10,12 +10,12 @@ import org.junit.Test;
  *  Here testing the instantiation on correct input values through the process of the class.
  */
 public class testVoidTurtle {
-	private static voidAttributes testInput ;
-	private static voidTurtle testObject;
+	private static VoidAttributes testInput ;
+	private static VoidTurtle testObject;
 	
 	@BeforeClass 
 	public static void setup(){
-		testInput = new voidAttributes();
+		testInput = new VoidAttributes();
 		//Just going to set most basic attributes
 		testInput.userName = "Lefteris";	
 		testInput.userEmail= "lefteris@test.com";
@@ -25,7 +25,7 @@ public class testVoidTurtle {
 		testInput.monthPublish= "12";
 		testInput.yearPublish= "2013";
 		testInput.version= "1.0.0";
-		testObject = new voidTurtle(testInput);
+		testObject = new VoidTurtle(testInput);
 	}
 	
 	@Test
@@ -35,14 +35,14 @@ public class testVoidTurtle {
 	
 	@Test
 	public void testDateIsCorrectWithNA() {
-		voidAttributes testInput2 = new voidAttributes();
+		VoidAttributes testInput2 = new VoidAttributes();
 		
 		//Just going to set most basic attributes
 		testInput2.userName = "Lefteris";	
 		testInput2.datePublish= "N/A";
   	  	testInput2.monthPublish= "12";
  		testInput2.yearPublish= "2013";
- 		voidTurtle testObject2 = new voidTurtle(testInput2);
+ 		VoidTurtle testObject2 = new VoidTurtle(testInput2);
 		assertTrue("Testing is date set correctly for N/A", testObject2.getDatePublish() == 1);
 	}
 	

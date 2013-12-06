@@ -1,32 +1,33 @@
 package editor.service;
 
-import editor.domain.voidAttributes;
-import editor.domain.voidTurtle;
+import editor.domain.VoidAttributes;
+import editor.domain.VoidTurtle;
+import editor.rest.VoidRestService;
 /**
  * Provides the {@link VoidRestService} with a variety of functions that are used. 
  * 
  * @author Lefteris Tatakis
  *
  */
-public class voidService {
+public class VoidService {
 
-	private voidAttributes voidInfo ; 
-	private voidTurtle tmp ;
+	private VoidAttributes voidInfo ; 
+	private VoidTurtle tmp ;
 	
-	public voidService  (){}
+	public VoidService  (){}
 	
-	public void setVoidInfo(voidAttributes info){
+	public void setVoidInfo(VoidAttributes info){
 		voidInfo = info;
 	}
 	
 	public String getVoid() {
-		tmp = new voidTurtle(voidInfo);
+		tmp = new VoidTurtle(voidInfo);
 		tmp.createVoid();
 		return tmp.getVoid();
 	}
 	
 	public String getLocation() {
-		tmp = new voidTurtle(voidInfo);
+		tmp = new VoidTurtle(voidInfo);
 		tmp.createVoid();
 		return tmp.getLocation();
 	}

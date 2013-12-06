@@ -11,8 +11,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
-import editor.domain.voidAttributes;
-import editor.service.voidService;
+import editor.domain.VoidAttributes;
+import editor.service.VoidService;
 /**
  * Using Restful to send information back and forth. 
  * 
@@ -22,12 +22,12 @@ import editor.service.voidService;
 @Path("/void")
 public class VoidRestService {
  
-	private static final voidService  results = new voidService();
+	private static final VoidService  results = new VoidService();
 	
 	 @Path("/output")
 	 @POST
 	 @Consumes(MediaType.APPLICATION_JSON)
-	public String postVoidCreation(voidAttributes data) {
+	public String postVoidCreation(VoidAttributes data) {
 		results.setVoidInfo(data);
 		return results.getVoid();
 	 }
@@ -38,7 +38,7 @@ public class VoidRestService {
 	public Response  getVoidFile() {
 		File file = new File(results.getLocation());
 		ResponseBuilder response = Response.ok((Object) file);
-		response.header("Content-Disposition","attachment; filename=void.ttl");
+		response.header("Content-Disposition","attachment; filename=void.voidCreator.ttl");
 		return response.build();
 	 }
 }

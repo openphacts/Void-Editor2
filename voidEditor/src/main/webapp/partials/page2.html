@@ -14,21 +14,21 @@
         </div>
 
         <div class="form-group row">
-            <div class="span3 offset1">
-                <label class="label3" for="inputPublisher">Who is providing the data?</label>
+            <div class="span4 offsetHalf">
+                <label class="label3" for="inputPublisher">Which institution / company is publishing these data?*</label>
              </div>
             <div class="span3">
-                <input type="url" class="form-control input-lg" id="inputPublisher"   ng-model="data.publisher" placeholder="http://">
+                <input type="url" class="form-control input-large" id="inputPublisher"   ng-model="data.publisher" placeholder="http://" required>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
                      popover="Please provide the entity responsible for making the resource available.
-                     For example : For ChEMBL, the publisher would be the EBI.">
+                     For example : For ChEMBL, the publisher would be the EBI. This information is required.">
             </div>
         </div>
         <br>
 
         <div  class="form-group row" ng-controller="DatepickerCtrl">
-            <div class="span3 offset1">
-                <label class="label3" for="inputDateofPublishment">When did this RDF data get published?</label>
+            <div class="span4 offsetHalf">
+                <label class="label3" for="inputDateofPublishment">When did these RDF data get published?*</label>
             </div>
             <div class="span3">
                 <select class="select-mini" ng-model="data.datePublish"  >
@@ -46,29 +46,29 @@
 
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
                      popover="If only aware of year please select 1st of January of the year.
-                                If aware of month only select 1st of that month.">
+                                If aware of month only select 1st of that month. This information is required.">
             </div>
         </div>
         <br>
 
         <div class="form-group row">
-            <div class="span3 offset1">
-                <label class="label3" for="inputWebpage">Webpage of your dataset:</label>
+            <div class="span4 offsetHalf">
+                <label class="label3" for="inputWebpage">Webpage of documentation for your dataset*:</label>
             </div>
             <div class="span3">
-                <input type="url" class="form-control" id="inputWebpage" ng-model="data.webpage"
+                <input type="url" class="form-control input-large" id="inputWebpage" ng-model="data.webpage" required
                        placeholder="http://" >
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
                      popover="A Web page that can be navigated to in a Web browser
-                     to gain access to the dataset, its distributions and/or additional information.">
+                     to gain access to the dataset, its distributions and/or additional information. This information is required.">
             </div>
         </div>
         <br>
 
 
         <div class="form-group row">
-            <div class="span3 offset1">
-                 <label class="label3" for="inputLicence">License to be applied to the dataset:</label>
+            <div class="span4 offsetHalf">
+                 <label class="label3" for="inputLicence">License to be applied to the dataset*:</label>
             </div>
             <div class="span3">
                 <select class="selectpicker" id='inputLicence' ng-model="data.licence" ng-change="otherLicence(data.licence)">
@@ -82,37 +82,39 @@
                         <option  value="N/A">Don't know</option>
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
-                     popover="Please visit www.tldrlegal.com to view more information regarding licencing. ">
+                     popover="Please visit www.tldrlegal.com to view more information regarding licencing. This information is required.">
                 <input ng-show="showOther" ng-model="data.licence" type="url" placeholder="Please Specify...">
                 <img  ng-show="showOther" src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
-                     popover="Please provide a URL pointing to this licence. So that we have an indepth understanding of the licence you wish to use. ">
+                     popover="Please provide a URL pointing to this licence. So that we have an indepth understanding of the licence you wish to use. This information is required.">
              </div>
         </div>
         <br>
         <div class="form-group row">
-            <div class="span3 offset1">
-                <label class="label3" for="inputDownload">Where could we download your RDF from?</label>
+            <div class="span4 offsetHalf">
+                <label class="label3" for="inputDownload">Where could we download your RDF from?*</label>
             </div>
             <div class="span3">
-                <input type="url" class="form-control input-lg" id="inputDownload"  ng-model="data.downloadFrom"
+                <input type="url" class="form-control input-large" id="inputDownload"  ng-model="data.downloadFrom" required
                         placeholder="http://rdf.example.com">
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
-                     popover="Where could we download the data from if we required to.">
+                     popover="Where could we download the data from if we required to. This information is required.">
             </div>
         </div>
         <br>
         <div class="form-group row">
-            <div class="span3 offset1">
+            <div class="span4 offsetHalf">
                 <label  class="label3" for="inputSparql">Sparql Endpoint:</label>
             </div>
             <div class="span3">
-                <input type="url" class="form-control input-lg" id="inputSparql"
+                <input type="url" class="form-control input-large" id="inputSparql"
                        ng-model="data.sparqlEndpoint" placeholder="http://">
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                      class="pull-right"
                      popover="If you do not have one, please leave blank.">
             </div>
         </div>
+        <br>
+
         <br>
     </div>
 

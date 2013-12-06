@@ -66,6 +66,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
             }
             voidData.setUriForSourcesExist(result);
         });
+
+        $rootScope.$on('SuccessDownload', function (event) {
+            $rootScope.alerts.push({ type: 'success', msg: 'Well done! You successfully downloaded your void.ttl!' });
+        });
+
     }]);
 
 editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$http', 'voidData',
@@ -80,7 +85,7 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
             voidData.createVoidAndDownload();
             console.log("Going to open window");
             window.open('/voidEditor/rest/void/file');
-            $rootScope.alerts.push({ type: 'success', msg: 'Well done! You successfully downloaded your void.ttl!' });
+            $rootScope.$broadcast('SuccessDownload');
         };
     }]);
 

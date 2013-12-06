@@ -11,6 +11,8 @@ div.custom_carousel {
     border-bottom:1px solid red;
 }
 
+.offsetHalf{margin-left:82px;}
+.span3Half{width:200px;}
 .carousel-content{
     margin-top: 50px;
 }
@@ -23,7 +25,7 @@ h1, h3{text-align: center; vertical-align: middle;}
 
 .label1 { display: block; width: 230px; }
 .label2 { display: block; width: 270px;  }
-.label3 { display: block; width: 300px;  }
+.label3 { display: block; width: 400px;  }
 footer {
     text-align: center;
     vertical-align: middle;

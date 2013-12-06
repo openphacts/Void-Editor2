@@ -158,10 +158,10 @@ describe('editorApp', function () {
         });
 
         // Download File
-        /*it('called downloadFile - should call createVoidAndDownload of voidData ', function () {
+        it('called downloadFile - should call createVoidAndDownload of voidData ', function () {
             rootScope.downloadFile();
             expect(mockedVoidData.createVoidAndDownload).toHaveBeenCalled();
-        });*/
+        });
 
     });
 

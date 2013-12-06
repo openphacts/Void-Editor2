@@ -14,24 +14,24 @@
             </div>
             <div class="form-group row">
                 <div class="span2 offset1">
-                    <label class="label1" for="inputTitle">Title of your dataset:</label>
+                    <label class="label1" for="inputTitle">Title of your dataset*:</label>
                 </div>
                 <div class="span3">
-                     <input type="text" class="form-control input-large" id="inputTitle" placeholder="" ng-model="data.title">
+                     <input type="text" class="form-control input-large" id="inputTitle" placeholder="" ng-model="data.title" required>
                     <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
-                         popover="A name given for the data you are creating the VoID for.">
+                         popover="A name given for the data you are creating the VoID for .This information is required.">
                 </div>
 
             </div>
             <br>
             <div class="form-group row ">
                 <div class="span2 offset1">
-                    <label class="label1" for="inputURI">A URI for your dataset:</label>
+                    <label class="label1" for="inputURI">A URI describing your RDF:</label>
                 </div>
                 <div class="span3">
                     <input type="url" class="form-control input-large" id="inputURI" placeholder="http://" ng-model="data.URI">
                     <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
-                         popover="You can define a URI for your dataset. If you leave it blank, a default will be used.">
+                         popover="You can define a URI for your dataset. This URI is the resource that describes the dataset. If you leave it blank, a default will be used.">
                 </div>
             </div>
 
@@ -39,13 +39,13 @@
             <br>
             <div class="form-group row">
                 <div class="span2 offset1">
-                    <label class="label1" for="inputDescription">Description of your data:</label>
+                    <label class="label1" for="inputDescription">Description of your data*:</label>
                 </div>
                 <div class="span3">
-                    <textarea  type="text" class="form-control"  rows="5" id="inputDescription"
+                    <textarea  type="text" class="form-control"  rows="5" id="inputDescription" required
                                placeholder="What is this dataset about?" ng-model="data.description"></textarea>
                     <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
-                         popover="A description of the dataset so we can understand it contains.">
+                         popover="A description of the dataset so we can understand it contains. This information is required.">
                 </div>
             </div>
             <br>

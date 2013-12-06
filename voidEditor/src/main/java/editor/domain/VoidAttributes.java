@@ -2,7 +2,7 @@ package editor.domain;
 
 
 
-public class voidAttributes{
+public class VoidAttributes{
 	  public String userName = "";	
 	  public String userEmail= "";
 	  public String title= "" ;

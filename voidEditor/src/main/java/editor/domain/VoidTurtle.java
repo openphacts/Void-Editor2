@@ -46,7 +46,7 @@ import editor.validator.RdfChecker;
  */
 
 @XmlRootElement
-public class voidTurtle {
+public class VoidTurtle {
 
     private String userName;	
     private String userEmail;
@@ -69,7 +69,7 @@ public class voidTurtle {
 	/**
 	 * @param obj This object provides all data extracted from Angular side.
 	 */
-	public voidTurtle(voidAttributes obj){
+	public VoidTurtle(VoidAttributes obj){
 		this.userName = obj.userName;
 		this.userEmail = obj.userEmail;
 		this.title = obj.title;
@@ -109,16 +109,11 @@ public class voidTurtle {
 		
 		 Model voidModel = ModelFactory.createDefaultModel();
 
-         voidModel.setNsPrefix("xsd", XSD.getURI());
          voidModel.setNsPrefix("void", Void.getURI());
          voidModel.setNsPrefix("pav", Pav.getURI());
          voidModel.setNsPrefix("prov", Prov.getURI());
          voidModel.setNsPrefix("dcterms", DCTerms.getURI());
-         voidModel.setNsPrefix("biopax", Biopax_level3.getURI());
-         voidModel.setNsPrefix("gpml", Gpml.getURI());
-         voidModel.setNsPrefix("wp", Wp.getURI());
          voidModel.setNsPrefix("foaf", FOAF.getURI());
-         voidModel.setNsPrefix("hmdb", "http://identifiers.org/hmdb/");
          voidModel.setNsPrefix("freq", Freq.getURI());
          voidModel.setNsPrefix("dc", DC.getURI());
          voidModel.setNsPrefix("dcat", DCAT.getURI());
@@ -134,9 +129,10 @@ public class voidTurtle {
          Literal descriptionDescriptionLiteral = voidModel.createLiteral("The VoID description for the RDF representation of this dataset.", "en");
          Calendar now = Calendar.getInstance();
          Literal nowDescriptionLiteral = voidModel.createTypedLiteral(now);
+         Literal issueDescriptionLiteral = voidModel.createTypedLiteral(now);
          Literal createdByNameLiteral = voidModel.createLiteral(userName, "en");
          Literal createdByEmailLiteral = voidModel.createLiteral(userEmail, "en");
-         
+         Resource createdWith = voidModel.createResource("http://voideditor.cs.man.ac.uk/voidEditor/");
          
          Calendar publishmentDate = Calendar.getInstance();
          publishmentDate.set( getYearPublish(),getMonthPublish() -1 , getDatePublish());
@@ -155,8 +151,10 @@ public class voidTurtle {
          voidDescriptionBase.addProperty(RDF.type, Void.DatasetDescription);
          voidDescriptionBase.addProperty(DCTerms.title, titleDescriptionLiteral);
          voidDescriptionBase.addProperty(DCTerms.description, descriptionDescriptionLiteral);
+         voidDescriptionBase.addProperty(DCTerms.issued, issueDescriptionLiteral);
          voidDescriptionBase.addProperty(Pav.createdBy, createdByNameLiteral);
          voidDescriptionBase.addProperty(Pav.createdBy, createdByEmailLiteral);
+         voidDescriptionBase.addProperty(Pav.createdWith, createdWith);
          
          voidDescriptionBase.addLiteral(Pav.createdOn, nowDescriptionLiteral);
          voidDescriptionBase.addProperty(FOAF.primaryTopic,voidBase );

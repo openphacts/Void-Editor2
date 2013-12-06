@@ -2,22 +2,20 @@ package editor.service;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import editor.domain.voidAttributes;
+import editor.domain.VoidAttributes;
 
 public class testVoidService {
-	private static voidAttributes testInput ;
-	private static voidService testObject ;
+	private static VoidAttributes testInput ;
+	private static VoidService testObject ;
 
 	//TODO Test sources input
 	
 	@BeforeClass 
 	public static void setup(){
-		testInput = new voidAttributes();
+		testInput = new VoidAttributes();
 		//Just going to set most basic attributes
 		testInput.userName = "Lefteris";	
 		testInput.userEmail= "lefteris@test.com";
@@ -30,7 +28,7 @@ public class testVoidService {
 		testInput.URI = "http://testURI.org";
 		//TODO
 	//	testInput.sources = (new ArrayList<Object>()).add("{'title': 'Test', 'type': 'RDF', 'URI': 'http://testSourceURI', 'noURI': false }");
-		testObject = new voidService();
+		testObject = new VoidService();
 		testObject.setVoidInfo(testInput);
 	}
 
