@@ -108,7 +108,7 @@ public class VoidTurtle {
 	public void createVoid(){
 		
 		 Model voidModel = ModelFactory.createDefaultModel();
-
+		 voidModel.setNsPrefix("xsd", XSD.getURI());
          voidModel.setNsPrefix("void", Void.getURI());
          voidModel.setNsPrefix("pav", Pav.getURI());
          voidModel.setNsPrefix("prov", Prov.getURI());
