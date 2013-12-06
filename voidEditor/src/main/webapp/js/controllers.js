@@ -14,11 +14,16 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
         $rootScope.data.monthPublish = 1;
         $rootScope.data.yearPublish = 2013;
         $rootScope.fileLocation = "";
+        $rootScope.data.description= "";
+        $rootScope.data.title = "";
+        $rootScope.data.publisher = "";
+        $rootScope.data.webpage = "";
         $rootScope.data.sources = [];
         $rootScope.data.updateFrequency = "Annual";
         $rootScope.postFinished = false;
         $rootScope.data.licence = "http://creativecommons.org/licenses/by-sa/3.0/";
         $rootScope.alerts = [];
+        $rootScope.data.downloadFrom= "";
 
         $rootScope.$on('TurtleChanged', function (event, x) {
             $rootScope.turtle = x;
@@ -58,10 +63,26 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
             if (noURI != -1) {
                 $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the source you cited! Please provide this information.' });
                 result = "failed";
+            } else  if ($rootScope.showOther == true && ( $rootScope.data.title == "")) {
+                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a title  for the dataset! Please provide this information.' });
+                result = "failed";
             } else if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("http") == -1)) {
                 $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the licence you choose! Please provide this information.' });
                 result = "failed";
-            } else {
+            } else if ($rootScope.showOther == true && ( $rootScope.data.description= "")) {
+                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a description of your dataset! Please provide this information.' });
+                result = "failed";
+            } else if ($rootScope.showOther == true && ( $rootScope.data.publisher== "")) {
+                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a publishing institution! Please provide this information.' });
+                result = "failed";
+            } else if ($rootScope.showOther == true && ( $rootScope.data.webpage== "")) {
+                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a documentation webpage! Please provide this information.' });
+                result = "failed";
+            } else if ($rootScope.showOther == true && ( $rootScope.data.downloadFrom== "")) {
+                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a download link! Please provide this information.' });
+                result = "failed";
+            } else
+            {
                 result = "passed";
             }
             voidData.setUriForSourcesExist(result);
