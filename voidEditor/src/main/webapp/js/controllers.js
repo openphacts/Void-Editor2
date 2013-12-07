@@ -7,6 +7,7 @@ var editorAppControllers = angular.module('editorAppControllers', ['jsonService'
 editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidData',
     function ( $scope, $rootScope, voidData) {
         $scope.title = 'VoID Editor';
+        $rootScope.disabledExport = false;
         $rootScope.data = {};
         $rootScope.turtle = "Loading...";
         $rootScope.showOther = false;
@@ -63,26 +64,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
             if (noURI != -1) {
                 $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the source you cited! Please provide this information.' });
                 result = "failed";
-            } else  if ($rootScope.showOther == true && ( $rootScope.data.title == "")) {
-                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a title  for the dataset! Please provide this information.' });
-                result = "failed";
-            } else if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("http") == -1)) {
+            }else if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("http") == -1)) {
                 $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the licence you choose! Please provide this information.' });
                 result = "failed";
-            } else if ($rootScope.showOther == true && ( $rootScope.data.description= "")) {
-                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a description of your dataset! Please provide this information.' });
-                result = "failed";
-            } else if ($rootScope.showOther == true && ( $rootScope.data.publisher== "")) {
-                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a publishing institution! Please provide this information.' });
-                result = "failed";
-            } else if ($rootScope.showOther == true && ( $rootScope.data.webpage== "")) {
-                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a documentation webpage! Please provide this information.' });
-                result = "failed";
-            } else if ($rootScope.showOther == true && ( $rootScope.data.downloadFrom== "")) {
-                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a download link! Please provide this information.' });
-                result = "failed";
-            } else
-            {
+            } else {
                 result = "passed";
             }
             voidData.setUriForSourcesExist(result);
@@ -92,6 +77,47 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
             $rootScope.alerts.push({ type: 'success', msg: 'Well done! You successfully downloaded your void.ttl!' });
         });
 
+        $rootScope.fieldsToAdd = function(){
+            var returnString = "";
+
+            if ( $rootScope.data.title == "") {
+                if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
+                returnString+="<p class='neededFields'>Title of your dataset in \"Core Info\"</p>";
+            }
+            if ( $rootScope.data.description== "") {
+                if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
+                returnString+="<p class='neededFields'>Description for your dataset in \"Core Info\"</p>";
+            }
+            if ($rootScope.data.publisher== "") {
+                if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
+                returnString+= "<p class='neededFields'>Publishing institution in \"Publishing Info\"</p>";
+            }
+            if ( $rootScope.data.webpage == "") {
+                if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
+                returnString+= "<p class='neededFields'>Webpage of documentation in \"Publishing Info\" </p>";
+            }
+            if ($rootScope.data.downloadFrom == "") {
+                if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
+                returnString +="<p class='neededFields'> RDF download link in \"Publishing Info\" </p> ";
+            }
+            if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("http") == -1)) {
+                if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
+                returnString +="<p class='neededFields'> A URI for the licence you choose in \"Publishing Info\" </p> ";
+            }
+
+            var noURI = -1;
+            for (var i = 0; i < $rootScope.data.sources.length; i++) {
+                if ($rootScope.data.sources[i].URI == "") noURI = i;
+            }
+            if (noURI != -1) {
+                if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
+                returnString +="<p class='neededFields'> A URI for the source you cited in \"Sources \" </p> ";
+            }
+            if (returnString == "")  $rootScope.disabledExport = false;
+            else $rootScope.disabledExport = true;
+
+            return returnString ;
+        }
     }]);
 
 editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$http', 'voidData',
@@ -129,7 +155,7 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
         };
         $scope.addSlide(0, "User Info");
         $scope.addSlide(1, "Core Info");
-        $scope.addSlide(2, "Publishing info");
+        $scope.addSlide(2, "Publishing Info");
         $scope.addSlide(3, "Versioning");
         $scope.addSlide(4, "Sources");
         //$scope.addSlide(4, "Sources");

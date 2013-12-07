@@ -23,8 +23,8 @@
         </div>
         <div class="row-fluid">
             <div class="span4 offset3">
-                 <h4>Export it as :
-					<button type="btn" class="btn btn-primary btn-large" 
+                 <h4 >Export it as :
+					<button type="btn" class="btn btn-primary btn-large"  ng-disabled="disabledExport"
 							ng-click="downloadFile() "
 							class="pull-right" > RDF</button>
 				     <img src="img/ajax-loader.gif" id ="spinner"  style="display:none">
@@ -32,6 +32,11 @@
 				   
             </div>
         </div>
- 		
+        <div class="row-fluid">
+            <div class="span6 offset3" id="bind-html-with-trust">
+                <div ng-bind-html="fieldsToAdd()">
+                </div>
+            </div>
         </div>
+     </div>
 </div>
