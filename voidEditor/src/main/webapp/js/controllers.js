@@ -7,6 +7,7 @@ var editorAppControllers = angular.module('editorAppControllers', ['jsonService'
 editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidData',
     function ( $scope, $rootScope, voidData) {
         $scope.title = 'VoID Editor';
+        $scope.mustFieldPerPage = [];
         $rootScope.disabledExport = false;
         $rootScope.data = {};
         $rootScope.turtle = "Loading...";
@@ -55,6 +56,25 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
             $rootScope.alerts.splice(index, 1);
         };
 
+
+        $rootScope.$on('checkMustFieldsOnPreviousPage', function (ev, mustFieldsToCheck) {
+            console.log(mustFieldsToCheck);
+            for (var i = 0; i < mustFieldsToCheck.length; i++) {
+                if (mustFieldsToCheck[i] == "title" && ( $rootScope.data.description.length < 2) ) {
+                    $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a title for your dataset! Please provide this information.' });
+                }else if (mustFieldsToCheck[i] == "description" && ( $rootScope.data.description.length < 5)) {
+                    $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a description! Please provide this information.' });
+                }else if (mustFieldsToCheck[i] == "publisher" && ( $rootScope.data.publisher.indexOf("http") == -1)) {
+                    $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the publisher you choose! Please provide this information.' });
+                }else if (mustFieldsToCheck[i] == "webpage" && ( $rootScope.data.webpage.indexOf("http") == -1)) {
+                    $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the webpage of your documentation! Please provide this information.' });
+                }else if (mustFieldsToCheck[i] == "downloadFrom" && ( $rootScope.data.downloadFrom.indexOf("http") == -1)) {
+                    $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF data from! Please provide this information.' });
+                }
+
+            }
+        });
+
         $rootScope.$on('checkSources', function (event) {
             var noURI = -1;
             var result;
@@ -72,6 +92,8 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
             }
             voidData.setUriForSourcesExist(result);
         });
+
+
 
         $rootScope.$on('SuccessDownload', function (event) {
             $rootScope.alerts.push({ type: 'success', msg: 'Well done! You successfully downloaded your void.ttl!' });
@@ -145,26 +167,30 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
         $scope.wrap = false;
 
         var slides = $scope.slides = [];
-        $scope.addSlide = function (i, title) {
+        $scope.addSlide = function (i, title, mustFields) {
             var temp;
             if (i != 0)   temp = "partials/page" + i + ".html";
             else  temp = "partials/page.html";
             var percentageOfChange = (100 / 6 ) - 0.0001;
             $rootScope.dynamicProgressStep = percentageOfChange;
-            slides.push({'page': temp, 'index': i, 'progress': (i + 1) * percentageOfChange % 100, 'title': title });
+            slides.push({'page': temp, 'index': i, 'progress': (i + 1) * percentageOfChange % 100, 'title': title , 'mustFields': mustFields});
         };
-        $scope.addSlide(0, "User Info");
-        $scope.addSlide(1, "Core Info");
-        $scope.addSlide(2, "Publishing Info");
-        $scope.addSlide(3, "Versioning");
-        $scope.addSlide(4, "Sources");
-        //$scope.addSlide(4, "Sources");
-        //$scope.addSlide('4-2', "Sources");
-        $scope.addSlide(5, "Export RDF");
+        $scope.addSlide(0, "User Info" ,[]);
+        $scope.addSlide(1, "Core Info" ,["title" , "description"]);
+        $scope.addSlide(2, "Publishing Info" ,["publisher", "webpage" , "downloadFrom"]);
+        $scope.addSlide(3, "Versioning",[]);
+        $scope.addSlide(4, "Sources",[]);
+        $scope.addSlide(5, "Export RDF",[]);
 
         $scope.changeProgressBar = function (change) {
             $rootScope.dynamicProgress = change;
         }
+
+//        $scope.checkMustFieldsOnPreviousPage = function(index){
+//            if ( index < $scope.slides.length && index > 0)
+//                $rootScope.$broadcast('checkMustFieldsOnPreviousPage', $scope.slides[index].mustFields );
+//        }
+
     }
 ]);
 

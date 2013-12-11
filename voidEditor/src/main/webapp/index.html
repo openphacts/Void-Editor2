@@ -29,12 +29,21 @@
 </header>
 
  <div class="container" ng-controller="editorCarouselCtrl">
-     <div class="row span12 pull-left">
+     <div class="row span12">
+         <div class="container">
             <h1  class="pull-left">
-                <img class="pull-left" src="img/ops_logo.png" alt="Logo">
+                <a  href="http://www.openphacts.org" target="_blank">
+                    <img class="pull-left" src="img/ops_logo.png" alt="Logo">
+                </a>
                 <span  ng-bind="title">...</span> <small>v2.0</small>
             </h1>
+              <ul class="nav nav-pills pull-right" style="text-align: center; vertical-align: middle; margin-top: 25px;" >
+                <li ><a href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/" target="_blank">OPS Dataset Description Specification</a></li>
+                <li><a href="http://www.ltatakis.com" target="_blank">About</a></li>
+             </ul>
+         </div>
      </div>
+
      <div class="row span12">
          <div class="progress">
              <div class="bar" style="width:{{dynamicProgress}}%;"></div>
@@ -93,13 +102,26 @@
             <div class="row span12">
                 <footer>
                     <small>
-                        <span class="muted"><span ng-bind="title">...</span> v2 copyright &copy; 2013 OpenPhacts</span>
+                        <span class="muted"><span ng-bind="title">...</span> v2 copyright &copy; 2013 OpenPhacts - Lefteris Tatakis</span>
                     </small>
                 </footer>
             </div>
         </div>
 
    </div>
+</div>
+<div class="menuTabs">
+    <ul class="nav nav-pills pull-right  rotateTabs ">
+        <li  style="background-color: greenyellow ;  border-radius:20px;  margin-right: 10px; ">
+            <a id="survey" style="color:white;" href="https://www.surveymonkey.com/s/ZNB6KD6" target="_blank">Survey</a>
+        </li>
+        <li style="background-color: dodgerblue;  border-radius:20px;  margin-right: 10px; ">
+            <a id="feedback" style="color:white;" href="mailto:eleftherios.tatakis@student.manchester.ac.uk?Subject=VoidEditor%20Feedback" > Feedback </a>
+        </li>
+        <li  style="background-color: lightslategray;  border-radius:20px;  margin-right: 10px;">
+            <a id="bugs" style="color:white;" href="mailto:eleftherios.tatakis@student.manchester.ac.uk?Subject=VoidEditor%20BugReport" >Bugs</a>
+        </li>
+    </ul>
 </div>
 <script src="lib/jquery/jquery-1.10.2.js"></script>
 <script src="lib/jquery-ui/jquery-ui-1.10.3.custom.js"></script>

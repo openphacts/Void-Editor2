@@ -113,3 +113,33 @@ label,input,button,select,textarea{font-size:17px;font-weight:normal;line-height
     width: 100%;
 }
 
+.rotateTabs {
+    transform:rotate(90deg);
+    -ms-transform:rotate(90deg); /* IE 9 */
+    -webkit-transform:rotate(90deg); /* Safari and Chrome */
+
+}
+
+.menuTabs{
+    position: fixed;
+    right: 0;
+    top: 50%;
+}
+
+.nav>li>a#survey:hover, .nav>li>a#survey:focus {
+    text-decoration: none;
+    border-radius:25px;
+    background-color: #afff74;
+}
+
+.nav>li>a#bugs:hover, .nav>li>a#bugs:focus {
+    text-decoration: none;
+    border-radius:25px;
+    background-color: #828099;
+}
+
+.nav>li>a#feedback:hover, .nav>li>a#feedback:focus {
+    text-decoration: none;
+    border-radius:25px;
+    background-color: #4260ff;
+}

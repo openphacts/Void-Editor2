@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -26,14 +27,11 @@ import com.hp.hpl.jena.vocabulary.DCTypes;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.XSD;
 
-import editor.ontologies.Biopax_level3;
 import editor.ontologies.DCAT;
 import editor.ontologies.Freq;
-import editor.ontologies.Gpml;
 import editor.ontologies.Pav;
 import editor.ontologies.Prov;
 import editor.ontologies.Void;
-import editor.ontologies.Wp;
 import editor.validator.RdfChecker;
 /**
  *  This java class is based on work of : Andra Waagmeester 
@@ -131,7 +129,7 @@ public class VoidTurtle {
          Literal nowDescriptionLiteral = voidModel.createTypedLiteral(now);
          Literal issueDescriptionLiteral = voidModel.createTypedLiteral(now);
          Literal createdByNameLiteral = voidModel.createLiteral(userName, "en");
-         Literal createdByEmailLiteral = voidModel.createLiteral(userEmail, "en");
+         Resource createdByEmailResource = voidModel.createResource( "mailto:"+ userEmail);
          Resource createdWith = voidModel.createResource("http://voideditor.cs.man.ac.uk/voidEditor/");
          
          Calendar publishmentDate = Calendar.getInstance();
@@ -152,8 +150,12 @@ public class VoidTurtle {
          voidDescriptionBase.addProperty(DCTerms.title, titleDescriptionLiteral);
          voidDescriptionBase.addProperty(DCTerms.description, descriptionDescriptionLiteral);
          voidDescriptionBase.addProperty(DCTerms.issued, issueDescriptionLiteral);
-         voidDescriptionBase.addProperty(Pav.createdBy, createdByNameLiteral);
-         voidDescriptionBase.addProperty(Pav.createdBy, createdByEmailLiteral);
+         String URI4Person = "http://voideditor.cs.man.ac.uk/" + UUID.randomUUID();
+         Resource resourceForPerson = voidModel.createResource(URI4Person);
+         voidBase.addProperty(Pav.createdBy, resourceForPerson);
+         resourceForPerson.addProperty(RDF.type, FOAF.Person);
+         resourceForPerson.addProperty( FOAF.name, createdByNameLiteral  );
+         resourceForPerson.addProperty( FOAF.mbox , createdByEmailResource );
          voidDescriptionBase.addProperty(Pav.createdWith, createdWith);
          
          voidDescriptionBase.addLiteral(Pav.createdOn, nowDescriptionLiteral);
