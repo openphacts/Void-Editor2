@@ -37,10 +37,48 @@
                 </a>
                 <span  ng-bind="title">...</span> <small>v2.0</small>
             </h1>
-              <ul class="nav nav-pills pull-right" style="text-align: center; vertical-align: middle; margin-top: 25px;" >
+              <ul class="nav nav-pills pull-right" ng-controller="ModalAboutCtrl"  style="text-align: center; vertical-align: middle; margin-top: 25px;" >
                 <li ><a href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/" target="_blank">OPS Dataset Description Specification</a></li>
-                <li><a href="http://www.ltatakis.com" target="_blank">About</a></li>
+                <li>
+                    <script type="text/ng-template" id="myModalContentAbout.html">
+                        <div class="modal-header">
+                            <img src="img/manch.png" alt="UoM logo"/>
+                            <h3>About the Void Editor v2</h3>
+                        </div>
+                        <div class="modal-body" >
+                             <br>
+                            <p>The Open PHACTS VoID editor v2 is developed and maintained by
+                                <a href="http://ltatakis.com"  target="_blank"
+                                   rel="dcterms:creator doap:maintainer">Lefteris Tatakis</a>, as a final year
+                                undergraduate project at the University of Manchester, UK.
+                                </p>
+                            <p>This project is supervised by Prof Carole Goble and has been developed within the context of the
+                                <a href="http://www.openphacts.com/" target="_blank">Open PHACTS</a> project and
+                                aims to help dataset publishers to create a valid, according to the
+                                <a href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/" target="_blank">Open PHACTS
+                                    specification</a>, VoID description for deployment with their dataset.
+                            </p>
+
+                            <p>The code was last updated on <span property="dcterms:modified" <datatype="xsd:date">December 2013</datatype> </span>.
+                                The code for the Open PHACTS editor is available from
+                                <a href="https://github.com/openphacts/Void-Editor2" target="_blank">
+                                    https://github.com/openphacts/Void-Editor2</a>.
+                            </p>
+                            <p>
+                                In case you have a feature request or want to file a bug, please
+                                contact <a href="mailto:eleftherios.tatakis@student.manchester.com">email</a>.
+                            </p>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-warning" ng-click="closeModal()">Close</button>
+                        </div>
+                    </script>
+                    <a  ng-click="open();" target="_blank">About</a>
+                </li>
              </ul>
+
          </div>
      </div>
 

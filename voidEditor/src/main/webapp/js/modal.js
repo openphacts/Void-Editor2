@@ -35,3 +35,22 @@ modalControllers.controller('ModalInstanceCtrl', ['$rootScope' ,'$scope', '$moda
                $modalInstance.dismiss('cancel');
            };
  }]);
+
+
+modalControllers.controller('ModalAboutCtrl', ['$scope', '$rootScope' ,'$modal',
+    function ($scope, $rootScope, $modal ) {
+        $scope.open = function () {
+                $modal.open({
+                    templateUrl: 'myModalContentAbout.html',
+                    controller: "ModalInstanceAboutCtrl"
+                });
+        };
+    }]);
+
+modalControllers.controller('ModalInstanceAboutCtrl', ['$rootScope' ,'$scope', '$modalInstance',
+    function ( $rootScope ,$scope, $modalInstance ) {
+
+        $scope.closeModal = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    }]);

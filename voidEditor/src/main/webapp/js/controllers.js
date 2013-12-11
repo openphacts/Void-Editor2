@@ -26,6 +26,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
         $rootScope.data.licence = "http://creativecommons.org/licenses/by-sa/3.0/";
         $rootScope.alerts = [];
         $rootScope.data.downloadFrom= "";
+        $rootScope.mustFields = [];
 
         $rootScope.$on('TurtleChanged', function (event, x) {
             $rootScope.turtle = x;
@@ -56,24 +57,57 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
             $rootScope.alerts.splice(index, 1);
         };
 
+        $rootScope.$on("changedMustFields", function(ev, data){
+            $rootScope.mustFields = data;
+            console.log(data);
+        })
 
-        $rootScope.$on('checkMustFieldsOnPreviousPage', function (ev, mustFieldsToCheck) {
-            console.log(mustFieldsToCheck);
-            for (var i = 0; i < mustFieldsToCheck.length; i++) {
-                if (mustFieldsToCheck[i] == "title" && ( $rootScope.data.description.length < 2) ) {
-                    $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a title for your dataset! Please provide this information.' });
-                }else if (mustFieldsToCheck[i] == "description" && ( $rootScope.data.description.length < 5)) {
-                    $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a description! Please provide this information.' });
-                }else if (mustFieldsToCheck[i] == "publisher" && ( $rootScope.data.publisher.indexOf("http") == -1)) {
-                    $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the publisher you choose! Please provide this information.' });
-                }else if (mustFieldsToCheck[i] == "webpage" && ( $rootScope.data.webpage.indexOf("http") == -1)) {
-                    $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the webpage of your documentation! Please provide this information.' });
-                }else if (mustFieldsToCheck[i] == "downloadFrom" && ( $rootScope.data.downloadFrom.indexOf("http") == -1)) {
-                    $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF data from! Please provide this information.' });
+        $rootScope.checkMustFieldsOnPreviousPage =  function ( index) {
+            for (var i = 0; i < $rootScope.mustFields.length; i++) {
+                if ($rootScope.mustFields[i].index == index){
+                    for (var j = 0 ; j < $rootScope.mustFields[i].mustFields.length ; j++)
+                    {
+                        var mustFieldsToCheck = $rootScope.mustFields[i].mustFields[j];
+                        if (mustFieldsToCheck == "title" && ( $rootScope.data.description.length < 2) ) {
+                            var addAlert = true;
+                            for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                if ($rootScope.alerts[k].id == "title") addAlert = false;
+                            }
+                            if (addAlert == true ) $rootScope.alerts.push({ id:"title" ,type: 'error', msg: 'Ooops! You forgot to gives us a title for your dataset! Please provide this information.' });
+                        }
+                        if (mustFieldsToCheck == "description" && ( $rootScope.data.description.length < 5)) {
+                            var addAlert = true;
+                            for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                if ($rootScope.alerts[k].id == "description") addAlert = false;
+                            }
+                            if (addAlert == true ) $rootScope.alerts.push({ id:"description",type: 'error', msg: 'Ooops! You forgot to gives us a description! Please provide this information.' });
+                        }
+                        if (mustFieldsToCheck == "publisher" && ( $rootScope.data.publisher.indexOf("http") == -1)) {
+                            var addAlert = true;
+                            for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                if ($rootScope.alerts[k].id == "publisher") addAlert = false;
+                            }
+                            if (addAlert == true ) $rootScope.alerts.push({ id:"publisher", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the publisher you choose! Please provide this information.' });
+                        }
+                        if (mustFieldsToCheck == "webpage" && ( $rootScope.data.webpage.indexOf("http") == -1)) {
+                            var addAlert = true;
+                            for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                if ($rootScope.alerts[k].id == "webpage") addAlert = false;
+                            }
+                            if (addAlert == true ) $rootScope.alerts.push({ id:"webpage", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the webpage of your documentation! Please provide this information.' });
+                        }
+                        if (mustFieldsToCheck == "downloadFrom" && ( $rootScope.data.downloadFrom.indexOf("http") == -1)) {
+                            var addAlert = true;
+                            for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                if ($rootScope.alerts[k].id == "downloadFrom") addAlert = false;
+                            }
+                            if (addAlert == true ) $rootScope.alerts.push({ id:"downloadFrom" , type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF data from! Please provide this information.' });
+                        }
+                    }
                 }
 
             }
-        });
+        };
 
         $rootScope.$on('checkSources', function (event) {
             var noURI = -1;
@@ -82,10 +116,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
                 if ($rootScope.data.sources[i].URI == "") noURI = i;
             }
             if (noURI != -1) {
-                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the source you cited! Please provide this information.' });
+                $rootScope.alerts.push({ id:"URI" , type: 'error', msg: 'Ooops! You forgot to gives us a URI for the source you cited! Please provide this information.' });
                 result = "failed";
             }else if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("http") == -1)) {
-                $rootScope.alerts.push({ type: 'error', msg: 'Ooops! You forgot to gives us a URI for the licence you choose! Please provide this information.' });
+                $rootScope.alerts.push({ id:"licence", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the licence you choose! Please provide this information.' });
                 result = "failed";
             } else {
                 result = "passed";
@@ -173,7 +207,9 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
             else  temp = "partials/page.html";
             var percentageOfChange = (100 / 6 ) - 0.0001;
             $rootScope.dynamicProgressStep = percentageOfChange;
-            slides.push({'page': temp, 'index': i, 'progress': (i + 1) * percentageOfChange % 100, 'title': title , 'mustFields': mustFields});
+            $rootScope.mustFields.push({'index' : i ,  'mustFields': mustFields });
+            $rootScope.$broadcast("changedMustFields" , $rootScope.mustFields);
+            slides.push({'page': temp, 'index': i, 'progress': (i + 1) * percentageOfChange % 100, 'title': title });
         };
         $scope.addSlide(0, "User Info" ,[]);
         $scope.addSlide(1, "Core Info" ,["title" , "description"]);
