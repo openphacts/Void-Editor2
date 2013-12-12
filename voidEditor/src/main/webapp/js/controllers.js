@@ -59,53 +59,76 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
 
         $rootScope.$on("changedMustFields", function(ev, data){
             $rootScope.mustFields = data;
-            console.log(data);
         })
 
-        $rootScope.checkMustFieldsOnPreviousPage =  function ( index) {
-            for (var i = 0; i < $rootScope.mustFields.length; i++) {
-                if ($rootScope.mustFields[i].index == index){
-                    for (var j = 0 ; j < $rootScope.mustFields[i].mustFields.length ; j++)
-                    {
-                        var mustFieldsToCheck = $rootScope.mustFields[i].mustFields[j];
-                        if (mustFieldsToCheck == "title" && ( $rootScope.data.description.length < 2) ) {
-                            var addAlert = true;
-                            for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
-                                if ($rootScope.alerts[k].id == "title") addAlert = false;
+        $rootScope.checkMustFieldsOnPreviousPage =  function (index) {
+            if (index >= 0 && index <  $rootScope.mustFields.length )
+            {
+
+                for (var i = 0; i < $rootScope.mustFields.length; i++) {
+                    if ($rootScope.mustFields[i].index == index){
+                        for (var j = 0 ; j < $rootScope.mustFields[i].mustFields.length ; j++)
+                        {
+                            var mustFieldsToCheck = $rootScope.mustFields[i].mustFields[j];
+                            if (mustFieldsToCheck == "title" && ( $rootScope.data.description.length < 2) ) {
+                                var addAlert = true;
+                                for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                    if ($rootScope.alerts[k].id == "title") addAlert = false;
+                                }
+                                if (addAlert == true ) $rootScope.alerts.push({ id:"title" ,type: 'error', msg: 'Ooops! You forgot to gives us a title for your dataset! Please provide this information.' });
+                            } else  if (mustFieldsToCheck == "title" && ( $rootScope.data.description.length > 2) ){
+                                for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                    if ($rootScope.alerts[k].id == "title")$rootScope.alerts.splice(k, 1);
+                                }
                             }
-                            if (addAlert == true ) $rootScope.alerts.push({ id:"title" ,type: 'error', msg: 'Ooops! You forgot to gives us a title for your dataset! Please provide this information.' });
-                        }
-                        if (mustFieldsToCheck == "description" && ( $rootScope.data.description.length < 5)) {
-                            var addAlert = true;
-                            for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
-                                if ($rootScope.alerts[k].id == "description") addAlert = false;
+                            if (mustFieldsToCheck == "description" && ( $rootScope.data.description.length < 5)) {
+                                var addAlert = true;
+                                for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                    if ($rootScope.alerts[k].id == "description") addAlert = false;
+                                }
+                                if (addAlert == true ) $rootScope.alerts.push({ id:"description",type: 'error', msg: 'Ooops! You forgot to gives us a description! Please provide this information.' });
+                            } else  if (mustFieldsToCheck ==  "description" && ( $rootScope.data.description.length > 5) ){
+                                for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                    if ($rootScope.alerts[k].id == "description")$rootScope.alerts.splice(k, 1);
+                                }
                             }
-                            if (addAlert == true ) $rootScope.alerts.push({ id:"description",type: 'error', msg: 'Ooops! You forgot to gives us a description! Please provide this information.' });
-                        }
-                        if (mustFieldsToCheck == "publisher" && ( $rootScope.data.publisher.indexOf("http") == -1)) {
-                            var addAlert = true;
-                            for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
-                                if ($rootScope.alerts[k].id == "publisher") addAlert = false;
+                            if (mustFieldsToCheck == "publisher" && ( $rootScope.data.publisher.indexOf("http") == -1)) {
+                                var addAlert = true;
+                                for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                    if ($rootScope.alerts[k].id == "publisher") addAlert = false;
+                                }
+                                if (addAlert == true ) $rootScope.alerts.push({ id:"publisher", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the publisher you choose! Please provide this information.' });
+                            }else  if (mustFieldsToCheck ==  "publisher" && ( $rootScope.data.publisher.indexOf("http") >= 0) ){
+                                for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                    if ($rootScope.alerts[k].id == "publisher")$rootScope.alerts.splice(k, 1);
+                                }
                             }
-                            if (addAlert == true ) $rootScope.alerts.push({ id:"publisher", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the publisher you choose! Please provide this information.' });
-                        }
-                        if (mustFieldsToCheck == "webpage" && ( $rootScope.data.webpage.indexOf("http") == -1)) {
-                            var addAlert = true;
-                            for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
-                                if ($rootScope.alerts[k].id == "webpage") addAlert = false;
+                            if (mustFieldsToCheck == "webpage" && ( $rootScope.data.webpage.indexOf("http") == -1)) {
+                                var addAlert = true;
+                                for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                    if ($rootScope.alerts[k].id == "webpage") addAlert = false;
+                                }
+                                if (addAlert == true ) $rootScope.alerts.push({ id:"webpage", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the webpage of your documentation! Please provide this information.' });
+                            }else  if (mustFieldsToCheck ==  "webpage" && ( $rootScope.data.webpage.indexOf("http") >= 0 ) ){
+                                for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                    if ($rootScope.alerts[k].id == "webpage")$rootScope.alerts.splice(k, 1);
+                                }
                             }
-                            if (addAlert == true ) $rootScope.alerts.push({ id:"webpage", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the webpage of your documentation! Please provide this information.' });
-                        }
-                        if (mustFieldsToCheck == "downloadFrom" && ( $rootScope.data.downloadFrom.indexOf("http") == -1)) {
-                            var addAlert = true;
-                            for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
-                                if ($rootScope.alerts[k].id == "downloadFrom") addAlert = false;
+                            if (mustFieldsToCheck == "downloadFrom" && ( $rootScope.data.downloadFrom.indexOf("http") == -1)) {
+                                var addAlert = true;
+                                for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                    if ($rootScope.alerts[k].id == "downloadFrom") addAlert = false;
+                                }
+                                if (addAlert == true ) $rootScope.alerts.push({ id:"downloadFrom" , type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF data from! Please provide this information.' });
+                            }else  if (mustFieldsToCheck ==  "downloadFrom" && ( $rootScope.data.downloadFrom.length > 2) ){
+                                for(var k = 0 ; k < $rootScope.alerts.length ; k++ ){
+                                    if ($rootScope.alerts[k].id == "downloadFrom")$rootScope.alerts.splice(k, 1);
+                                }
                             }
-                            if (addAlert == true ) $rootScope.alerts.push({ id:"downloadFrom" , type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF data from! Please provide this information.' });
                         }
                     }
-                }
 
+                }
             }
         };
 
@@ -126,8 +149,6 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
             }
             voidData.setUriForSourcesExist(result);
         });
-
-
 
         $rootScope.$on('SuccessDownload', function (event) {
             $rootScope.alerts.push({ type: 'success', msg: 'Well done! You successfully downloaded your void.ttl!' });
@@ -221,11 +242,6 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
         $scope.changeProgressBar = function (change) {
             $rootScope.dynamicProgress = change;
         }
-
-//        $scope.checkMustFieldsOnPreviousPage = function(index){
-//            if ( index < $scope.slides.length && index > 0)
-//                $rootScope.$broadcast('checkMustFieldsOnPreviousPage', $scope.slides[index].mustFields );
-//        }
 
     }
 ]);

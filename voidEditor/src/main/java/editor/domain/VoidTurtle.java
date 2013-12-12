@@ -130,7 +130,7 @@ public class VoidTurtle {
          Literal issueDescriptionLiteral = voidModel.createTypedLiteral(now);
          Literal createdByNameLiteral = voidModel.createLiteral(userName, "en");
          Resource createdByEmailResource = voidModel.createResource( "mailto:"+ userEmail);
-         Resource createdWith = voidModel.createResource("http://voideditor.cs.man.ac.uk/voidEditor/");
+         Resource createdWith = voidModel.createResource("http://voideditor.cs.man.ac.uk/");
          
          Calendar publishmentDate = Calendar.getInstance();
          publishmentDate.set( getYearPublish(),getMonthPublish() -1 , getDatePublish());

@@ -1,10 +1,10 @@
-<div class="span12 carousel-content" ng-controller="editorFormCtrl">
+<div class="span12 carousel-content" ng-controller="editorFormCtrl" >
     <span ng-switch="slide.active">
       <div  ng-switch-when="true">{{changeProgressBar(slide.progress)  }}</div>
       <div  ng-switch-when="false"></div>
     </span>
 
-    <div class="span10 offset2" ng-mouseenter="checkMustFieldsOnPreviousPage(slide.index - 1);">
+    <div class="span10 offset2" >
 
         <div class="row">
             <div class="span6 offset1" >

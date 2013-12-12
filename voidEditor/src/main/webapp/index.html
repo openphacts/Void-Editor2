@@ -43,10 +43,9 @@
                     <script type="text/ng-template" id="myModalContentAbout.html">
                         <div class="modal-header">
                             <img src="img/manch.png" alt="UoM logo"/>
-                            <h3>About the Void Editor v2</h3>
+                            <h3 class="h3NeededFields "> About the Void Editor v2</h3>
                         </div>
                         <div class="modal-body" >
-                             <br>
                             <p>The Open PHACTS VoID editor v2 is developed and maintained by
                                 <a href="http://ltatakis.com"  target="_blank"
                                    rel="dcterms:creator doap:maintainer">Lefteris Tatakis</a>, as a final year
@@ -69,7 +68,6 @@
                                 contact <a href="mailto:eleftherios.tatakis@student.manchester.com">email</a>.
                             </p>
                             <br>
-                            <br>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-warning" ng-click="closeModal()">Close</button>
@@ -78,7 +76,6 @@
                     <a  ng-click="open();" target="_blank">About</a>
                 </li>
              </ul>
-
          </div>
      </div>
 
@@ -89,8 +86,8 @@
                <table style="width: 100%; text-align: center;" >
                  <tr>
                      <td class="progressBar" ng-repeat="slide in slides" style="width:{{dynamicProgressStep}}%;">
-                          <p ng-if="slide.progress <= dynamicProgress" class="thickWhite" ng-click="slide.active = true" >{{slide.title}} </p>
-                          <p ng-if="slide.progress > dynamicProgress"  class="thickBlack"  ng-click="slide.active = true">{{slide.title}} </p>
+                          <p ng-if="slide.progress <= dynamicProgress" class="thickWhite" for="slide.index" ng-click="slide.active = true" >{{slide.title}} </p>
+                          <p ng-if="slide.progress > dynamicProgress"  class="thickBlack"  for="slide.index" ng-click="slide.active = true">{{slide.title}} </p>
                      </td>
                  </tr>
              </table>
@@ -102,7 +99,7 @@
             <form role="form" class="form-inline simple-form" role="form" novalidate>
                 <carousel interval="interval"  class="carousel">
                     <slide ng-repeat="slide in slides" active="slide.active">
-                        <div class="custom_carousel" >
+                        <div class="custom_carousel" ng-mouseenter="checkMustFieldsOnPreviousPage(slide.index - 1);">
                             <alert class="myAlert" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
                             <div class="include" ng-include="slide.page" >
                             </div>
