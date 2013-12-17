@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="editorApp" ng-controller="editorCtrl">
+<html lang="en" id="ng-app" ng-app="editorApp" ng-controller="editorCtrl">
 <head>
   <meta charset="utf-8">
   <meta name="description" content="Dataset Description Tool">
@@ -25,6 +25,9 @@
             You are strongly advised to update.
         </div>
     </alert>
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <script src="/lib/json2.js"></script>
     <![endif]-->
 </header>
 
@@ -78,7 +81,6 @@
              </ul>
          </div>
      </div>
-
      <div class="row span12">
          <div class="progress">
              <div class="bar" style="width:{{dynamicProgress}}%;"></div>
@@ -87,7 +89,7 @@
                  <tr>
                      <td class="progressBar" ng-repeat="slide in slides" style="width:{{dynamicProgressStep}}%;">
                           <p ng-if="slide.progress <= dynamicProgress" class="thickWhite" for="slide.index" ng-click="slide.active = true" >{{slide.title}} </p>
-                          <p ng-if="slide.progress > dynamicProgress"  class="thickBlack"  for="slide.index" ng-click="slide.active = true">{{slide.title}} </p>
+                          <p ng-if="slide.progress > dynamicProgress" class="thickBlack" for="slide.index" ng-click="slide.active = true">{{slide.title}} </p>
                      </td>
                  </tr>
              </table>

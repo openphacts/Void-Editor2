@@ -17,11 +17,19 @@ div.custom_carousel {
     margin-top: 50px;
 }
 
-h1, h3{text-align: center; vertical-align: middle;}
+h1, h3{text-align: center;vertical-align: middle; }
 .h4NeededFields{text-decoration:underline}
 .h3NeededFields{text-decoration:underline}
 .carousel-indicators{
     display: none;
+}
+
+.spanHalfAndABit {
+    width: 39px;
+}
+
+.input-small {
+    width: 77px;
 }
 
 .centerText{
@@ -99,6 +107,11 @@ p.thickBlack{
     cursor: pointer;
 }
 
+p.thickBlue{
+    color:blue;
+    font-weight:bold;
+    cursor: pointer;
+}
 /* Changing the height from bootstrap-combined to follow general bootstrap standards*/
 select, input[type="text"],input[type="password"],input[type="datetime"],input[type="datetime-local"],input[type="date"],input[type="month"],input[type="time"],input[type="week"],input[type="number"],input[type="email"],input[type="url"],input[type="search"],input[type="tel"],input[type="color"],.uneditable-input{display:inline-block;height:30px ; padding:4px 6px;margin-bottom:0px;font-size:14px;line-height:20px;color:#555555;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;vertical-align:middle;}
 label,input,button,select,textarea{font-size:17px;font-weight:normal;line-height:23px;}

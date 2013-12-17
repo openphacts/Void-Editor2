@@ -25,9 +25,10 @@
                 </div>
                 <div class="panel-body" id="accordion" style="font-size:17px;">
                     <ul class="list-group">
-                        <li ng-repeat="source in sources" class="thumbnail" >
+                        <li ng-repeat="source in sources" class="thumbnail">
                             {{source.title}}
-                            <span class="glyphicon glyphicon-plus pull-right" ng-click="addToSelected( source.title)"></span>
+                            <span class="glyphicon glyphicon-plus pull-right"
+                                  ng-click="addToSelected( source.title)"></span>
                         </li>
 
                     </ul>
@@ -54,7 +55,7 @@
                         <li ng-repeat="source in userSources" class="thumbnail">
                             <table>
                                 <tr>
-                                    <td class="span3">
+                                    <td class="span3" style="font-size:14px;">
                                         {{ source.title}}
                                     </td>
                                     <td class="">
@@ -70,15 +71,64 @@
                                     </td>
                                 </tr>
                             </table>
-                            <div class="form-group row">
-                                <div class="span3AndABit" style="text-align: center;">
-                                    <input class="input-large" ng-show="source.noURI" name="noURI" required
-                                           ng-model="source.URI" type="url" placeholder="http://">
-                                    <img ng-show="source.noURI" src="img/QuestionMarkIcon16.gif"
-                                         popover-placement="right" popover-trigger="mouseenter"
-                                         popover="Please make sure URL specified which contains 'http://'. This information is required.">
-                                </div>
+
+                            <div class="form-group row span3 ">
+                                <span ng-hide="isCollapsed"> Version / Release ID*: </span>
+                                <input class="input-small" ng-hide="isCollapsed" required ng-model="source.version"
+                                       type="url" collapse="isCollapsed"
+                                       placeholder="1.0.0">
+                                <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
+                                     popover-placement="right" popover-trigger="mouseenter"
+                                     popover="Please specify version of dataset you are referencing. This information is required.">
                             </div>
+
+                            <div class="form-group row span3" collapse="isCollapsed"></div>
+                            <div class="form-group row span3" ng-show="source.noURI">
+                                <span class="spanHalfAndABit" ng-hide="isCollapsed">URI*:</span>
+                                <input class="input-medium" ng-hide="isCollapsed" name="noURI" required
+                                       collapse="isCollapsed"
+                                       ng-model="source.URI" type="url" placeholder="http://">
+                                <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
+                                     popover-placement="right" popover-trigger="mouseenter"
+                                     popover="Please make sure URL specified which contains 'http://'. This information is required.">
+                            </div>
+
+                            <div class="form-group row span3" collapse="isCollapsed"></div>
+                            <div class="form-group row span3" ng-show="source.noURI">
+                                <span class="spanHalfAndABit" ng-hide="isCollapsed">Doc*:</span>
+                                <input class="input-medium" ng-hide="isCollapsed" name="noURI" required
+                                       collapse="isCollapsed"
+                                       ng-model="source.doc" type="url" placeholder="http://">
+                                <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
+                                     popover-placement="right" popover-trigger="mouseenter"
+                                     popover="A Web page that can be navigated to in a Web browser
+                                      to gain access to the dataset, its distributions and/or additional information.
+                                       This information is required and must be a URL.">
+                            </div>
+
+
+                            <div class="form-group row">
+                                <table>
+                                    <tr>
+                                        <td class="span3">
+                                            <p style="font-size:12px;  cursor: pointer;" ng-show="isCollapsed"
+                                               ng-click="isCollapsed = !isCollapsed">Additional Information</p>
+                                        </td>
+                                        <td class="">
+                                            <button class="btn  btn-primary"
+                                                    style="vertical-align: middle; text-align: center;"
+                                                    ng-show="isCollapsed" ng-click="isCollapsed = !isCollapsed ">Edit
+                                            </button>
+                                            <button class="btn  btn-primary"
+                                                    style="vertical-align: middle; text-align: center;"
+                                                    ng-show="!isCollapsed" ng-click="isCollapsed = !isCollapsed">Save
+                                            </button>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
                         </li>
                     </ul>
                 </div>

@@ -27,6 +27,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
         $rootScope.alerts = [];
         $rootScope.data.downloadFrom= "";
         $rootScope.mustFields = [];
+        $rootScope.isCollapsed = false;
 
         $rootScope.$on('TurtleChanged', function (event, x) {
             $rootScope.turtle = x;
