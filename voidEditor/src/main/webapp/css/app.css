@@ -13,6 +13,7 @@ div.custom_carousel {
 .offset1AndABit{margin-left:180px;}
 .offsetHalf{margin-left:82px;}
 .span3Half{width:200px;}
+.spanSourcesVersion{width:260px;}
 .carousel-content{
     margin-top: 50px;
 }
@@ -25,11 +26,11 @@ h1, h3{text-align: center;vertical-align: middle; }
 }
 
 .spanHalfAndABit {
-    width: 39px;
+    width: 36px;
 }
 
 .input-small {
-    width: 77px;
+    width: 79px;
 }
 
 .centerText{

@@ -227,10 +227,20 @@ public class VoidTurtle {
 	             }else{
 	            	 source.addProperty(RDF.type, Void.Dataset);
 	             }
-	             
+	             //title
 	             String[] titleSplit = splitingSetsOfInfo[0].split("="); 
 	             Literal titleLiteralTmp = voidModel.createLiteral(titleSplit[1], "en");
 	             source.addProperty(DCTerms.title, titleLiteralTmp);
+	             
+	             //version
+	             String[] versionSplit = splitingSetsOfInfo[3].split("="); 
+	             Literal versionLiteralTmp = voidModel.createLiteral(versionSplit[1], "en");
+	             source.addProperty(Pav.version, versionLiteralTmp);
+	             
+	             //webpage
+	             String[] webpageSplit = splitingSetsOfInfo[4].split("="); 
+	             Resource webpageLiteralTmp = voidModel.createResource(webpageSplit[1]);
+	             source.addProperty(DCAT.landingPage, webpageLiteralTmp);
 	             
 	 		 }
          }

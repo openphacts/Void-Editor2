@@ -11,7 +11,8 @@ var voidDataService = angular.module('voidDataService', [])
         var turtleData = "Loading...",
             fileLocation ="",
             data = {},
-            uriForSourcesExist = "passed";
+            uriForSourcesExist = "passed",
+            outputURL = '/rest/void/output';
 
         data.sources = [];
 
@@ -46,7 +47,7 @@ var voidDataService = angular.module('voidDataService', [])
 
         this.createVoid = function (){
             $rootScope.$broadcast('needData', data);
-            return $http({method: 'POST', url: '/rest/void/output' , data: data}).
+            return $http({method: 'POST', url: outputURL , data: data}).
                       error(function(data, status, headers, config) {
                                console.log("Error in creating void - Status: " + status + "   data=>" + data);
                        }).
@@ -89,7 +90,7 @@ var voidDataService = angular.module('voidDataService', [])
             console.log("going to do ajax call.");
             $.ajax({
                 type: 'POST',
-                url: '/rest/void/output',
+                url: outputURL,
                 data: JSON.stringify( data ),
                 contentType: "application/json",
                 beforeSend : function (){

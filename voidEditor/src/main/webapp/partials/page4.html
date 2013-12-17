@@ -72,19 +72,19 @@
                                 </tr>
                             </table>
 
-                            <div class="form-group row span3 ">
+                            <div class="form-group row spanSourcesVersion ">
                                 <span ng-hide="isCollapsed"> Version / Release ID*: </span>
                                 <input class="input-small" ng-hide="isCollapsed" required ng-model="source.version"
-                                       type="url" collapse="isCollapsed"
+                                       type="text" collapse="isCollapsed"
                                        placeholder="1.0.0">
                                 <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
                                      popover-placement="right" popover-trigger="mouseenter"
                                      popover="Please specify version of dataset you are referencing. This information is required.">
                             </div>
 
-                            <div class="form-group row span3" collapse="isCollapsed"></div>
-                            <div class="form-group row span3" ng-show="source.noURI">
-                                <span class="spanHalfAndABit" ng-hide="isCollapsed">URI*:</span>
+                            <div class="form-group row spanSourcesVersion" collapse="isCollapsed"></div>
+                            <div class="form-group row spanSourcesVersion" ng-show="source.noURI">
+                                <span style="margin-right: 35px;" ng-hide="isCollapsed">URI*:</span>
                                 <input class="input-medium" ng-hide="isCollapsed" name="noURI" required
                                        collapse="isCollapsed"
                                        ng-model="source.URI" type="url" placeholder="http://">
@@ -94,18 +94,17 @@
                             </div>
 
                             <div class="form-group row span3" collapse="isCollapsed"></div>
-                            <div class="form-group row span3" ng-show="source.noURI">
-                                <span class="spanHalfAndABit" ng-hide="isCollapsed">Doc*:</span>
-                                <input class="input-medium" ng-hide="isCollapsed" name="noURI" required
+                            <div class="form-group row spanSourcesVersion" ng-show="source.noURI">
+                                <span ng-hide="isCollapsed">Webpage*:</span>
+                                <input class="input-medium" ng-hide="isCollapsed" name="noURI"
                                        collapse="isCollapsed"
-                                       ng-model="source.doc" type="url" placeholder="http://">
+                                       ng-model="source.webpage" type="url" placeholder="http://">
                                 <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
                                      popover-placement="right" popover-trigger="mouseenter"
                                      popover="A Web page that can be navigated to in a Web browser
                                       to gain access to the dataset, its distributions and/or additional information.
                                        This information is required and must be a URL.">
                             </div>
-
 
                             <div class="form-group row">
                                 <table>

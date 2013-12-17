@@ -134,16 +134,26 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
         };
 
         $rootScope.$on('checkSources', function (event) {
-            var noURI = -1;
+            var noURI = -1,
+                noVersion=-1,
+                noWebpage =-1;
             var result;
             for (var i = 0; i < $rootScope.data.sources.length; i++) {
                 if ($rootScope.data.sources[i].URI == "") noURI = i;
+                if ($rootScope.data.sources[i].version == "") noVersion = i;
+                if ($rootScope.data.sources[i].webpage == "") noWebpage = i;
             }
             if (noURI != -1) {
                 $rootScope.alerts.push({ id:"URI" , type: 'error', msg: 'Ooops! You forgot to gives us a URI for the source you cited! Please provide this information.' });
                 result = "failed";
+            }else if (noVersion != -1) {
+                $rootScope.alerts.push({ id:"versionSource", type: 'error', msg: 'Ooops! You forgot to gives us a version for the source you cited! Please provide this information.' });
+                result = "failed";
             }else if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("http") == -1)) {
                 $rootScope.alerts.push({ id:"licence", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the licence you choose! Please provide this information.' });
+                result = "failed";
+            }else if ( noWebpage != -1) {
+                $rootScope.alerts.push({ id:"webpageSource", type: 'error', msg: 'Ooops! You forgot to gives us a URL for source you cited! Please provide this information.' });
                 result = "failed";
             } else {
                 result = "passed";
@@ -152,7 +162,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
         });
 
         $rootScope.$on('SuccessDownload', function (event) {
-            $rootScope.alerts.push({ type: 'success', msg: 'Well done! You successfully downloaded your void.ttl!' });
+            $rootScope.alerts.push({ type: 'success', msg: 'Well done! You successfully downloaded your void.ttl! - If download does not start, please make sure you allow popups.' });
         });
 
         $rootScope.fieldsToAdd = function(){
@@ -184,13 +194,26 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
             }
 
             var noURI = -1;
+            var noVersion =-1
+            var noWebpage =-1
             for (var i = 0; i < $rootScope.data.sources.length; i++) {
                 if ($rootScope.data.sources[i].URI == "") noURI = i;
+                if ($rootScope.data.sources[i].version == "") noVersion = i;
+                if ($rootScope.data.sources[i].webpage == "") noWebpage = i;
             }
             if (noURI != -1) {
                 if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
                 returnString +="<p class='neededFields'> A URI for the source you cited in \"Sources \" </p> ";
             }
+            if (noVersion != -1) {
+                if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
+                returnString +="<p class='neededFields'> A version number for the source you cited in \"Sources \" </p> ";
+            }
+            if (noWebpage != -1) {
+                if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
+                returnString +="<p class='neededFields'> A webpage for the source you cited in \"Sources \" </p> ";
+            }
+
             if (returnString == "")  $rootScope.disabledExport = false;
             else $rootScope.disabledExport = true;
 
@@ -287,10 +310,10 @@ editorAppControllers.controller('sourceCtrl', [ '$scope', 'JsonService', 'voidDa
                 var _about = value;
                 if (foundURI != -1) {
                     _about = $scope.aboutOfTitles[foundURI];
-                    $scope.userSources.push({"title": value, "type": "RDF", "URI": _about, "noURI": false });
+                    $scope.userSources.push({"title": value, "type": "RDF", "URI": _about, "version": "" ,  "webpage" :_about,  "noURI": false });
                 } else {
                     $scope.showInputURI = true;
-                    $scope.userSources.push({"title": value, "type": "RDF", "URI": "", "noURI": true});
+                    $scope.userSources.push({"title": value, "type": "RDF", "URI": "",  "version" : "", "webpage" : "" ,  "noURI": true });
                 }
                 voidData.setSourceData($scope.userSources);
             }
