@@ -4,18 +4,18 @@
       <div  ng-switch-when="false"></div>
      </span>
 
-    <div class="span10 offset2" >
+    <div class="span9 offset1AndABit" >
 
         <div class="row">
-            <div class="span6 offset1">
+            <div class="span7 ">
                 <h1>Publishing information for your RDF</h1>
                 <br>
             </div>
         </div>
 
         <div class="form-group row">
-            <div class="span4 offsetHalf">
-                <label class="label3" for="inputPublisher">Which institution / company is publishing these data?*</label>
+            <div class="spanLabel3">
+                <label for="inputPublisher">Which institution/company is publishing these data?*</label>
              </div>
             <div class="span3">
                 <input type="url" class="form-control input-large" id="inputPublisher"   ng-model="data.publisher" placeholder="http://" required>
@@ -27,19 +27,19 @@
         <br>
 
         <div  class="form-group row" ng-controller="DatepickerCtrl">
-            <div class="span4 offsetHalf">
-                <label class="label3" for="inputDateofPublishment">When did these RDF data get published?*</label>
+            <div class="spanLabel3">
+                <label for="inputDateofPublishment">When did these RDF data get published?*</label>
             </div>
             <div class="span3">
-                <select class="select-mini" ng-model="data.datePublish"  >
+                <select class="select-mini-date " ng-model="data.datePublish"  >
                     <option  value="{{date.name}}" ng-repeat="date in dates">{{date.name}}</option>
                 </select>
 
-                <select class="select-mini"  ng-change="checkDates(data.yearPublish,data.monthPublish )"  ng-model="data.monthPublish">
+                <select class="select-mini-date "  ng-change="checkDates(data.yearPublish,data.monthPublish )"  ng-model="data.monthPublish">
                     <option value="{{month.num}}"  ng-repeat="month in months" >{{month.name}}</option>
                 </select>
 
-                <select class="select-mini" id="inputDateofPublishment" ng-model="data.yearPublish"
+                <select class="select-mini-date " id="inputDateofPublishment" ng-model="data.yearPublish"
                             ng-change="checkDates(data.yearPublish,data.monthPublish )">
                     <option  value="{{year.name}}" ng-repeat="year in years">{{year.name}}</option>
                 </select>
@@ -52,8 +52,8 @@
         <br>
 
         <div class="form-group row">
-            <div class="span4 offsetHalf">
-                <label class="label3" for="inputWebpage">Webpage of documentation for your dataset*:</label>
+            <div class="spanLabel3 ">
+                <label for="inputWebpage">Webpage of documentation for your dataset*:</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-large" id="inputWebpage" ng-model="data.webpage" required
@@ -67,8 +67,8 @@
 
 
         <div class="form-group row">
-            <div class="span4 offsetHalf">
-                 <label class="label3" for="inputLicence">License to be applied to the dataset*:</label>
+            <div class="spanLabel3 ">
+                 <label for="inputLicence">License to be applied to the dataset*:</label>
             </div>
             <div class="span3">
                 <select class="selectpicker" id='inputLicence' ng-model="data.licence" ng-change="otherLicence(data.licence)">
@@ -90,8 +90,8 @@
         </div>
         <br>
         <div class="form-group row">
-            <div class="span4 offsetHalf">
-                <label class="label3" for="inputDownload">Where could we download your RDF from?*</label>
+            <div class="spanLabel3 ">
+                <label for="inputDownload">Where could we download your RDF from?*</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-large" id="inputDownload"  ng-model="data.downloadFrom" required
@@ -102,8 +102,8 @@
         </div>
         <br>
         <div class="form-group row">
-            <div class="span4 offsetHalf">
-                <label  class="label3" for="inputSparql">Sparql Endpoint:</label>
+            <div class="spanLabel3">
+                <label for="inputSparql">Sparql Endpoint:</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-large" id="inputSparql"

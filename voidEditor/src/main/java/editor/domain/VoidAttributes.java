@@ -3,7 +3,8 @@ package editor.domain;
 
 
 public class VoidAttributes{
-	  public String userName = "";	
+	  public String givenName = "";	
+	  public String familyName = "";
 	  public String userEmail= "";
 	  public String title= "" ;
 	  public String description = ""; 

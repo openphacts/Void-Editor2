@@ -17,7 +17,7 @@ public class testVoidTurtle {
 	public static void setup(){
 		testInput = new VoidAttributes();
 		//Just going to set most basic attributes
-		testInput.userName = "Lefteris";	
+		testInput.familyName = "Lefteris";	
 		testInput.userEmail= "lefteris@test.com";
 		testInput.title= "A test case" ;
 		testInput.description = "This is a junit test!"; 
@@ -38,7 +38,7 @@ public class testVoidTurtle {
 		VoidAttributes testInput2 = new VoidAttributes();
 		
 		//Just going to set most basic attributes
-		testInput2.userName = "Lefteris";	
+		testInput2.familyName = "Lefteris";	
 		testInput2.datePublish= "N/A";
   	  	testInput2.monthPublish= "12";
  		testInput2.yearPublish= "2013";

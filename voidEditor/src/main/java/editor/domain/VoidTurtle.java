@@ -68,7 +68,7 @@ public class VoidTurtle {
 	 * @param obj This object provides all data extracted from Angular side.
 	 */
 	public VoidTurtle(VoidAttributes obj){
-		this.userName = obj.userName;
+		this.userName = obj.familyName + ", " + obj.givenName;
 		this.userEmail = obj.userEmail;
 		this.title = obj.title;
 		this.description = obj.description ; 
@@ -152,10 +152,11 @@ public class VoidTurtle {
          voidDescriptionBase.addProperty(DCTerms.issued, issueDescriptionLiteral);
          String URI4Person = "http://voideditor.cs.man.ac.uk/" + UUID.randomUUID();
          Resource resourceForPerson = voidModel.createResource(URI4Person);
-         voidBase.addProperty(Pav.createdBy, resourceForPerson);
+         voidDescriptionBase.addProperty(Pav.createdBy, resourceForPerson);
          resourceForPerson.addProperty(RDF.type, FOAF.Person);
          resourceForPerson.addProperty( FOAF.name, createdByNameLiteral  );
          resourceForPerson.addProperty( FOAF.mbox , createdByEmailResource );
+         
          voidDescriptionBase.addProperty(Pav.createdWith, createdWith);
          
          voidDescriptionBase.addLiteral(Pav.createdOn, nowDescriptionLiteral);

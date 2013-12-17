@@ -5,12 +5,12 @@ div.custom_carousel {
     min-height:500px;
     max-width:100%;
     max-height:1000px;
-    overflow:hidden;
+    /*overflow:hidden;*/
     display:block;
     border-top:1px solid red;
     border-bottom:1px solid red;
 }
-
+.offset1AndABit{margin-left:180px;}
 .offsetHalf{margin-left:82px;}
 .span3Half{width:200px;}
 .carousel-content{
@@ -24,18 +24,34 @@ h1, h3{text-align: center; vertical-align: middle;}
     display: none;
 }
 
-.label1 { display: block; width: 230px; }
-.label2 { display: block; width: 270px;  }
-.label3 { display: block; width: 400px;  }
+.centerText{
+    margin-left:70px;
+    vertical-align: middle;
+}
+
+
 footer {
     text-align: center;
     vertical-align: middle;
+}
+
+.spanLabel1{width:220px;}
+.spanLabel2{width:270px;}
+.spanLabel3{width:410px;}
+.span3AndABit {
+    width: 280px;
 }
 
 .select-mini {
     font-size: 11px;
     height: 30px;
     width:80px;
+}
+
+.select-mini-date {
+    font-size: 11px;
+    height: 30px;
+    width:70px;
 }
 ul
 {
@@ -46,7 +62,6 @@ ul
 .neededFields{
     color: red;
 }
-
 
 .myAlert{
     z-index: 4;
@@ -116,17 +131,13 @@ label,input,button,select,textarea{font-size:17px;font-weight:normal;line-height
     width: 100%;
 }
 
-.rotateTabs {
+.menuTabs{
+    position: fixed;
+    right: -80px;
+    top: 47%;
     transform:rotate(90deg);
     -ms-transform:rotate(90deg); /* IE 9 */
     -webkit-transform:rotate(90deg); /* Safari and Chrome */
-
-}
-
-.menuTabs{
-    position: fixed;
-    right: 0;
-    top: 50%;
 }
 
 .nav>li>a#survey:hover, .nav>li>a#survey:focus {
@@ -166,4 +177,27 @@ label,input,button,select,textarea{font-size:17px;font-weight:normal;line-height
     border-radius: 23px;
     opacity: 0.5;
     filter: alpha(opacity=50);
+}
+
+.modal-body{position:relative;overflow-y:auto;max-height:510px; padding:15px;}
+.modal {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    z-index: 1050;
+    width: 709px;
+    margin-left: -280px;
+    background-color: #ffffff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    outline: none;
 }

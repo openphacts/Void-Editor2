@@ -208,7 +208,7 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
         $rootScope.downloadFile = function () {
             voidData.createVoidAndDownload();
             console.log("Going to open window");
-            window.open('/voidEditor/rest/void/file');
+            window.open('/rest/void/file');
             $rootScope.$broadcast('SuccessDownload');
         };
     }]);

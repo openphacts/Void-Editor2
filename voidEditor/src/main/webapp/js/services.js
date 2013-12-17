@@ -46,7 +46,7 @@ var voidDataService = angular.module('voidDataService', [])
 
         this.createVoid = function (){
             $rootScope.$broadcast('needData', data);
-            return $http({method: 'POST', url: '/voidEditor/rest/void/output' , data: data}).
+            return $http({method: 'POST', url: '/rest/void/output' , data: data}).
                       error(function(data, status, headers, config) {
                                console.log("Error in creating void - Status: " + status + "   data=>" + data);
                        }).
@@ -73,7 +73,7 @@ var voidDataService = angular.module('voidDataService', [])
         };
 
         this.deleteFile = function() {
-            $http({method: 'DELETE', url: '/voidEditor/rest/void/delete' }).
+            $http({method: 'DELETE', url: '/rest/void/delete' }).
                 success(function(data, status, headers, config) {
                     console.log("Deleted file");
                 }).
@@ -89,7 +89,7 @@ var voidDataService = angular.module('voidDataService', [])
             console.log("going to do ajax call.");
             $.ajax({
                 type: 'POST',
-                url: '/voidEditor/rest/void/output',
+                url: '/rest/void/output',
                 data: JSON.stringify( data ),
                 contentType: "application/json",
                 beforeSend : function (){

@@ -109,22 +109,14 @@
             </form>
 
             <div class="container-fluid">
-                <div class="btn-group dropup">
-                    <button type="button" class="btn btn-default dropdown-toggle">Advanced User</button>
-                    <ul class="dropdown-menu">
-                        <li ng-repeat="slide in slides">
-                            <button class="btn btn-default btn-block" ng-click="slide.active = true">{{slide.title}}</button>
-                        </li>
-                    </ul>
-                </div>
+                <button type="button" class="btn btn-default" ng-disabled="true">Import VoID</button>
                 <div ng-controller="ModalExportCtrl" class="pull-right">
                     <script type="text/ng-template" id="myModalContent.html">
                         <div class="modal-header">
                             <h3>VoID Produced</h3>
                         </div>
                         <div class="modal-body" >
-
-                            <textarea class="field span8" rows="15" id="modal" columns="15">
+                            <textarea class="field span7" rows="20" id="modal" columns="15">
                                 {{data}}
                             </textarea>
                         </div>
@@ -146,7 +138,7 @@
    </div>
 </div>
 <div class="menuTabs">
-    <ul class="nav nav-pills pull-right  rotateTabs ">
+    <ul class="nav nav-pills pull-right  ">
         <li  style="background-color: greenyellow ;  border-radius:20px;  margin-right: 10px; ">
             <a id="survey" style="color:white;" href="https://www.surveymonkey.com/s/ZNB6KD6" target="_blank">Survey</a>
         </li>

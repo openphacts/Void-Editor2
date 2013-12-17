@@ -17,7 +17,7 @@ public class testVoidService {
 	public static void setup(){
 		testInput = new VoidAttributes();
 		//Just going to set most basic attributes
-		testInput.userName = "Lefteris";	
+		testInput.givenName = "Lefteris";	
 		testInput.userEmail= "lefteris@test.com";
 		testInput.title= "A test case" ;
 		testInput.description = "This is a junit test!"; 
