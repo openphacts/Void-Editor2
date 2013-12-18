@@ -239,8 +239,13 @@ public class VoidTurtle {
 	             
 	             //webpage
 	             String[] webpageSplit = splitingSetsOfInfo[4].split("="); 
-	             Resource webpageLiteralTmp = voidModel.createResource(webpageSplit[1]);
-	             source.addProperty(DCAT.landingPage, webpageLiteralTmp);
+	             Resource webpageResourceTmp = voidModel.createResource(webpageSplit[1]);
+	             source.addProperty(DCAT.landingPage, webpageResourceTmp);
+	             
+	             //description
+	             String[] descriptionSplit = splitingSetsOfInfo[5].split("="); 
+	             Literal descriptionLiteralTmp = voidModel.createLiteral(descriptionSplit[1], "en");
+	             source.addProperty(DCTerms.description, descriptionLiteralTmp);
 	             
 	 		 }
          }

@@ -136,12 +136,14 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
         $rootScope.$on('checkSources', function (event) {
             var noURI = -1,
                 noVersion=-1,
-                noWebpage =-1;
+                noWebpage =-1,
+                noDescription = -1;
             var result;
             for (var i = 0; i < $rootScope.data.sources.length; i++) {
                 if ($rootScope.data.sources[i].URI == "") noURI = i;
                 if ($rootScope.data.sources[i].version == "") noVersion = i;
                 if ($rootScope.data.sources[i].webpage == "") noWebpage = i;
+                if ($rootScope.data.sources[i].description == "") noDescription = i;
             }
             if (noURI != -1) {
                 $rootScope.alerts.push({ id:"URI" , type: 'error', msg: 'Ooops! You forgot to gives us a URI for the source you cited! Please provide this information.' });
@@ -154,6 +156,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
                 result = "failed";
             }else if ( noWebpage != -1) {
                 $rootScope.alerts.push({ id:"webpageSource", type: 'error', msg: 'Ooops! You forgot to gives us a URL for source you cited! Please provide this information.' });
+                result = "failed";
+            } else if ( noDescription != -1) {
+                $rootScope.alerts.push({ id:"descriptionSource", type: 'error', msg: 'Ooops! You forgot to gives us a description for source you cited! Please provide this information.' });
                 result = "failed";
             } else {
                 result = "passed";
@@ -194,12 +199,14 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
             }
 
             var noURI = -1;
-            var noVersion =-1
-            var noWebpage =-1
+            var noVersion =-1;
+            var noWebpage =-1;
+            var noDescription = -1;
             for (var i = 0; i < $rootScope.data.sources.length; i++) {
                 if ($rootScope.data.sources[i].URI == "") noURI = i;
                 if ($rootScope.data.sources[i].version == "") noVersion = i;
                 if ($rootScope.data.sources[i].webpage == "") noWebpage = i;
+                if ($rootScope.data.sources[i].description == "") noDescription = i;
             }
             if (noURI != -1) {
                 if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
@@ -212,6 +219,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope','$rootScope' , 'voidDa
             if (noWebpage != -1) {
                 if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
                 returnString +="<p class='neededFields'> A webpage for the source you cited in \"Sources \" </p> ";
+            }
+            if (noDescription != -1) {
+                if (returnString =="") returnString += "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
+                returnString +="<p class='neededFields'> A description for the source you cited in \"Sources \" </p> ";
             }
 
             if (returnString == "")  $rootScope.disabledExport = false;
@@ -310,10 +321,10 @@ editorAppControllers.controller('sourceCtrl', [ '$scope', 'JsonService', 'voidDa
                 var _about = value;
                 if (foundURI != -1) {
                     _about = $scope.aboutOfTitles[foundURI];
-                    $scope.userSources.push({"title": value, "type": "RDF", "URI": _about, "version": "" ,  "webpage" :_about,  "noURI": false });
+                    $scope.userSources.push({"title": value, "type": "RDF", "URI": _about, "version": "" ,  "webpage" :_about, "description" : "N/A",  "noURI": false });
                 } else {
                     $scope.showInputURI = true;
-                    $scope.userSources.push({"title": value, "type": "RDF", "URI": "",  "version" : "", "webpage" : "" ,  "noURI": true });
+                    $scope.userSources.push({"title": value, "type": "RDF", "URI": "",  "version" : "", "webpage" : "" , "description" :"" ,"noURI": true });
                 }
                 voidData.setSourceData($scope.userSources);
             }

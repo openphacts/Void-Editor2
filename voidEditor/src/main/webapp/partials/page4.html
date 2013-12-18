@@ -84,7 +84,7 @@
 
                             <div class="form-group row spanSourcesVersion" collapse="isCollapsed"></div>
                             <div class="form-group row spanSourcesVersion" ng-show="source.noURI">
-                                <span style="margin-right: 35px;" ng-hide="isCollapsed">URI*:</span>
+                                <span style="margin-right: 37px;" ng-hide="isCollapsed">URI*:</span>
                                 <input class="input-medium" ng-hide="isCollapsed" name="noURI" required
                                        collapse="isCollapsed"
                                        ng-model="source.URI" type="url" placeholder="http://">
@@ -93,7 +93,7 @@
                                      popover="Please make sure URL specified which contains 'http://'. This information is required.">
                             </div>
 
-                            <div class="form-group row span3" collapse="isCollapsed"></div>
+                            <div class="form-group row span3" ng-show="source.noURI"></div>
                             <div class="form-group row spanSourcesVersion" ng-show="source.noURI">
                                 <span ng-hide="isCollapsed">Webpage*:</span>
                                 <input class="input-medium" ng-hide="isCollapsed" name="noURI"
@@ -104,6 +104,16 @@
                                      popover="A Web page that can be navigated to in a Web browser
                                       to gain access to the dataset, its distributions and/or additional information.
                                        This information is required and must be a URL.">
+                            </div>
+                            <div class="form-group row span3" ng-show="source.noURI"></div>
+                            <div class="form-group row spanSourcesVersion" ng-show="source.noURI">
+                                <span ng-hide="isCollapsed">Description*:</span>
+                                <input class="input-medium-description" ng-hide="isCollapsed" name="noURI"
+                                       collapse="isCollapsed"
+                                       ng-model="source.description" type="text" placeholder="Please provide...">
+                                <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
+                                     popover-placement="right" popover-trigger="mouseenter"
+                                     popover="A description of the dataset so we can understand it contains. This information is required.">
                             </div>
 
                             <div class="form-group row">

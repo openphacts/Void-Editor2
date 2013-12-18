@@ -29,6 +29,8 @@ h1, h3{text-align: center;vertical-align: middle; }
     width: 36px;
 }
 
+.input-medium-description{width:140px;}
+
 .input-small {
     width: 79px;
 }
