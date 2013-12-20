@@ -217,41 +217,46 @@ public class VoidTurtle {
 	        	 String tmpValue = sources.get(i).toString();
 	        	 System.out.println(tmpValue);
 	        	 String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val } 
-	        	 // Extract source URI first to be able to create the correct structure in the void.
 	        	 
-	        	 // Source is placed as the 3rd element in the array
-	        	 String[] sourceInfoToVariableAndValue = splitingSetsOfInfo[2].split("="); 
-	 			 Resource source = voidModel.createResource(sourceInfoToVariableAndValue[1].replace("}","")); // URI
-	             voidBase.addProperty(Pav.importedFrom, source);
-	             
-	             // check if RDF resource or not
-	             // Type is 2nd element
-	             String[] splitType = splitingSetsOfInfo[1].split("="); 
-	             if (splitType[1].contains("-")) {
-	            	 source.addProperty(RDF.type, DCTypes.Dataset);
-	             }else{
-	            	 source.addProperty(RDF.type, Void.Dataset);
-	             }
-	             //title
-	             String[] titleSplit = splitingSetsOfInfo[0].split("="); 
-	             Literal titleLiteralTmp = voidModel.createLiteral(titleSplit[1], "en");
-	             source.addProperty(DCTerms.title, titleLiteralTmp);
-	             
-	             //version
-	             String[] versionSplit = splitingSetsOfInfo[3].split("="); 
-	             Literal versionLiteralTmp = voidModel.createLiteral(versionSplit[1], "en");
-	             source.addProperty(Pav.version, versionLiteralTmp);
-	             
-	             //webpage
-	             String[] webpageSplit = splitingSetsOfInfo[4].split("="); 
-	             Resource webpageResourceTmp = voidModel.createResource(webpageSplit[1]);
-	             source.addProperty(DCAT.landingPage, webpageResourceTmp);
-	             
-	             //description
-	             String[] descriptionSplit = splitingSetsOfInfo[5].split("="); 
-	             Literal descriptionLiteralTmp = voidModel.createLiteral(descriptionSplit[1], "en");
-	             source.addProperty(DCTerms.description, descriptionLiteralTmp);
-	             
+	        	 Resource source = null;
+	        	 
+	        	 // Extract source URI first to be able to create the correct structure in the void.
+	        	 for(int j = 0; j <splitingSetsOfInfo.length ; j++ )
+	        	 {
+	        		 String[] couple = splitingSetsOfInfo[j].split("=");
+	        		 String property2Check = couple[0];
+	        		 String value = couple[1].replace("}","");
+	        		 if(property2Check.contains("URI")){
+	        			 source = voidModel.createResource(value);
+	        			 voidBase.addProperty(Pav.importedFrom, source);
+	        		 }
+	        	 }
+	        	 
+	        	 for(int j = 0; j <splitingSetsOfInfo.length ; j++ )
+	        	 {
+	        		 String[] couple = splitingSetsOfInfo[j].split("=");
+	        		 String property2Check = couple[0];
+	        		 String value = couple[1].replace("}","");
+	        		 if(property2Check.contains("type")){
+	    	             if (value.contains("-")) {
+	    	            	 source.addProperty(RDF.type, DCTypes.Dataset);
+	    	             }else{
+	    	            	 source.addProperty(RDF.type, Void.Dataset);
+	    	             }
+	        		 } else if(property2Check.contains("title")){
+	        			 Literal titleLiteralTmp = voidModel.createLiteral(value, "en");
+	                     source.addProperty(DCTerms.title, titleLiteralTmp);
+	        		 } else if(property2Check.contains("version")){
+	        			 Literal versionLiteralTmp = voidModel.createLiteral(value, "en");
+	    	             source.addProperty(Pav.version, versionLiteralTmp);
+	        		 } else if(property2Check.contains("webpage")){
+	        			 Resource webpageResourceTmp = voidModel.createResource(value);
+	    	             source.addProperty(DCAT.landingPage, webpageResourceTmp);
+	        		 } else if(property2Check.contains("description")){
+	        			 Literal descriptionLiteralTmp = voidModel.createLiteral(value, "en");
+	    	             source.addProperty(DCTerms.description, descriptionLiteralTmp);
+	        		 }
+	        	 }
 	 		 }
          }
          BufferedWriter bw = null;
@@ -267,7 +272,12 @@ public class VoidTurtle {
          finally { try {bw.close();} catch (IOException e) {e.printStackTrace();}
          }
          
-         RdfChecker checker = new RdfChecker();
+         checkRDF();
+	}
+
+
+	private void checkRDF() {
+		RdfChecker checker = new RdfChecker();
          try {
 			checker.check(output);
 	  	 } catch (RDFParseException e) {
