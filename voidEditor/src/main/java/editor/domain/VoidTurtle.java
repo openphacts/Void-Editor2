@@ -46,7 +46,8 @@ import editor.validator.RdfChecker;
 @XmlRootElement
 public class VoidTurtle {
 
-    private String userName;	
+	private String givenName ;	
+	private String familyName;	
     private String userEmail;
     private String title;
     private String description ; 
@@ -68,7 +69,8 @@ public class VoidTurtle {
 	 * @param obj This object provides all data extracted from Angular side.
 	 */
 	public VoidTurtle(VoidAttributes obj){
-		this.userName = obj.familyName + ", " + obj.givenName;
+		this.givenName = obj.givenName;
+		this.familyName= obj.familyName ;
 		this.userEmail = obj.userEmail;
 		this.title = obj.title;
 		this.description = obj.description ; 
@@ -128,7 +130,9 @@ public class VoidTurtle {
          Calendar now = Calendar.getInstance();
          Literal nowDescriptionLiteral = voidModel.createTypedLiteral(now);
          Literal issueDescriptionLiteral = voidModel.createTypedLiteral(now);
-         Literal createdByNameLiteral = voidModel.createLiteral(userName, "en");
+         
+         Literal createdByGivenNameLiteral = voidModel.createLiteral(givenName, "en");
+         Literal createdByFamilyNameLiteral = voidModel.createLiteral(familyName, "en");
          Resource createdByEmailResource = voidModel.createResource( "mailto:"+ userEmail);
          Resource createdWith = voidModel.createResource("http://voideditor.cs.man.ac.uk/");
          
@@ -154,7 +158,8 @@ public class VoidTurtle {
          Resource resourceForPerson = voidModel.createResource(URI4Person);
          voidDescriptionBase.addProperty(Pav.createdBy, resourceForPerson);
          resourceForPerson.addProperty(RDF.type, FOAF.Person);
-         resourceForPerson.addProperty( FOAF.name, createdByNameLiteral  );
+         resourceForPerson.addProperty( FOAF.givenname, createdByGivenNameLiteral  );
+         resourceForPerson.addProperty( FOAF.family_name, createdByFamilyNameLiteral  );
          resourceForPerson.addProperty( FOAF.mbox , createdByEmailResource );
          
          voidDescriptionBase.addProperty(Pav.createdWith, createdWith);

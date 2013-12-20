@@ -1,0 +1,52 @@
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix :      <#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix pav:   <http://purl.org/pav/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix freq:  <http://purl.org/cld/freq/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix void:  <http://rdfs.org/ns/void#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<>      a                    void:DatasetDescription ;
+        dcterms:description  "The VoID description for the RDF representation of this dataset."@en ;
+        dcterms:issued       "2013-12-19T18:06:57.761Z"^^xsd:dateTime ;
+        dcterms:title        "VoID Description"@en ;
+        pav:createdBy        <http://voideditor.cs.man.ac.uk/7524d902-93aa-4640-98bb-cc9a400f9084> ;
+        pav:createdOn        "2013-12-19T18:06:57.761Z"^^xsd:dateTime ;
+        pav:createdWith      <http://voideditor.cs.man.ac.uk/> ;
+        foaf:primaryTopic    <http://manchester.ac.uk> .
+
+<http://manchester.ac.uk>
+        a                           void:Dataset ;
+        dcterms:accrualPeriodicity  "Daily" ;
+        dcterms:description         "A dummy void description"@en ;
+        dcterms:issued              "2013-01-01T18:06:57.762Z"^^xsd:dateTime ;
+        dcterms:license             <http://creativecommons.org/licenses/by-sa/3.0/> ;
+        dcterms:publisher           <http://manchester.ac.uk/publish> ;
+        dcterms:title               "A test title"@en ;
+        pav:importedFrom            <http://manchester.ac.uk/uri> , <ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chemSpiderDataset> ;
+        pav:version                 "1" ;
+        void:dataDump               <http://manchester.ac.uk/rdf> ;
+        dcat:landingPage            <http://manchester.ac.uk/docs> .
+
+<ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chemSpiderDataset>
+        a                    void:Dataset ;
+        dcterms:description  "N/A"@en ;
+        dcterms:title        "ChemSpider Dataset"@en ;
+        pav:version          "1"@en ;
+        dcat:landingPage     <ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chemSpiderDataset> .
+
+<http://voideditor.cs.man.ac.uk/7524d902-93aa-4640-98bb-cc9a400f9084>
+        a                 foaf:Person ;
+        foaf:family_name  "Tatakis"@en ;
+        foaf:givenname    "Lefteris"@en ;
+        foaf:mbox         <mailto:lefteris@gmail.com> .
+
+<http://manchester.ac.uk/uri>
+        a                    void:Dataset ;
+        dcterms:description  "a description"@en ;
+        dcterms:title        "DummyDataset"@en ;
+        pav:version          "2"@en ;
+        dcat:landingPage     <http://manchester.ac.uk/webapge> .
