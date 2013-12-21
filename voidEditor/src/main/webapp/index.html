@@ -45,6 +45,9 @@
 </header>
 
 <div class="container" ng-controller="editorCarouselCtrl">
+    <div id="loader">
+        <img src="img/ajax-loader.gif" class="ajax-loader" ng-show="showLoader"/>
+    </div>
     <div class="row span12">
         <div class="container">
             <h1 class="pull-left">
@@ -141,15 +144,16 @@
                         <h3>Import Existing VoID </h3>
                     </div>
                     <div class="modal-body" ng-controller="editorUploadCtrl">
-                         <div class="span5 offset1">
-                            <br>
-                            <!--<h1> Under construction!</h1>-->
+                         <div class="span5 offset1" id="bind-html-with-trust">
+                            <br><br>
                             <p style="text-align: center;vertical-align: middle; ">
-                                Select your existing Void File :
+                                <span > Select your existing Void File :</span>
                                 <input type="file" name="file" size="50" onchange="angular.element(this).scope().uploadVoid(this.files)"/>
                             </p>
-                            <!--<input class="btn btn-primary pull-right upload-submit" type="submit" value="Submit"/> <br>-->
+                             <br>
+                             <div ng-bind-html="uploadErrorMessages" style="text-align: center;vertical-align: middle;"></div>
                          </div>
+
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-warning" ng-click="closeModal()">Exit</button>
@@ -185,6 +189,7 @@
     </div>
 
 </div>
+
 <div class="menuTabs">
     <ul class="nav nav-pills pull-right  ">
         <li style="background-color: greenyellow ;  border-radius:20px;  margin-right: 10px; ">

@@ -8,11 +8,10 @@ var jsonService = angular.module('jsonService', ['ngResource'])
 
 var voidUploadService = angular.module('voidUploadService', [])
     .service('uploadData', function ($rootScope, $http) {
-        var jsonUploaded, URL;
+        var URL;
 
         URL = '/voidEditor/rest/void/upload';
         this.process = function (file) {
-
             $http.post(URL, file, {
                 withCredentials: true,
                 headers: {'Content-Type': undefined },
@@ -21,10 +20,10 @@ var voidUploadService = angular.module('voidUploadService', [])
                 console.log("upload Success==> " + data);
                 $rootScope.$broadcast('SuccessUpload', data);
             })
-            .error(function () {
-                   console.log("POST FAILED");
+            .error(function (data, status) {
+                   var message = "Error : " + status ;// + "=> " + data ;
+                   $rootScope.$broadcast('POSTFailedUpload', message)
             });
-
         }
     });
 
@@ -71,13 +70,17 @@ var voidDataService = angular.module('voidDataService', [])
 
         this.createVoid = function () {
             $rootScope.$broadcast('needData', data);
+            $rootScope.$broadcast('StartLoader');
+
             return $http({method: 'POST', url: outputURL, data: data}).
                 error(function (data, status) {
-                    console.log("Error in creating void - Status: " + status + "   data=>" + data);
+                    turtleData = "Error in creating void - Status: " + status;
+                    console.log(turtleData);
+                    $rootScope.$broadcast('TurtleChanged', turtleData);
+                    return turtleData;
                 }).
                 then(function (data) {
                     turtleData = data.data;
-                    console.log("In then of createVoid");
                     $rootScope.$broadcast('TurtleChanged', turtleData);
                     return turtleData;
                 });
@@ -86,10 +89,6 @@ var voidDataService = angular.module('voidDataService', [])
 
         this.setSourceData = function (value) {
             data.sources = value;
-            console.log("====");
-            console.log(data.sources);
-            console.log(value);
-            console.log("====");
             $rootScope.$broadcast('DataSourcesChanged', data.sources);
         };
 
@@ -110,25 +109,13 @@ var voidDataService = angular.module('voidDataService', [])
         this.createVoidAndDownload = function () {
 
             $rootScope.$broadcast('needData', data);
-
-            console.log("going to do ajax call.");
             $.ajax({
                 type: 'POST',
                 url: outputURL,
                 data: JSON.stringify(data),
                 contentType: "application/json",
-                beforeSend: function () {
-                    $(".spinner").show();
-                    console.log("beforesend in ajax call.");
-                },
-                success: function () {
-                    console.log("post success");
-                    $(".spinner").hide();
-                },
-                error: function () {
-                    console.log("POST FAILED");
-                    return false;
-                },
+                success: function () {$rootScope.$broadcast('SuccessDownload');},
+                error: function (status) {$rootScope.$broadcast('FailedDownload', status);},
                 async: false
             });
             return true;

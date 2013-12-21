@@ -12,31 +12,28 @@ dateControllers.controller('DatepickerCtrl', ['$scope', '$rootScope' ,
         $scope.dates.push({"name": "N/A"});
 
         $scope.months = [
-            {"name": "Jan", "num": 1} ,
-            {"name": "Feb", "num": 2}  ,
-            {"name": "Mar", "num": 3}
-            ,
-            {"name": "Apr", "num": 4} ,
-            {"name": "May", "num": 5}  ,
-            {"name": "Jun", "num": 6}
-            ,
-            {"name": "Jul", "num": 7} ,
-            {"name": "Aug", "num": 8}  ,
-            {"name": "Sep", "num": 9}
-            ,
+            {"name": "Jan", "num": 1},
+            {"name": "Feb", "num": 2},
+            {"name": "Mar", "num": 3},
+            {"name": "Apr", "num": 4},
+            {"name": "May", "num": 5},
+            {"name": "Jun", "num": 6},
+            {"name": "Jul", "num": 7},
+            {"name": "Aug", "num": 8},
+            {"name": "Sep", "num": 9},
             {"name": "Nov", "num": 11},
-            {"name": "Dec", "num": 12} ,
+            {"name": "Dec", "num": 12},
             {"name": "N/A", "num": 1}
         ];
 
         $scope.years = [
-            {"name": "2013"} ,
+            {"name": "2013"},
             {"name": "2012"},
-            {"name": "2011"} ,
             {"name": "2011"},
-            {"name": "2010"} ,
+            {"name": "2011"},
+            {"name": "2010"},
             {"name": "2009"},
-            {"name": "2008"} ,
+            {"name": "2008"},
             {"name": "2007"}
         ];
 
@@ -55,7 +52,6 @@ dateControllers.controller('DatepickerCtrl', ['$scope', '$rootScope' ,
                     $scope.dates.push({"name": i});
                 }
                 $scope.dates.push({"name": "N/A"});
-                console.log(checkDate);
             }
         }
     }]);

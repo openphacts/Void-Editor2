@@ -84,7 +84,6 @@ public class VoidTurtle {
 	    this.updateFrequency = obj.updateFrequency;
 	    this.sources = (ArrayList) obj.sources;
 	    this.URI = obj.URI;
-	    
 
 		System.out.println(obj.datePublish);
 	    if (obj.datePublish.equals("N/A")){
@@ -120,10 +119,7 @@ public class VoidTurtle {
          voidModel.setNsPrefix("", "#");
          
          //Populate void.ttl
-         
-         // Dataset Description info
-         
-         
+         //Dataset Description info
          Resource voidDescriptionBase = voidModel.createResource("");
          Literal titleDescriptionLiteral = voidModel.createLiteral("VoID Description", "en");
          Literal descriptionDescriptionLiteral = voidModel.createLiteral("The VoID description for the RDF representation of this dataset.", "en");

@@ -53,15 +53,11 @@ public class VoidUpload {
 		model.read( path, "TURTLE") ;
 		
 		Resource mainResourse = model.getResource(path);
-		
-		//Add serious error handling for missing things - older versions 
-		
 		// Get createdBy information
 		Resource createdBy = mainResourse.getProperty(Pav.createdBy).getResource();
-		
-		result.put("familyName", createdBy.getProperty(FOAF.family_name).getString());
-		result.put("givenName" , createdBy.getProperty(FOAF.givenname).getString());
-		result.put("userEmail" , createdBy.getProperty(FOAF.mbox).getResource().toString().replace("mailto:", ""));
+		if (createdBy.hasProperty(FOAF.family_name)) result.put("familyName", createdBy.getProperty(FOAF.family_name).getString());
+		if (createdBy.hasProperty(FOAF.givenname))result.put("givenName" , createdBy.getProperty(FOAF.givenname).getString());
+		if (createdBy.hasProperty(FOAF.mbox)) result.put("userEmail" , createdBy.getProperty(FOAF.mbox).getResource().toString().replace("mailto:", ""));
 		
 		//Get primary topic and iterate
 		Resource primaryTopic = mainResourse.getProperty(FOAF.primaryTopic).getResource();

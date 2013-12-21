@@ -50,8 +50,7 @@ public class VoidRestService {
 	@Path("/upload")
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	public JSONObject uploadFile(
-		@FormDataParam("file") InputStream uploadedInputStream) {
+	public JSONObject uploadFile(@FormDataParam("file") InputStream uploadedInputStream) {
 	 
 		results.uploadVoid(uploadedInputStream);
 		JSONObject result = results.getUploadedRDFInJson();
