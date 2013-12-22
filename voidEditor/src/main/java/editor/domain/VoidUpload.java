@@ -44,7 +44,7 @@ public class VoidUpload {
 		importedFile.delete();
 	}
 	
-	public void processVoid() {
+	private void processVoid() {
 		 
 		checkRDF();
 		
@@ -60,6 +60,7 @@ public class VoidUpload {
 		if (createdBy.hasProperty(FOAF.mbox)) result.put("userEmail" , createdBy.getProperty(FOAF.mbox).getResource().toString().replace("mailto:", ""));
 		
 		//Get primary topic and iterate
+		if(!mainResourse.hasProperty(FOAF.primaryTopic)) System.err.println("Primary topic is missing..");
 		Resource primaryTopic = mainResourse.getProperty(FOAF.primaryTopic).getResource();
 		StmtIterator iter = primaryTopic.listProperties();
 		boolean doneSources = false;

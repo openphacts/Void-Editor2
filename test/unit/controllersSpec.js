@@ -41,8 +41,8 @@ describe('editorApp', function () {
             expect(scope.title).toBe("VoID Editor");
         });
 
-        it('make sure initial turtle value ok', function () {
-            expect(rootScope.turtle).toBe("Loading...");
+        it('make sure initial disabledExport value ok', function () {
+            expect(rootScope.disabledExport).toBe(false);
         });
 
         it('make sure initial error array is empty', function () {
@@ -77,11 +77,55 @@ describe('editorApp', function () {
             expect(rootScope.data.licence == "").toBe(true);
         });
 
-        it('make sure closeAlert works', function () {
+        it('checking otherLicence works correctly - 2', function () {
+            rootScope.otherLicence("test");
+            expect(rootScope.showOther).toBe(false);
+        });
+
+        it('makes sure closeAlert works', function () {
             rootScope.alerts.push({ type: 'error', msg: 'Teeeest'});
-            rootScope.closeAlert(rootScope.alerts.length - 1)
+            rootScope.closeAlert(rootScope.alerts.length - 1);
             expect(rootScope.alerts.length == 0).toBe(true);
         });
+
+        it('makes sure checkIfAlertExists works', function () {
+            rootScope.alerts.push({ id:"test", type: 'error', msg: 'Teeeest'});
+            expect( rootScope.checkIfAlertNeedsAdding("test")).toBe(false);
+        });
+
+        it('makes sure removeAlert works', function () {
+            rootScope.alerts.push({ id:"test", type: 'error', msg: 'Teeeest'});
+            rootScope.removeAlert("test");
+            expect( rootScope.checkIfAlertNeedsAdding("test")).toBe(true);
+        });
+
+        it('makes sure fieldsToAdd works', function () {
+            var result = rootScope.fieldsToAdd();
+            expect(result.length > 0 ).toBe(true);
+        });
+
+        it('makes sure fieldsToAdd contains h4', function () {
+            var result = rootScope.fieldsToAdd();
+            expect(result.indexOf("<h4")> -1 ).toBe(true);
+        });
+
+        it('makes adds the correct alert-addAlert - 1 ', function () {
+            rootScope.addAlert("URI");
+            expect( rootScope.checkIfAlertNeedsAdding("URI") ).toBe(false);
+        });
+
+        it('makes adds the correct alert-addAlert - 2 ', function () {
+            rootScope.addAlert("downloadFrom");
+            expect( rootScope.checkIfAlertNeedsAdding("downloadFrom") ).toBe(false);
+        });
+
+        //Not working because mustFields cannot be modified externally
+//        it('checkMustFieldsOnPreviousPage - adds errors', function () {
+//            rootScope.mustFields = [{'index': 0, 'mustFields': ["publisher"] }];
+//            rootScope.checkMustFieldsOnPreviousPage(0);
+//            expect(  rootScope.checkIfAlertNeedsAdding("publisher") ).toBe(false);
+//        });
+
     });
 
 
@@ -96,6 +140,10 @@ describe('editorApp', function () {
 
         it('should create "slides" array with more than 4 elements in', function () {
             expect(scope.slides.length).toBeGreaterThan(4);
+        });
+
+        it('should add at least 2 mustFields', function () {
+            expect(rootScope.mustFields.length).toBeGreaterThan(1);
         });
 
         it('should have index 0 for the first item and html page : page.html', function () {
@@ -177,10 +225,26 @@ describe('editorApp', function () {
             $provide.value('JsonService', mockedFactory);
         }));
 
+        beforeEach(module('voidDataService', function($provide) {
+            mockedVoidData = {
+                setTurtle: jasmine.createSpy(),
+                getTurtle: jasmine.createSpy(),
+                setData: jasmine.createSpy(),
+                getData: jasmine.createSpy(),
+                setUriForSourcesExist: jasmine.createSpy(),
+                createVoid: jasmine.createSpy(),
+                setSourceData:jasmine.createSpy(),
+                deleteFile: jasmine.createSpy(),
+                checkSources: jasmine.createSpy(),
+                createVoidAndDownload: jasmine.createSpy()
+            };
+            $provide.value('voidData', mockedVoidData);
+        }));
+
         beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
             $httpBackend = _$httpBackend_;
             scope = $rootScope.$new();
-            ctrl = $controller('sourceCtrl', {$scope: scope, JsonService: mockedFactory });
+            ctrl = $controller('sourceCtrl', {$scope: scope, JsonService: mockedFactory, voidData: mockedVoidData});
         }));
 
         it('Checking if extracting titles works correctly', function () {
@@ -197,6 +261,7 @@ describe('editorApp', function () {
             scope.addToSelected("valueNew");
             var tmpLengthNew = scope.userSources.length;
             expect(tmpLength < tmpLengthNew).toBe(true);
+            expect(mockedVoidData.setSourceData).toHaveBeenCalled();
         });
 
         it('Checking if removing element in sources works', function () {
@@ -205,6 +270,7 @@ describe('editorApp', function () {
             scope.removeSelected("valueNew");
             var tmpLengthNew = scope.userSources.length;
             expect(tmpLength > tmpLengthNew).toBe(true);
+            expect(mockedVoidData.setSourceData).toHaveBeenCalled();
         });
 
     });

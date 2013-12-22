@@ -99,33 +99,35 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         });
 
         $rootScope.checkMustFieldsOnPreviousPage = function (index) {
+            console.log($rootScope.mustFields);
             if (index >= 0 && index < $rootScope.mustFields.length) {
+                console.log("got in if statement");
                 for (var i = 0; i < $rootScope.mustFields.length; i++) {
                     if ($rootScope.mustFields[i].index == index) {
                         for (var j = 0; j < $rootScope.mustFields[i].mustFields.length; j++) {
                             var mustFieldsToCheck = $rootScope.mustFields[i].mustFields[j];
-                            if (mustFieldsToCheck == "title" && ( $rootScope.data.description.length < 2)) {
-                                if ($rootScope.checkIfAlertExists("title")) $rootScope.addAlert("title");
-                            } else if (mustFieldsToCheck == "title" && $rootScope.data.description.length > 2) {
+                            if (mustFieldsToCheck == "title" && ( $rootScope.data.title.length < 2)) {
+                                if ($rootScope.checkIfAlertNeedsAdding("title")) $rootScope.addAlert("title");
+                            } else if (mustFieldsToCheck == "title" && $rootScope.data.title.length > 2) {
                                 $rootScope.removeAlert("title");
                             }
                             if (mustFieldsToCheck == "description" && $rootScope.data.description.length < 5) {
-                                if ($rootScope.checkIfAlertExists("description")) $rootScope.addAlert("description");
+                                if ($rootScope.checkIfAlertNeedsAdding("description")) $rootScope.addAlert("description");
                             } else if (mustFieldsToCheck == "description" && $rootScope.data.description.length > 5) {
                                 $rootScope.removeAlert("description");
                             }
                             if (mustFieldsToCheck == "publisher" && $rootScope.data.publisher.indexOf("://") == -1) {
-                                if ($rootScope.checkIfAlertExists("publisher")) $rootScope.addAlert("publisher");
+                                if ($rootScope.checkIfAlertNeedsAdding("publisher")) $rootScope.addAlert("publisher");
                             } else if (mustFieldsToCheck == "publisher" && $rootScope.data.publisher.indexOf("://") >= 0) {
                                 $rootScope.removeAlert("publisher");
                             }
                             if (mustFieldsToCheck == "webpage" && $rootScope.data.webpage.indexOf("://") == -1) {
-                                if ($rootScope.checkIfAlertExists("webpage"))$rootScope.addAlert("webpage");
+                                if ($rootScope.checkIfAlertNeedsAdding("webpage"))$rootScope.addAlert("webpage");
                             } else if (mustFieldsToCheck == "webpage" && $rootScope.data.webpage.indexOf("://") >= 0 ) {
                                 $rootScope.removeAlert("webpage");
                             }
                             if (mustFieldsToCheck == "downloadFrom" && $rootScope.data.downloadFrom.indexOf("://") == -1) {
-                                if ($rootScope.checkIfAlertExists("downloadFrom")) $rootScope.addAlert("downloadFrom");
+                                if ($rootScope.checkIfAlertNeedsAdding("downloadFrom")) $rootScope.addAlert("downloadFrom");
                             } else if (mustFieldsToCheck == "downloadFrom" && $rootScope.data.downloadFrom.indexOf("://") >= -1){
                                 $rootScope.removeAlert("downloadFrom");
                             }
@@ -135,7 +137,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }//if
         };
 
-        $rootScope.checkIfAlertExists = function (id2Check){
+        $rootScope.checkIfAlertNeedsAdding = function (id2Check){
             var addAlert = true;
             for (var k = 0; k < $rootScope.alerts.length; k++) {
                 if ($rootScope.alerts[k].id == id2Check ) addAlert = false;
@@ -284,7 +286,6 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
         $rootScope.downloadFile = function () {
             voidData.createVoidAndDownload();
             window.open('/rest/void/file');
-
         };
 
     }]);
@@ -307,6 +308,7 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
         $rootScope.dynamicProgress = 0;
         $rootScope.dynamicProgressStep = 0;
         $scope.wrap = false;
+        $rootScope.mustFields = [];
 
         var slides = $scope.slides = [];
         $scope.addSlide = function (i, title, mustFields) {
@@ -399,7 +401,6 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
 
         $rootScope.$on('ChangeInSourcesFromUpload', function (event, sources) {
             $scope.userSources = sources;
-
         })
     }]);
 

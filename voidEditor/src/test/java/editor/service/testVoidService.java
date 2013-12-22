@@ -13,6 +13,8 @@ public class testVoidService {
 
 	//TODO Test sources input
 	
+	// This class is not testing VoidUpload service - that is done in other tests
+	
 	@BeforeClass 
 	public static void setup(){
 		testInput = new VoidAttributes();
@@ -26,15 +28,12 @@ public class testVoidService {
 		testInput.yearPublish= "2013";
 		testInput.version= "1.0.0";
 		testInput.URI = "http://testURI.org";
-		//TODO
-	//	testInput.sources = (new ArrayList<Object>()).add("{'title': 'Test', 'type': 'RDF', 'URI': 'http://testSourceURI', 'noURI': false }");
 		testObject = new VoidService();
 		testObject.setVoidInfo(testInput);
 	}
 
 	@Test
 	public void testGetVoidOutput1() {
-		
 		assertTrue("Making sure getVoid returns a string", testObject.getVoid() instanceof String );
 	}
 	
