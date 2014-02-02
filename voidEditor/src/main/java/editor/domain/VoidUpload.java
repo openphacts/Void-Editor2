@@ -48,11 +48,19 @@ public class VoidUpload {
 		 
 		checkRDF();
 		
-		Model model = ModelFactory.createDefaultModel() ; 
+		Model model = ModelFactory.createDefaultModel(); 
 		String path = importedFile.getAbsolutePath() ;
 		model.read( path, "TURTLE") ;
+		Resource mainResourse = null;
+
+		String OS = System.getProperty("os.name").toLowerCase();
 		
-		Resource mainResourse = model.getResource(path);
+		if (OS.indexOf("win") >= 0 ) {
+			mainResourse = model.getResource(path);
+		} else {
+			mainResourse = model.getResource("file://"+path); 
+		}
+		//Resource mainResourse = model.getResource(path); // for windows
 		// Get createdBy information
 		Resource createdBy = mainResourse.getProperty(Pav.createdBy).getResource();
 		if (createdBy.hasProperty(FOAF.family_name)) result.put("familyName", createdBy.getProperty(FOAF.family_name).getString());
@@ -146,7 +154,7 @@ public class VoidUpload {
 		 }
 	}
 	
-	private void printModel (Model model , String path){
+	private void printModel (Model model){
 		StmtIterator iter = model.listStatements();
 		printIterator(iter);
 	}

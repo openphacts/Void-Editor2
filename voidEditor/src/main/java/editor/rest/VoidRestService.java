@@ -47,13 +47,25 @@ public class VoidRestService {
 		return response.build();
 	 }
 	 
-	@Path("/upload")
+	@Path("/uploadVoid")
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public JSONObject uploadFile(@FormDataParam("file") InputStream uploadedInputStream) {
 	 
 		results.uploadVoid(uploadedInputStream);
 		JSONObject result = results.getUploadedRDFInJson();
+	 
+		return result;
+	 
+	}
+	
+	@Path("/uploadData")
+	@POST
+	@Consumes(MediaType.MULTIPART_FORM_DATA)
+	public JSONObject uploadUserDataFile(@FormDataParam("file") InputStream uploadedInputStream) {
+	 
+		results.uploadVoid(uploadedInputStream);
+		JSONObject result = results.getUserDataStatistics();
 	 
 		return result;
 	 

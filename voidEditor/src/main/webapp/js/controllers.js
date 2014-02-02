@@ -1,10 +1,11 @@
 'use strict';
 
 /* Controllers */
-var editorAppControllers = angular.module('editorAppControllers', ['jsonService', 'voidDataService', 'voidUploadService', 'modalControllers']);
+var editorAppControllers = angular.module('editorAppControllers', ['jsonService', 'voidDataService', 'voidUploadService',
+                                'userDataUploadService','modalControllers']);
 
-editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidData',
-    function ($scope, $rootScope, voidData) {
+editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidData', 'uploadUserData',
+    function ($scope, $rootScope, voidData, uploadUserData) {
         $scope.title = 'VoID Editor';
         $scope.mustFieldPerPage = [];
         $rootScope.disabledExport = false;
@@ -42,6 +43,27 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 $rootScope.showOther = false;
             }
         };
+        //Will also set statistics
+        $rootScope.letUserUploadData = function (files) {
+            var data = new FormData();
+            $rootScope.showLoader = true;
+            data.append('file', files[0]);//first file
+            uploadUserData.process(data);
+        };
+
+        //TODO
+        $rootScope.$on('SuccessUploadUserData', function (event, uploadResult) {
+           // $rootScope.data = uploadResult;
+            $rootScope.showLoader = false;
+          //  $rootScope.$broadcast('ChangeInSourcesFromUpload', $rootScope.data.sources);
+           // $rootScope.uploadErrorMessages ="<h4 class='h4Success'>Upload was successful!</h4>";
+        });
+        //TODO
+        $rootScope.$on('POSTFailedDataUpload', function (event, message) {
+            $rootScope.showLoader = false;
+
+            $rootScope.uploadErrorMessages =returnString;
+        });
 
         $rootScope.$on('DataChanged', function (event, x) {
             $rootScope.data = x;
@@ -99,9 +121,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         });
 
         $rootScope.checkMustFieldsOnPreviousPage = function (index) {
-            console.log($rootScope.mustFields);
+//            console.log($rootScope.mustFields);
             if (index >= 0 && index < $rootScope.mustFields.length) {
-                console.log("got in if statement");
+//                console.log("got in if statement");
                 for (var i = 0; i < $rootScope.mustFields.length; i++) {
                     if ($rootScope.mustFields[i].index == index) {
                         for (var j = 0; j < $rootScope.mustFields[i].mustFields.length; j++) {
@@ -291,13 +313,13 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
     }]);
 
 
-editorAppControllers.controller('editorUploadCtrl', ['$rootScope' , '$scope', '$http', 'uploadData',
-    function ($rootScope, $scope, $http, uploadData) {
+editorAppControllers.controller('editorUploadCtrl', ['$rootScope' , '$scope', '$http', 'uploadVoidData',
+    function ($rootScope, $scope, $http, uploadVoidData) {
         $rootScope.uploadVoid = function (files) {
             var data = new FormData();
             $rootScope.showLoader = true;
             data.append('file', files[0]);//first file
-            uploadData.process(data);
+            uploadVoidData.process(data);
         };
     }]);
 

@@ -4,6 +4,7 @@ import java.io.InputStream;
 
 import org.json.simple.JSONObject;
 
+import editor.domain.DataUpload;
 import editor.domain.VoidAttributes;
 import editor.domain.VoidTurtle;
 import editor.domain.VoidUpload;
@@ -16,9 +17,11 @@ import editor.rest.VoidRestService;
  */
 public class VoidService {
 
-	private VoidAttributes voidInfo ; 
+	private VoidAttributes voidInfo ;
+	private JSONObject statistics ;
 	private VoidTurtle tmp ;
 	private VoidUpload upload;
+	private DataUpload uploadData;
 	private JSONObject jsonUpload;
 	public VoidService  (){}
 	
@@ -43,8 +46,17 @@ public class VoidService {
 		jsonUpload = upload.getResult();
 	}
 	
+	public void uploadData(InputStream uploadedInputStream) {
+		uploadData = new DataUpload(uploadedInputStream );
+		statistics = uploadData.getStatistics();
+	}
+	
 	public JSONObject getUploadedRDFInJson(){
 		return jsonUpload;
+	}
+	
+	public JSONObject getUserDataStatistics(){
+		return statistics;
 	}
 	
 

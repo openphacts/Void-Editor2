@@ -114,7 +114,18 @@
             </div>
         </div>
         <br>
-
+        <div class="form-group row">
+            <div class="spanLabel3">
+                <label for="inputUserData">Upload data:</label>
+            </div>
+            <div class="span3">
+                <input type="hidden" name="MAX_FILE_SIZE" value="1000" />
+                <input type="file" style="width: 200px" id="inputUserData" name="file" size="40" onchange="angular.element(this).scope().letUserUploadData(this.files)"/>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
+                     class="pull-right"
+                     popover="Not mandatory - used to do some backend dataset statistics.">
+            </div>
+        </div>
         <br>
     </div>
 

@@ -7,10 +7,10 @@ var jsonService = angular.module('jsonService', ['ngResource'])
     });
 
 var voidUploadService = angular.module('voidUploadService', [])
-    .service('uploadData', function ($rootScope, $http) {
+    .service('uploadVoidData', function ($rootScope, $http) {
         var URL;
 
-        URL = '/voidEditor/rest/void/upload';
+        URL = '/rest/void/uploadVoid';
         this.process = function (file) {
             $http.post(URL, file, {
                 withCredentials: true,
@@ -27,6 +27,27 @@ var voidUploadService = angular.module('voidUploadService', [])
         }
     });
 
+//will return statistics on the data
+var dataUploadService = angular.module('userDataUploadService', [])
+    .service('uploadUserData', function ($rootScope, $http) {
+        var URL;
+
+        URL = '/rest/void/uploadData';
+        this.process = function (file) {
+            $http.post(URL, file, {
+                withCredentials: true,
+                headers: {'Content-Type': undefined },
+                transformRequest: angular.identity
+            }).success(function (data) {
+                    console.log("upload Success==> " + data);
+                    $rootScope.$broadcast('SuccessUploadUserData', data);
+            })
+            .error(function (data, status) {
+                 var message = "Error : " + status ;// + "=> " + data ;
+                  $rootScope.$broadcast('POSTFailedDataUpload', message)
+            });
+        }
+    });
 
 var voidDataService = angular.module('voidDataService', [])
     .service('voidData', function ($rootScope, $http, $window) {
@@ -35,9 +56,29 @@ var voidDataService = angular.module('voidDataService', [])
         fileLocation = "";
         data = {};
         uriForSourcesExist = "passed";
-        outputURL = '/voidEditor/rest/void/output';
+        outputURL = '/rest/void/output';
 
         data.sources = [];
+
+        //TODO
+        this.querySparqlEndPoint = function(){
+            //run query agaisnt the sparql endpoint
+            // return statistcs
+            // so far there queries - three diff functions ??
+            var sparql="SELECT count(*) WHERE {?s ?o ?p};";
+            var query = 'http://revyu.com/sparql?query=' + escape(sparql);
+
+            $.ajax({
+                url: query,
+                dataType: "text",
+                success: function (data ){
+                    //return statistcs to user
+                },
+                error: function (data){
+                    console.log('Error in running the ajax call. Data: ' + data);
+                }
+            });
+        }
 
         this.setTurtle = function (value) {
             turtleData = value;
