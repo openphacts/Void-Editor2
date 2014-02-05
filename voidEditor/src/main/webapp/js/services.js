@@ -6,11 +6,11 @@ var jsonService = angular.module('jsonService', ['ngResource'])
         return $resource('https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json');
     });
 
+var URLPreface = "/voidEditor"; // to be changed between dev and prod
+
 var voidUploadService = angular.module('voidUploadService', [])
     .service('uploadVoidData', function ($rootScope, $http) {
-        var URL;
-
-        URL = '/rest/void/uploadVoid';
+         var URL = URLPreface+  '/rest/void/uploadVoid';
         this.process = function (file) {
             $http.post(URL, file, {
                 withCredentials: true,
@@ -31,8 +31,7 @@ var voidUploadService = angular.module('voidUploadService', [])
 var dataUploadService = angular.module('userDataUploadService', [])
     .service('uploadUserData', function ($rootScope, $http) {
         var URL;
-
-        URL = '/rest/void/uploadData';
+        URL = URLPreface+ '/rest/void/uploadData';
         this.process = function (file) {
             $http.post(URL, file, {
                 withCredentials: true,
@@ -41,6 +40,7 @@ var dataUploadService = angular.module('userDataUploadService', [])
             }).success(function (data) {
                     console.log("upload Success==> " + data);
                     $rootScope.$broadcast('SuccessUploadUserData', data);
+                    $rootScope.$broadcast('SuccessStatisticsUserData', data);
             })
             .error(function (data, status) {
                  var message = "Error : " + status ;// + "=> " + data ;
@@ -56,28 +56,24 @@ var voidDataService = angular.module('voidDataService', [])
         fileLocation = "";
         data = {};
         uriForSourcesExist = "passed";
-        outputURL = '/rest/void/output';
+        outputURL = URLPreface+'/rest/void/output';
 
         data.sources = [];
 
         //TODO
-        this.querySparqlEndPoint = function(){
-            //run query agaisnt the sparql endpoint
-            // return statistcs
-            // so far there queries - three diff functions ??
-            var sparql="SELECT count(*) WHERE {?s ?o ?p};";
-            var query = 'http://revyu.com/sparql?query=' + escape(sparql);
+        this.querySparqlEndPoint = function(endpoint){
+            var URL;
+            URL = URLPreface+ '/rest/void/sparqlStats';
 
-            $.ajax({
-                url: query,
-                dataType: "text",
-                success: function (data ){
-                    //return statistcs to user
-                },
-                error: function (data){
-                    console.log('Error in running the ajax call. Data: ' + data);
-                }
-            });
+            $http({method: 'POST', url: URL, data: endpoint}).
+                error(function (data, status) {
+                    var message = "Error : " + status ;// + "=> " + data ;
+                    $rootScope.$broadcast('StatsFailed', message)
+                }).
+                then(function (data) {
+                    console.log("Stats Success==> " + data);
+                    $rootScope.$broadcast('SuccessStatisticsUserData', data);
+                });
         }
 
         this.setTurtle = function (value) {
@@ -138,7 +134,7 @@ var voidDataService = angular.module('voidDataService', [])
         };
 
         this.deleteFile = function () {
-            $http({method: 'DELETE', url: '/rest/void/delete' }).
+            $http({method: 'DELETE', url: URLPreface+'/rest/void/delete' }).
                 success(function (data, status, headers, config) {
                     console.log("Deleted file");
                 }).

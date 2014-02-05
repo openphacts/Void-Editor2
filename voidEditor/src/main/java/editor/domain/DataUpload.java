@@ -26,7 +26,11 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import editor.validator.RdfChecker;
-
+/**
+ * 
+ * @author Lefteris Tatakis
+ *
+ */
 	public class DataUpload {
 		private  File importedFile;
 		private JSONObject result ;
@@ -53,29 +57,9 @@ import editor.validator.RdfChecker;
 				mainResourse = model.getResource("file://"+path); 
 			}
 			
-			// Store data 
-			//Run queries
-			//Retrieve data
-			//Store data in array or string
-			//Send to user
-			//http://jena.apache.org/documentation/query/app_api.html
-			//maybe use construct - see in testing
-			String queryString = "Select (count(*) as ?triples)  where { ?s ?o ?p };" ;
-			Query query = QueryFactory.create(queryString) ;
-			QueryExecution qexec = QueryExecutionFactory.create(query, model) ;
-			try {
-			  ResultSet results = qexec.execSelect() ;
-			  for ( ; results.hasNext() ; )
-			  {
-			    QuerySolution soln = results.nextSolution() ;
-			      //RDFNode x = soln.get("varName") ;       // Get a result variable by name.
-			      //Resource r = soln.getResource("VarR") ; // Get a result variable - must be a resource
-			      //Literal l = soln.getLiteral("VarL") ;   // Get a result variable - must be a literal
-			    result.put("totalNumberOfTriples" , "");
-			    result.put("numberOfUniqueSubjects" , "");
-			    result.put("numberOfUniqueSubjects" , "");
-			  }
-			} finally { qexec.close() ; }
+			DatasetStatistics statisticsObj = new DatasetStatistics( );
+			result =  statisticsObj.queryLocalDataModel(model);
+			importedFile.delete();
 		}
 
 		public JSONObject getStatistics(){

@@ -5,6 +5,7 @@ import java.io.InputStream;
 import org.json.simple.JSONObject;
 
 import editor.domain.DataUpload;
+import editor.domain.DatasetStatistics;
 import editor.domain.VoidAttributes;
 import editor.domain.VoidTurtle;
 import editor.domain.VoidUpload;
@@ -21,6 +22,7 @@ public class VoidService {
 	private JSONObject statistics ;
 	private VoidTurtle tmp ;
 	private VoidUpload upload;
+	private DatasetStatistics stats;
 	private DataUpload uploadData;
 	private JSONObject jsonUpload;
 	public VoidService  (){}
@@ -44,6 +46,11 @@ public class VoidService {
 	public void uploadVoid(InputStream uploadedInputStream) {
 		upload = new VoidUpload(uploadedInputStream );
 		jsonUpload = upload.getResult();
+	}
+	
+	public void sparqlStats(String endpoint) {
+		stats = new DatasetStatistics( );
+		statistics = stats.querySparqlEndpoint(endpoint);
 	}
 	
 	public void uploadData(InputStream uploadedInputStream) {

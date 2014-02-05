@@ -21,4 +21,7 @@ public class VoidAttributes{
 	  public String updateFrequency= "";
 	  public Object sources;
 	  public String URI ="http://www.openphacts.org/";
+	  public String totalNumberOfTriples="";
+	  public String numberOfUniqueSubjects="";
+	  public String numberOfUniqueObjects ="";
 }

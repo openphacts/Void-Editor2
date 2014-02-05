@@ -25,7 +25,11 @@ import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 
 import editor.ontologies.Pav;
 import editor.validator.RdfChecker;
-
+/**
+ * 
+ * @author Lefteris Tatakis
+ *
+ */
 public class VoidUpload {
 
 	private String importedFromSource = "http://purl.org/pav/importedFrom";
@@ -167,6 +171,9 @@ public class VoidUpload {
 		mainDatasetSubjects.put( "http://purl.org/pav/importedFrom" , "sources");
 		mainDatasetSubjects.put("http://purl.org/dc/terms/license" , "licence");
 		mainDatasetSubjects.put("http://rdfs.org/ns/void#dataDump" , "downloadFrom");
+		mainDatasetSubjects.put("http://rdfs.org/ns/void#triples" , "totalNumberOfTriples");
+		mainDatasetSubjects.put("http://rdfs.org/ns/void#distinctSubjects" , "numberOfUniqueSubjects");
+		mainDatasetSubjects.put("http://rdfs.org/ns/void#distinctObjects" , "numberOfUniqueObjects");
 		mainDatasetSubjects.put("http://purl.org/dc/terms/accrualPeriodicity" , "updateFrequency");
 		mainDatasetSubjects.put("http://purl.org/dc/terms/issued" , "date" ); 
 		mainDatasetSubjects.put("http://purl.org/dc/terms/title" , "title");

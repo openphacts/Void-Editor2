@@ -51,24 +51,29 @@ public class VoidRestService {
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public JSONObject uploadFile(@FormDataParam("file") InputStream uploadedInputStream) {
-	 
 		results.uploadVoid(uploadedInputStream);
 		JSONObject result = results.getUploadedRDFInJson();
-	 
 		return result;
-	 
 	}
 	
 	@Path("/uploadData")
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public JSONObject uploadUserDataFile(@FormDataParam("file") InputStream uploadedInputStream) {
-	 
-		results.uploadVoid(uploadedInputStream);
+		results.uploadData(uploadedInputStream);
 		JSONObject result = results.getUserDataStatistics();
-	 
 		return result;
-	 
+	}
+	
+	@Path("/sparqlStats")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public JSONObject sparqlEndpointStats(VoidAttributes endpoint) {
+		System.out.println(endpoint);
+		System.out.println("=======");
+		results.sparqlStats(endpoint.sparqlEndpoint);
+		JSONObject result = results.getUserDataStatistics();
+		return result;
 	}
 
 }

@@ -65,6 +65,9 @@ public class VoidTurtle {
 	private File output= null ;
 	private ArrayList sources = null;
 	private String URI;
+	private String totalNumberOfTriples="";
+	private String numberOfUniqueSubjects="";
+	private String numberOfUniqueObjects ="";
 	/**
 	 * @param obj This object provides all data extracted from Angular side.
 	 */
@@ -84,6 +87,9 @@ public class VoidTurtle {
 	    this.updateFrequency = obj.updateFrequency;
 	    this.sources = (ArrayList) obj.sources;
 	    this.URI = obj.URI;
+	    this.totalNumberOfTriples=obj.totalNumberOfTriples;
+	    this.numberOfUniqueSubjects=obj.numberOfUniqueSubjects;
+	    this.numberOfUniqueObjects =obj.numberOfUniqueObjects;
 
 		System.out.println(obj.datePublish);
 	    if (obj.datePublish.equals("N/A")){
@@ -203,6 +209,22 @@ public class VoidTurtle {
              voidBase.addProperty(DCTerms.accrualPeriodicity, updateFrequencyDef);
          }
          
+         if (totalNumberOfTriples !="" && totalNumberOfTriples != null){
+        	 Literal totalNumberOfTriplesDef = voidModel.createTypedLiteral(new Integer(totalNumberOfTriples));
+             voidBase.addProperty(Void.triples, totalNumberOfTriplesDef);
+         }
+         
+         if (numberOfUniqueSubjects !="" && numberOfUniqueSubjects != null){
+        	 Literal numberOfUniqueSubjectsDef = voidModel.createTypedLiteral(new Integer(numberOfUniqueSubjects));
+             voidBase.addProperty(Void.distinctSubjects, numberOfUniqueSubjectsDef);
+         }
+         
+         if (numberOfUniqueObjects !="" && numberOfUniqueObjects != null){
+        	 Literal numberOfUniquePredicatesDef = voidModel.createTypedLiteral(new Integer(numberOfUniqueObjects));
+             voidBase.addProperty(Void.distinctObjects, numberOfUniquePredicatesDef);
+         }
+         
+ 	    
          //Here will add sources
          /**
           *  Extracts data from datasources which the user provides.  

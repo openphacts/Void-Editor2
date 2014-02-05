@@ -20,6 +20,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.data.title = "";
         $rootScope.data.publisher = "";
         $rootScope.data.webpage = "";
+        $rootScope.data.sparqlEndpoint = "";
         $rootScope.data.sources = [];
         $rootScope.data.updateFrequency = "Annual";
         $rootScope.postFinished = false;
@@ -34,6 +35,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.noVersion = -1;
         $rootScope.noWebpage = -1;
         $rootScope.noDescription = -1;
+        $rootScope.data.totalNumberOfTriples= "";
+        $rootScope.data.numberOfUniqueSubjects="";
+        $rootScope.data.numberOfUniqueObjects ="";
+        $rootScope.haveStatsFinished = 1;
 
         $rootScope.otherLicence = function (val) {
             if (val == "other") {
@@ -51,18 +56,43 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             uploadUserData.process(data);
         };
 
+        $rootScope.callSparqlEndpoint = function() {
+            if ($rootScope.data.sparqlEndpoint.indexOf("://") != -1)
+            {
+                $rootScope.haveStatsFinished = -1;
+                voidData.querySparqlEndPoint($rootScope.data);
+            }
+        }
+
         //TODO
         $rootScope.$on('SuccessUploadUserData', function (event, uploadResult) {
-           // $rootScope.data = uploadResult;
             $rootScope.showLoader = false;
-          //  $rootScope.$broadcast('ChangeInSourcesFromUpload', $rootScope.data.sources);
-           // $rootScope.uploadErrorMessages ="<h4 class='h4Success'>Upload was successful!</h4>";
+            console.log("SuccessUploadUserData");
         });
+
+        //TODO
+        $rootScope.$on('SuccessStatisticsUserData', function (event, stats) {
+            // $rootScope.data = uploadResult;#
+            console.log("SuccessStatisticsUserData");
+            console.log(stats.data.totalNumberOfTriples);
+            $rootScope.haveStatsFinished = 1;
+            $rootScope.data.totalNumberOfTriples= stats.data.totalNumberOfTriples;
+            $rootScope.data.numberOfUniqueSubjects=stats.data.numberOfUniqueSubjects ;
+            $rootScope.data.numberOfUniqueObjects =stats.data.numberOfUniqueObjects  ;
+            console.log($rootScope.data.totalNumberOfTriples);
+        });
+
         //TODO
         $rootScope.$on('POSTFailedDataUpload', function (event, message) {
             $rootScope.showLoader = false;
-
             $rootScope.uploadErrorMessages =returnString;
+        });
+
+        //TODO
+        $rootScope.$on('StatsFailed', function (event, message) {
+            console.log("StatsFailed! ");
+            $rootScope.showLoader = false;
+            $rootScope.haveStatsFinished = 1; // if they failed well - no reason to restrict user
         });
 
         $rootScope.$on('DataChanged', function (event, x) {
@@ -237,6 +267,12 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
             if (returnString == "")  $rootScope.disabledExport = false;
             else $rootScope.disabledExport = true;
+
+            if ($rootScope.haveStatsFinished != -1) {
+                if (returnString == "") returnString +=header;
+                $rootScope.showLoader = true;
+                returnString += "<p class='neededFields'> Statistical analysis of you data is being done, if you wanted this included please wait </p> ";
+            }
 
             return returnString;
         };
