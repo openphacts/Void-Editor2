@@ -9,9 +9,9 @@ import com.hp.hpl.jena.query.ResultSet;
 
 public class SparqlEndpointQueryTest {
 	public static void main(String[] args) {
-		 String sparqlQueryString =  "SELECT DISTINCT (COUNT(*) as ?count) WHERE {?s ?o ?p} ";
+		 String sparqlQueryString =  "SELECT DISTINCT (COUNT(DISTINCT ?o) as ?count) WHERE {?s ?p ?o}";
 		 Query query = QueryFactory.create(sparqlQueryString);
-	     QueryExecution qexec = QueryExecutionFactory.sparqlService("http://bioportal.bio2rdf.org/sparql", query);
+	     QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
 	
 	     ResultSet results = qexec.execSelect();
 	     //ResultSetFormatter.out(System.out, results, query);       

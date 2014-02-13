@@ -16,6 +16,7 @@ import com.hp.hpl.jena.rdf.model.Model;
  * @author Lefteris Tatakis
  *
  */
+
 public class DatasetStatistics {
 	//get total number of triples
 	//select count(*) where {?x ?y ?z}  
@@ -36,9 +37,9 @@ public class DatasetStatistics {
     private JSONObject statisticts = new JSONObject();
     
     
-    private QueryExecution tnotExec ;
-    private QueryExecution nousExec ;
-    private QueryExecution nouoExec ;
+    private QueryExecution tnotExec = null ;
+    private QueryExecution nousExec =null;
+    private QueryExecution nouoExec =null ;
     
     
 	public DatasetStatistics(){
@@ -47,14 +48,6 @@ public class DatasetStatistics {
 		numberOfUniqueObjectsQuery = QueryFactory.create(numberOfUniqueObjects);
 	}
 	
-	public JSONObject querySparqlEndpoint(String endpoint){
-		//TODO can do each one of these in separate threads
-	     tnotExec = QueryExecutionFactory.sparqlService(endpoint, totalNumberOfTriplesQuery);
-	     nousExec = QueryExecutionFactory.sparqlService(endpoint, numberOfUniqueSubjectsQuery);
-	     nouoExec = QueryExecutionFactory.sparqlService(endpoint, numberOfUniqueObjectsQuery);
-	     return makeJSONObject ();
-		
-	}
 	
 	public JSONObject queryLocalDataModel(Model model){
 		//TODO can do each one of these in separate threads
@@ -66,40 +59,72 @@ public class DatasetStatistics {
 	}
 	
 	private JSONObject makeJSONObject (){
+		getUniqueSubject( );	 
+		getUniqueObjects();
+		getTotalTriples();
+		return statisticts;
+	}
+
+	public JSONObject querySparqlEndpointUniqueSubject(String endpoint) {
+		nousExec = QueryExecutionFactory.sparqlService(endpoint, numberOfUniqueSubjectsQuery);
+		nousExec.setTimeout(600000);
+		return getUniqueSubject( );
+	}
+
+	
+	public JSONObject querySparqlEndpointUniqueObjects(String endpoint) {
+		nouoExec = QueryExecutionFactory.sparqlService(endpoint, numberOfUniqueObjectsQuery);
+		nouoExec.setTimeout(600000);
+		return getUniqueObjects( );
+	}
+
+	public JSONObject querySparqlEndpointTotalTriples(String endpoint) {
+		tnotExec = QueryExecutionFactory.sparqlService(endpoint, totalNumberOfTriplesQuery);
+		tnotExec.setTimeout(600000);
+		return getTotalTriples( );
+	}	
+	
+	private JSONObject getUniqueSubject() {
 		try {
-	    	 
-	    	 ResultSet resultSetTotalNumberofTriples = tnotExec.execSelect();
 		     ResultSet resultSetNumberOfUniqueSubjects = nousExec.execSelect();
-		     ResultSet resultSetNumberOfUniqueObjects = nouoExec.execSelect();
-		     
-		     //ResultSetFormatter.out(System.out, results, query);       
-		     if (resultSetTotalNumberofTriples.hasNext()) { 
-		    	   QuerySolution row= resultSetTotalNumberofTriples.next();
-		    	  // resultTotalNumberOfTriples = Integer.parseInt(row.getLiteral("count").toString().replace("^^http://www.w3.org/2001/XMLSchema#integer", ""));
-		    	   statisticts.put("totalNumberOfTriples" ,( row.getLiteral("count")).toString().replace("^^http://www.w3.org/2001/XMLSchema#integer", ""));
-		     }
-		     
 		     if (resultSetNumberOfUniqueSubjects.hasNext()) { 
 		    	   QuerySolution row= resultSetNumberOfUniqueSubjects.next();
-		    	 //  resultNumberOfUniqueSubjects = Integer.parseInt(row.getLiteral("count").toString().replace("^^http://www.w3.org/2001/XMLSchema#integer", ""));
 		    	   statisticts.put("numberOfUniqueSubjects" , (row.getLiteral("count")).toString().replace("^^http://www.w3.org/2001/XMLSchema#integer", ""));
 		     }
-		     
+		}catch (Exception e){System.err.println(e);}
+		finally {nousExec.close() ;  }
+		
+		return statisticts;
+	}
+
+	
+	private JSONObject getUniqueObjects() {
+		try {
+		     ResultSet resultSetNumberOfUniqueObjects = nouoExec.execSelect();
 		     if (resultSetNumberOfUniqueObjects.hasNext()) { 
 		    	   QuerySolution row= resultSetNumberOfUniqueObjects.next();
-		    	  // = Integer.parseInt(row.getLiteral("count").toString().replace("^^http://www.w3.org/2001/XMLSchema#integer", ""));
 		    	   statisticts.put("numberOfUniqueObjects" , (row.getLiteral("count")).toString().replace("^^http://www.w3.org/2001/XMLSchema#integer", ""));
 		     }
 			    
 			}catch (Exception e){System.err.println(e);}
-			finally {
-				tnotExec.close() ;
-				nousExec.close() ;
-				nouoExec.close() ;
-		     }
+			finally {nouoExec.close() ;}
 		
 		return statisticts;
 	}
-	
-	
+
+	private JSONObject getTotalTriples() {
+		try {
+	    	 
+	    	 ResultSet resultSetTotalNumberofTriples = tnotExec.execSelect();
+		     if (resultSetTotalNumberofTriples.hasNext()) { 
+		    	   QuerySolution row= resultSetTotalNumberofTriples.next();
+		    	   statisticts.put("totalNumberOfTriples" ,( row.getLiteral("count")).toString().replace("^^http://www.w3.org/2001/XMLSchema#integer", ""));
+		     }
+			}catch (Exception e){System.err.println(e);}
+			finally {
+				tnotExec.close() ;
+		     }
+		
+		return statisticts;
+	}	
 }

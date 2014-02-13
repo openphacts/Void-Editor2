@@ -6,7 +6,7 @@ var jsonService = angular.module('jsonService', ['ngResource'])
         return $resource('https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json');
     });
 
-var URLPreface = "/voidEditor"; // to be changed between dev and prod
+var URLPreface =  "";//"/voidEditor"; // to be changed between dev and prod
 
 var voidUploadService = angular.module('voidUploadService', [])
     .service('uploadVoidData', function ($rootScope, $http) {
@@ -17,7 +17,7 @@ var voidUploadService = angular.module('voidUploadService', [])
                 headers: {'Content-Type': undefined },
                 transformRequest: angular.identity
             }).success(function (data) {
-                console.log("upload Success==> " + data);
+                console.log("upload Success==> "+ data );
                 $rootScope.$broadcast('SuccessUpload', data);
             })
             .error(function (data, status) {
@@ -38,9 +38,12 @@ var dataUploadService = angular.module('userDataUploadService', [])
                 headers: {'Content-Type': undefined },
                 transformRequest: angular.identity
             }).success(function (data) {
-                    console.log("upload Success==> " + data);
+                    console.log("upload Success==> " );
+                    console.log(data);
                     $rootScope.$broadcast('SuccessUploadUserData', data);
-                    $rootScope.$broadcast('SuccessStatisticsUserData', data);
+                    $rootScope.$broadcast('SuccessStatisticsUserDataUniqueSubjects', data);
+                    $rootScope.$broadcast('SuccessStatisticsUserDataUniqueObjects', data);
+                    $rootScope.$broadcast('SuccessStatisticsUserDataTotalTriples', data);
             })
             .error(function (data, status) {
                  var message = "Error : " + status ;// + "=> " + data ;
@@ -60,19 +63,37 @@ var voidDataService = angular.module('voidDataService', [])
 
         data.sources = [];
 
-        //TODO
+        // it does three different calls to the server in order to get a faster result back
+        // than waiting for all three to finish
         this.querySparqlEndPoint = function(endpoint){
-            var URL;
-            URL = URLPreface+ '/rest/void/sparqlStats';
+            var  URLSub , URLObj, URLTriples;
 
-            $http({method: 'POST', url: URL, data: endpoint}).
+            URLSub = URLPreface+ '/rest/void/sparqlStatsSubject';
+            URLObj = URLPreface+ '/rest/void/sparqlStatsObject';
+            URLTriples = URLPreface+ '/rest/void/sparqlStatsTotalTriples';
+
+            $http({method: 'POST', url: URLTriples, data: endpoint}).
                 error(function (data, status) {
-                    var message = "Error : " + status ;// + "=> " + data ;
+                    var message = "Error for total number of triples: " + status ;
                     $rootScope.$broadcast('StatsFailed', message)
                 }).
-                then(function (data) {
-                    console.log("Stats Success==> " + data);
-                    $rootScope.$broadcast('SuccessStatisticsUserData', data);
+                success(function (data) {$rootScope.$broadcast('SuccessStatisticsUserDataTotalTriples', data);});
+            $http({method: 'POST', url: URLSub, data: endpoint}).
+                error(function (data, status) {
+                    var message = "Error in stats for uniq subjects : " + status ;
+                    $rootScope.$broadcast('StatsFailed', message)
+                }).
+                success(function (data) {
+                    $rootScope.$broadcast('SuccessStatisticsUserDataUniqueSubjects', data);
+                });
+
+            $http({method: 'POST', url: URLObj, data: endpoint}).
+                error(function (data, status) {
+                    var message = "Error in stats for uniq obj: " + status ;
+                    $rootScope.$broadcast('StatsFailed', message)
+                }).
+                success(function (data) {
+                    $rootScope.$broadcast('SuccessStatisticsUserDataUniqueObjects', data);
                 });
         }
 

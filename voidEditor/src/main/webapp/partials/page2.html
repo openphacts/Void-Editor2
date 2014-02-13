@@ -106,24 +106,25 @@
                 <label for="inputSparql">Sparql Endpoint:</label>
             </div>
             <div class="span3">
-                <input type="url" class="form-control input-large" id="inputSparql"
+                <input type="url" class="form-control input-large" id="inputSparql" onchange="angular.element(this).scope().callSparqlEndpoint()"
                        ng-model="data.sparqlEndpoint" placeholder="http://">
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                      class="pull-right"
-                     popover="If you do not have one, please leave blank. An example of a sparql endpoint URL is: \'http\:\/\/bioportal.bio2rdf.org\/sparql\' ">
+                     popover="If you do not have one, please leave blank. An example of a sparql endpoint URL is: 'http://bioportal.bio2rdf.org/sparql' ">
             </div>
         </div>
         <br>
         <div class="form-group row">
             <div class="spanLabel3">
-                <label for="inputUserData">Upload your RDF data for statistical analysis:</label>
+                <label for="inputUserData">Statistically analyse your RDF data:</label>
             </div>
             <div class="span3">
                 <input type="hidden" name="MAX_FILE_SIZE" value="1000" />
                 <input type="file" style="width: 200px" id="inputUserData" name="file" size="40" onchange="angular.element(this).scope().letUserUploadData(this.files)"/>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                      class="pull-right"
-                     popover="Not mandatory - used to do some backend dataset statistics.">
+                     popover="Not mandatory. If you have provided a sparql endpoint statistical analysis will be done on the endpoint.
+                        Please do not provide files over 10MB.">
             </div>
         </div>
         <br>

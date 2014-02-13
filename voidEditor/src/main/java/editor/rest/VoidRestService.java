@@ -65,14 +65,30 @@ public class VoidRestService {
 		return result;
 	}
 	
-	@Path("/sparqlStats")
+	@Path("/sparqlStatsObject")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public JSONObject sparqlEndpointStats(VoidAttributes endpoint) {
-		System.out.println(endpoint);
-		System.out.println("=======");
-		results.sparqlStats(endpoint.sparqlEndpoint);
-		JSONObject result = results.getUserDataStatistics();
+	public JSONObject sparqlEndpointStatsUniqueObjects(VoidAttributes endpoint) {
+		results.sparqlStatsUniqueObjects(endpoint.sparqlEndpoint);
+		JSONObject result = results.getUserDataStatisticsUniqueObjects();
+		return result;
+	}
+	
+	@Path("/sparqlStatsTotalTriples")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public JSONObject sparqlEndpointStatsTotalTriples(VoidAttributes endpoint) {
+		results.sparqlStatsTotalTriples(endpoint.sparqlEndpoint);
+		JSONObject result = results.getUserDataStatisticsTotalTriples();
+		return result;
+	}
+	
+	@Path("/sparqlStatsSubject")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public JSONObject sparqlEndpointStatsUniqueSubjects(VoidAttributes endpoint) {
+		results.sparqlStatsUniqueSubjects(endpoint.sparqlEndpoint);
+		JSONObject result = results.getUserDataStatisticsUniqueSubjects();
 		return result;
 	}
 

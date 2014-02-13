@@ -20,9 +20,11 @@ public class VoidService {
 
 	private VoidAttributes voidInfo ;
 	private JSONObject statistics ;
+	private JSONObject statisticsUniqueSubjects ;
+	private JSONObject statisticsUniqueObjects ;
+	private JSONObject statisticsTotalTriples ;
 	private VoidTurtle tmp ;
 	private VoidUpload upload;
-	private DatasetStatistics stats;
 	private DataUpload uploadData;
 	private JSONObject jsonUpload;
 	public VoidService  (){}
@@ -47,10 +49,32 @@ public class VoidService {
 		upload = new VoidUpload(uploadedInputStream );
 		jsonUpload = upload.getResult();
 	}
+	// using separate instances of DatasetStatistics in order to get results faster
+	public void sparqlStatsUniqueSubjects(String endpoint) {
+		DatasetStatistics stats = new DatasetStatistics( );
+		statisticsUniqueSubjects = stats.querySparqlEndpointUniqueSubject(endpoint);
+	}
 	
-	public void sparqlStats(String endpoint) {
-		stats = new DatasetStatistics( );
-		statistics = stats.querySparqlEndpoint(endpoint);
+	public void sparqlStatsUniqueObjects(String endpoint) {
+		DatasetStatistics stats = new DatasetStatistics( );
+		statisticsUniqueObjects = stats.querySparqlEndpointUniqueObjects(endpoint);
+	}
+	
+	public void sparqlStatsTotalTriples(String endpoint) {
+		DatasetStatistics stats = new DatasetStatistics( );
+		statisticsTotalTriples = stats.querySparqlEndpointTotalTriples(endpoint);
+	}
+
+	public JSONObject getUserDataStatisticsUniqueSubjects(){
+		return statisticsUniqueSubjects;
+	}
+	
+	public JSONObject getUserDataStatisticsUniqueObjects(){
+		return statisticsUniqueObjects;
+	}
+	
+	public JSONObject getUserDataStatisticsTotalTriples(){
+		return statisticsTotalTriples;
 	}
 	
 	public void uploadData(InputStream uploadedInputStream) {
@@ -65,6 +89,5 @@ public class VoidService {
 	public JSONObject getUserDataStatistics(){
 		return statistics;
 	}
-	
 
 }

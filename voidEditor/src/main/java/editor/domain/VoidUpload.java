@@ -77,15 +77,15 @@ public class VoidUpload {
 		StmtIterator iter = primaryTopic.listProperties();
 		boolean doneSources = false;
 		result.put("URI" , primaryTopic.toString());
-		
 		while (iter.hasNext()) {
 			 Statement stmt      = iter.nextStatement();  // get next statement
 			 Property  predicate = stmt.getPredicate();   // get the predicate
-			 
 			 if ( mainDatasetSubjects.get(predicate.toString()) != null && predicate.toString().compareTo(importedFromSource) != 0){
 				 
 				 String objectString = (String) mainDatasetSubjects.get(predicate.toString()) ;
 				 String value = stmt.getObject().toString().replace("@en", "");
+				 value =value.replace("^^http://www.w3.org/2001/XMLSchema#int", "");
+				 
 				 if (!objectString.equals("date"))
 				 {
 					 result.put(objectString , value);
@@ -116,7 +116,7 @@ public class VoidUpload {
 						  // Check JSON for sources
 						  String sourcePredicate = sourceStmt.getPredicate().toString();
 						  String sourceObject = sourceStmt.getObject().toString().replace("@en", "");
-
+						  
 						  if(sourceDatasetSubjects.get(sourcePredicate)!= null)
 						  {
 							  attributeSourcesObjectReference.put( "URI", sourceStmt.getSubject().toString());

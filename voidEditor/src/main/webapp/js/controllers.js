@@ -57,40 +57,65 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         };
 
         $rootScope.callSparqlEndpoint = function() {
-            if ($rootScope.data.sparqlEndpoint.indexOf("://") != -1)
+            if ( $rootScope.data.sparqlEndpoint !=undefined&&  $rootScope.data.sparqlEndpoint.indexOf("://") != -1)
             {
+                console.log("got in callSparqlEndpoint");
                 $rootScope.haveStatsFinished = -1;
                 voidData.querySparqlEndPoint($rootScope.data);
             }
         }
 
-        //TODO
         $rootScope.$on('SuccessUploadUserData', function (event, uploadResult) {
             $rootScope.showLoader = false;
             console.log("SuccessUploadUserData");
         });
 
-        //TODO
-        $rootScope.$on('SuccessStatisticsUserData', function (event, stats) {
-            // $rootScope.data = uploadResult;#
-            console.log("SuccessStatisticsUserData");
-            console.log(stats.data.totalNumberOfTriples);
+        $rootScope.$on('SuccessStatisticsUserDataTotalTriples', function (event, stats) {
+            console.log("SuccessStatisticsUserDataTotalTriples");
+            console.log(stats);
+            if (stats.data != undefined ){
+                $rootScope.data.totalNumberOfTriples= stats.data.totalNumberOfTriples;
+            } else {
+                $rootScope.data.totalNumberOfTriples= stats.totalNumberOfTriples;
+            }
+            console.log( $rootScope.data.totalNumberOfTriples);
             $rootScope.haveStatsFinished = 1;
-            $rootScope.data.totalNumberOfTriples= stats.data.totalNumberOfTriples;
-            $rootScope.data.numberOfUniqueSubjects=stats.data.numberOfUniqueSubjects ;
-            $rootScope.data.numberOfUniqueObjects =stats.data.numberOfUniqueObjects  ;
-            console.log($rootScope.data.totalNumberOfTriples);
+            $rootScope.showLoader = false;
         });
 
-        //TODO
+        $rootScope.$on('SuccessStatisticsUserDataUniqueSubjects', function (event, stats) {
+            console.log("SuccessStatisticsUserDataUniqueSubjects");
+            console.log(stats);
+            if (stats.data != undefined ){
+                $rootScope.data.numberOfUniqueSubjects=stats.data.numberOfUniqueSubjects ;
+            } else {
+                $rootScope.data.numberOfUniqueSubjects=stats.numberOfUniqueSubjects ;
+            }
+            console.log( $rootScope.data.numberOfUniqueSubjects);
+            $rootScope.haveStatsFinished = 1;
+            $rootScope.showLoader = false;
+        });
+
+        $rootScope.$on('SuccessStatisticsUserDataUniqueObjects', function (event, stats) {
+            console.log("SuccessStatisticsUserDataUniqueObjects");
+            console.log(stats);
+            if (stats.data != undefined ){
+                $rootScope.data.numberOfUniqueObjects =stats.data.numberOfUniqueObjects  ;
+            } else {
+                $rootScope.data.numberOfUniqueObjects =stats.numberOfUniqueObjects  ;
+            }
+            console.log( $rootScope.data.numberOfUniqueObjects);
+            $rootScope.haveStatsFinished = 1;
+            $rootScope.showLoader = false;
+        });
+
         $rootScope.$on('POSTFailedDataUpload', function (event, message) {
             $rootScope.showLoader = false;
             $rootScope.uploadErrorMessages =returnString;
         });
 
-        //TODO
         $rootScope.$on('StatsFailed', function (event, message) {
-            console.log("StatsFailed! ");
+            console.log("StatsFailed! ==> " + message);
             $rootScope.showLoader = false;
             $rootScope.haveStatsFinished = 1; // if they failed well - no reason to restrict user
         });
@@ -151,7 +176,6 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         });
 
         $rootScope.checkMustFieldsOnPreviousPage = function (index) {
-//            console.log($rootScope.mustFields);
             if (index >= 0 && index < $rootScope.mustFields.length) {
 //                console.log("got in if statement");
                 for (var i = 0; i < $rootScope.mustFields.length; i++) {
@@ -268,7 +292,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             if (returnString == "")  $rootScope.disabledExport = false;
             else $rootScope.disabledExport = true;
 
-            if ($rootScope.haveStatsFinished != -1) {
+            if ($rootScope.haveStatsFinished == -1) {
                 if (returnString == "") returnString +=header;
                 $rootScope.showLoader = true;
                 returnString += "<p class='neededFields'> Statistical analysis of you data is being done, if you wanted this included please wait </p> ";

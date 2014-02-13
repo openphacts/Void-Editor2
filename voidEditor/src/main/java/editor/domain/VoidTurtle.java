@@ -145,6 +145,10 @@ public class VoidTurtle {
          Literal descriptionLiteral = voidModel.createLiteral(description, "en");
      
          //initial data
+         if (URI.equalsIgnoreCase("http://www.openphacts.org/")){
+        	 URI = URI + UUID.randomUUID();
+         }
+         
          Resource voidBase = voidModel.createResource(URI);
          voidBase.addProperty(RDF.type, Void.Dataset);
          voidBase.addProperty(DCTerms.title, titleLiteral);
@@ -244,7 +248,7 @@ public class VoidTurtle {
 	        		 String[] couple = splitingSetsOfInfo[j].split("=");
 	        		 String property2Check = couple[0];
 	        		 String value = couple[1].replace("}","");
-	        		 if(property2Check.contains("URI")){
+	        		 if(property2Check.contains("URI") && !property2Check.contains("no")){
 	        			 source = voidModel.createResource(value);
 	        			 voidBase.addProperty(Pav.importedFrom, source);
 	        		 }
@@ -276,7 +280,8 @@ public class VoidTurtle {
 	        		 }
 	        	 }
 	 		 }
-         }
+         }//if
+         
          BufferedWriter bw = null;
          try
          {
