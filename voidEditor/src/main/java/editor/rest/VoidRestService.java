@@ -13,6 +13,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.json.simple.JSONObject;
+import org.openrdf.rio.RDFHandlerException;
+import org.openrdf.rio.RDFParseException;
 
 import com.sun.jersey.multipart.FormDataParam;
 
@@ -51,17 +53,39 @@ public class VoidRestService {
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public JSONObject uploadFile(@FormDataParam("file") InputStream uploadedInputStream) {
-		results.uploadVoid(uploadedInputStream);
-		JSONObject result = results.getUploadedRDFInJson();
+		JSONObject result ;
+		try {
+			results.uploadVoid(uploadedInputStream);
+			result = results.getUploadedRDFInJson();
+		} catch (RDFHandlerException e) {
+			result = new JSONObject();
+			System.out.println( e.getMessage());
+			result.put("error", e.getMessage());
+		} catch (RDFParseException   e) {
+			result = new JSONObject();
+			System.out.println( e.getMessage());
+			result.put("error", e.getMessage());
+		}
+	    
 		return result;
 	}
 	
 	@Path("/uploadData")
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	public JSONObject uploadUserDataFile(@FormDataParam("file") InputStream uploadedInputStream) {
-		results.uploadData(uploadedInputStream);
-		JSONObject result = results.getUserDataStatistics();
+	public JSONObject uploadUserDataFile(@FormDataParam("file") InputStream uploadedInputStream){
+		JSONObject result ;
+		try {
+			results.uploadData(uploadedInputStream);
+			result = results.getUserDataStatistics();
+		} catch (RDFParseException e) {
+			result = new JSONObject();
+			result.put("error", e.getMessage());
+		} catch ( RDFHandlerException e) {
+			result = new JSONObject();
+			result.put("error", e.getMessage());
+		}
+		
 		return result;
 	}
 	

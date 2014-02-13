@@ -8,7 +8,6 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.codehaus.jettison.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openrdf.rio.RDFHandlerException;
@@ -39,7 +38,7 @@ public class VoidUpload {
 	private Map<String, String> sourceDatasetSubjects = new HashMap<String, String>();
 	private JSONObject result ;
 	
-	public VoidUpload(InputStream uploadedInputStream){
+	public VoidUpload(InputStream uploadedInputStream) throws RDFParseException, RDFHandlerException {
 		importedFile = writeToTempFile(uploadedInputStream);
 		result = new JSONObject();
 		createSubjectMap();
@@ -48,7 +47,7 @@ public class VoidUpload {
 		importedFile.delete();
 	}
 	
-	private void processVoid() {
+	private void processVoid() throws RDFParseException, RDFHandlerException {
 		 
 		checkRDF();
 		
@@ -142,20 +141,20 @@ public class VoidUpload {
 		return result;
 	}
 	
-	private void checkRDF() {
+	private void checkRDF() throws RDFParseException, RDFHandlerException {
 		RdfChecker checker = new RdfChecker();
          try {
 			checker.check(importedFile);
-	  	 } catch (RDFParseException e) {
-			System.err.println("In Imported file --> Got a RDFParseException!! ");
-			e.printStackTrace();
-		 } catch (RDFHandlerException e) {
-			System.out.println("In Imported file -->Got a RDFHandlerException ");
-			e.printStackTrace();
-		 } catch (IOException e) {
-			System.out.println("In Imported file -->Got a IOException ");
-			e.printStackTrace();
-		 }
+         } catch (RDFParseException e) {
+				System.err.println("In Imported file --> Got a RDFParseException!! ");
+				throw new RDFParseException("Inputed VOID file parse error. Is it RDF?");
+			 } catch (RDFHandlerException e) {
+				System.out.println("In Imported file -->Got a RDFHandlerException ");
+				throw new RDFHandlerException("Input VOID file Handling error. Is it RDF?");
+			 } catch (IOException e) {
+				System.out.println("In Imported file -->Got a IOException ");
+				e.printStackTrace();
+			 }
 	}
 	
 	private void printModel (Model model){

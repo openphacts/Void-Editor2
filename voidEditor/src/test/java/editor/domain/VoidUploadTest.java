@@ -4,6 +4,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.openrdf.rio.RDFHandlerException;
+import org.openrdf.rio.RDFParseException;
+
 public class VoidUploadTest {
 
 	public static void main(String[] args) {
@@ -17,7 +20,11 @@ public class VoidUploadTest {
 			 
 			 VoidUpload temp = new VoidUpload(is);
 			 
-		} catch (IOException e) {
+		} catch (RDFParseException  e) {
+			e.printStackTrace();
+		} catch ( RDFHandlerException e) {
+			e.printStackTrace();
+		}  catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {

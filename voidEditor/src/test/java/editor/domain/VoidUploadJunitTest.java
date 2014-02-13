@@ -10,6 +10,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openrdf.rio.RDFHandlerException;
+import org.openrdf.rio.RDFParseException;
 
 public class VoidUploadJunitTest {
 	private static 	InputStream is = null;
@@ -22,7 +24,12 @@ public class VoidUploadJunitTest {
 			 is = new FileInputStream("C:\\Users\\Lefteris\\Desktop\\Void-Editor2\\voidEditor\\src\\test\\res\\editor\\domain\\testVoid.ttl");
 			 VoidUpload temp = new VoidUpload(is);
 			 result = temp.getResult();
-		} catch (IOException e) {e.printStackTrace();}
+		} catch (RDFParseException  e) {
+			e.printStackTrace();
+		}
+		 catch ( RDFHandlerException e) {
+				e.printStackTrace();
+		 }catch (IOException e) {e.printStackTrace();}
 		finally {
 			try {is.close();} catch (IOException ex) {ex.printStackTrace();}
 		}

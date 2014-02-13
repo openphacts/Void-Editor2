@@ -3,6 +3,8 @@ package editor.service;
 import java.io.InputStream;
 
 import org.json.simple.JSONObject;
+import org.openrdf.rio.RDFHandlerException;
+import org.openrdf.rio.RDFParseException;
 
 import editor.domain.DataUpload;
 import editor.domain.DatasetStatistics;
@@ -45,7 +47,7 @@ public class VoidService {
 		return tmp.getLocation();
 	}
 	
-	public void uploadVoid(InputStream uploadedInputStream) {
+	public void uploadVoid(InputStream uploadedInputStream) throws RDFParseException, RDFHandlerException  {
 		upload = new VoidUpload(uploadedInputStream );
 		jsonUpload = upload.getResult();
 	}
@@ -77,7 +79,7 @@ public class VoidService {
 		return statisticsTotalTriples;
 	}
 	
-	public void uploadData(InputStream uploadedInputStream) {
+	public void uploadData(InputStream uploadedInputStream) throws RDFParseException, RDFHandlerException {
 		uploadData = new DataUpload(uploadedInputStream );
 		statistics = uploadData.getStatistics();
 	}
