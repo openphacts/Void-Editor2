@@ -87,6 +87,14 @@ p.thickWhite{
     color: #f5f5f5;
     font-weight:bold;
     cursor: pointer;
+    /*background-color:#149bdf ;*/
+}
+
+p.thickWhiteIE{
+    color: #f5f5f5;
+    font-weight:bold;
+    cursor: pointer;
+    background-color:#149bdf ;
 }
 
 p.thickBlack{

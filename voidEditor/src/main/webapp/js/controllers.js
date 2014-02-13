@@ -40,6 +40,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.data.numberOfUniqueObjects ="";
         $rootScope.haveStatsFinished = 1;
 
+        var ua = window.navigator.userAgent
+        $rootScope.msie = ua.indexOf ( ".NET " );
+
+        console.log(ua);
         $rootScope.otherLicence = function (val) {
             if (val == "other") {
                 $rootScope.data.licence = "";
