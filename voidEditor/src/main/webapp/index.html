@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" id="ng-app" ng-app="editorApp" ng-controller="editorCtrl">
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9">
     <meta charset="utf-8">
     <meta name="description" content="Dataset Description Tool">
     <meta name="author" content="Lefteris Tatakis">
@@ -12,7 +13,9 @@
     <link rel="stylesheet" href="css/bootstrap-combined.min.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/glyphicons.css">
+
 </head>
 <body>
 <header>
@@ -110,79 +113,94 @@
                <table style="width: 100%; text-align: center;">
                    <tr>
                        <td class="progressBar" ng-repeat="slide in slides" style="width:{{dynamicProgressStep}}%;">
-                           <p ng-if="slide.progress <= dynamicProgress" class="thickWhite" for="slide.index"
+                           <p ng-if="slide.progress <= dynamicProgress && msie == -1 " class="thickWhite" for="slide.index"
                               ng-click="slide.active = true">{{slide.title}} </p>
 
-                           <p ng-if="slide.progress > dynamicProgress" class="thickBlack" for="slide.index"
+                           <p ng-if="slide.progress <= dynamicProgress && msie != -1 " class="thickWhiteIE" for="slide.index"
                               ng-click="slide.active = true">{{slide.title}} </p>
-                       </td>
-                   </tr>
-               </table>
-           </span>
-        </div>
-    </div>
-    <div class="row span12">
 
-        <form role="form" class="form-inline simple-form" role="form" novalidate>
-            <carousel interval="interval" class="carousel">
-                <slide ng-repeat="slide in slides" active="slide.active">
-                    <div class="custom_carousel" ng-mouseenter="checkMustFieldsOnPreviousPage(slide.index - 1);">
-                        <alert class="myAlert" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
-                            {{alert.msg}}
-                        </alert>
-                        <div class="include" ng-include="slide.page">
+                          <p ng-if="slide.progress > dynamicProgress" class="thickBlack" for="slide.index"
+                             ng-click="slide.active = true">{{slide.title}} </p>
+                      </td>
+                  </tr>
+              </table>
+          </span>
+       </div>
+   </div>
+   <div class="row span12">
+
+=======
+                          <p ng-if="slide.progress > dynamicProgress" class="thickBlack" for="slide.index"
+                             ng-click="slide.active = true">{{slide.title}} </p>
+                      </td>
+                  </tr>
+              </table>
+          </span>
+       </div>
+   </div>
+   <div class="row span12">
+
+>>>>>>> 9ded5b0483e05ab0b6be4241243b6b8ef3be9647
+       <form role="form" class="form-inline simple-form" role="form" novalidate>
+           <carousel interval="interval" class="carousel">
+               <slide ng-repeat="slide in slides" active="slide.active">
+                   <div class="custom_carousel" ng-mouseenter="checkMustFieldsOnPreviousPage(slide.index - 1);">
+                       <alert class="myAlert" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+                           {{alert.msg}}
+                       </alert>
+                       <div class="include" ng-include="slide.page">
+                       </div>
+                   </div>
+               </slide>
+           </carousel>
+       </form>
+
+       <div class="container-fluid">
+           <div ng-controller="ModalImportCtrl" class="pull-left">
+               <script type="text/ng-template" id="myModalImport.html">
+                   <div class="modal-header">
+                       <h3>Import Existing VoID </h3>
+                   </div>
+                   <div class="modal-body" ng-controller="editorUploadCtrl">
+                        <div class="span5 offset1" id="bind-html-with-trust">
+                           <br><br>
+                           <p style="text-align: center;vertical-align: middle; ">
+                               <span > Select your existing Void File :</span>
+                               <input type="file" name="file" size="50" onchange="angular.element(this).scope().uploadVoid(this.files)"/>
+                           </p>
+                            <br>
+                            <div ng-bind-html="uploadErrorMessages" style="text-align: center;vertical-align: middle;"></div>
                         </div>
-                    </div>
-                </slide>
-            </carousel>
-        </form>
 
-        <div class="container-fluid">
-            <div ng-controller="ModalImportCtrl" class="pull-left">
-                <script type="text/ng-template" id="myModalImport.html">
-                    <div class="modal-header">
-                        <h3>Import Existing VoID </h3>
-                    </div>
-                    <div class="modal-body" ng-controller="editorUploadCtrl">
-                         <div class="span5 offset1" id="bind-html-with-trust">
-                            <br><br>
-                            <p style="text-align: center;vertical-align: middle; ">
-                                <span > Select your existing Void File :</span>
-                                <input type="file" name="file" size="50" onchange="angular.element(this).scope().uploadVoid(this.files)"/>
-                            </p>
-                             <br>
-                             <div ng-bind-html="uploadErrorMessages" style="text-align: center;vertical-align: middle;"></div>
-                         </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-warning" ng-click="closeModal()">Exit</button>
-                    </div>
-                </script>
-                <button type="button" class="btn btn-default pull-left" id="import" ng-click="open();">Import VoID
-                </button>
-            </div>
-            <div ng-controller="ModalExportCtrl" class="pull-right">
-                <script type="text/ng-template" id="myModalContent.html">
-                    <div class="modal-header">
-                        <h3>VoID Produced</h3>
-                    </div>
-                    <div class="modal-body">
-                        <textarea class="field span7" rows="20" id="modal" columns="15"> {{data}} </textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-warning" ng-click="closeModal()">Close</button>
-                    </div>
-                </script>
-                <button type="button" class="btn btn-default pull-right" id="underTheHood" ng-click="open();"> Under the
-                    Hood
-                </button>
-            </div>
-        </div>
-        <div class="row span12">
-            <footer>
-                <small>
-                    <span class="muted"><span ng-bind="title">...</span> v2 copyright &copy; 2013 OpenPhacts - Lefteris Tatakis</span>
+                   </div>
+                   <div class="modal-footer">
+                       <button class="btn btn-warning" ng-click="closeModal()">Exit</button>
+                   </div>
+               </script>
+               <button type="button" class="btn btn-default pull-left" id="import" ng-click="open();">Import VoID
+               </button>
+           </div>
+           <div ng-controller="ModalExportCtrl" class="pull-right">
+               <script type="text/ng-template" id="myModalContent.html">
+                   <div class="modal-header">
+                       <h3>VoID Produced</h3>
+                   </div>
+                   <div class="modal-body">
+                       <textarea class="field span7" rows="20" id="modal" columns="15"> {{data}} </textarea>
+                   </div>
+                   <div class="modal-footer">
+                       <button class="btn btn-warning" ng-click="closeModal()">Close</button>
+                   </div>
+               </script>
+               <button type="button" class="btn btn-default pull-right" id="underTheHood" ng-click="open();"> Under the
+                   Hood
+               </button>
+           </div>
+       </div>
+       <div class="row span12">
+           <footer>
+               <small>
+                   <span class="muted"><span ng-bind="title">...</span> v2 copyright &copy; 2013 OpenPhacts - Lefteris Tatakis</span>
                 </small>
             </footer>
         </div>

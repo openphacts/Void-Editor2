@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.json.simple.JSONObject;
+import org.openrdf.rio.RDFHandlerException;
+import org.openrdf.rio.RDFParseException;
 
 public class LocalDataStatsTest {
 
@@ -22,6 +24,10 @@ public class LocalDataStatsTest {
 				System.out.println(tmp.toJSONString());
 
 			 
+		} catch ( RDFHandlerException e) {
+			e.printStackTrace();
+		}catch (RDFParseException  e) {
+			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

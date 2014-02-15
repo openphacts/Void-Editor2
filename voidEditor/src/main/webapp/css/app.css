@@ -87,6 +87,14 @@ p.thickWhite{
     color: #f5f5f5;
     font-weight:bold;
     cursor: pointer;
+    /*background-color:#149bdf ;*/
+}
+
+p.thickWhiteIE{
+    color: #f5f5f5;
+    font-weight:bold;
+    cursor: pointer;
+    background-color:#149bdf ;
 }
 
 p.thickBlack{
@@ -208,3 +216,4 @@ label,input,button,select,textarea{font-size:17px;font-weight:normal;line-height
     background-clip: padding-box;
     outline: none;
 }
+

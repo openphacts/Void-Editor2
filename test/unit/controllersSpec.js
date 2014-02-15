@@ -4,7 +4,7 @@
 
 /* jasmine specs for controllers go here */
 describe('editorApp', function () {
-    var scope, rootScope, ctrl, $httpBackend , mockedVoidData;
+    var scope, rootScope, ctrl, $httpBackend , mockedVoidData, mockedUploadUserData;
 
     beforeEach(module('editorApp'));
     beforeEach(module('editorAppControllers'));
@@ -25,16 +25,24 @@ describe('editorApp', function () {
                 setSourceData:jasmine.createSpy(),
                 deleteFile: jasmine.createSpy(),
                 checkSources: jasmine.createSpy(),
-                createVoidAndDownload: jasmine.createSpy()
+                createVoidAndDownload: jasmine.createSpy(),
+                querySparqlEndPoint:jasmine.createSpy()
             };
             $provide.value('voidData', mockedVoidData);
+        }));
+
+        beforeEach(module('userDataUploadService', function($provide) {
+            mockedUploadUserData = {
+                process : jasmine.createSpy()
+            };
+            $provide.value('uploadUserData', mockedUploadUserData);
         }));
 
         beforeEach(inject(function (_$httpBackend_,  $rootScope, $controller) {
             $httpBackend =  _$httpBackend_;
             scope = $rootScope.$new();
             rootScope = $rootScope.$new();
-            ctrl = $controller('editorCtrl', {  $scope: scope,  $rootScope : $rootScope ,voidData: mockedVoidData });
+            ctrl = $controller('editorCtrl', {  $scope: scope,  $rootScope : $rootScope ,voidData: mockedVoidData , uploadUserData: mockedUploadUserData});
         }));
 
         it('testTitle', function () {
@@ -126,6 +134,24 @@ describe('editorApp', function () {
 //            expect(  rootScope.checkIfAlertNeedsAdding("publisher") ).toBe(false);
 //        });
 
+        it('should call process of uploadVoidData when going to upload a file to server ', function () {
+            var mockFile = ["1" , "2"];
+            rootScope.letUserUploadData(mockFile);
+            expect(mockedUploadUserData.process).toHaveBeenCalled();
+        });
+
+        it('should call process of  voidData.querySparqlEndPoint when going to query sparql endpoint ', function () {
+            rootScope.data.sparqlEndpoint = "http://test";
+            rootScope.callSparqlEndpoint();
+            expect(mockedVoidData.querySparqlEndPoint).toHaveBeenCalled();
+        });
+
+        it('should fail to call process of  voidData.querySparqlEndPoint when going to query sparql endpoint ', function () {
+            rootScope.data.sparqlEndpoint = "boom!";
+            rootScope.callSparqlEndpoint();
+            expect(mockedVoidData.querySparqlEndPoint).not.toHaveBeenCalled();
+        });
+
     });
 
 
@@ -173,6 +199,32 @@ describe('editorApp', function () {
         });
 
     });
+
+    describe('editorUploadCtrl', function () {
+        beforeEach(module('voidUploadService', function($provide) {
+            mockedVoidData = {
+                process: jasmine.createSpy()
+            };
+            $provide.value('uploadVoidData', mockedVoidData);
+        }));
+
+
+        beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
+            $httpBackend = _$httpBackend_;
+            scope = $rootScope.$new();
+            rootScope = $rootScope.$new();
+            ctrl = $controller('editorUploadCtrl', {$rootScope : $rootScope , $scope: scope ,   $http: $httpBackend ,  uploadVoidData: mockedVoidData });
+        }));
+        // Create Void
+
+        it('should call process of uploadVoidData when going to upload a file to server ', function () {
+            var mockFile = ["1" , "2"];
+            rootScope.uploadVoid(mockFile);
+            expect(mockedVoidData.process).toHaveBeenCalled();
+        });
+
+    });
+
 
     describe('editorFormCtrl', function () {
         beforeEach(module('voidDataService', function($provide) {

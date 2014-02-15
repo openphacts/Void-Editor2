@@ -6,7 +6,7 @@ var jsonService = angular.module('jsonService', ['ngResource'])
         return $resource('https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json');
     });
 
-var URLPreface =  "";//"/voidEditor"; // to be changed between dev and prod
+var URLPreface = "";// "/voidEditor"; // to be changed between dev and prod
 
 var voidUploadService = angular.module('voidUploadService', [])
     .service('uploadVoidData', function ($rootScope, $http) {
@@ -17,11 +17,15 @@ var voidUploadService = angular.module('voidUploadService', [])
                 headers: {'Content-Type': undefined },
                 transformRequest: angular.identity
             }).success(function (data) {
-                console.log("upload Success==> "+ data );
-                $rootScope.$broadcast('SuccessUpload', data);
+                    if (data.error == undefined || data.error == null){
+                         console.log("upload Success==> "+ data );
+                         $rootScope.$broadcast('SuccessUpload', data);
+                    }else {
+                        $rootScope.$broadcast('POSTFailedUpload', data.error);
+                    }
             })
             .error(function (data, status) {
-                   var message = "Error : " + status ;// + "=> " + data ;
+                   var message = "Error : " + status ;//+ "=> " + data ;
                    $rootScope.$broadcast('POSTFailedUpload', message)
             });
         }
@@ -38,12 +42,16 @@ var dataUploadService = angular.module('userDataUploadService', [])
                 headers: {'Content-Type': undefined },
                 transformRequest: angular.identity
             }).success(function (data) {
-                    console.log("upload Success==> " );
-                    console.log(data);
-                    $rootScope.$broadcast('SuccessUploadUserData', data);
-                    $rootScope.$broadcast('SuccessStatisticsUserDataUniqueSubjects', data);
-                    $rootScope.$broadcast('SuccessStatisticsUserDataUniqueObjects', data);
-                    $rootScope.$broadcast('SuccessStatisticsUserDataTotalTriples', data);
+                    if (data.error == undefined || data.error == null){
+                        console.log("upload Success==> " );
+                        console.log(data);
+                        $rootScope.$broadcast('SuccessUploadUserData', data);
+                        $rootScope.$broadcast('SuccessStatisticsUserDataUniqueSubjects', data);
+                        $rootScope.$broadcast('SuccessStatisticsUserDataUniqueObjects', data);
+                        $rootScope.$broadcast('SuccessStatisticsUserDataTotalTriples', data);
+                    } else{
+                        $rootScope.$broadcast('POSTFailedDataUpload', data.error);
+                    }
             })
             .error(function (data, status) {
                  var message = "Error : " + status ;// + "=> " + data ;

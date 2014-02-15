@@ -9,6 +9,8 @@ import java.io.InputStream;
 import org.json.simple.JSONObject;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openrdf.rio.RDFHandlerException;
+import org.openrdf.rio.RDFParseException;
 
 public class DataUploadStatsFunctionalityJunitTests {
 	private static JSONObject stats = null;
@@ -22,7 +24,11 @@ public class DataUploadStatsFunctionalityJunitTests {
 			 DataUpload dataUploadFile = new DataUpload(is);
 			 stats = dataUploadFile.getStatistics();
 			 //System.out.println(tmp.toJSONString());
-		} catch (IOException e) {
+		} catch ( RDFHandlerException e) {
+			e.printStackTrace();
+		}catch (RDFParseException  e) {
+			e.printStackTrace();
+		}catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {is.close();} catch (IOException ex) {ex.printStackTrace();}

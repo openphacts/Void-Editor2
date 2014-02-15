@@ -35,12 +35,12 @@ import editor.validator.RdfChecker;
 		private  File importedFile;
 		private JSONObject result ;
 		
-		public DataUpload(InputStream uploadedInputStream){
+		public DataUpload(InputStream uploadedInputStream) throws RDFParseException, RDFHandlerException{
 			importedFile = writeToTempFile(uploadedInputStream);
 			processData();
 		}
 		
-		private void processData() {
+		private void processData() throws RDFParseException, RDFHandlerException {
 			 
 			checkRDF();
 			
@@ -66,16 +66,18 @@ import editor.validator.RdfChecker;
 			return result;
 		}
 		
-		private void checkRDF() {
+		private void checkRDF() throws RDFParseException, RDFHandlerException {
 			RdfChecker checker = new RdfChecker();
 	         try {
 				checker.check(importedFile);
 		  	 } catch (RDFParseException e) {
 				System.err.println("In Imported file --> Got a RDFParseException!! ");
-				e.printStackTrace();
+				//e.printStackTrace();
+				throw new RDFParseException("Input file parse error. Is it RDF?");
 			 } catch (RDFHandlerException e) {
 				System.out.println("In Imported file -->Got a RDFHandlerException ");
-				e.printStackTrace();
+				//e.printStackTrace();
+				throw new RDFHandlerException("Input file Handling error. Is it RDF?");
 			 } catch (IOException e) {
 				System.out.println("In Imported file -->Got a IOException ");
 				e.printStackTrace();
