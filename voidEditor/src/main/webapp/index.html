@@ -116,10 +116,6 @@
                            <p ng-if="slide.progress <= dynamicProgress && msie == -1 " class="thickWhite" for="slide.index"
                               ng-click="slide.active = true">{{slide.title}} </p>
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 99f7bde5024f5391c01dba89b29b1e3c56e838cd
                            <p ng-if="slide.progress <= dynamicProgress && msie != -1 " class="thickWhiteIE" for="slide.index"
                               ng-click="slide.active = true">{{slide.title}} </p>
 
@@ -133,18 +129,6 @@
    </div>
    <div class="row span12">
 
-=======
-                          <p ng-if="slide.progress > dynamicProgress" class="thickBlack" for="slide.index"
-                             ng-click="slide.active = true">{{slide.title}} </p>
-                      </td>
-                  </tr>
-              </table>
-          </span>
-       </div>
-   </div>
-   <div class="row span12">
-
->>>>>>> 9ded5b0483e05ab0b6be4241243b6b8ef3be9647
        <form role="form" class="form-inline simple-form" role="form" novalidate>
            <carousel interval="interval" class="carousel">
                <slide ng-repeat="slide in slides" active="slide.active">
