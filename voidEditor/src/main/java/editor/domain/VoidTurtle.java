@@ -68,6 +68,7 @@ public class VoidTurtle {
 	private String totalNumberOfTriples="";
 	private String numberOfUniqueSubjects="";
 	private String numberOfUniqueObjects ="";
+	private String ORCID = "";
 	/**
 	 * @param obj This object provides all data extracted from Angular side.
 	 */
@@ -90,6 +91,7 @@ public class VoidTurtle {
 	    this.totalNumberOfTriples=obj.totalNumberOfTriples;
 	    this.numberOfUniqueSubjects=obj.numberOfUniqueSubjects;
 	    this.numberOfUniqueObjects =obj.numberOfUniqueObjects;
+	    this.ORCID = obj.ORCID;
 
 		System.out.println(obj.datePublish);
 	    if (obj.datePublish.equals("N/A")){
@@ -160,7 +162,12 @@ public class VoidTurtle {
          voidDescriptionBase.addProperty(DCTerms.title, titleDescriptionLiteral);
          voidDescriptionBase.addProperty(DCTerms.description, descriptionDescriptionLiteral);
          voidDescriptionBase.addProperty(DCTerms.issued, issueDescriptionLiteral);
-         String URI4Person = "http://voideditor.cs.man.ac.uk/" + UUID.randomUUID();
+         String URI4Person = "";
+         if ( this.ORCID == null || this.ORCID == ""){
+            URI4Person = "http://voideditor.cs.man.ac.uk/" + UUID.randomUUID();
+         } else{
+        	 URI4Person = "http://orcid.org/" + this.ORCID;
+         }
          Resource resourceForPerson = voidModel.createResource(URI4Person);
          voidDescriptionBase.addProperty(Pav.createdBy, resourceForPerson);
          resourceForPerson.addProperty(RDF.type, FOAF.Person);

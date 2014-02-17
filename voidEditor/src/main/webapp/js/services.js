@@ -6,7 +6,7 @@ var jsonService = angular.module('jsonService', ['ngResource'])
         return $resource('https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json');
     });
 
-var URLPreface =  "" ; // "/voidEditor"; // to be changed between dev and prod
+var URLPreface =  "/voidEditor"; // to be changed between dev and prod
 
 var voidUploadService = angular.module('voidUploadService', [])
     .service('uploadVoidData', function ($rootScope, $http) {
@@ -27,6 +27,29 @@ var voidUploadService = angular.module('voidUploadService', [])
             .error(function (data, status) {
                    var message = "Error : " + status ;//+ "=> " + data ;
                    $rootScope.$broadcast('POSTFailedUpload', message)
+            });
+        }
+    });
+
+var ORCIDService = angular.module('ORCIDService', [])
+    .service('ORCIDService', function ($rootScope, $http) {
+
+        this.callORCIDEndpoint = function (id) {
+            var URL =  'http://pub.orcid.org/' + id + '/orcid-bio';
+            $.ajax({
+                type: 'GET',
+                url: URL,
+                headers: {
+                    "Accept":"application/orcid+json"
+                },
+                success: function (data) {
+                    $rootScope.$broadcast('SuccessORCIDData', data);
+                },
+                error: function (status) {
+                    console.log("ORCID SERVICE ERROR + status => " + status);
+                    var er = "Could not retrieve information from your ORCID - Error: " + status;
+                    $rootScope.$broadcast('FailORCIDData', er);
+                }
             });
         }
     });

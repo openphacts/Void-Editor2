@@ -24,4 +24,5 @@ public class VoidAttributes{
 	  public String totalNumberOfTriples="";
 	  public String numberOfUniqueSubjects="";
 	  public String numberOfUniqueObjects ="";
+	  public String ORCID ="";
 }

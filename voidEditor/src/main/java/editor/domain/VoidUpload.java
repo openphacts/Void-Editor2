@@ -70,6 +70,11 @@ public class VoidUpload {
 		if (createdBy.hasProperty(FOAF.givenname))result.put("givenName" , createdBy.getProperty(FOAF.givenname).getString());
 		if (createdBy.hasProperty(FOAF.mbox)) result.put("userEmail" , createdBy.getProperty(FOAF.mbox).getResource().toString().replace("mailto:", ""));
 		
+		if (createdBy.getURI().contains("orcid")){
+			String temp =createdBy.getURI().replace("http://orcid.org/", "");
+			result.put("ORCID", temp);
+		}
+		
 		//Get primary topic and iterate
 		if(!mainResourse.hasProperty(FOAF.primaryTopic)) System.err.println("Primary topic is missing..");
 		Resource primaryTopic = mainResourse.getProperty(FOAF.primaryTopic).getResource();

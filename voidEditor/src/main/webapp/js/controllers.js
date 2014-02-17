@@ -1,11 +1,11 @@
 'use strict';
 
 /* Controllers */
-var editorAppControllers = angular.module('editorAppControllers', ['jsonService', 'voidDataService', 'voidUploadService',
+var editorAppControllers = angular.module('editorAppControllers', ['jsonService', 'voidDataService', 'voidUploadService', 'ORCIDService',
                                 'userDataUploadService','modalControllers']);
 
-editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidData', 'uploadUserData',
-    function ($scope, $rootScope, voidData, uploadUserData) {
+editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidData', 'uploadUserData', 'ORCIDService',
+    function ($scope, $rootScope, voidData, uploadUserData , ORCIDService) {
         $scope.title = 'VoID Editor';
         $scope.mustFieldPerPage = [];
         $rootScope.disabledExport = false;
@@ -39,8 +39,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.data.numberOfUniqueSubjects="";
         $rootScope.data.numberOfUniqueObjects ="";
         $rootScope.haveStatsFinished = 1;
-
-        var ua = window.navigator.userAgent
+        $rootScope.data.ORCID = "";
+        $rootScope.doYouHaveOrcidValue = true;
+        var ua = window.navigator.userAgent;
         $rootScope.msie = ua.indexOf ( ".NET" );
 
         $rootScope.otherLicence = function (val) {
@@ -60,6 +61,16 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             uploadUserData.process(data);
         };
 
+        $rootScope.callORCIDEndpoint = function() {
+            if ( $rootScope.data.ORCID !=undefined&&  $rootScope.data.ORCID.length >= 16 )
+            {
+                var tmp =  $rootScope.data.ORCID.replace(/-/g, '');
+                if (tmp.length>=16){
+                    ORCIDService.callORCIDEndpoint($rootScope.data.ORCID);
+                }
+            }
+        }
+
         $rootScope.callSparqlEndpoint = function() {
             if ( $rootScope.data.sparqlEndpoint !=undefined&&  $rootScope.data.sparqlEndpoint.indexOf("://") != -1)
             {
@@ -69,9 +80,20 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
         }
 
+
+        $rootScope.$on('SuccessORCIDData', function (event, ORCIDJSON) {
+            console.log("SuccessORCIDData");
+            console.log(ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"]);
+            var details = ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"];
+            $rootScope.data.givenName =details["given-names"].value;
+            $rootScope.data.familyName =details["family-name"].value;
+            $rootScope.removeAlert("FailORCIDData");
+        });
+
         $rootScope.$on('SuccessUploadUserData', function (event, uploadResult) {
             $rootScope.showLoader = false;
             console.log("SuccessUploadUserData");
+            $rootScope.removeAlert("postFailedDataUpload");
         });
 
         $rootScope.$on('SuccessStatisticsUserDataTotalTriples', function (event, stats) {
@@ -111,12 +133,19 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             console.log( $rootScope.data.numberOfUniqueObjects);
             $rootScope.haveStatsFinished = 1;
             $rootScope.showLoader = false;
+
         });
 
         $rootScope.$on('POSTFailedDataUpload', function (event, message) {
             $rootScope.showLoader = false;
             console.log("POSTFailedDataUpload =>" + message);
             $rootScope.alerts.push({ id: "postFailedDataUpload", type: 'error', msg: 'We were not able to upload your RDF file. '+ message });
+
+        });
+
+        $rootScope.$on('FailORCIDData', function (event, message) {
+            console.log("FailORCIDData =>" + message);
+            $rootScope.alerts.push({ id: "FailORCIDData", type: 'error', msg: message });
 
         });
 

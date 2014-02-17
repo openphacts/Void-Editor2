@@ -152,10 +152,12 @@
                    <div class="modal-body" ng-controller="editorUploadCtrl">
                         <div class="span5 offset1" id="bind-html-with-trust">
                            <br><br>
-                           <p style="text-align: center;vertical-align: middle; ">
+                           <p >
                                <span > Select your existing Void File :</span>
                                <input type="file" name="file" size="50" onchange="angular.element(this).scope().uploadVoid(this.files)"/>
                            </p>
+                            <br>
+                            <p> The imported Void must have been created by this Void Editor.</p>
                             <br>
                             <div ng-bind-html="uploadErrorMessages" style="text-align: center;vertical-align: middle;"></div>
                         </div>

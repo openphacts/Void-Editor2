@@ -28,6 +28,22 @@
             <div class="form-group row">
                 <div class="span6 centerText">
                     <div class="span2">
+                        <label for="inputORCID">ORCID: </label>
+                    </div>
+                    <div class="span3 ">
+                        <input type="text" class="form-control input-large " id="inputORCID" onchange="angular.element(this).scope().callORCIDEndpoint()"
+                               placeholder="0000-0000-0000-0000" ng-model="data.ORCID">
+                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                             popover="Please supply your ORCID. You can register at http://orcid.org/">
+
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group row">
+                <div class="span6 centerText">
+                    <div class="span2">
                         <label for="inputName">Given Name: </label>
                     </div>
                     <div class="span3 ">
