@@ -1,11 +1,13 @@
 package editor.service;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import org.json.simple.JSONObject;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
+import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 import editor.domain.DataUpload;
 import editor.domain.DatasetStatistics;
 import editor.domain.VoidAttributes;
@@ -35,13 +37,19 @@ public class VoidService {
 		voidInfo = info;
 	}
 	
-	public String getVoid() {
+	public String getVoid() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
 		tmp = new VoidTurtle(voidInfo);
 		tmp.createVoid();
 		return tmp.getVoid();
 	}
 	
-	public String getLocation() {
+	public String getVoidValidationResults() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+		tmp = new VoidTurtle(voidInfo);
+		tmp.createVoid();
+		return tmp.getValidationResults();
+	}
+	
+	public String getLocation() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
 		tmp = new VoidTurtle(voidInfo);
 		tmp.createVoid();
 		return tmp.getLocation();

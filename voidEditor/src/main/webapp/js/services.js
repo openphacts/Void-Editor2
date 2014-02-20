@@ -25,7 +25,7 @@ var voidUploadService = angular.module('voidUploadService', [])
                     }
             })
             .error(function (data, status) {
-                   var message = "Error : " + status ;//+ "=> " + data ;
+                   var message = "Error in upload of void data - please contact support." ;//+ "=> " + data ;
                    $rootScope.$broadcast('POSTFailedUpload', message)
             });
         }
@@ -47,7 +47,7 @@ var ORCIDService = angular.module('ORCIDService', [])
                 },
                 error: function (status) {
                     console.log("ORCID SERVICE ERROR + status => " + status);
-                    var er = "Could not retrieve information from your ORCID - Error: " + status;
+                    var er = "Could not retrieve information from your ORCID." ;
                     $rootScope.$broadcast('FailORCIDData', er);
                 }
             });
@@ -77,7 +77,7 @@ var dataUploadService = angular.module('userDataUploadService', [])
                     }
             })
             .error(function (data, status) {
-                 var message = "Error : " + status ;// + "=> " + data ;
+                 var message = "Error in upload User Data.";// + "=> " + data ;
                   $rootScope.$broadcast('POSTFailedDataUpload', message)
             });
         }
@@ -105,13 +105,13 @@ var voidDataService = angular.module('voidDataService', [])
 
             $http({method: 'POST', url: URLTriples, data: endpoint}).
                 error(function (data, status) {
-                    var message = "Error for total number of triples: " + status ;
+                    var message = "Error for total number of triples query run on your dataset." ;
                     $rootScope.$broadcast('StatsFailed', message)
                 }).
                 success(function (data) {$rootScope.$broadcast('SuccessStatisticsUserDataTotalTriples', data);});
             $http({method: 'POST', url: URLSub, data: endpoint}).
                 error(function (data, status) {
-                    var message = "Error in stats for uniq subjects : " + status ;
+                    var message = "Error in stats for unique subjects in your dataset."  ;
                     $rootScope.$broadcast('StatsFailed', message)
                 }).
                 success(function (data) {
@@ -120,7 +120,7 @@ var voidDataService = angular.module('voidDataService', [])
 
             $http({method: 'POST', url: URLObj, data: endpoint}).
                 error(function (data, status) {
-                    var message = "Error in stats for uniq obj: " + status ;
+                    var message = "Error in stats for number of unique objects in your dataset." ;
                     $rootScope.$broadcast('StatsFailed', message)
                 }).
                 success(function (data) {
@@ -163,7 +163,7 @@ var voidDataService = angular.module('voidDataService', [])
 
             return $http({method: 'POST', url: outputURL, data: data}).
                 error(function (data, status) {
-                    turtleData = "Error in creating void - Status: " + status;
+                    turtleData = "Error in creating void.";
                     console.log(turtleData);
                     $rootScope.$broadcast('TurtleChanged', turtleData);
                     return turtleData;
@@ -183,16 +183,6 @@ var voidDataService = angular.module('voidDataService', [])
 
         this.getSourceData = function () {
             return data.sources;
-        };
-
-        this.deleteFile = function () {
-            $http({method: 'DELETE', url: URLPreface+'/rest/void/delete' }).
-                success(function (data, status, headers, config) {
-                    console.log("Deleted file");
-                }).
-                error(function (data, status, headers, config) {
-                    console.log("Error in deleting void - Status: " + status + "   data=>" + data);
-                });
         };
 
         this.createVoidAndDownload = function () {

@@ -1,6 +1,7 @@
 package editor.rest;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 
 import javax.ws.rs.Consumes;
@@ -15,6 +16,8 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.json.simple.JSONObject;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
+
+import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 
 import com.sun.jersey.multipart.FormDataParam;
 
@@ -36,14 +39,33 @@ public class VoidRestService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String postVoidCreation(VoidAttributes data) {
 		results.setVoidInfo(data);
-		return results.getVoid();
-	 }
+		String output;
+		try {
+			output = results.getVoid();
+		} catch (RDFParseException e) {
+			output = e.getMessage();
+			e.printStackTrace();
+		} catch (RDFHandlerException e) {
+			output = e.getMessage();
+			e.printStackTrace();
+		} catch (VoidValidatorException e) {
+			output = e.getMessage();
+			e.printStackTrace();
+		} catch (IOException e) {
+			output = e.getMessage();
+		}
+		
+		return output;
+	}
 	 
+	// I prefer to throw an error to the users than give them now valid output.
 	@Path("/file")
 	@GET
 	@Produces("application/text")
-	public Response  getVoidFile() {
-		File file = new File(results.getLocation());
+	public Response  getVoidFile() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+		File file;
+		file = new File(results.getLocation());
+		
 		ResponseBuilder response = Response.ok((Object) file);
 		response.header("Content-Disposition","attachment; filename=void.voidCreator.ttl");
 		return response.build();
@@ -114,6 +136,31 @@ public class VoidRestService {
 		results.sparqlStatsUniqueSubjects(endpoint.sparqlEndpoint);
 		JSONObject result = results.getUserDataStatisticsUniqueSubjects();
 		return result;
+	}
+	
+	
+	@Path("/validation")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String validateVoid(VoidAttributes data) {
+		results.setVoidInfo(data);
+		String output;
+		try {
+			output = results.getVoidValidationResults();
+		} catch (RDFParseException e) {
+			output = e.getMessage();
+			e.printStackTrace();
+		} catch (RDFHandlerException e) {
+			output = e.getMessage();
+			e.printStackTrace();
+		} catch (VoidValidatorException e) {
+			output = e.getMessage();
+			e.printStackTrace();
+		} catch (IOException e) {
+			output = e.getMessage();
+		}
+		
+		return output;
 	}
 
 }

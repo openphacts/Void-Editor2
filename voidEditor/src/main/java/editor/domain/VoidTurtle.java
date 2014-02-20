@@ -16,6 +16,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
+import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
+
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -33,6 +35,7 @@ import editor.ontologies.Pav;
 import editor.ontologies.Prov;
 import editor.ontologies.Void;
 import editor.validator.RdfChecker;
+import editor.validator.Validator;
 /**
  *  This java class is based on work of : Andra Waagmeester 
  *  This class is provided all the data specified in the voidAttributes {@link voidAttributes}.
@@ -69,6 +72,8 @@ public class VoidTurtle {
 	private String numberOfUniqueSubjects="";
 	private String numberOfUniqueObjects ="";
 	private String ORCID = "";
+	
+	private Validator validator = null;
 	/**
 	 * @param obj This object provides all data extracted from Angular side.
 	 */
@@ -111,8 +116,12 @@ public class VoidTurtle {
 	
 	/**
 	 * Using data from the constructor it creates dataset description.
+	 * @throws VoidValidatorException 
+	 * @throws IOException 
+	 * @throws RDFHandlerException 
+	 * @throws RDFParseException 
 	 */
-	public void createVoid(){
+	public void createVoid() throws VoidValidatorException, RDFParseException, RDFHandlerException, IOException{
 		
 		 Model voidModel = ModelFactory.createDefaultModel();
 		 voidModel.setNsPrefix("xsd", XSD.getURI());
@@ -143,9 +152,18 @@ public class VoidTurtle {
          Calendar publishmentDate = Calendar.getInstance();
          publishmentDate.set( getYearPublish(),getMonthPublish() -1 , getDatePublish());
          Literal publishmentLiteral = voidModel.createTypedLiteral(publishmentDate);
-         Literal titleLiteral = voidModel.createLiteral(title, "en");
-         Literal descriptionLiteral = voidModel.createLiteral(description, "en");
-     
+         Literal titleLiteral ;
+         if (title =="") {
+        	 titleLiteral = voidModel.createLiteral( "-", "en");
+         }else{
+        	 titleLiteral = voidModel.createLiteral(title, "en");
+         }
+         Literal descriptionLiteral;
+         if (title =="") {
+        	 descriptionLiteral = voidModel.createLiteral("-", "en");
+         }else{
+        	 descriptionLiteral = voidModel.createLiteral(description, "en");
+         }
          //initial data
          if (URI.equalsIgnoreCase("http://www.openphacts.org/")){
         	 URI = URI + UUID.randomUUID();
@@ -303,25 +321,41 @@ public class VoidTurtle {
          }
          
          checkRDF();
+         
+         validateRDFForOPS();
 	}
 
 
-	private void checkRDF() {
+	private void validateRDFForOPS() throws VoidValidatorException{
+		
+		try {
+			validator = new Validator(output);
+		} catch (VoidValidatorException e) {
+			System.err.println("Got a VoidValidatorException!! ");
+			e.printStackTrace();
+			throw new VoidValidatorException("The editor created a not valid file - please contact Lefteris.");
+		}
+		 if ( !validator.passedTests()  ) throw new VoidValidatorException("The editor created a not valid file - please contact Lefteris.");
+	}
+	
+	private void checkRDF() throws RDFParseException, RDFHandlerException, IOException {
 		RdfChecker checker = new RdfChecker();
          try {
 			checker.check(output);
 	  	 } catch (RDFParseException e) {
 			System.err.println("Got a RDFParseException!! ");
 			e.printStackTrace();
-			System.out.println("==========================");
+			throw new RDFParseException("The editor created a wrong file - please contact Lefteris.");
 		 } catch (RDFHandlerException e) {
 			System.out.println("Got a RDFHandlerException ");
 			e.printStackTrace();
 			System.out.println("==========================");
+			throw new RDFHandlerException("The editor handled a wrong file - please contact Lefteris.");
 		 } catch (IOException e) {
 			System.out.println("Got a IOException ");
 			e.printStackTrace();
 			System.out.println("==========================");
+			throw new IOException("The editor could not find the file - please contact Lefteris.");
 		 }
 	}
 	
@@ -341,6 +375,10 @@ public class VoidTurtle {
 		output.delete();
 		
 		return outputString;
+	}
+	
+	public String getValidationResults(){
+		return validator.showResult();
 	}
 	
 	public String getLocation(){

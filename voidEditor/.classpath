@@ -24,7 +24,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="src/main/java/editor/validator/metadata-1.1-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="src/main/java/editor/validator/rdf-tools-1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Lefteris/Desktop/Void-Editor2/voidEditor/src/main/java/editor/resources/metadata-1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Lefteris/Desktop/Void-Editor2/voidEditor/src/main/java/editor/resources/metadata-1.1-SNAPSHOT.one-jar.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Lefteris/Desktop/Void-Editor2/voidEditor/src/main/java/editor/resources/rdf-tools-1.1-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
