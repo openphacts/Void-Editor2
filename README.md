@@ -15,7 +15,7 @@ This project is supervised by Prof Carole Goble and has been developed within th
                                 In case you have a feature request or want to file a bug, please contact <a
                                     href="mailto:eleftherios.tatakis@student.manchester.com">email</a>.
 									
-									Features which are include :
+									Features :
 									* Create VoID according to OPS specs
 									* Upload existing VoID to continue work on it
 									* Upload your data to allow statistical analysis
