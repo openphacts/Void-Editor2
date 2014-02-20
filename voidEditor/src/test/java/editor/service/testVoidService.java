@@ -83,12 +83,6 @@ public class testVoidService {
 		assertTrue("Making sure getVoid contains dcterms:issued", testObject.getVoid().contains("dcterms:issued"));
 	}
 	
-//	@Test
-//	public void testGetVoidOutput10() {
-//		assertTrue("Making sure getVoid contains test source provided", testObject.getVoid().contains("http://testSourceURI"));
-//	}
-	
-	
 	
 	@Test
 	public void testGetLocation() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {

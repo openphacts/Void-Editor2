@@ -14,4 +14,14 @@ This project is supervised by Prof Carole Goble and has been developed within th
                                     https://github.com/openphacts/Void-Editor2</a>.
                                 In case you have a feature request or want to file a bug, please contact <a
                                     href="mailto:eleftherios.tatakis@student.manchester.com">email</a>.
+									
+									Features which are include :
+									* Create VoID according to OPS specs
+									* Upload existing VoID to continue work on it
+									* Upload your data to allow statistical analysis
+									* Connect to your sparql endpoint to allow statistical analysis
+									* Connects to ORCID to get information about dataset owner
+									* Exports VoID
+									* Allows users to view there progress so far - with "under the hood"
+									
  
