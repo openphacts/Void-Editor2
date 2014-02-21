@@ -33,7 +33,7 @@
                 <label for="inputURI">A URI describing your RDF:</label>
             </div>
             <div class="span3">
-                <input type="url" class="form-control input-large" id="inputURI" placeholder="http://"
+                <input type="url" class="form-control input-large" id="inputURI" placeholder="http://" name="inputURI"
                        ng-model="data.URI">
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
                      popover="You can define a URI for your dataset. This URI is the resource that describes the dataset. If you leave it blank, a default will be used.">
@@ -48,7 +48,7 @@
                 <label for="inputDescription">Description of your data*:</label>
             </div>
             <div class="span3">
-                <textarea type="text" class="form-control" rows="5" id="inputDescription" required
+                <textarea type="text" class="form-control" rows="5" id="inputDescription" required name="inputDescription"
                           placeholder="What is this dataset about?" ng-model="data.description"></textarea>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
                      popover="A description of the dataset so we can understand it contains. This information is required.">

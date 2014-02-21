@@ -132,7 +132,7 @@
            <carousel interval="interval" class="carousel">
                <slide ng-repeat="slide in slides" active="slide.active">
                    <div class="custom_carousel" ng-mouseenter="checkMustFieldsOnPreviousPage(slide.index - 1);">
-                       <alert class="myAlert" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+                       <alert class="myAlert" ng-repeat="alert in alerts" id="{{ alert.id }}" type="alert.type" close="closeAlert($index)">
                            {{alert.msg}}
                        </alert>
                        <div class="include" ng-include="slide.page">
@@ -153,7 +153,7 @@
                            <br><br>
                            <p >
                                <span > Select your existing Void File :</span>
-                               <input type="file" name="file" size="50" onchange="angular.element(this).scope().uploadVoid(this.files)"/>
+                               <input id="file" type="file" name="file" size="50" onchange="angular.element(this).scope().uploadVoid(this.files)"/>
                            </p>
                             <br>
                             <p> The imported Void must have been created by this Void Editor.</p>

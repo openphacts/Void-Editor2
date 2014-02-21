@@ -24,8 +24,8 @@
 
                 </div>
                 <div class="panel-body" id="accordion" style="font-size:17px;">
-                    <ul class="list-group">
-                        <li ng-repeat="source in sources" class="thumbnail">
+                    <ul class="list-group" id="OPSSources">
+                        <li ng-repeat="source in sources" class="thumbnail" id="{{ source.title }}">
                             {{source.title}}
                             <span class="glyphicon glyphicon-plus pull-right"
                                   ng-click="addToSelected( source.title)"></span>
@@ -51,8 +51,8 @@
                     <h3 class="panel-title">Your selected sources</h3>
                 </div>
                 <div class="panel-body ">
-                    <ul class="list-group">
-                        <li ng-repeat="source in userSources" class="thumbnail">
+                    <ul class="list-group" id="selectedSources" >
+                        <li ng-repeat="source in userSources" class="thumbnail" id="listOfSources">
                             <table>
                                 <tr>
                                     <td class="span3" style="font-size:14px;">
