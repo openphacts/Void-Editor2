@@ -159,7 +159,7 @@ public class VoidTurtle {
         	 titleLiteral = voidModel.createLiteral(title, "en");
          }
          Literal descriptionLiteral;
-         if (title =="") {
+         if (title =="" ) {
         	 descriptionLiteral = voidModel.createLiteral("-", "en");
          }else{
         	 descriptionLiteral = voidModel.createLiteral(description, "en");
