@@ -344,18 +344,19 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.noVersion = -1;
             $rootScope.noWebpage = -1;
             $rootScope.noDescription = -1;
+            if ($rootScope.data.sources != undefined ){
+                for (var i = 0; i < $rootScope.data.sources.length; i++) {
+                    if ($rootScope.data.sources[i].URI == undefined
+                        || $rootScope.data.sources[i].URI == ""
+                        || $rootScope.data.sources[i].URI.indexOf("://") == -1) $rootScope.noURI = i;
 
-            for (var i = 0; i < $rootScope.data.sources.length; i++) {
-                if ($rootScope.data.sources[i].URI == undefined
-                    || $rootScope.data.sources[i].URI == ""
-                    || $rootScope.data.sources[i].URI.indexOf("://") == -1) $rootScope.noURI = i;
+                    if ($rootScope.data.sources[i].version == "") $rootScope.noVersion = i;
+                    if ($rootScope.data.sources[i].webpage == undefined
+                        || $rootScope.data.sources[i].webpage == ""
+                        || $rootScope.data.sources[i].webpage.indexOf("://") == -1) $rootScope.noWebpage = i;
 
-                if ($rootScope.data.sources[i].version == "") $rootScope.noVersion = i;
-                if ($rootScope.data.sources[i].webpage == undefined
-                    || $rootScope.data.sources[i].webpage == ""
-                    || $rootScope.data.sources[i].webpage.indexOf("://") == -1) $rootScope.noWebpage = i;
-
-                if ($rootScope.data.sources[i].description == "") $rootScope.noDescription = i;
+                    if ($rootScope.data.sources[i].description == "") $rootScope.noDescription = i;
+                }
             }
         }
 
@@ -483,6 +484,8 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
 
         $scope.addToSelected = function (value) {
             var found = 0;
+            if ($scope.userSources == undefined ) $scope.userSources = [];
+
             for (var i = 0; i < $scope.userSources.length; i++) {
                 if ($scope.userSources[i].title == value) found = 1;
             }

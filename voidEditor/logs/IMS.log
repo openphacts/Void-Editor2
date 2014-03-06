@@ -1,32 +1,32 @@
-2014-02-21 15:52:48,244  WARN org.apache.jena.riot - [line: 2, col: 9 ] Bad IRI: <C:\Users\Lefteris\AppData\Local\Temp\void2933158543409522180.ttl#> Code: 4/UNWISE_CHARACTER in PATH: The character matches no grammar rules of URIs/IRIs. These characters are permitted in RDF URI References, XML system identifiers, and XML Schema anyURIs.
-2014-02-21 15:52:48,276  WARN org.apache.jena.riot - [line: 12, col: 1 ] Bad IRI: <C:\Users\Lefteris\AppData\Local\Temp\void2933158543409522180.ttl> Code: 4/UNWISE_CHARACTER in PATH: The character matches no grammar rules of URIs/IRIs. These characters are permitted in RDF URI References, XML system identifiers, and XML Schema anyURIs.
-2014-02-21 15:52:48,909  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file log4j.properties
-2014-02-21 15:52:48,914  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 15:52:48,915  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 15:52:48,916  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 15:52:48,947  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Logger configured from file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/log4j.properties by Loaded with class loader
-2014-02-21 15:52:48,947  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file MetaDataSpecifications.properties
-2014-02-21 15:52:48,948  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 15:52:48,949  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 15:52:48,950  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 15:52:48,953  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/MetaDataSpecifications.properties with class loader. 
-2014-02-21 15:52:48,954  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Adding local properties
-2014-02-21 15:52:48,955  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file local.properties
-2014-02-21 15:52:48,955  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 15:52:48,956  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 15:52:48,957  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 15:52:48,966  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/local.properties with class loader. 
-2014-02-21 15:52:48,967  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file VoidInfo.owl
-2014-02-21 15:52:48,968  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 15:52:48,968  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 15:52:48,969  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 15:52:48,972  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/VoidInfo.owl with class loader. 
-2014-02-21 15:52:50,792  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file simpleOntology.owl
-2014-02-21 15:52:50,792  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 15:52:50,793  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 15:52:50,793  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 15:52:50,795  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/simpleOntology.owl with class loader. 
-2014-02-21 15:52:50,899 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to find file. C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\file:\C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\test\res\editor\domain
+2014-03-06 00:06:29,797  WARN org.apache.jena.riot - [line: 2, col: 9 ] Bad IRI: <C:\Users\Lefteris\AppData\Local\Temp\void8572566455182896148.ttl#> Code: 4/UNWISE_CHARACTER in PATH: The character matches no grammar rules of URIs/IRIs. These characters are permitted in RDF URI References, XML system identifiers, and XML Schema anyURIs.
+2014-03-06 00:06:29,808  WARN org.apache.jena.riot - [line: 12, col: 1 ] Bad IRI: <C:\Users\Lefteris\AppData\Local\Temp\void8572566455182896148.ttl> Code: 4/UNWISE_CHARACTER in PATH: The character matches no grammar rules of URIs/IRIs. These characters are permitted in RDF URI References, XML system identifiers, and XML Schema anyURIs.
+2014-03-06 00:06:30,021  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file log4j.properties
+2014-03-06 00:06:30,023  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:06:30,023  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:06:30,023  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:06:30,037  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Logger configured from file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/log4j.properties by Loaded with class loader
+2014-03-06 00:06:30,037  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file MetaDataSpecifications.properties
+2014-03-06 00:06:30,038  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:06:30,038  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:06:30,038  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:06:30,039  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/MetaDataSpecifications.properties with class loader. 
+2014-03-06 00:06:30,039  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Adding local properties
+2014-03-06 00:06:30,040  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file local.properties
+2014-03-06 00:06:30,040  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:06:30,040  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:06:30,040  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:06:30,043  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/local.properties with class loader. 
+2014-03-06 00:06:30,043  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file VoidInfo.owl
+2014-03-06 00:06:30,043  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:06:30,043  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:06:30,043  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:06:30,044  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/VoidInfo.owl with class loader. 
+2014-03-06 00:06:30,583  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file simpleOntology.owl
+2014-03-06 00:06:30,583  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:06:30,583  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:06:30,584  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:06:30,584  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/simpleOntology.owl with class loader. 
+2014-03-06 00:06:30,618 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to find file. C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\file:\C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\test\res\editor\domain
 java.io.FileNotFoundException: file:\C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\test\res\editor\domain (The filename, directory name, or volume label syntax is incorrect)
 	at java.io.FileInputStream.open(Native Method)
 	at java.io.FileInputStream.<init>(FileInputStream.java:146)
@@ -66,20 +66,20 @@ java.io.FileNotFoundException: file:\C:\Users\Lefteris\Desktop\Void-Editor2\void
 	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-2014-02-21 15:52:50,908  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of file:/C:/Users/Lefteris/Desktop/Void-Editor2/voidEditor/src/test/res/editor/domain failed. quess it wasn't a URL (locator) after all
-2014-02-21 15:52:50,995  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file validator.properties
-2014-02-21 15:52:50,996  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 15:52:50,996  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 15:52:50,997  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 15:52:50,998  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/validator.properties with class loader. 
-2014-02-21 15:52:50,999  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Adding local properties
-2014-02-21 15:52:50,999  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file local.properties
-2014-02-21 15:52:51,000  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 15:52:51,000  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 15:52:51,001  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 15:52:51,002  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/local.properties with class loader. 
-2014-02-21 15:52:51,236 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to dettermine RDF formst based on file name http://manchester.ac.uk
-2014-02-21 15:52:51,237  WARN org.openrdf.sail.memory.MemoryStoreConnection - Rolling back transaction due to connection close
+2014-03-06 00:06:30,620  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of file:/C:/Users/Lefteris/Desktop/Void-Editor2/voidEditor/src/test/res/editor/domain failed. quess it wasn't a URL (locator) after all
+2014-03-06 00:06:30,627  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file validator.properties
+2014-03-06 00:06:30,627  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:06:30,627  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:06:30,627  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:06:30,628  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/validator.properties with class loader. 
+2014-03-06 00:06:30,628  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Adding local properties
+2014-03-06 00:06:30,628  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file local.properties
+2014-03-06 00:06:30,628  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:06:30,628  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:06:30,628  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:06:30,629  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/local.properties with class loader. 
+2014-03-06 00:06:30,721 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to dettermine RDF formst based on file name http://manchester.ac.uk
+2014-03-06 00:06:30,722  WARN org.openrdf.sail.memory.MemoryStoreConnection - Rolling back transaction due to connection close
 java.lang.Throwable
 	at org.openrdf.sail.helpers.SailConnectionBase.close(SailConnectionBase.java:240)
 	at org.openrdf.repository.sail.SailRepositoryConnection.close(SailRepositoryConnection.java:129)
@@ -118,47 +118,47 @@ java.lang.Throwable
 	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-2014-02-21 15:52:51,659 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 220 Microsoft FTP Service
-2014-02-21 15:52:51,662  INFO uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - Connected to ftp.rsc-us.org on port 21
-2014-02-21 15:52:51,665 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - USER *******
-2014-02-21 15:52:51,757 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 331 Password required for anonymous.
-2014-02-21 15:52:51,758 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - PASS *******
-2014-02-21 15:52:51,848 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 530 User cannot log in.
-2014-02-21 15:52:51,849 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - QUIT
-2014-02-21 15:52:51,941 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 221 Goodbye.
-2014-02-21 15:52:51,942 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - SYST
-2014-02-21 15:52:51,943 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to log into FTP ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl using username:anonymous password:Lefteris@Teris-PC
-2014-02-21 15:52:51,944  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl failed. quess it wasn't a URL (locator) after all
-2014-02-21 15:52:51,950  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of http:/ failed. quess it wasn't a URL (locator) after all
-2014-02-21 16:30:10,107  WARN org.apache.jena.riot - [line: 2, col: 9 ] Bad IRI: <C:\Users\Lefteris\AppData\Local\Temp\void7319393903056199258.ttl#> Code: 4/UNWISE_CHARACTER in PATH: The character matches no grammar rules of URIs/IRIs. These characters are permitted in RDF URI References, XML system identifiers, and XML Schema anyURIs.
-2014-02-21 16:30:10,112  WARN org.apache.jena.riot - [line: 12, col: 1 ] Bad IRI: <C:\Users\Lefteris\AppData\Local\Temp\void7319393903056199258.ttl> Code: 4/UNWISE_CHARACTER in PATH: The character matches no grammar rules of URIs/IRIs. These characters are permitted in RDF URI References, XML system identifiers, and XML Schema anyURIs.
-2014-02-21 16:30:10,405  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file log4j.properties
-2014-02-21 16:30:10,407  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 16:30:10,407  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 16:30:10,407  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 16:30:10,421  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Logger configured from file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/log4j.properties by Loaded with class loader
-2014-02-21 16:30:10,421  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file MetaDataSpecifications.properties
-2014-02-21 16:30:10,421  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 16:30:10,422  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 16:30:10,422  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 16:30:10,423  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/MetaDataSpecifications.properties with class loader. 
-2014-02-21 16:30:10,423  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Adding local properties
-2014-02-21 16:30:10,423  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file local.properties
-2014-02-21 16:30:10,424  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 16:30:10,424  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 16:30:10,424  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 16:30:10,429  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/local.properties with class loader. 
-2014-02-21 16:30:10,430  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file VoidInfo.owl
-2014-02-21 16:30:10,431  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 16:30:10,431  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 16:30:10,431  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 16:30:10,432  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/VoidInfo.owl with class loader. 
-2014-02-21 16:30:11,137  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file simpleOntology.owl
-2014-02-21 16:30:11,137  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 16:30:11,137  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 16:30:11,138  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 16:30:11,139  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/simpleOntology.owl with class loader. 
-2014-02-21 16:30:11,189 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to find file. C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\file:\C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\test\res\editor\domain
+2014-03-06 00:06:31,085 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 220 Microsoft FTP Service
+2014-03-06 00:06:31,087  INFO uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - Connected to ftp.rsc-us.org on port 21
+2014-03-06 00:06:31,091 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - USER *******
+2014-03-06 00:06:31,200 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 331 Password required for anonymous.
+2014-03-06 00:06:31,200 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - PASS *******
+2014-03-06 00:06:31,313 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 530 User cannot log in.
+2014-03-06 00:06:31,314 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - QUIT
+2014-03-06 00:06:31,423 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 221 Goodbye.
+2014-03-06 00:06:31,423 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - SYST
+2014-03-06 00:06:31,425 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to log into FTP ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl using username:anonymous password:Lefteris@Teris-PC
+2014-03-06 00:06:31,425  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl failed. quess it wasn't a URL (locator) after all
+2014-03-06 00:06:31,435  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of http:/ failed. quess it wasn't a URL (locator) after all
+2014-03-06 00:17:45,151  WARN org.apache.jena.riot - [line: 2, col: 9 ] Bad IRI: <C:\Users\Lefteris\AppData\Local\Temp\void8411875092897383522.ttl#> Code: 4/UNWISE_CHARACTER in PATH: The character matches no grammar rules of URIs/IRIs. These characters are permitted in RDF URI References, XML system identifiers, and XML Schema anyURIs.
+2014-03-06 00:17:45,168  WARN org.apache.jena.riot - [line: 12, col: 1 ] Bad IRI: <C:\Users\Lefteris\AppData\Local\Temp\void8411875092897383522.ttl> Code: 4/UNWISE_CHARACTER in PATH: The character matches no grammar rules of URIs/IRIs. These characters are permitted in RDF URI References, XML system identifiers, and XML Schema anyURIs.
+2014-03-06 00:17:46,369  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file log4j.properties
+2014-03-06 00:17:46,376  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:17:46,377  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:17:46,378  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:17:46,444  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Logger configured from file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/log4j.properties by Loaded with class loader
+2014-03-06 00:17:46,445  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file MetaDataSpecifications.properties
+2014-03-06 00:17:46,446  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:17:46,447  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:17:46,447  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:17:46,451  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/MetaDataSpecifications.properties with class loader. 
+2014-03-06 00:17:46,452  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Adding local properties
+2014-03-06 00:17:46,452  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file local.properties
+2014-03-06 00:17:46,452  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:17:46,453  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:17:46,453  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:17:46,470  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/local.properties with class loader. 
+2014-03-06 00:17:46,470  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file VoidInfo.owl
+2014-03-06 00:17:46,471  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:17:46,471  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:17:46,472  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:17:46,474  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/VoidInfo.owl with class loader. 
+2014-03-06 00:17:48,882  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file simpleOntology.owl
+2014-03-06 00:17:48,884  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:17:48,885  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:17:48,885  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:17:48,887  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/metadata/metadata/1.1-SNAPSHOT/metadata-1.1-SNAPSHOT.jar!/simpleOntology.owl with class loader. 
+2014-03-06 00:17:49,033 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to find file. C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\file:\C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\test\res\editor\domain
 java.io.FileNotFoundException: file:\C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\test\res\editor\domain (The filename, directory name, or volume label syntax is incorrect)
 	at java.io.FileInputStream.open(Native Method)
 	at java.io.FileInputStream.<init>(FileInputStream.java:146)
@@ -198,20 +198,20 @@ java.io.FileNotFoundException: file:\C:\Users\Lefteris\Desktop\Void-Editor2\void
 	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-2014-02-21 16:30:11,192  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of file:/C:/Users/Lefteris/Desktop/Void-Editor2/voidEditor/src/test/res/editor/domain failed. quess it wasn't a URL (locator) after all
-2014-02-21 16:30:11,201  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file validator.properties
-2014-02-21 16:30:11,202  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 16:30:11,202  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 16:30:11,202  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 16:30:11,203  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/validator.properties with class loader. 
-2014-02-21 16:30:11,203  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Adding local properties
-2014-02-21 16:30:11,203  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file local.properties
-2014-02-21 16:30:11,203  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
-2014-02-21 16:30:11,203  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
-2014-02-21 16:30:11,204  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
-2014-02-21 16:30:11,204  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/local.properties with class loader. 
-2014-02-21 16:30:11,311 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to dettermine RDF formst based on file name http://manchester.ac.uk
-2014-02-21 16:30:11,311  WARN org.openrdf.sail.memory.MemoryStoreConnection - Rolling back transaction due to connection close
+2014-03-06 00:17:49,049  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of file:/C:/Users/Lefteris/Desktop/Void-Editor2/voidEditor/src/test/res/editor/domain failed. quess it wasn't a URL (locator) after all
+2014-03-06 00:17:49,083  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file validator.properties
+2014-03-06 00:17:49,085  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:17:49,086  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:17:49,087  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:17:49,090  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/validator.properties with class loader. 
+2014-03-06 00:17:49,091  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Adding local properties
+2014-03-06 00:17:49,091  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Looking for file local.properties
+2014-03-06 00:17:49,091  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No environment variable BRIDGEDB_CONFIG found
+2014-03-06 00:17:49,092  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No enviroment variable CATALINA_HOME found
+2014-03-06 00:17:49,093  WARN uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - No file directory found at: ../conf/BridgeDb
+2014-03-06 00:17:49,094  INFO uk.ac.manchester.cs.datadesc.validator.utils.PropertiesLoader - Loaded jar:file:/C:/Users/Lefteris/.m2/repository/uk/ac/manchester/rdftools/rdftools/1.1-SNAPSHOT/rdftools-1.1-SNAPSHOT.jar!/local.properties with class loader. 
+2014-03-06 00:17:49,253 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to dettermine RDF formst based on file name http://manchester.ac.uk
+2014-03-06 00:17:49,253  WARN org.openrdf.sail.memory.MemoryStoreConnection - Rolling back transaction due to connection close
 java.lang.Throwable
 	at org.openrdf.sail.helpers.SailConnectionBase.close(SailConnectionBase.java:240)
 	at org.openrdf.repository.sail.SailRepositoryConnection.close(SailRepositoryConnection.java:129)
@@ -250,15 +250,15 @@ java.lang.Throwable
 	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-2014-02-21 16:30:11,882 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 220 Microsoft FTP Service
-2014-02-21 16:30:11,884  INFO uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - Connected to ftp.rsc-us.org on port 21
-2014-02-21 16:30:11,885 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - USER *******
-2014-02-21 16:30:11,992 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 331 Password required for anonymous.
-2014-02-21 16:30:11,992 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - PASS *******
-2014-02-21 16:30:12,097 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 530 User cannot log in.
-2014-02-21 16:30:12,097 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - QUIT
-2014-02-21 16:30:12,201 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 221 Goodbye.
-2014-02-21 16:30:12,201 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - SYST
-2014-02-21 16:30:12,201 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to log into FTP ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl using username:anonymous password:Lefteris@Teris-PC
-2014-02-21 16:30:12,201  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl failed. quess it wasn't a URL (locator) after all
-2014-02-21 16:30:12,203  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of http:/ failed. quess it wasn't a URL (locator) after all
+2014-03-06 00:17:49,915 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 220 Microsoft FTP Service
+2014-03-06 00:17:49,920  INFO uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - Connected to ftp.rsc-us.org on port 21
+2014-03-06 00:17:49,924 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - USER *******
+2014-03-06 00:17:50,032 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 331 Password required for anonymous.
+2014-03-06 00:17:50,034 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - PASS *******
+2014-03-06 00:17:50,143 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 530 User cannot log in.
+2014-03-06 00:17:50,144 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - QUIT
+2014-03-06 00:17:50,252 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - 221 Goodbye.
+2014-03-06 00:17:50,253 DEBUG uk.ac.manchester.cs.datadesc.validator.utils.UrlReader - SYST
+2014-03-06 00:17:50,254 ERROR uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException - Unable to log into FTP ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl using username:anonymous password:Lefteris@Teris-PC
+2014-03-06 00:17:50,254  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl failed. quess it wasn't a URL (locator) after all
+2014-03-06 00:17:50,262  INFO uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader - External load of http:/ failed. quess it wasn't a URL (locator) after all
