@@ -37,7 +37,7 @@
                            typeahead-on-select="addToSelected(selected); selected = '' "
                            ng-enter="addToSelected(selected);  selected = ''"
                            ng-model="selected"
-                           typeahead="title for title in titles | filter:$viewValue | limitTo:8">
+                           typeahead="title for title in titles | filter:$viewValue | limitTo:3">
                     <input type="Button" value="Add" class="btn btn-primary" style="width: 63px;"
                            data-ng-click="addToSelected(selected); selected = ''">
                 </div>

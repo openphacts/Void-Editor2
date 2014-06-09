@@ -162,5 +162,16 @@ public class VoidRestService {
 		
 		return output;
 	}
+	
+	
+	@Path("/orcid")
+	@POST
+	@Produces("application/text")
+	public Response  returnOrcid()  {
+		
+		return null;
+	 }
+	
+	
 
 }

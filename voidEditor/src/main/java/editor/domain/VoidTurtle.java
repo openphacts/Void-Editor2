@@ -300,8 +300,8 @@ public class VoidTurtle {
 	        			 Resource webpageResourceTmp = voidModel.createResource(value);
 	    	             source.addProperty(DCAT.landingPage, webpageResourceTmp);
 	        		 } else if(property2Check.contains("description")){
-	        			 Literal descriptionLiteralTmp = voidModel.createLiteral(value, "en");
-	    	             source.addProperty(DCTerms.description, descriptionLiteralTmp);
+	        				 Literal descriptionLiteralTmp = voidModel.createLiteral(value, "en");
+	        				 source.addProperty(DCTerms.description, descriptionLiteralTmp);
 	        		 }
 	        	 }
 	 		 }

@@ -44,6 +44,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.doYouHaveOrcidValue = true;
         var ua = window.navigator.userAgent;
         $rootScope.msie = ua.indexOf ( ".NET" );
+        $rootScope.finalHeader = "Almost there...";
 
         $rootScope.otherLicence = function (val) {
             if (val == "other") {
@@ -328,8 +329,13 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 returnString += "<p class='neededFields'> A description for the source you cited in \"Sources \" </p> ";
             }
 
-            if (returnString == "")  $rootScope.disabledExport = false;
-            else $rootScope.disabledExport = true;
+            if (returnString == ""){
+                 $rootScope.disabledExport = false
+                 $rootScope.finalHeader = "Congratulations you now have a dataset description!";
+            } else{
+                $rootScope.finalHeader = "Almost created a dataset description...";
+                $rootScope.disabledExport = true
+            };
 
             if ($rootScope.haveStatsFinished == -1) {
                 if (returnString == "") returnString +=header;
@@ -464,6 +470,7 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
         $scope.selected = undefined;
         $scope.titles = [];
         $scope.aboutOfTitles = [];
+        $scope.descriptionsOfTitles = [];
         $scope.sources = [];
         $scope.showInputURI = false;
 
@@ -475,6 +482,7 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
             for (var i = 0; i < $scope.sources.length; i++) {
                 $scope.titles.push($scope.sources[i].title);
                 $scope.aboutOfTitles.push($scope.sources[i]._about);
+                $scope.descriptionsOfTitles.push($scope.sources[i].description);
             }
         };
 
@@ -500,7 +508,7 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
                 var _about =value ;
                 if (foundURI != -1) {
                     _about = $scope.aboutOfTitles[foundURI];
-                    $scope.userSources.push({"title": value, "type": "RDF", "URI": _about, "version": "", "webpage": _about, "description": "N/A", "noURI": false });
+                    $scope.userSources.push({"title": value, "type": "RDF", "URI": _about, "version": "", "webpage": _about, "description":  $scope.descriptionsOfTitles[foundURI], "noURI": false });
                 } else {
                     $scope.showInputURI = true;
                     $scope.userSources.push({"title": value, "type": "RDF", "URI": "", "version": "", "webpage": "", "description": "", "noURI": true });
