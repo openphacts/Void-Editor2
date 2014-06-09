@@ -5,7 +5,7 @@ div.custom_carousel {
     min-height:500px;
     max-width:100%;
     max-height:1000px;
-    /*overflow:hidden;*/
+    overflow:show;
     display:block;
     border-top:1px solid red;
     border-bottom:1px solid red;

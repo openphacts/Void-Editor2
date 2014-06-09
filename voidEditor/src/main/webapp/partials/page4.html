@@ -25,7 +25,7 @@
                 </div>
                 <div class="panel-body" id="accordion" style="font-size:17px;">
                     <ul class="list-group" id="OPSSources">
-                        <li ng-repeat="source in sources" class="thumbnail" id="{{ source.title }}">
+                        <li ng-repeat="source in sources  | limitTo:quantity" class="thumbnail" id="{{ source.title }}">
                             {{source.title}}
                             <span class="glyphicon glyphicon-plus pull-right"
                                   ng-click="addToSelected( source.title)"></span>

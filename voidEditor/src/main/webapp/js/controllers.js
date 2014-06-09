@@ -14,7 +14,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.showOther = false;
         $rootScope.data.datePublish = 1;
         $rootScope.data.monthPublish = 1;
-        $rootScope.data.yearPublish = 2013;
+        $rootScope.data.yearPublish = 2014;
         $rootScope.fileLocation = "";
         $rootScope.data.description = "";
         $rootScope.data.title = "";
@@ -22,6 +22,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.data.webpage = "";
         $rootScope.data.sparqlEndpoint = "";
         $rootScope.data.sources = [];
+        $rootScope.quantity = 6;
         $rootScope.data.updateFrequency = "Annual";
         $rootScope.postFinished = false;
         $rootScope.data.licence = "http://creativecommons.org/licenses/by-sa/3.0/";

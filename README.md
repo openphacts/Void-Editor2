@@ -9,7 +9,7 @@ This project is supervised by Prof Carole Goble and has been developed within th
                                         target="_blank">Open PHACTS specification</a>, VoID description for deployment
                                 with their dataset.The code was last updated on <span property="dcterms:modified"
                                 <datatype
-                                ="xsd:date">December 2013</datatype> </span>. The code for the Open PHACTS editor is
+                                ="xsd:date">June 2014</datatype> </span>. The code for the Open PHACTS editor is
                                 available from <a href="https://github.com/openphacts/Void-Editor2" target="_blank">
                                     https://github.com/openphacts/Void-Editor2</a>.
                                 In case you have a feature request or want to file a bug, please contact <a
