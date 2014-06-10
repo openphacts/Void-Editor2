@@ -26,6 +26,128 @@
         </div>
         <br>
 
+        <div class="form-group row">
+            <div class="spanLabel3">
+                <label for="inputPublisher">Are there any other contributors to this dataset?</label>
+            </div>
+            <div class="span3">
+
+        <div ng-controller="ModalContributorsCtrl" class="pull-left">
+                <script type="text/ng-template" id="myModalContentContributors.html">
+                    <div class="modal-header ">
+                        <h3>Contributors to dataset</h3>
+                    </div>
+                    <div class="modal-body" ng-controller="editorContributorsCtrl">
+                        <div class="span5 offset1" id="bind-html-with-trust">
+
+                                <div class="span4">
+                                    <div class="panel panel-primary">
+                                        <!--<div class="panel-heading">-->
+                                        <!--</div>-->
+                                       <br>
+                                        <div class="panel-body ">
+                                            <ul class="list-group" id="addedContributors" >
+                                                <li ng-repeat="contributor in contributors" class="thumbnail" id="listOfContributors">
+                                                    <div class="form-group row " style="margin-left:30px;">
+                                                     <h5><span>{{contributor.name}} {{contributor.surname}}</span>
+                                                         <span class="glyphicon glyphicon-minus pull-right" nng-click="remove( contributor.surname, contributor.email)">
+                                                         </span>
+                                                     </h5>
+                                                    </div>
+                                                    <div class="form-group row " style="margin-left:5px;">
+                                                        <div class="spanLabel100px">
+                                                            <label for="nameContributor" ng-hide="isCollapsedContributor">  ORCID:</label>
+                                                        </div>
+                                                        <div class="span2">
+                                                            <input class="input-large" ng-hide="isCollapsedContributor" required ng-model="contributor.orcid"
+                                                                   type="text" collapse="isCollapsedContributor"
+                                                                   placeholder="0000-0000-0000-0000">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row " style="margin-left:5px;">
+                                                        <div class="spanLabel100px">
+                                                        <label for="nameContributor" ng-hide="isCollapsedContributor">  First Name:</label>
+                                                        </div>
+                                                        <div class="span2">
+                                                        <input class="input-large" ng-hide="isCollapsedContributor" required ng-model="contributor.name"
+                                                               type="text" collapse="isCollapsedContributor" id="nameContributor"
+                                                               placeholder="Given Name">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group row " style="margin-left:5px;">
+                                                        <div class="spanLabel100px">
+                                                            <label for="nameContributor" ng-hide="isCollapsedContributor">  Surname:</label>
+                                                        </div>
+                                                        <div class="span2">
+                                                        <input class="input-large" ng-hide="isCollapsedContributor" required ng-model="contributor.surname"
+                                                               type="text" collapse="isCollapsedContributor"
+                                                               placeholder="Family Name">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row " style="margin-left:5px;">
+                                                        <div class="spanLabel100px">
+                                                            <label for="nameContributor" ng-hide="isCollapsedContributor">  Email:</label>
+                                                        </div>
+                                                        <div class="span2">
+                                                        <input class="input-large" ng-hide="isCollapsedContributor" required ng-model="contributor.email"
+                                                               type="email" collapse="isCollapsedContributor"
+                                                               placeholder="Enter email">
+                                                            </div>
+                                                    </div>
+
+
+                                                    <br  ng-hide="isCollapsedContributor">
+                                                    <div class="form-group row" style="margin-left:30px;">
+                                                        <table>
+                                                            <tr>
+                                                                <td class="span3">
+                                                                    <p style="font-size:12px;  cursor: pointer;" ng-show="isCollapsedContributor"
+                                                                       ng-click="isCollapsedContributor = !isCollapsedContributor">Additional Information</p>
+                                                                </td>
+                                                                <td class="">
+                                                                    <button class="btn  btn-primary"
+                                                                            style="vertical-align: middle; text-align: center;"
+                                                                            ng-show="isCollapsedContributor" ng-click="isCollapsedContributor = !isCollapsedContributor ">Edit
+                                                                    </button>
+                                                                    <button class="btn  btn-primary"
+                                                                            style="vertical-align: middle; text-align: center;"
+                                                                            ng-show="!isCollapsedContributor" ng-click="isCollapsedContributor = !isCollapsedContributor">Save
+                                                                    </button>
+
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <br>
+                                            <span style="margin-right:10px;">Contributors to Dataset</span>
+                                            <button class="btn btn-primary" ng-click="add('new')">Add Contributor</button>
+                                         </div>
+                                    </div>
+                                </div>
+
+                            <!--<div ng-bind-html="uploadErrorMessages" style="text-align: center;vertical-align: middle;"></div>-->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-click="closeModal()">Done</button>
+                    </div>
+                </script>
+                <button type="button" class="btn btn-default pull-right" id="contributors" ng-click="open();">
+                    Add Contributors
+                </button>
+
+             </div>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="Please provide any additional contributors to the creation of this dataset which you are currently
+                     describing.">
+            </div>
+        </div>
+        <br>
+
         <div  class="form-group row" ng-controller="DatepickerCtrl">
             <div class="spanLabel3">
                 <label for="inputDateofPublishment">When did these RDF data get published?*</label>
@@ -45,7 +167,7 @@
                 </select>
 
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
-                     popover="If only aware of year please select 1st of January of the year.
+                     popover="If you are only aware of the year please select 1st of January of the corresponding year.
                                 If aware of month only select 1st of that month. This information is required.">
             </div>
         </div>
@@ -114,6 +236,7 @@
             </div>
         </div>
         <br>
+
         <div class="form-group row">
             <div class="spanLabel3">
                 <label for="inputUserData">Statistically analyse your RDF data:</label>
@@ -124,7 +247,7 @@
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
                      class="pull-right"
                      popover="Not mandatory. If you have provided a sparql endpoint statistical analysis will be done on the endpoint.
-                        Please provide your RDF data file. Maximum size 10MB.">
+                        Please provide your RDF data file. Maximum size 10MB. ZIPs are not accepted.">
             </div>
         </div>
         <br>

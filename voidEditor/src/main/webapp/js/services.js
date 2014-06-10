@@ -108,7 +108,10 @@ var voidDataService = angular.module('voidDataService', [])
                     var message = "Error for total number of triples query run on your dataset." ;
                     $rootScope.$broadcast('StatsFailed', message)
                 }).
-                success(function (data) {$rootScope.$broadcast('SuccessStatisticsUserDataTotalTriples', data);});
+                success(function (data) {
+                    $rootScope.$broadcast('SuccessStatisticsUserDataTotalTriples', data);
+                });
+
             $http({method: 'POST', url: URLSub, data: endpoint}).
                 error(function (data, status) {
                     var message = "Error in stats for unique subjects in your dataset."  ;
@@ -132,6 +135,7 @@ var voidDataService = angular.module('voidDataService', [])
             turtleData = value;
             $rootScope.$broadcast('TurtleChanged', turtleData);
         };
+
         this.getTurtle = function () {
             return turtleData;
         };

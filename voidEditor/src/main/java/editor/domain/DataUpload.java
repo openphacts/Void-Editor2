@@ -46,7 +46,7 @@ import editor.validator.RdfChecker;
 			
 			Model model = ModelFactory.createDefaultModel(); 
 			String path = importedFile.getAbsolutePath() ;
-			model.read( path, "TURTLE") ;
+			model.read( path );//, "TURTLE") ;
 			Resource mainResourse = null;
 
 			String OS = System.getProperty("os.name").toLowerCase();
@@ -75,11 +75,11 @@ import editor.validator.RdfChecker;
 				//e.printStackTrace();
 				throw new RDFParseException("Input file parse error. Is it RDF?");
 			 } catch (RDFHandlerException e) {
-				System.out.println("In Imported file -->Got a RDFHandlerException ");
+				System.out.println("In Imported file --> Got a RDFHandlerException ");
 				//e.printStackTrace();
 				throw new RDFHandlerException("Input file Handling error. Is it RDF?");
 			 } catch (IOException e) {
-				System.out.println("In Imported file -->Got a IOException ");
+				System.out.println("In Imported file --> Got a IOException ");
 				e.printStackTrace();
 			 }
 		}
@@ -88,6 +88,7 @@ import editor.validator.RdfChecker;
 			StmtIterator iter = model.listStatements();
 			printIterator(iter);
 		}
+		
 		private void printIterator(StmtIterator iter) {
 			while (iter.hasNext()) {
 				   Statement stmt      = iter.nextStatement();  // get next statement

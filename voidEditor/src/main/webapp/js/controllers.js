@@ -31,6 +31,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.mustFields = [];
         $rootScope.isCollapsed = false;
         $rootScope.showLoader = false;
+        $rootScope.isCollapsedContributor = false;
         $rootScope.uploadErrorMessages = "";
         $rootScope.noURI = -1;
         $rootScope.noVersion = -1;
@@ -333,7 +334,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                  $rootScope.disabledExport = false
                  $rootScope.finalHeader = "Congratulations you now have a dataset description!";
             } else{
-                $rootScope.finalHeader = "Almost created a dataset description...";
+                $rootScope.finalHeader = "You have almost created a dataset description...";
                 $rootScope.disabledExport = true
             };
 
@@ -416,6 +417,32 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
             window.open('/rest/void/file');
         };
     }]);
+
+
+editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scope', 'voidData',
+    function ($rootScope, $scope , voidData) {
+        $scope.contributors = [];
+        $scope.contributors.push({name : "New" , surname : "Contributor" , orcid:"", email:""});
+
+        $scope.add = function (value) {
+            if ($scope.contributors == undefined ) $scope.contributors = [];
+            $scope.contributors.push({name : "New" , surname : "Contributor" , orcid:"", email:""});
+            //voidData.setSourceData($scope.userSources);
+        };
+        $scope.remove = function (name , email) {
+            var found = false;
+            var i = 0;
+            while (i < $scope.contributors.length && !found) {
+                if ($scope.contributors[i].name == name && $scope.contributors[i].email == email) found = true;
+                else i++;
+            }
+            if (found) {
+                $scope.contributors.splice(i, 1);
+                //voidData.setSourceData($scope.userSources);
+            }
+        };
+    }]);
+
 
 
 editorAppControllers.controller('editorUploadCtrl', ['$rootScope' , '$scope', '$http', 'uploadVoidData',

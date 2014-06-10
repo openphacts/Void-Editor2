@@ -38,8 +38,8 @@ public class DatasetStatistics {
     
     
     private QueryExecution tnotExec = null ;
-    private QueryExecution nousExec =null;
-    private QueryExecution nouoExec =null ;
+    private QueryExecution nousExec = null;
+    private QueryExecution nouoExec = null ;
     
     
 	public DatasetStatistics(){
