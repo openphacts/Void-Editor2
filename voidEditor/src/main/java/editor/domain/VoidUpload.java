@@ -32,10 +32,14 @@ import editor.validator.RdfChecker;
 public class VoidUpload {
 
 	private String importedFromSource = "http://purl.org/pav/importedFrom";
+	private String authoredBy = "http://purl.org/pav/authoredBy";
+	private String contributedBy = "http://purl.org/pav/contributedBy";
+	private String curatedBy = "http://purl.org/pav/curatedBy";
 	private  File importedFile;
 	private VoidAttributes attributes = new VoidAttributes() ;
 	private Map<String, Object> mainDatasetSubjects = new HashMap<String, Object>();
 	private Map<String, String> sourceDatasetSubjects = new HashMap<String, String>();
+	private Map<String, String> contrDatasetSubjects = new HashMap<String, String>();
 	private JSONObject result ;
 	
 	public VoidUpload(InputStream uploadedInputStream) throws RDFParseException, RDFHandlerException {
@@ -43,6 +47,7 @@ public class VoidUpload {
 		result = new JSONObject();
 		createSubjectMap();
 		createSourceMap();
+		createContributorMap();
 		processVoid();
 		importedFile.delete();
 	}
@@ -84,7 +89,9 @@ public class VoidUpload {
 		while (iter.hasNext()) {
 			 Statement stmt      = iter.nextStatement();  // get next statement
 			 Property  predicate = stmt.getPredicate();   // get the predicate
-			 if ( mainDatasetSubjects.get(predicate.toString()) != null && predicate.toString().compareTo(importedFromSource) != 0){
+			 if ( mainDatasetSubjects.get(predicate.toString()) != null && predicate.toString().compareTo(importedFromSource) != 0
+					 && predicate.toString().compareTo(curatedBy) != 0 && predicate.toString().compareTo(authoredBy) != 0
+					 && predicate.toString().compareTo(contributedBy) != 0 ){
 				 
 				 String objectString = (String) mainDatasetSubjects.get(predicate.toString()) ;
 				 String value = stmt.getObject().toString().replace("@en", "");
@@ -104,7 +111,9 @@ public class VoidUpload {
 					 result.put("datePublish",Integer.parseInt( individualDates[2]));
 				 }
 				 
-			 }else if (predicate.toString().compareTo(importedFromSource) == 0 && !doneSources){
+			 }else if (predicate.toString().compareTo(importedFromSource) == 0 && !doneSources 
+					 && predicate.toString().compareTo(curatedBy) != 0 && predicate.toString().compareTo(authoredBy) != 0
+					 && predicate.toString().compareTo(contributedBy) != 0 ){
 				 //multiple object handling
 				 StmtIterator sources = primaryTopic.listProperties(Pav.importedFrom); // for each source
 				 JSONArray sourcesArrayJson = new JSONArray ();
@@ -137,7 +146,77 @@ public class VoidUpload {
 				 }
 				 result.put("sources" , sourcesArrayJson);
 				 doneSources = true;
-			 }			 
+				 
+			 } else if ( predicate.toString().compareTo(curatedBy) == 0 || predicate.toString().compareTo(authoredBy) == 0
+					|| predicate.toString().compareTo(contributedBy) == 0 ){
+				 
+				 Property[]  properties = {Pav.authoredBy , Pav.curatedBy, Pav.contributedBy};
+				 Map<String, String> urisExist = new HashMap<String, String>();
+				 int id= 0; 
+				 JSONArray contriArrayJson = new JSONArray ();
+				 for (int i =0 ; i <properties.length ; i++ ){
+					 StmtIterator sources = primaryTopic.listProperties(properties[i]); // for each source
+					 while (sources.hasNext()) {
+						 
+						  Statement contribStmt      = sources.nextStatement();  // get next statement
+						  StmtIterator  contribResourceItr =  contribStmt.getResource().listProperties(); // go to each source
+						  JSONObject  contribObjectReference = new JSONObject();
+						  Statement finalStmt = null;
+						  while ( contribResourceItr.hasNext()) { // extract info
+							  Statement sourceStmt  =  contribResourceItr.nextStatement();  // get next statement
+							  // Check JSON for sources
+							  String sourcePredicate = sourceStmt.getPredicate().toString();
+							  String sourceObject = sourceStmt.getObject().toString().replace("@en", "");
+							 if(contrDatasetSubjects.get(sourcePredicate)!= null)
+							  {
+								  if( contrDatasetSubjects.get(sourcePredicate).equals("name")){
+									  contribObjectReference.put( "name", sourceObject );
+								  }	else if( contrDatasetSubjects.get(sourcePredicate).equals("surname")){
+									  contribObjectReference.put( "surname", sourceObject );
+								  }else if (contrDatasetSubjects.get(sourcePredicate).equals("email")) {
+									  contribObjectReference.put( "email", sourceObject.toString().replace("mailto:", ""));
+								  }else if ( sourceStmt.getSubject().getURI().contains("orcid")){
+										String temp =createdBy.getURI().replace("http://orcid.org/", "");
+										contribObjectReference.put( "orcid", temp);
+								  }
+							  }
+							 finalStmt = sourceStmt;
+						  }
+						  contribObjectReference.put( "URI", finalStmt.getSubject().getURI());
+						  contribObjectReference.put( "id",id);
+						  
+						  if (properties[i].equals(  Pav.authoredBy )) contribObjectReference.put( "author",true);
+						  else contribObjectReference.put( "author",false);
+							  
+						  if (properties[i].equals(  Pav.curatedBy )) contribObjectReference.put( "curator",true);
+						  else contribObjectReference.put( "curator",false);
+						  
+						  if (properties[i].equals( Pav.contributedBy) ) contribObjectReference.put( "contributor",true);
+						  else contribObjectReference.put( "contributor",false);
+						  
+						  if (!urisExist.containsKey(finalStmt.getSubject().getURI())) {
+							  
+							  contriArrayJson.add(contribObjectReference);
+							  urisExist.put( finalStmt.getSubject().getURI(), id+"");
+							  id++;
+						  } else {
+							  for (int j= 0 ; j < contriArrayJson.size();j++){
+								 
+								  JSONObject ttmp = (JSONObject) contriArrayJson.get(j);
+								  if (ttmp.get("URI").equals(finalStmt.getSubject().getURI()) ){
+									  if (properties[i].equals(  Pav.authoredBy )) ttmp.put( "author",true);
+									  if (properties[i].equals(  Pav.curatedBy )) ttmp.put( "curator",true);
+									  if (properties[i].equals( Pav.contributedBy) ) ttmp.put( "contributor",true);
+									  contriArrayJson.set(j, ttmp);
+								  }
+							  }
+						  }
+					 }
+					 System.out.println(contriArrayJson);
+					 result.put("contributors" , contriArrayJson);
+					
+				 }
+			 }
 		}
 		System.out.println(result);
 	}
@@ -190,6 +269,14 @@ public class VoidUpload {
 		sourceDatasetSubjects.put("http://purl.org/pav/version", "version");
 		sourceDatasetSubjects.put("http://www.w3.org/ns/dcat#landingPage", "webpage");
 	}
+	
+	
+	private void createContributorMap(){
+		contrDatasetSubjects.put("http://xmlns.com/foaf/0.1/mbox", "email");
+		contrDatasetSubjects.put("http://xmlns.com/foaf/0.1/givenname", "name");
+		contrDatasetSubjects.put("http://xmlns.com/foaf/0.1/family_name", "surname");
+	}
+	
 	
 	private void printIterator(StmtIterator iter) {
 		while (iter.hasNext()) {

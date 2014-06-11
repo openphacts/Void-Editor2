@@ -54,6 +54,29 @@ var ORCIDService = angular.module('ORCIDService', [])
         }
     });
 
+var ContributorORCIDService = angular.module('ContributorORCIDService', [])
+    .service('ContributorORCIDService', function ($rootScope, $http) {
+
+        this.callORCIDEndpointContributor = function (id) {
+            var URL =  'http://pub.orcid.org/' + id + '/orcid-bio';
+            $.ajax({
+                type: 'GET',
+                url: URL,
+                headers: {
+                    "Accept":"application/orcid+json"
+                },
+                success: function (data) {
+                    $rootScope.$broadcast('SuccessORCIDDataContributor', data);
+                },
+                error: function (status) {
+                    console.log("ORCID SERVICE ERROR + status => " + status);
+                    var er = "Could not retrieve information from your ORCID." ;
+                    $rootScope.$broadcast('FailORCIDData', er);
+                }
+            });
+        }
+    });
+
 //will return statistics on the data
 var dataUploadService = angular.module('userDataUploadService', [])
     .service('uploadUserData', function ($rootScope, $http) {

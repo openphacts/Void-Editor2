@@ -266,32 +266,36 @@ public class VoidTurtle {
  	        	 String tmpOrcid = "";
  	        	 Literal contributorGivenNameLiteral = null;
  	        	 Literal tmpSurname = null;
- 	        	 Literal tmpEmail=null;
- 	        	 String tmpCurator = "";
- 	        	 String tmpAuthor ="";
- 	        	 String tmpContributedBy ="";
+ 	        	 Resource contributorEmailResource=null;
+ 	        	 String tmpCurator = "false";
+ 	        	 String tmpAuthor ="false";
+ 	        	 String tmpContributedBy ="false";
  	        	 
  	        	 Resource source = null;
  	        	 for(int j = 0; j <splitingSetsOfInfo.length ; j++ )
 	        	 {
 	        		 String[] couple = splitingSetsOfInfo[j].split("=");
 	        		 String property2Check = couple[0];
-	        		 String value = couple[1].replace("}","");
-	        	
-	        		 if(property2Check.contains("name") ){
-	        			 contributorGivenNameLiteral = voidModel.createLiteral(value);
-	        		 }else if((property2Check.contains("surname") )){
-	        			 tmpSurname = voidModel.createLiteral(value);
-	        		 }else if((property2Check.contains("orcid") )){
-	        			 tmpOrcid = value;
-	        		 }else if((property2Check.contains("email") )){
-	        			 tmpEmail = voidModel.createLiteral(value);
-	        		 }else if((property2Check.contains("curator") )){
-	        			 tmpCurator= value;
-	        		 }else if((property2Check.contains("author") )){
-	        			 tmpAuthor= value;
-	        		 }else {//contributedBy
-	        			 tmpContributedBy= value;
+	        		 if (couple.length >1){
+		        		 String value = couple[1].replace("}","");
+		        	
+		        		 if(property2Check.contains("name") && !property2Check.contains("sur")  && value!="-"  ){
+		        			 contributorGivenNameLiteral = voidModel.createLiteral(value);
+		        		 }else if((property2Check.contains("surname") && value!="-"  )){
+		        			 tmpSurname = voidModel.createLiteral(value);
+		        		 }else if((property2Check.contains("orcid")  && value!="-" )){
+		        			 tmpOrcid = value;
+		        		 }else if((property2Check.contains("email") &&  value!="-" )){
+		        			   contributorEmailResource = voidModel.createResource( "mailto:"+ value);
+		        		 }else if((property2Check.contains("curator") )){
+		        			 tmpCurator= value;
+		        		 }else if((property2Check.contains("author") )){
+		        			 tmpAuthor= value;
+		        		 }else if((property2Check.contains("contributor") )){
+		        			 tmpContributedBy= value;
+		        		 }else{
+		        			 System.out.println("Something escaped = >" + value);
+		        		 }
 	        		 }
 	        	 }
  	        	  String URI4Contributor = "";
@@ -302,18 +306,19 @@ public class VoidTurtle {
  	              }
  	              Resource resourceForContributor = voidModel.createResource(URI4Contributor);
  	              resourceForContributor.addProperty(RDF.type, FOAF.Person);
- 	              resourceForContributor.addProperty( FOAF.givenname, contributorGivenNameLiteral  );
- 	              resourceForContributor.addProperty( FOAF.family_name, tmpSurname  );
- 	              resourceForContributor.addProperty( FOAF.mbox , tmpEmail );
+ 	              if(contributorGivenNameLiteral!=null)  resourceForContributor.addProperty( FOAF.givenname, contributorGivenNameLiteral  );
+ 	              if(tmpSurname!=null) resourceForContributor.addProperty( FOAF.family_name, tmpSurname  );
+ 	              if(contributorEmailResource!=null) resourceForContributor.addProperty( FOAF.mbox , contributorEmailResource );
  	              if (tmpCurator.contains("true")){
- 	            	 voidDescriptionBase.addProperty(Pav.curatedBy, resourceForContributor);
+ 	            	 voidBase.addProperty(Pav.curatedBy, resourceForContributor);
  	              }
- 	              if (tmpAuthor.contains("true")){
- 	            	 voidDescriptionBase.addProperty(Pav.authoredBy, resourceForContributor);
-	              }
  	              if (tmpContributedBy.contains("true")){
- 	            	 voidDescriptionBase.addProperty(Pav.contributedBy, resourceForContributor);
+ 	            	 voidBase.addProperty(Pav.contributedBy, resourceForContributor);
 	              }
+ 	              if (tmpAuthor.contains("true")){
+ 	            	 voidBase.addProperty(Pav.authoredBy, resourceForContributor);
+	              }
+ 	             
         	  }
         	
               
