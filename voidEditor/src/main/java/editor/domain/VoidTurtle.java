@@ -257,9 +257,66 @@ public class VoidTurtle {
          
 
          if (contributors!= null){
+        	 //{name=23456ihgvcb, surname=cnmfcfbxb, orcid=3456789876543, email=, id=1, author=false, curator=true, digitalCreator=true}
         	  for (int i = 0 ; i < contributors.size(); i++){
-        		  System.out.println(contributors.get(i).toString());
+        		 String tmpValue = contributors.get(i).toString();
+ 	        	 System.out.println(tmpValue);
+ 	        	 String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val } 
+ 	        	 
+ 	        	 String tmpOrcid = "";
+ 	        	 Literal contributorGivenNameLiteral = null;
+ 	        	 Literal tmpSurname = null;
+ 	        	 Literal tmpEmail=null;
+ 	        	 String tmpCurator = "";
+ 	        	 String tmpAuthor ="";
+ 	        	 String tmpContributedBy ="";
+ 	        	 
+ 	        	 Resource source = null;
+ 	        	 for(int j = 0; j <splitingSetsOfInfo.length ; j++ )
+	        	 {
+	        		 String[] couple = splitingSetsOfInfo[j].split("=");
+	        		 String property2Check = couple[0];
+	        		 String value = couple[1].replace("}","");
+	        	
+	        		 if(property2Check.contains("name") ){
+	        			 contributorGivenNameLiteral = voidModel.createLiteral(value);
+	        		 }else if((property2Check.contains("surname") )){
+	        			 tmpSurname = voidModel.createLiteral(value);
+	        		 }else if((property2Check.contains("orcid") )){
+	        			 tmpOrcid = value;
+	        		 }else if((property2Check.contains("email") )){
+	        			 tmpEmail = voidModel.createLiteral(value);
+	        		 }else if((property2Check.contains("curator") )){
+	        			 tmpCurator= value;
+	        		 }else if((property2Check.contains("author") )){
+	        			 tmpAuthor= value;
+	        		 }else {//contributedBy
+	        			 tmpContributedBy= value;
+	        		 }
+	        	 }
+ 	        	  String URI4Contributor = "";
+ 	              if ( this.ORCID == null || this.ORCID == ""){
+ 	            	  URI4Contributor = "http://voideditor.cs.man.ac.uk/" + UUID.randomUUID();
+ 	              } else{
+ 	            	  URI4Contributor = "http://orcid.org/" +tmpOrcid;
+ 	              }
+ 	              Resource resourceForContributor = voidModel.createResource(URI4Contributor);
+ 	              resourceForContributor.addProperty(RDF.type, FOAF.Person);
+ 	              resourceForContributor.addProperty( FOAF.givenname, contributorGivenNameLiteral  );
+ 	              resourceForContributor.addProperty( FOAF.family_name, tmpSurname  );
+ 	              resourceForContributor.addProperty( FOAF.mbox , tmpEmail );
+ 	              if (tmpCurator.contains("true")){
+ 	            	 voidDescriptionBase.addProperty(Pav.curatedBy, resourceForContributor);
+ 	              }
+ 	              if (tmpAuthor.contains("true")){
+ 	            	 voidDescriptionBase.addProperty(Pav.authoredBy, resourceForContributor);
+	              }
+ 	              if (tmpContributedBy.contains("true")){
+ 	            	 voidDescriptionBase.addProperty(Pav.contributedBy, resourceForContributor);
+	              }
         	  }
+        	
+              
         	  System.out.println("===========");
          }
          /**

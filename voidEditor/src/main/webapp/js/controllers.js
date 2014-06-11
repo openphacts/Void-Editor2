@@ -434,7 +434,7 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
         $scope.contributors = $rootScope.data.contributors;
         if ( $scope.contributors.length == 0 ){
             console.log("going to add new contributor => " +  $scope.contributors.length )
-            $scope.contributors.push({name : "New" , surname : "Contributor" , orcid:"", email:"" , id:0});
+            $scope.contributors.push({name : "New" , surname : "Contributor" , orcid:"", email:"-" , id:0, author:false ,curator:false, contributor:true});
         }
 
         $rootScope.$on('sendContributors', function (event , x ) {
@@ -446,9 +446,9 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
         $scope.add = function () {
             if ($scope.contributors == undefined ) $scope.contributors = [];
             if ($scope.contributors.length>0 )
-                $scope.contributors.push({name : "" , surname : "" , orcid:"", email:"" ,
-                        id:( $scope.contributors[$scope.contributors.length -1].id +1) , author:"" ,curator:"", digitalCreator:""});
-            else $scope.contributors.push({name : "" , surname : "" , orcid:"", email:"" , id:0, author:"" ,curator:"", digitalCreator:"" });
+                $scope.contributors.push({name : "" , surname : "" , orcid:"", email:"-" ,
+                        id:( $scope.contributors[$scope.contributors.length -1].id +1) , author:false ,curator:false, contributor:true});
+            else $scope.contributors.push({name : "" , surname : "" , orcid:"", email:"-" , id:0, author:false ,curator:false, contributor:true });
             voidData.setContributorData($scope.contributors);
         };
 
