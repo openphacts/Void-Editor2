@@ -22,6 +22,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.data.webpage = "";
         $rootScope.data.sparqlEndpoint = "";
         $rootScope.data.sources = [];
+        $rootScope.data.contributors = [];
         $rootScope.quantity = 6;
         $rootScope.data.updateFrequency = "Annual";
         $rootScope.postFinished = false;
@@ -187,6 +188,15 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
         $rootScope.$on('DataSourcesChanged', function (event, x) {
             $rootScope.data.sources = x;
+        });
+
+        $rootScope.$on('getContributors', function (event) {
+            $rootScope.$broadcast('sendContributors' ,  $rootScope.data.contributors);
+        });
+
+        $rootScope.$on('ContributorsChanged', function (event, x) {
+            $rootScope.data.contributors = x;
+            console.log( $rootScope.data.contributors);
         });
 
         $rootScope.$on('StartLoader', function (event) {
@@ -421,26 +431,45 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
 
 editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scope', 'voidData',
     function ($rootScope, $scope , voidData) {
-        $scope.contributors = [];
-        $scope.contributors.push({name : "New" , surname : "Contributor" , orcid:"", email:""});
+        $scope.contributors = $rootScope.data.contributors;
+        if ( $scope.contributors.length == 0 ){
+            console.log("going to add new contributor => " +  $scope.contributors.length )
+            $scope.contributors.push({name : "New" , surname : "Contributor" , orcid:"", email:"" , id:0});
+        }
 
-        $scope.add = function (value) {
+        $rootScope.$on('sendContributors', function (event , x ) {
+            console.log("retrieve contributors " );
+            console.log(x);
+            $scope.contributors = x;
+        });
+
+        $scope.add = function () {
             if ($scope.contributors == undefined ) $scope.contributors = [];
-            $scope.contributors.push({name : "New" , surname : "Contributor" , orcid:"", email:""});
-            //voidData.setSourceData($scope.userSources);
+            if ($scope.contributors.length>0 )
+                $scope.contributors.push({name : "" , surname : "" , orcid:"", email:"" ,
+                        id:( $scope.contributors[$scope.contributors.length -1].id +1) , author:"" ,curator:"", digitalCreator:""});
+            else $scope.contributors.push({name : "" , surname : "" , orcid:"", email:"" , id:0, author:"" ,curator:"", digitalCreator:"" });
+            voidData.setContributorData($scope.contributors);
         };
-        $scope.remove = function (name , email) {
+
+        $scope.save= function(){
+            voidData.setContributorData($scope.contributors);
+        }
+
+        $scope.removeContributor = function (id) {
             var found = false;
+            console.log("removeContributor - " + $scope.contributors.length);
             var i = 0;
             while (i < $scope.contributors.length && !found) {
-                if ($scope.contributors[i].name == name && $scope.contributors[i].email == email) found = true;
+                if ($scope.contributors[i].id == id ) found = true;
                 else i++;
             }
             if (found) {
                 $scope.contributors.splice(i, 1);
-                //voidData.setSourceData($scope.userSources);
+                voidData.setContributorData($scope.contributors);
             }
         };
+
     }]);
 
 

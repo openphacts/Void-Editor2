@@ -38,9 +38,9 @@
                         <h3>Contributors to dataset</h3>
                     </div>
                     <div class="modal-body" ng-controller="editorContributorsCtrl">
-                        <div class="span5 offset1" id="bind-html-with-trust">
+                        <div class="span5 offsetHalf" id="bind-html-with-trust">
 
-                                <div class="span4">
+                                <div class="span5">
                                     <div class="panel panel-primary">
                                         <!--<div class="panel-heading">-->
                                         <!--</div>-->
@@ -50,22 +50,22 @@
                                                 <li ng-repeat="contributor in contributors" class="thumbnail" id="listOfContributors">
                                                     <div class="form-group row " style="margin-left:30px;">
                                                      <h5><span>{{contributor.name}} {{contributor.surname}}</span>
-                                                         <span class="glyphicon glyphicon-minus pull-right" nng-click="remove( contributor.surname, contributor.email)">
+                                                         <span class="glyphicon glyphicon-minus pull-right" ng-click="removeContributor( contributor.id)">
                                                          </span>
                                                      </h5>
                                                     </div>
-                                                    <div class="form-group row " style="margin-left:5px;">
-                                                        <div class="spanLabel100px">
+                                                    <div class="form-group row " style="margin-left: 5px;">
+                                                        <div class="spanLabel130px">
                                                             <label for="nameContributor" ng-hide="isCollapsedContributor">  ORCID:</label>
                                                         </div>
                                                         <div class="span2">
-                                                            <input class="input-large" ng-hide="isCollapsedContributor" required ng-model="contributor.orcid"
+                                                            <input class="input-large" ng-hide="isCollapsedContributor"  ng-model="contributor.orcid"
                                                                    type="text" collapse="isCollapsedContributor"
                                                                    placeholder="0000-0000-0000-0000">
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row " style="margin-left:5px;">
-                                                        <div class="spanLabel100px">
+                                                    <div class="form-group row " style="margin-left: 5px;">
+                                                        <div class="spanLabel130px">
                                                         <label for="nameContributor" ng-hide="isCollapsedContributor">  First Name:</label>
                                                         </div>
                                                         <div class="span2">
@@ -75,8 +75,8 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="form-group row " style="margin-left:5px;">
-                                                        <div class="spanLabel100px">
+                                                    <div class="form-group row " style="margin-left: 5px;">
+                                                        <div class="spanLabel130px">
                                                             <label for="nameContributor" ng-hide="isCollapsedContributor">  Surname:</label>
                                                         </div>
                                                         <div class="span2">
@@ -86,23 +86,45 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group row " style="margin-left:5px;">
-                                                        <div class="spanLabel100px">
+                                                    <div class="form-group row " style="margin-left: 5px;">
+                                                        <div class="spanLabel130px">
                                                             <label for="nameContributor" ng-hide="isCollapsedContributor">  Email:</label>
                                                         </div>
                                                         <div class="span2">
-                                                        <input class="input-large" ng-hide="isCollapsedContributor" required ng-model="contributor.email"
+                                                        <input class="input-large" ng-hide="isCollapsedContributor"  ng-model="contributor.email"
                                                                type="email" collapse="isCollapsedContributor"
                                                                placeholder="Enter email">
                                                             </div>
                                                     </div>
+
+                                                    <div class="form-group row " style="margin-left: 5px;">
+                                                        <div class="spanLabel130px">
+                                                            <label for="author" ng-hide="isCollapsedContributor">  Contributing role:</label>
+                                                        </div>
+                                                        <div class="span2" collapse="isCollapsedContributor" ng-hide="isCollapsedContributor">
+                                                            <input  type="checkbox" name="contributorRole" ng-hide="isCollapsedContributor"  ng-model="contributor.author"
+                                                                    value="author" class="input-large" id="author"  ng-true-value="YES" ng-false-value="NO">
+                                                            <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" >Author</span>
+                                                            <br>
+
+                                                            <input type="checkbox" name="contributorRole" ng-hide="isCollapsedContributor"  ng-model="contributor.curator"
+                                                                 value="curator" class="input-large" id="curator"  ng-true-value="YES" ng-false-value="NO">
+                                                            <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" >Curator</span>
+                                                            <br>
+
+                                                            <input type="checkbox" name="contributorRole" ng-hide="isCollapsedContributor"  ng-model="contributor.digitalCreator"
+                                                                  value="digitalCopy" class="input-large" id="digitalCreator"  ng-true-value="YES" ng-false-value="NO">
+                                                            <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" >Creator of digital copy</span>
+                                                        </div>
+                                                    </div>
+
 
 
                                                     <br  ng-hide="isCollapsedContributor">
                                                     <div class="form-group row" style="margin-left:30px;">
                                                         <table>
                                                             <tr>
-                                                                <td class="span3">
+                                                                <td class="span4">
                                                                     <p style="font-size:12px;  cursor: pointer;" ng-show="isCollapsedContributor"
                                                                        ng-click="isCollapsedContributor = !isCollapsedContributor">Additional Information</p>
                                                                 </td>
@@ -113,7 +135,7 @@
                                                                     </button>
                                                                     <button class="btn  btn-primary"
                                                                             style="vertical-align: middle; text-align: center;"
-                                                                            ng-show="!isCollapsedContributor" ng-click="isCollapsedContributor = !isCollapsedContributor">Save
+                                                                            ng-show="!isCollapsedContributor" ng-click="isCollapsedContributor = !isCollapsedContributor ; save()">Save
                                                                     </button>
 
                                                                 </td>
@@ -121,10 +143,11 @@
                                                         </table>
                                                     </div>
                                                 </li>
+
                                             </ul>
                                             <br>
-                                            <span style="margin-right:10px;">Contributors to Dataset</span>
-                                            <button class="btn btn-primary" ng-click="add('new')">Add Contributor</button>
+                                            <span class="span2"></span>
+                                            <button class="btn btn-primary " ng-click="add('new')">Add Contributor</button>
                                          </div>
                                     </div>
                                 </div>

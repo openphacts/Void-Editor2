@@ -6,7 +6,7 @@ var jsonService = angular.module('jsonService', ['ngResource'])
         return $resource('https://beta.openphacts.org/1.3/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json');
     });
 
-var URLPreface = "";// "/voidEditor"; // to be changed between dev and prod
+var URLPreface = "/voidEditor"; // to be changed between dev and prod
 
 var voidUploadService = angular.module('voidUploadService', [])
     .service('uploadVoidData', function ($rootScope, $http) {
@@ -93,6 +93,7 @@ var voidDataService = angular.module('voidDataService', [])
         outputURL = URLPreface+'/rest/void/output';
 
         data.sources = [];
+        data.contributors = [];
 
         // it does three different calls to the server in order to get a faster result back
         // than waiting for all three to finish
@@ -185,6 +186,11 @@ var voidDataService = angular.module('voidDataService', [])
             $rootScope.$broadcast('DataSourcesChanged', data.sources);
         };
 
+        this.setContributorData = function (value){
+            data.contributors = value;
+            console.log("in service");
+            $rootScope.$broadcast('ContributorsChanged', data.contributors);
+        }
         this.getSourceData = function () {
             return data.sources;
         };

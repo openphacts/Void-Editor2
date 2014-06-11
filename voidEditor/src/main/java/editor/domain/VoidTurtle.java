@@ -67,6 +67,7 @@ public class VoidTurtle {
     private String updateFrequency;
 	private File output= null ;
 	private ArrayList sources = null;
+	private ArrayList contributors = null;
 	private String URI;
 	private String totalNumberOfTriples="";
 	private String numberOfUniqueSubjects="";
@@ -97,6 +98,7 @@ public class VoidTurtle {
 	    this.numberOfUniqueSubjects=obj.numberOfUniqueSubjects;
 	    this.numberOfUniqueObjects =obj.numberOfUniqueObjects;
 	    this.ORCID = obj.ORCID;
+	    this.contributors = (ArrayList) obj.contributors;
 
 		System.out.println(obj.datePublish);
 	    if (obj.datePublish.equals("N/A")){
@@ -253,8 +255,13 @@ public class VoidTurtle {
              voidBase.addProperty(Void.distinctObjects, numberOfUniquePredicatesDef);
          }
          
- 	    
-         //Here will add sources
+
+         if (contributors!= null){
+        	  for (int i = 0 ; i < contributors.size(); i++){
+        		  System.out.println(contributors.get(i).toString());
+        	  }
+        	  System.out.println("===========");
+         }
          /**
           *  Extracts data from datasources which the user provides.  
           */

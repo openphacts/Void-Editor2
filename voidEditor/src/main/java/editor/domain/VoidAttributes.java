@@ -20,6 +20,7 @@ public class VoidAttributes{
 	  public String previousVersion= "";
 	  public String updateFrequency= "";
 	  public Object sources;
+	  public Object contributors;
 	  public String URI ="http://www.openphacts.org/";
 	  public String totalNumberOfTriples="";
 	  public String numberOfUniqueSubjects="";

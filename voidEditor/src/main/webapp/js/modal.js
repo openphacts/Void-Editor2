@@ -64,6 +64,7 @@ modalControllers.controller('ModalContributorsCtrl', ['$scope', '$rootScope' , '
                 templateUrl: 'myModalContentContributors.html',
                 controller: "ModalInstanceContributorsCtrl"
             });
+            $rootScope.$broadcast('getContributors');
         };
     }]);
 
