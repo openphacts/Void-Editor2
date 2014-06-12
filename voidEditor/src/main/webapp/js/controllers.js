@@ -432,9 +432,9 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
 editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scope', 'voidData', 'ContributorORCIDService',
     function ($rootScope, $scope , voidData ,ContributorORCIDService) {
         $scope.contributors = $rootScope.data.contributors;
-        $scope.orcidCheck = 0;
+        $scope.orcidCheck = 0
+
         if ( $scope.contributors.length == 0 ){
-            console.log("going to add new contributor => " +  $scope.contributors.length )
             $scope.contributors.push({name : "New" , surname : "Contributor" , orcid:"", email:"-" , id:0, author:false ,curator:false, contributor:true});
         }
 
@@ -460,12 +460,12 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
         }
 
         $rootScope.$on('SuccessORCIDDataContributor', function (event, ORCIDJSON) {
-            console.log(ORCIDJSON);
             console.log(ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"]);
             var details = ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"];
             $scope.contributors[ $scope.orcidCheck].name =details["given-names"].value;
             $scope.contributors[ $scope.orcidCheck].surname =details["family-name"].value;
-            console.log($scope.contributors);
+            $scope.save();
+            $scope.$apply();
         });
 
 

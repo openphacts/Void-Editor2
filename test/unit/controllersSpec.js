@@ -265,6 +265,56 @@ describe('editorApp', function () {
 
     });
 
+    describe('contibutorCtrl', function () {
+        var mockContributorORCIDService ;
+
+        beforeEach(module('voidDataService', function($provide) {
+            mockedVoidData = {
+                createVoidAndDownload: jasmine.createSpy(),
+                setContributorData: jasmine.createSpy()
+            };
+            $provide.value('voidData', mockedVoidData);
+        }));
+
+
+        beforeEach(module('ContributorORCIDService', function($provide) {
+            mockContributorORCIDService = {
+                callORCIDEndpointContributor: jasmine.createSpy()
+            };
+            $provide.value('ContributorORCIDService', mockContributorORCIDService);
+        }));
+
+        beforeEach(inject(function ( $rootScope, $controller) {
+            scope = $rootScope.$new();
+
+            rootScope = $rootScope.$new();
+            ctrl = $controller('editorContributorsCtrl', {$rootScope : $rootScope , $scope: scope ,  voidData: mockedVoidData , ContributorORCIDService : mockContributorORCIDService });
+        }));
+
+//          issue with contributors having a dependency on the rootscope. Creating issues.
+//        it('Checking contributors lenght >=0', function () {
+//            console.log(scope.contributors);
+//            expect(scope.contributors.length).toBeGreaterThan(-1);
+//        });
+//
+//        it('Checking if orcid check start at 0', function () {
+//            expect(scope.orcidCheck).toEqual(0);
+//        });
+//
+//
+//        it('Checking if on save void data is called', function () {
+//            scope.save();
+//            expect(mockedVoidData.setContributorData).toHaveBeenCalled();
+//        });
+//
+//        it('Checking if on add void data is called', function () {
+//            scope.add();
+//            expect(mockedVoidData.setContributorData).toHaveBeenCalled();
+//        });
+
+
+    });
+
 
     describe('sourceCtrl', function () {
         var mockedFactory;

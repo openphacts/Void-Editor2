@@ -35,7 +35,16 @@
         <div ng-controller="ModalContributorsCtrl" class="pull-left">
                 <script type="text/ng-template" id="myModalContentContributors.html">
                     <div class="modal-header ">
-                        <h3>Contributors to dataset</h3>
+                            <h3>Contributors to dataset <span  style="font-size: 12px;line-height: 15px;">
+                                <img src="img/QuestionMarkIcon16.gif" popover-placement="bottom" popover-trigger="mouseenter" class="pull-right"
+                                     popover="Please provide the personal information of all the contributors to this dataset
+                                                and how they contributed ( can select more than one).
+                                      Author: Is the person which authored the knowledge expressed by this resource.
+                                      Curator : Is the person which curated the knowledge into its current form.
+                                      Contributor: This person performed some sort of derivation on dataset.
+                                      ">
+                                </span>
+                            </h3>
                     </div>
                     <div class="modal-body" ng-controller="editorContributorsCtrl">
                         <div class="span5 offsetHalf" id="bind-html-with-trust">
@@ -97,24 +106,27 @@
                                                             </div>
                                                     </div>
 
-                                                    <div class="form-group row " style="margin-left: 5px;">
+                                                    <div class="form-group row " style="margin-left: 5px;" collapse="isCollapsedContributor" ng-hide="isCollapsedContributor">
                                                         <div class="spanLabel130px">
                                                             <label for="author" ng-hide="isCollapsedContributor">  Contributing role:</label>
                                                         </div>
                                                         <div class="span2" collapse="isCollapsedContributor" ng-hide="isCollapsedContributor">
                                                             <input  type="checkbox" name="contributorRole" ng-hide="isCollapsedContributor"  ng-model="contributor.author"
-                                                                    value="author" class="input-large" id="author" >
-                                                            <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" >Author</span>
+                                                                    value="author" class="input-large" id="author">
+                                                            <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" style="cursor:pointer;"
+                                                                   ng-click="contributor.author = !contributor.author" >Author</span>
                                                             <br>
 
                                                             <input type="checkbox" name="contributorRole" ng-hide="isCollapsedContributor"  ng-model="contributor.curator"
                                                                  value="curator" class="input-large" id="curator" >
-                                                            <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" >Curator</span>
+                                                            <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" style="cursor:pointer;"
+                                                                   ng-click="contributor.curator = !contributor.curator" >Curator</span>
                                                             <br>
 
                                                             <input type="checkbox" name="contributorRole" ng-hide="isCollapsedContributor"  ng-model="contributor.contributor"
                                                                   value="digitalCopy" class="input-large" id="digitalCreator" >
-                                                            <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" >Contributor</span>
+                                                            <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" style="cursor:pointer;"
+                                                                   ng-click="contributor.contributor = !contributor.contributor">Contributor</span>
                                                         </div>
                                                     </div>
 

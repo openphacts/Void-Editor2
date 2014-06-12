@@ -257,7 +257,6 @@ public class VoidTurtle {
          
 
          if (contributors!= null){
-        	 //{name=23456ihgvcb, surname=cnmfcfbxb, orcid=3456789876543, email=, id=1, author=false, curator=true, digitalCreator=true}
         	  for (int i = 0 ; i < contributors.size(); i++){
         		 String tmpValue = contributors.get(i).toString();
  	        	 System.out.println(tmpValue);
