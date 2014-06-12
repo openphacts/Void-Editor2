@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en" id="ng-app" ng-app="linksetApp" ng-controller="linksetCtrl">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Linkset Description Tool">
+    <meta name="author" content="Lefteris Tatakis">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/ops_logo.png">
+    <title ng-bind="title">...</title>
+    <link rel="stylesheet" href="css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="css/progressbar.css">
+    <link rel="stylesheet" href="css/bootstrap-combined.min.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/glyphicons.css">
+
+</head>
+<body>
+<header>
+    <!--[if lt IE 10]>
+    <alert>
+        <strong style="vertical-align: top">Warning:</strong>
+
+        <div style="display: inline-block">
+            Your experience of this application may suffer in outdated versions of Internet Explorer, including the
+            potential corruption or loss of important information.<br/> You are strongly advised to update.
+        </div>
+    </alert>
+    <![endif]-->
+    <!--[if lte IE 8]>
+        <script src="lib/json2.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46552073-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</header>
+
+<div class="container" ng-controller="linksetCarouselCtrl">
+    <div id="loader">
+        <img src="img/ajax-loader.gif" class="ajax-loader" ng-show="showLoader"/>
+    </div>
+    <div class="row span12">
+        <div class="container">
+            <h1 class="pull-left">
+                <a href="http://www.openphacts.org" target="_blank"> <img class="pull-left" src="img/ops_logo.png"
+                                                                          alt="Logo"> </a> <span
+                    ng-bind="title">...</span>
+                <small>v2.0</small>
+            </h1>
+            <ul class="nav nav-pills pull-right" ng-controller="ModalAboutCtrl"
+                style="text-align: center; vertical-align: middle; margin-top: 25px;">
+                <li><a href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/" target="_blank">OPS Dataset
+                    Description Specification</a></li>
+                <li>
+                    <script type="text/ng-template" id="myModalContentAbout.html">
+                        <div class="modal-header">
+                            <img src="img/manch.png" alt="UoM logo"/>
+
+                            <h3 class="h3NeededFields "> About the Void Editor v2</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>The Open PHACTS VoID editor v2 is developed and maintained by <a
+                                    href="http://ltatakis.com" target="_blank"
+                                    rel="dcterms:creator doap:maintainer">Lefteris Tatakis</a>, as a final year
+                                undergraduate project at the University of Manchester, UK.
+                            </p>
+
+                            <p>This project is supervised by Prof Carole Goble and has been developed within the context
+                                of the <a href="http://www.openphacts.com/" target="_blank">Open PHACTS</a> project and
+                                aims to help dataset publishers to create a valid, according to the <a
+                                        href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/"
+                                        target="_blank">Open PHACTS specification</a>, VoID description for deployment
+                                with their dataset.
+                            </p>
+
+                            <p>The code was last updated on <span property="dcterms:modified"
+                                <datatype
+                                ="xsd:date">June 2014</datatype> </span>. The code for the Open PHACTS editor is
+                                available from <a href="https://github.com/openphacts/Void-Editor2" target="_blank">
+                                    https://github.com/openphacts/Void-Editor2</a>.
+                            </p>
+                            <p>
+                                In case you have a feature request or want to file a bug, please contact <a
+                                    href="mailto:eleftherios.tatakis@student.manchester.com">email</a>.
+                            </p>
+                            <br>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-warning" ng-click="closeModal()">Close</button>
+                        </div>
+                    </script>
+                    <a ng-click="open();" target="_blank">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row span12">
+        <div class="progress">
+            <div class="bar" style="width:{{dynamicProgress}}%;"></div>
+           <span>
+               <table style="width: 100%; text-align: center;">
+                   <tr>
+                       <td class="progressBar" ng-repeat="slide in slides" style="width:{{dynamicProgressStep}}%;">
+                           <p ng-if="slide.progress <= dynamicProgress && msie == -1 " class="thickWhite" for="slide.index"
+                              ng-click="slide.active = true">{{slide.title}} </p>
+
+                           <p ng-if="slide.progress <= dynamicProgress && msie != -1 " class="thickWhiteIE" for="slide.index"
+                              ng-click="slide.active = true">{{slide.title}} </p>
+
+                          <p ng-if="slide.progress > dynamicProgress" class="thickBlack" for="slide.index"
+                             ng-click="slide.active = true">{{slide.title}} </p>
+                      </td>
+                  </tr>
+              </table>
+          </span>
+       </div>
+   </div>
+   <div class="row span12">
+
+       <form role="form" class="form-inline simple-form" role="form" novalidate>
+           <carousel interval="interval" class="carousel">
+               <slide ng-repeat="slide in slides" active="slide.active">
+                   <div class="custom_carousel" ng-mouseenter="checkMustFieldsOnPreviousPage(slide.index - 1);">
+                       <alert class="myAlert" ng-repeat="alert in alerts" id="{{ alert.id }}" type="alert.type" close="closeAlert($index)">
+                           {{alert.msg}}
+                       </alert>
+                       <div class="include" ng-include="slide.page">
+                       </div>
+                   </div>
+               </slide>
+           </carousel>
+       </form>
+
+       <div class="container-fluid">
+           <!--<div ng-controller="ModalImportCtrl" class="pull-left">-->
+               <!--<script type="text/ng-template" id="myModalImport.html">-->
+                   <!--<div class="modal-header">-->
+                       <!--<h3>Import Existing VoID </h3>-->
+                   <!--</div>-->
+                   <!--<div class="modal-body" ng-controller="editorUploadCtrl">-->
+                        <!--<div class="span5 offset1" id="bind-html-with-trust">-->
+                           <!--<br><br>-->
+                           <!--<p >-->
+                               <!--<span > Select your existing Void File :</span>-->
+                               <!--<input id="file" type="file" name="file" size="50" onchange="angular.element(this).scope().uploadVoid(this.files)"/>-->
+                           <!--</p>-->
+                            <!--<br>-->
+                            <!--<p> The imported Void must have been created by this Void Editor.</p>-->
+                            <!--<br>-->
+                            <!--<div ng-bind-html="uploadErrorMessages" style="text-align: center;vertical-align: middle;"></div>-->
+                        <!--</div>-->
+
+                   <!--</div>-->
+                   <!--<div class="modal-footer">-->
+                       <!--<button class="btn btn-warning" ng-click="closeModal()">Exit</button>-->
+                   <!--</div>-->
+               <!--</script>-->
+               <!--<button type="button" class="btn btn-default pull-left" id="import" ng-click="open();">Import VoID-->
+               <!--</button>-->
+           <!--</div>-->
+           <div ng-controller="ModalExportCtrl" class="pull-right">
+               <script type="text/ng-template" id="myModalContent.html">
+                   <div class="modal-header">
+                       <h3>VoID Produced</h3>
+                   </div>
+                   <div class="modal-body">
+                       <textarea class="field span7" rows="20" id="modal" columns="15"> {{data}} </textarea>
+                   </div>
+                   <div class="modal-footer">
+                       <button class="btn btn-warning" ng-click="closeModal()">Close</button>
+                   </div>
+               </script>
+               <button type="button" class="btn btn-default pull-right" id="underTheHood" ng-click="open();"> Under the
+                   Hood
+               </button>
+           </div>
+       </div>
+       <div class="row span12">
+           <footer>
+               <small>
+                   <span class="muted"><span ng-bind="title">...</span> v2 copyright &copy; 2014 OpenPhacts - Lefteris Tatakis</span>
+                </small>
+            </footer>
+        </div>
+    </div>
+
+</div>
+
+<div class="menuTabs">
+    <ul class="nav nav-pills pull-right  ">
+        <li style="background-color: greenyellow ;  border-radius:20px;  margin-right: 10px; ">
+            <a id="survey" style="color:white;" href="https://www.surveymonkey.com/s/7T7T7P7" target="_blank">Survey</a>
+        </li>
+        <li style="background-color: dodgerblue;  border-radius:20px;  margin-right: 10px; ">
+            <a id="feedback" style="color:white;"
+               href="mailto:eleftherios.tatakis@student.manchester.ac.uk?Subject=VoidEditor%20Feedback"> Feedback </a>
+        </li>
+        <li style="background-color: lightslategray;  border-radius:20px;  margin-right: 10px;">
+            <a id="bugs" style="color:white;"
+               href="mailto:eleftherios.tatakis@student.manchester.ac.uk?Subject=VoidEditor%20BugReport">Bugs</a>
+        </li>
+    </ul>
+</div>
+<script src="lib/jquery/jquery-1.10.2.js"></script>
+<script src="lib/jquery-ui/jquery-ui-1.10.3.custom.js"></script>
+<script src="lib/angular/angular1.2.2.min.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="lib/angular/angular-sanitize.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/angular/angular-loader.js"></script>
+<script src="lib/ui-bootstrap/ui-bootstrap-0.6.0.js"></script>
+<script src="lib/ui-bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+<script src="lib/moment/moment.min.js"></script>
+
+<script src="js/linksets/controllers.js"></script>
+<script src="js/linksets/services.js"></script>
+<script src="js/linksets/app.js"></script>
+<script src="js/modal.js"></script>
+<script src="js/datepicker.js"></script>
+<script src="js/directives.js"></script>
+</body>
+</html>

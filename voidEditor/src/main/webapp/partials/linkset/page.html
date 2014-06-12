@@ -1,0 +1,91 @@
+<div class="span12 carousel-content" ng-controller="linksetFormCtrl">
+    <span ng-switch="slide.active">
+      <div  ng-switch-when="true">
+          <script>
+            $(".carousel-control.left").hide();
+          </script>
+            {{changeProgressBar(slide.progress)}}</div>
+      <div  ng-switch-when="false">
+          <script>
+              $(".carousel-control.left").show();
+          </script>
+      </div>
+     </span>
+    <div class="container-fluid">
+        <div class="span6 offset2">
+            <div class="row">
+                <div class="span5 offsetHalf">
+                    <h1>Welcome to the Linkset Creator </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6">
+                     <h3> Let's start making a Linkset description!</h3>
+                    <br>
+                </div>
+             </div>
+
+            <div class="form-group row">
+                <div class="span6 centerText">
+                    <div class="span2">
+                        <label for="inputORCID">ORCID: </label>
+                    </div>
+                    <div class="span3 ">
+                        <input type="text" class="form-control input-large " id="inputORCID" onchange="angular.element(this).scope().callORCIDEndpoint()"
+                               placeholder="0000-0000-0000-0000" ng-model="data.ORCID">
+                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                             popover="Please supply your ORCID. You can register at http://orcid.org/">
+
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group row">
+                <div class="span6 centerText">
+                    <div class="span2">
+                        <label for="inputName">Given Name: </label>
+                    </div>
+                    <div class="span3 ">
+                        <input type="text" class="form-control input-large " id="inputName" placeholder="Given name" ng-model="data.givenName">
+                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                                    popover="Please supply your first name.">
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group row">
+                <div class="span6 centerText">
+                    <div class="span2">
+                        <label for="inputFamilyName">Family Name: </label>
+                    </div>
+                    <div class="span3 ">
+                        <input type="text" class="form-control input-large " id="inputFamilyName" placeholder="Family name" ng-model="data.familyName">
+                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                             popover="Please supply your last name.">
+                    </div>
+                 </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <div class="span6 centerText">
+                    <div class="span2">
+                        <label for="inputEmail">Email:</label>
+                    </div>
+                    <div class="span3">
+                        <input type="email" class="form-control input-large" id="inputEmail"  ng-model="data.userEmail"
+                               placeholder="Enter email">
+                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                             popover="This information will be added to the dataset description.">
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

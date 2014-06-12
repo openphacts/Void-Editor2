@@ -1,0 +1,60 @@
+<div class="span12 carousel-content " ng-controller="linksetFormCtrl"
+     ng-mouseover="checkMustFieldsOnPreviousPage(slide.index - 1);">
+     <span ng-switch="slide.active">
+      <div ng-switch-when="true">{{changeProgressBar(slide.progress); }}</div>
+      <div ng-switch-when="false"></div>
+     </span>
+
+    <div class="span7 offset2">
+        <div class="row">
+            <div class="span5 offset1">
+                <h1> Core Information </h1>
+
+                <h3>Please complete the following</h3>
+                <br>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="spanLabel1 offset1">
+                <label for="inputTitle">Title of your linkset*:</label>
+            </div>
+            <div class="span3">
+                <input type="text" class="form-control input-large" id="inputTitle" placeholder=""
+                       ng-model="data.title" required>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="A name given to the dataset for which the VoID is being created for. This information is required.">
+            </div>
+
+        </div>
+        <br>
+
+        <div class="form-group row ">
+            <div class="spanLabel1 offset1">
+                <label for="inputURI">A URI describing your linkset:</label>
+            </div>
+            <div class="span3">
+                <input type="url" class="form-control input-large" id="inputURI" placeholder="http://" name="inputURI"
+                       ng-model="data.URI">
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="You can define a URI for your linkset. This URI is the resource that describes the linkset.
+                     If you leave it blank, a default will be used.">
+            </div>
+        </div>
+
+
+        <br>
+
+        <div class="form-group row">
+            <div class="spanLabel1 offset1">
+                <label for="inputDescription">Description of your linkset*:</label>
+            </div>
+            <div class="span3">
+                <textarea type="text" class="form-control" rows="5" id="inputDescription" required name="inputDescription"
+                          placeholder="What is this dataset about?" ng-model="data.description"></textarea>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="A description of the connection your linkset so we can understand it contains. This information is required.">
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

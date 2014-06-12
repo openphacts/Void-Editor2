@@ -1,0 +1,108 @@
+<div class="span12 carousel-content  " ng-controller="linksetFormCtrl" >
+      <span ng-switch="slide.active">
+      <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
+      <div  ng-switch-when="false"></div>
+     </span>
+
+    <div class="span9 offset1AndABit" >
+
+        <div class="row">
+            <div class="span7 ">
+                <h1>Publishing information</h1>
+                <br>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="spanLabel3">
+                <label for="inputPublisher">Which institution/company is publishing these data?*</label>
+             </div>
+            <div class="span3">
+                <input type="url" class="form-control input-large" id="inputPublisher"   ng-model="data.publisher" placeholder="http://" required>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="Please provide the URL of the institution responsible for making the resource available.
+                     For example : For ChEMBL, the publisher would be the EBI. This information is required.">
+            </div>
+        </div>
+        <br>
+
+
+        <div  class="form-group row" ng-controller="DatepickerCtrl">
+            <div class="spanLabel3">
+                <label for="inputDateofPublishment">When did these RDF data get published?*</label>
+            </div>
+            <div class="span3">
+                <select class="select-mini-date " ng-model="data.datePublish"  >
+                    <option  value="{{date.name}}" ng-repeat="date in dates">{{date.name}}</option>
+                </select>
+
+                <select class="select-mini-date "  ng-change="checkDates(data.yearPublish,data.monthPublish )"  ng-model="data.monthPublish">
+                    <option value="{{month.num}}"  ng-repeat="month in months" >{{month.name}}</option>
+                </select>
+
+                <select class="select-mini-date " id="inputDateofPublishment" ng-model="data.yearPublish"
+                            ng-change="checkDates(data.yearPublish,data.monthPublish )">
+                    <option  value="{{year.name}}" ng-repeat="year in years">{{year.name}}</option>
+                </select>
+
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover="If you are only aware of the year please select 1st of January of the corresponding year.
+                                If aware of month only select 1st of that month. This information is required.">
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group row">
+            <div class="spanLabel3 ">
+                <label for="inputWebpage">Webpage of documentation for your dataset*:</label>
+            </div>
+            <div class="span3">
+                <input type="url" class="form-control input-large" id="inputWebpage" ng-model="data.webpage" required
+                       placeholder="http://" >
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover="A Web page that can be navigated to in a Web browser
+                     to gain access to the dataset, its distributions and/or additional information. This information is required and must be a URL.">
+            </div>
+        </div>
+        <br>
+
+
+        <div class="form-group row">
+            <div class="spanLabel3 ">
+                 <label for="inputLicence">License to be applied to the dataset*:</label>
+            </div>
+            <div class="span3">
+                <select class="selectpicker" id='inputLicence' ng-model="data.licence" ng-change="otherLicence(data.licence)">
+                        <option  value="http://www.opendatacommons.org/licenses/pddl/">Public Domain for data/databases</option>
+                        <option  value="http://www.opendatacommons.org/licenses/by/">Attribution for data/databases</option>
+                        <option  value="http://www.opendatacommons.org/licenses/odbl/">Attribution Share-Alike for data/databases</option>
+                        <option  value="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons public domain waiver</option>
+                        <option  selected="selected" value="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike (CC-BY-SA)</option>
+                        <option  value="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License (GFDL)</option>
+                        <option  value="other" >Other</option>
+                        <option  value="N/A">Don't know</option>
+                </select>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover="Please visit www.tldrlegal.com to view more information regarding licencing. This information is required.">
+                <input ng-show="showOther" ng-model="data.licence" type="url" placeholder="Please Specify...">
+                <img  ng-show="showOther" src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover="Please provide a URL pointing to this licence. So that we have an indepth understanding of the licence you wish to use. This information is required.">
+             </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="spanLabel3 ">
+                <label for="inputDownload">Where could we download your RDF from?*</label>
+            </div>
+            <div class="span3">
+                <input type="url" class="form-control input-large" id="inputDownload"  ng-model="data.downloadFrom" required
+                        placeholder="http://rdf.example.com">
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover="Where could we download the data from if we required to. This information is required and must be URL.">
+            </div>
+        </div>
+        <br>
+
+    </div>
+
+</div>

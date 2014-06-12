@@ -168,7 +168,6 @@ public class VoidRestService {
 	@POST
 	@Produces("application/text")
 	public Response  returnOrcid()  {
-		
 		return null;
 	 }
 	
