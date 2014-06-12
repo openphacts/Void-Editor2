@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-var linksetAppControllers = angular.module('linksetAppControllers', ['jsonService', 'voidDataService', 'voidUploadService', 'ORCIDService',
+var linksetAppControllers = angular.module('linksetAppControllers', ['jsonService', 'voidDataService',  'ORCIDService',
                                'modalControllers' ]);
 
 linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'voidData', 'ORCIDService',
@@ -37,9 +37,6 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.noVersion = -1;
         $rootScope.noWebpage = -1;
         $rootScope.noDescription = -1;
-        $rootScope.data.totalNumberOfTriples= "";
-        $rootScope.data.numberOfUniqueSubjects="";
-        $rootScope.data.numberOfUniqueObjects ="";
         $rootScope.haveStatsFinished = 1;
         $rootScope.data.ORCID = "";
         $rootScope.doYouHaveOrcidValue = true;

@@ -6,30 +6,7 @@ var jsonService = angular.module('jsonService', ['ngResource'])
         return $resource('https://beta.openphacts.org/1.3/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json');
     });
 
-var URLPreface = "";//"/voidEditor"; // to be changed between dev and prod
-
-var voidUploadService = angular.module('voidUploadService', [])
-    .service('uploadVoidData', function ($rootScope, $http) {
-         var URL = URLPreface+  '/rest/void/uploadVoid';
-        this.process = function (file) {
-            $http.post(URL, file, {
-                withCredentials: true,
-                headers: {'Content-Type': undefined },
-                transformRequest: angular.identity
-            }).success(function (data) {
-                    if (data.error == undefined || data.error == null){
-                         console.log("upload Success==> "+ data );
-                         $rootScope.$broadcast('SuccessUpload', data);
-                    }else {
-                        $rootScope.$broadcast('POSTFailedUpload', data.error);
-                    }
-            })
-            .error(function (data, status) {
-                   var message = "Error in upload of void data - please contact support." ;//+ "=> " + data ;
-                   $rootScope.$broadcast('POSTFailedUpload', message)
-            });
-        }
-    });
+var URLPreface = "/voidEditor"; // to be changed between dev and prod
 
 var ORCIDService = angular.module('ORCIDService', [])
     .service('ORCIDService', function ($rootScope, $http) {
@@ -54,6 +31,7 @@ var ORCIDService = angular.module('ORCIDService', [])
         }
     });
 
+
 var voidDataService = angular.module('voidDataService', [])
     .service('voidData', function ($rootScope, $http, $window) {
         var turtleData, fileLocation, data, uriForSourcesExist, outputURL;
@@ -61,47 +39,7 @@ var voidDataService = angular.module('voidDataService', [])
         fileLocation = "";
         data = {};
         uriForSourcesExist = "passed";
-        outputURL = URLPreface+'/rest/void/output';
-
-        data.sources = [];
-        data.contributors = [];
-
-        // it does three different calls to the server in order to get a faster result back
-        // than waiting for all three to finish
-        this.querySparqlEndPoint = function(endpoint){
-            var  URLSub , URLObj, URLTriples;
-
-            URLSub = URLPreface+ '/rest/void/sparqlStatsSubject';
-            URLObj = URLPreface+ '/rest/void/sparqlStatsObject';
-            URLTriples = URLPreface+ '/rest/void/sparqlStatsTotalTriples';
-
-            $http({method: 'POST', url: URLTriples, data: endpoint}).
-                error(function (data, status) {
-                    var message = "Error for total number of triples query run on your dataset." ;
-                    $rootScope.$broadcast('StatsFailed', message)
-                }).
-                success(function (data) {
-                    $rootScope.$broadcast('SuccessStatisticsUserDataTotalTriples', data);
-                });
-
-            $http({method: 'POST', url: URLSub, data: endpoint}).
-                error(function (data, status) {
-                    var message = "Error in stats for unique subjects in your dataset."  ;
-                    $rootScope.$broadcast('StatsFailed', message)
-                }).
-                success(function (data) {
-                    $rootScope.$broadcast('SuccessStatisticsUserDataUniqueSubjects', data);
-                });
-
-            $http({method: 'POST', url: URLObj, data: endpoint}).
-                error(function (data, status) {
-                    var message = "Error in stats for number of unique objects in your dataset." ;
-                    $rootScope.$broadcast('StatsFailed', message)
-                }).
-                success(function (data) {
-                    $rootScope.$broadcast('SuccessStatisticsUserDataUniqueObjects', data);
-                });
-        }
+        outputURL = URLPreface+'/rest/linkset/output';
 
         this.setTurtle = function (value) {
             turtleData = value;
@@ -125,12 +63,11 @@ var voidDataService = angular.module('voidDataService', [])
             return data;
         };
 
-        this.checkSources = function () {
-            $rootScope.$broadcast("checkSources");
-        };
-
         this.checkIfUriForSourcesExist = function () {
             return uriForSourcesExist;
+        };
+        this.checkSources = function () {
+            $rootScope.$broadcast("checkSources");
         };
 
         this.createVoid = function () {
@@ -150,19 +87,6 @@ var voidDataService = angular.module('voidDataService', [])
                     return turtleData;
                 });
 
-        };
-
-        this.setSourceData = function (value) {
-            data.sources = value;
-            $rootScope.$broadcast('DataSourcesChanged', data.sources);
-        };
-
-        this.setContributorData = function (value){
-            data.contributors = value;
-            $rootScope.$broadcast('ContributorsChanged', data.contributors);
-        }
-        this.getSourceData = function () {
-            return data.sources;
         };
 
         this.createVoidAndDownload = function () {
