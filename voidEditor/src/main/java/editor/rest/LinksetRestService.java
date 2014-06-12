@@ -36,6 +36,7 @@ public class LinksetRestService {
 	public String postVoidCreation(LinksetAttributes data) {
 		results.setLinksetInfo(data);
 		String output;
+		System.out.println("IN linkset REST -- OUTPUT");
 		try {
 			output = results.getVoid();
 		} catch (RDFParseException e) {
@@ -61,36 +62,11 @@ public class LinksetRestService {
 	public Response  getVoidFile() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
 		File file;
 		file = new File(results.getLocation());
-		
+		System.out.println("IN linkset REST -- file");
 		ResponseBuilder response = Response.ok((Object) file);
 		response.header("Content-Disposition","attachment; filename=void.voidCreator.ttl");
 		return response.build();
 	 }
 	 
-//	
-//	@Path("/validation")
-//	@POST
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	public String validateVoid(VoidAttributes data) {
-//		results.setVoidInfo(data);
-//		String output;
-//		try {
-//			output = results.getVoidValidationResults();
-//		} catch (RDFParseException e) {
-//			output = e.getMessage();
-//			e.printStackTrace();
-//		} catch (RDFHandlerException e) {
-//			output = e.getMessage();
-//			e.printStackTrace();
-//		} catch (VoidValidatorException e) {
-//			output = e.getMessage();
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			output = e.getMessage();
-//		}
-//		
-//		return output;
-//	}
-//	
 
 }

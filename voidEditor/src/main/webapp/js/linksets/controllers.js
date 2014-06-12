@@ -21,7 +21,6 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.data.publisher = "";
         $rootScope.data.webpage = "";
         $rootScope.quantity = 6;
-        $rootScope.data.updateFrequency = "Annual";
         $rootScope.postFinished = false;
         $rootScope.data.licence = "http://creativecommons.org/licenses/by-sa/3.0/";
         $rootScope.alerts = [];
@@ -29,7 +28,6 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.mustFields = [];
         $rootScope.isCollapsed = false;
         $rootScope.showLoader = false;
-        $rootScope.isCollapsedContributor = false;
         $rootScope.uploadErrorMessages = "";
         $rootScope.noURI = -1;
         $rootScope.noVersion = -1;
@@ -102,16 +100,7 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         });
 
         $rootScope.$on('DataSourcesChanged', function (event, x) {
-            $rootScope.data.sources = x;
-        });
-
-        $rootScope.$on('getContributors', function (event) {
-            $rootScope.$broadcast('sendContributors' ,  $rootScope.data.contributors);
-        });
-
-        $rootScope.$on('ContributorsChanged', function (event, x) {
-            $rootScope.data.contributors = x;
-            console.log( $rootScope.data.contributors);
+            //$rootScope.data.sources = x;
         });
 
         $rootScope.$on('StartLoader', function (event) {

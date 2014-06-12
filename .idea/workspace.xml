@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dd668c8-7991-416d-81f2-5cfafb1a3a27" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/modal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/java/editor/rest/LinksetRestService.java" afterPath="$PROJECT_DIR$/voidEditor/src/main/java/editor/rest/LinksetRestService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/LinksetTurtle.java" afterPath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/LinksetTurtle.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/controllers.js" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/index.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/linkset.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/linkset.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/services.js" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VoidEditor.iws" />
@@ -29,31 +30,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="linkset.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="linkset.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/linkset.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.807693" vertical-offset="3307" max-vertical-offset="4097">
-              <caret line="208" column="118" selection-start-line="208" selection-start-column="118" selection-end-line="208" selection-end-column="118" />
+            <state vertical-scroll-proportion="1.7404022" vertical-offset="51" max-vertical-offset="4097">
+              <caret line="59" column="51" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
               <folding>
+                <element signature="n#style#0;n#small#0;n#h1#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1402577749084" expanded="true" signature="858:1217" placeholder="..." />
-                <marker date="1402577749084" expanded="false" signature="883:902" placeholder="..." />
-                <marker date="1402577749084" expanded="false" signature="943:964" placeholder="..." />
-                <marker date="1402577749084" expanded="true" signature="965:1204" placeholder="..." />
+                <marker date="1402580010005" expanded="true" signature="858:1217" placeholder="..." />
+                <marker date="1402580010005" expanded="false" signature="883:902" placeholder="..." />
+                <marker date="1402580010005" expanded="false" signature="943:964" placeholder="..." />
+                <marker date="1402580010005" expanded="true" signature="965:1204" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controllers.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="controllers.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3010949" vertical-offset="141" max-vertical-offset="7446">
-              <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+            <state vertical-scroll-proportion="-7.28" vertical-offset="1195" max-vertical-offset="7259">
+              <caret line="81" column="13" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -82,8 +85,8 @@
       <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.2" vertical-offset="918" max-vertical-offset="1921">
-              <caret line="69" column="47" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="47" />
+            <state vertical-scroll-proportion="-7.48" vertical-offset="510" max-vertical-offset="1921">
+              <caret line="41" column="49" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -149,7 +152,6 @@
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/page5.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/page1.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/page3.html" />
-        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/index.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/page4.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/css/app.css" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/modal.js" />
@@ -165,10 +167,11 @@
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/linkset/page.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/linkset/page1.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/linkset/page2.html" />
-        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/linkset.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/modal.js" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/services.js" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/controllers.js" />
+        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/index.html" />
+        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/linkset.html" />
       </list>
     </option>
   </component>
@@ -967,19 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.9780622" vertical-offset="0" max-vertical-offset="4063">
-          <caret line="128" column="9" selection-start-line="128" selection-start-column="9" selection-end-line="128" selection-end-column="9" />
-          <folding>
-            <marker date="1402388185127" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1402388185127" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1402388185127" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1402388185127" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
@@ -1036,24 +1026,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/linkset.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.807693" vertical-offset="3307" max-vertical-offset="4097">
-          <caret line="208" column="118" selection-start-line="208" selection-start-column="118" selection-end-line="208" selection-end-column="118" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1402577749084" expanded="true" signature="858:1217" placeholder="..." />
-            <marker date="1402577749084" expanded="false" signature="883:902" placeholder="..." />
-            <marker date="1402577749084" expanded="false" signature="943:964" placeholder="..." />
-            <marker date="1402577749084" expanded="true" signature="965:1204" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/modal.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
@@ -1070,19 +1042,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/services.js">
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.2" vertical-offset="918" max-vertical-offset="1921">
-          <caret line="69" column="47" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="47" />
+        <state vertical-scroll-proportion="-7.28" vertical-offset="1195" max-vertical-offset="7259">
+          <caret line="81" column="13" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/controllers.js">
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3010949" vertical-offset="141" max-vertical-offset="7446">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+        <state vertical-scroll-proportion="-7.48" vertical-offset="510" max-vertical-offset="1921">
+          <caret line="41" column="49" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="49" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43510056" vertical-offset="867" max-vertical-offset="4080">
+          <caret line="65" column="72" selection-start-line="65" selection-start-column="72" selection-end-line="65" selection-end-column="72" />
+          <folding>
+            <marker date="1402579796890" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1402579796890" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1402579796890" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1402579796890" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/linkset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7404022" vertical-offset="51" max-vertical-offset="4097">
+          <caret line="59" column="51" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#small#0;n#h1#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1402580010005" expanded="true" signature="858:1217" placeholder="..." />
+            <marker date="1402580010005" expanded="false" signature="883:902" placeholder="..." />
+            <marker date="1402580010005" expanded="false" signature="943:964" placeholder="..." />
+            <marker date="1402580010005" expanded="true" signature="965:1204" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -158,7 +158,7 @@ public class LinksetTurtle {
          voidBase.addProperty(DCTerms.issued, publishmentLiteral);
          
          // Creation of void
-         voidDescriptionBase.addProperty(RDF.type, Void.DatasetDescription);
+         voidDescriptionBase.addProperty(RDF.type, Void.Dataset);
          voidDescriptionBase.addProperty(DCTerms.title, titleDescriptionLiteral);
          voidDescriptionBase.addProperty(DCTerms.description, descriptionDescriptionLiteral);
          voidDescriptionBase.addProperty(DCTerms.issued, issueDescriptionLiteral);
