@@ -20,8 +20,6 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.data.title = "";
         $rootScope.data.publisher = "";
         $rootScope.data.webpage = "";
-        $rootScope.data.sparqlEndpoint = "";
-        $rootScope.data.sources = [];
         $rootScope.quantity = 6;
         $rootScope.data.updateFrequency = "Annual";
         $rootScope.postFinished = false;
