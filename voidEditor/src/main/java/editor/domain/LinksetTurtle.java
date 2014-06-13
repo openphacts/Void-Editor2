@@ -12,6 +12,7 @@ import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.json.simple.JSONObject;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
@@ -20,6 +21,7 @@ import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 import com.hp.hpl.jena.vocabulary.DC;
@@ -62,7 +64,11 @@ public class LinksetTurtle {
 	private File output= null ;
 	private String URI;
 	private String ORCID = "";
-	
+	private String relationship ="";
+	private String justification ="";
+	private JSONObject userTarget =null;
+	private JSONObject userSource =null;
+	  
 	private Validator validator = null;
 	/**
 	 * @param obj This object provides all data extracted from Angular side.
@@ -79,7 +85,11 @@ public class LinksetTurtle {
 	    this.downloadFrom = obj.downloadFrom;
 	    this.URI = obj.URI;
 	    this.ORCID = obj.ORCID;
-
+	    this.relationship = obj.relationship;
+	    this.justification = obj.justification;
+	    this.userTarget = (JSONObject) obj.userTarget;
+	    this.userSource = (JSONObject) obj.userSource;
+	    
 		System.out.println(obj.datePublish);
 	    if (obj.datePublish.equals("N/A")){
 	    	this.setDatePublish(1) ;
@@ -115,6 +125,7 @@ public class LinksetTurtle {
          voidModel.setNsPrefix("freq", Freq.getURI());
          voidModel.setNsPrefix("dc", DC.getURI());
          voidModel.setNsPrefix("dcat", DCAT.getURI());
+         voidModel.setNsPrefix("bdb", "http://vocabularies.bridgedb.org/ops");
          voidModel.setNsPrefix("", "#");
          
          //Populate void.ttl
@@ -158,7 +169,7 @@ public class LinksetTurtle {
          voidBase.addProperty(DCTerms.issued, publishmentLiteral);
          
          // Creation of void
-         voidDescriptionBase.addProperty(RDF.type, Void.Dataset);
+         voidDescriptionBase.addProperty(RDF.type, Void.DatasetDescription);
          voidDescriptionBase.addProperty(DCTerms.title, titleDescriptionLiteral);
          voidDescriptionBase.addProperty(DCTerms.description, descriptionDescriptionLiteral);
          voidDescriptionBase.addProperty(DCTerms.issued, issueDescriptionLiteral);
@@ -201,6 +212,58 @@ public class LinksetTurtle {
         	 voidBase.addProperty(DCTerms.license, license);
          }
          
+         if (relationship !="" ){
+        	 Resource relationshipR = voidModel.createResource(relationship);
+        	 voidBase.addProperty(Void.linkPredicate, relationshipR);
+         }
+         System.out.println("userSource => " + userSource);
+         System.out.println(userSource.toString());
+//         if (userSource !="" ){
+//        	 String[] splitingUserTarget= userSource.split(","); 
+//        	
+//        	 for(int j = 0; j <splitingUserTarget.length ; j++ )
+//        	 {
+//        		 String[] couple = splitingUserTarget[j].split("=");
+//        		 String property2Check = couple[0];
+//        		 if (couple.length >1){
+//	        		 String value = couple[1].replace("}","");
+//	        	
+//	        		 if(property2Check.contains("userSource")  ){
+//	        			 Resource userSourceR = voidModel.createResource(userSource);
+//	                	 voidBase.addProperty(Void.subjectsTarget, userSourceR);
+//	        		 }
+//        		 }
+//        	 }
+//        	
+//         }
+         System.out.println("userTarget==> " +userTarget);
+         System.out.println(userTarget.toString());
+//         if (userTarget !="" ){
+//        	 String[] splitingUserTarget= userTarget.split(","); 
+//        	
+//        	 for(int j = 0; j <splitingUserTarget.length ; j++ )
+//        	 {
+//        		 String[] couple = splitingUserTarget[j].split("=");
+//        		 String property2Check = couple[0];
+//        		 if (couple.length >1){
+//	        		 String value = couple[1].replace("}","");
+//	        	
+//	        		 if(property2Check.contains("userTarget")  ){
+//	        			 Resource userTargetR = voidModel.createResource(value);
+//	                	 voidBase.addProperty(Void.objectsTarget, userTargetR);
+//	        		 }
+//        		 }
+//        	 }
+//        	 
+//         }
+         
+         if (justification !="" ){
+        	 Resource justificationR = voidModel.createResource(justification);
+        	 Property LinksetJustification = voidModel.createProperty( "http://vocabularies.bridgedb.org/ops#linksetJustification" );
+        	 voidBase.addProperty(LinksetJustification, justificationR);
+         }
+         
+         
          BufferedWriter bw = null;
          try
          {
@@ -219,18 +282,6 @@ public class LinksetTurtle {
          ///validateRDFForOPS();
 	}
 
-
-//	private void validateRDFForOPS() throws VoidValidatorException{
-//		
-//		try {
-//			validator = new Validator(output);
-//		} catch (VoidValidatorException e) {
-//			System.err.println("Got a VoidValidatorException!! ");
-//			e.printStackTrace();
-//			throw new VoidValidatorException("The editor created a not valid file - please contact Lefteris.");
-//		}
-//		 if ( !validator.passedTests()  ) throw new VoidValidatorException("The editor created a not valid file - please contact Lefteris.");
-//	}
 	
 	private void checkRDF() throws RDFParseException, RDFHandlerException, IOException {
 		RdfChecker checker = new RdfChecker();

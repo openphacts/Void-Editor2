@@ -17,4 +17,8 @@ public class LinksetAttributes{
 	  public String downloadFrom= "";
 	  public String URI ="http://www.openphacts.org/";
 	  public String ORCID ="";
+	  public String relationship ="";
+	  public String justification ="";
+	  public Object userTarget ="";
+	  public Object userSource ="";
 }

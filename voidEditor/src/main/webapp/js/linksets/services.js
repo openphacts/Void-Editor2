@@ -46,9 +46,26 @@ var voidDataService = angular.module('voidDataService', [])
             $rootScope.$broadcast('TurtleChanged', turtleData);
         };
 
+
+
+        this.setSourceData = function (value) {
+            data.sources = value;
+            $rootScope.$broadcast('DataSourcesChanged', data.sources);
+        };
+
         this.getTurtle = function () {
             return turtleData;
         };
+
+        this.setUserTarget = function(value){
+            data.userTarget = value;
+            $rootScope.$broadcast('setUserTarget', data.userTarget);
+        }
+
+        this.setUserSource= function(value){
+            data.userSource = value;
+            $rootScope.$broadcast('setUserSource', data.userSource);
+        }
 
         this.setUriForSourcesExist = function (value) {
             uriForSourcesExist = value;

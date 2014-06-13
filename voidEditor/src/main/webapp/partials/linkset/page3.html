@@ -1,42 +1,96 @@
-<div class="span12 carousel-content" ng-controller="linksetFormCtrl" >
-     <span ng-switch="slide.active">
-      <div  ng-switch-when="true">
-          <script>
-              $(".carousel-control.right").hide();
-          </script>
-          {{changeProgressBar(slide.progress)}}
-      </div>
-      <div  ng-switch-when="false">
-          <script>
-              $(".carousel-control.right").show();
-          </script>
-      </div>
+<div class="span12 carousel-content" ng-controller="linksetFormCtrl">
+         <span ng-switch="slide.active">
+      <div ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
+      <div ng-switch-when="false"></div>
      </span>
-    <div class="span8 offset2">
 
-        <div class="row">
-            <div class="span7">
-                 <br>
-               <h3> {{finalHeader}}</h3>
-                <br><br>
-            </div>
-        </div>
-        <div class="row-fluid">
-            <div class="span4 offset3">
-                 <h4 >Export it as :
-					<button type="btn" class="btn btn-primary btn-large"  ng-disabled="disabledExport"
-							ng-click="downloadFile() " id="exportVoidButton"
-							class="pull-right" > RDF</button>
-				     <img src="img/ajax-loader.gif" id ="spinner"  style="display:none">
-				   </h4>
-				   
-            </div>
-        </div>
-        <div class="row-fluid">
-            <div class="span6 offset3" id="bind-html-with-trust">
-                <div ng-bind-html="fieldsToAdd()">
+    <h1>Links which would would like to describe:</h1>
+    <br>
+
+    <div class="container-fluid" ng-controller="sourceCtrl">
+        <div class='span1'></div>
+        <div class="span3AndABit">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Your Source Dataset
+                              <span style="font-weight: normal; font-size:16px;line-height: 20px;">
+                                  <!--<img-->
+                                      <!--src="img/QuestionMarkIcon16.gif" popover-placement="right"-->
+                                      <!--popover-trigger="mouseenter"-->
+                                      <!--popover="Source Dataset you are referencing. ">-->
+                                  <!--</span>-->
+                    </h3>
+
+                </div>
+                <div class="panel-body" id="accordion" style="font-size:17px;">
+                    <ul class="list-group" id="OPSSources"  style="text-align: center; cursor:pointer;">
+                        <li ng-repeat="source in sources" class="thumbnail" id="{{ source.$$hashKey }}" ng-click="selectOption(source._about , 'source')">
+                            {{source.title}}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-     </div>
+
+        <div class="span2AndABit">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Linking
+                              <span style="font-weight: normal; font-size:16px;line-height: 20px;"><img
+                                      src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                      popover-trigger="mouseenter"
+                                      popover="Type of Links between datasets.">
+                                  </span>
+                    </h3>
+
+                </div>
+                <div class="panel-body" id="accordion" style="font-size:17px;"  ng-controller="linksetFormCtrl">
+                    <span> Mapping relationship:</span>
+                    <select class="selectpicker" id='relationship' ng-model="data.relationship">
+                        <option  selected="selected"  value="rdfs:seeAlso" >The linked resource have relevant information regarding the subject.</option>
+                        <option  value="skos:relatedMatch" >Resources are in some way associated</option>
+                        <option  value="skos:closeMatch" >Under some assumptions or applications, resources are the same.</option>
+                        <option  value="skos:exactMatch" >Under the assumptions of most applications, resources are the same.</option>
+                        <option  value="owl:sameAs" > Under all assumptions linked resources are the same.</option>
+                        <option  value="owl:equivalentClass" >They are equivalent classes.</option>
+                        <option  value="skos:broadMatch" >Target resource is more general than the subject resource. </option>
+                        <option  value="skos:narrowMatch" >Target resource is more specific than the subject resource. </option>
+                    </select>
+                    <br><br>
+
+                    <span> Linkset Justification:</span>
+                    <select class="selectpicker" id='justification' ng-model="data.justification" >
+                        <option  value="http://semanticscience.org/resource/SIO_010004">Chemical entity</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000480">Has component with uncharged counterpart</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000459">Has isotopically unspecified parent</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000486">Has major tautomer at pH 7.4</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000458">Has OPS normalized counterpart</option>
+                        <option  value="http://purl.obolibrary.org/obo#has_part">Has part</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000456">Has stereoundefined parent</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000460">Has uncharged counterpart</option>
+                        <option  selected="selected" value="http://semanticscience.org/resource/CHEMINF_000059">InChI Key</option>
+                        <option  value="http://purl.obolibrary.org/obo#is_tautomer_of">Is tautomer of</option>
+                    </select>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="span3AndABit">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Your Target Dataset</h3>
+                </div>
+                <div class="panel-body ">
+                    <ul class="list-group" id="OPSSources"  style="text-align: center; cursor:pointer;">
+                        <li ng-repeat="source in sources" class="thumbnail" id="100{{ source.$$hashKey }}" ng-click="selectOption(source._about , 'target')">
+                            {{source.title}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

@@ -30,6 +30,7 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.showLoader = false;
         $rootScope.uploadErrorMessages = "";
         $rootScope.noURI = -1;
+        $rootScope.sources = [];
         $rootScope.noVersion = -1;
         $rootScope.noWebpage = -1;
         $rootScope.noDescription = -1;
@@ -39,6 +40,10 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         var ua = window.navigator.userAgent;
         $rootScope.msie = ua.indexOf ( ".NET" );
         $rootScope.finalHeader = "Almost there...";
+        $rootScope.data.userSource = "";
+        $rootScope.data.userTarget = "";
+        $rootScope.data.relationship = "owl:sameAs";
+        $rootScope.data.justification = "http://semanticscience.org/resource/CHEMINF_000059";
 
         $rootScope.otherLicence = function (val) {
             if (val == "other") {
@@ -78,7 +83,21 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
             $rootScope.data = x;
         });
 
+        $rootScope.$on('setUserSource', function (event, x) {
+            $rootScope.data.userSource  = x;
+            console.log("setUserSource ==> ");
+            console.log($rootScope.userSource );
+        });
+
+        $rootScope.$on('setUserTarget', function (event, x) {
+            $rootScope.data.userTarget= x;
+            console.log("setUserTarget ==> ");
+            console.log($rootScope.userTarget );
+        });
+
         $rootScope.$on('needData', function (event) {
+            console.log($rootScope.data);
+            console.log("NeedData");
             voidData.setData($rootScope.data);
         });
 
@@ -100,7 +119,7 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         });
 
         $rootScope.$on('DataSourcesChanged', function (event, x) {
-            //$rootScope.data.sources = x;
+            $rootScope.sources = x;
         });
 
         $rootScope.$on('StartLoader', function (event) {
@@ -234,8 +253,6 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                 $rootScope.finalHeader = "You have almost created a Linkset description...";
                 $rootScope.disabledExport = true
             };
-
-
             return returnString;
         };
 
@@ -326,7 +343,7 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
             if (i != 0)   temp = "partials/linkset/page" + i + ".html";
             else  temp = "partials/linkset/page.html";
 
-            var percentageOfChange = (100 / 4 ) - 0.0001;
+            var percentageOfChange = (100 / 5 ) - 0.0001;
             $rootScope.dynamicProgressStep = percentageOfChange;
             $rootScope.mustFields.push({'index': i, 'mustFields': mustFields });
             $rootScope.$broadcast("changedMustFields", $rootScope.mustFields);
@@ -337,8 +354,8 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
         $scope.addSlide(1, "Core Info", ["title" , "description"]);
         $scope.addSlide(2, "Publishing Info", ["publisher", "webpage" , "downloadFrom"]);
        // $scope.addSlide(3, "Versioning", []);
-       // $scope.addSlide(3, "Sources", []);
-        $scope.addSlide(3, "Export RDF", []);
+        $scope.addSlide(3, "Links", []);
+        $scope.addSlide(4, "Export RDF", []);
 
         $scope.changeProgressBar = function (change) {
             $rootScope.dynamicProgress = change;
@@ -349,13 +366,15 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
 
 linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonService', 'voidData',
     function ($rootScope, $scope, JsonService, voidData) {
-        $scope.userSources = [];
-        $scope.selected = undefined;
+        $scope.userSource = {};
+        $scope.userTarget = {};
+        $scope.sourceID = "";
+        $scope.targetID = "";
+
         $scope.titles = [];
         $scope.aboutOfTitles = [];
         $scope.descriptionsOfTitles = [];
         $scope.sources = [];
-        $scope.showInputURI = false;
 
         $scope.noTitleFilter = function (item) {
             return typeof item.title == 'string';
@@ -363,9 +382,13 @@ linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSe
 
         $scope.extractTitlesOfSources = function () {
             for (var i = 0; i < $scope.sources.length; i++) {
-                $scope.titles.push($scope.sources[i].title);
-                $scope.aboutOfTitles.push($scope.sources[i]._about);
-                $scope.descriptionsOfTitles.push($scope.sources[i].description);
+                if ($scope.sources[i].title != undefined){
+                    $scope.titles.push($scope.sources[i].title);
+                    $scope.aboutOfTitles.push($scope.sources[i]._about);
+                    $scope.descriptionsOfTitles.push($scope.sources[i].description);
+                }else{
+                    $scope.sources.splice(i, 1);
+                }
             }
         };
 
@@ -374,48 +397,60 @@ linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSe
             $scope.extractTitlesOfSources();
         });
 
-        $scope.addToSelected = function (value) {
-            var found = 0;
-            if ($scope.userSources == undefined ) $scope.userSources = [];
-
-            for (var i = 0; i < $scope.userSources.length; i++) {
-                if ($scope.userSources[i].title == value) found = 1;
+        $scope.selectOption = function(value, from){
+            console.log(value);
+            var found = -1;
+            for (var i = 0; i < $scope.sources.length; i++) {
+                if ($scope.sources[i]._about == value) found = i;
             }
 
-            if (!found && value != undefined && value != "") {
+            if (found != -1 && value!= undefined && value != ""){
+                if (from == "source" ){
+                    //change old one back to white
+                    $(  $scope.sourceID ).change(
+                        function (){
+                            $(this).css('background-color',"white");
+                            $(this).css('color',"black");
+                        }
+                    ).change();
+                    $( "#"+  $scope.sources[found].$$hashKey ).change(
+                        function (){
+                            $(this).css('background-color',"#149bdf");
+                            $(this).css('color',"#f5f5f5");
+                        }
+                    ).change();
 
-                var foundURI = -1;
-                for (var i = 0; i < $scope.titles.length; i++) {
-                    if ($scope.titles[i] == value) foundURI = i;
+                    $scope.sourceID = "#"+  $scope.sources[found].$$hashKey;
+
+                    $scope.userSource = {"title":  $scope.titles[found] , "type": "RDF", "URI": value,
+                            "webpage": $scope.sources[found].webpage, "description":  $scope.descriptionsOfTitles[found] };
+                    voidData.setUserSource($scope.userSource);
+                }else{
+                    //change old one back to white
+                    $(  $scope.targetID ).change(
+                        function (){
+                            $(this).css('background-color',"white");
+                            $(this).css('color',"black");
+                        }
+                    ).change();
+                    //change selected back to normal
+                    $( "#100"+ $scope.sources[found].$$hashKey ).change(
+                        function (){
+                            $(this).css('background-color',"#149bdf");
+                            $(this).css('color',"#f5f5f5");
+                        }
+                    ).change();
+                    $scope.targetID = "#100"+ $scope.sources[found].$$hashKey;
+                    $scope.userTarget = {"title":  $scope.titles[found] , "type": "RDF", "URI": value,
+                        "webpage": $scope.sources[found].webpage, "description":  $scope.descriptionsOfTitles[found] };
+                    voidData.setUserTarget($scope.userTarget);
                 }
-                var _about =value ;
-                if (foundURI != -1) {
-                    _about = $scope.aboutOfTitles[foundURI];
-                    $scope.userSources.push({"title": value, "type": "RDF", "URI": _about, "version": "", "webpage": _about, "description":  $scope.descriptionsOfTitles[foundURI], "noURI": false });
-                } else {
-                    $scope.showInputURI = true;
-                    $scope.userSources.push({"title": value, "type": "RDF", "URI": "", "version": "", "webpage": "", "description": "", "noURI": true });
-                }
-                voidData.setSourceData($scope.userSources);
             }
-        };
-
-        $scope.removeSelected = function (value) {
-            var found = false;
-            var i = 0;
-            while (i < $scope.userSources.length && !found) {
-                if ($scope.userSources[i].title == value) found = true;
-                else i++;
-            }
-            if (found) {
-                $scope.userSources.splice(i, 1);
-                voidData.setSourceData($scope.userSources);
-            }
-        };
+        }
 
         $rootScope.$on('ChangeInSourcesFromUpload', function (event, sources) {
             $scope.userSources = sources;
-        })
+        });
     }]);
 
 

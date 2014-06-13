@@ -175,7 +175,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
         $rootScope.$on("FailedDownload", function (ev, status) {
             $rootScope.alerts.push({ type: 'error', msg: 'Failed to download void.' });
-        })
+        });
 
         $rootScope.$on("changedMustFields", function (ev, data) {
             $rootScope.mustFields = data;
@@ -270,13 +270,13 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 if ($rootScope.alerts[k].id == id2Check ) addAlert = false;
             }
             return addAlert;
-        }
+        };
 
         $rootScope.removeAlert =function(id2Remove){
             for (var k = 0; k < $rootScope.alerts.length; k++) {
                 if ($rootScope.alerts[k].id == id2Remove)$rootScope.alerts.splice(k, 1);
             }
-        }
+        };
 
         $rootScope.$on('checkSources', function (event) {
             var result;
