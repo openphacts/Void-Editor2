@@ -8,11 +8,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.LinkedHashMap;
 import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.json.simple.JSONObject;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
@@ -66,8 +66,8 @@ public class LinksetTurtle {
 	private String ORCID = "";
 	private String relationship ="";
 	private String justification ="";
-	private JSONObject userTarget =null;
-	private JSONObject userSource =null;
+	private LinkedHashMap userTarget =null;
+	private LinkedHashMap userSource =null;
 	  
 	private Validator validator = null;
 	/**
@@ -87,8 +87,8 @@ public class LinksetTurtle {
 	    this.ORCID = obj.ORCID;
 	    this.relationship = obj.relationship;
 	    this.justification = obj.justification;
-	    this.userTarget = (JSONObject) obj.userTarget;
-	    this.userSource = (JSONObject) obj.userSource;
+	    this.userTarget = (LinkedHashMap) obj.userTarget;
+	    this.userSource = (LinkedHashMap) obj.userSource;
 	    
 		System.out.println(obj.datePublish);
 	    if (obj.datePublish.equals("N/A")){
@@ -218,44 +218,18 @@ public class LinksetTurtle {
          }
          System.out.println("userSource => " + userSource);
          System.out.println(userSource.toString());
-//         if (userSource !="" ){
-//        	 String[] splitingUserTarget= userSource.split(","); 
-//        	
-//        	 for(int j = 0; j <splitingUserTarget.length ; j++ )
-//        	 {
-//        		 String[] couple = splitingUserTarget[j].split("=");
-//        		 String property2Check = couple[0];
-//        		 if (couple.length >1){
-//	        		 String value = couple[1].replace("}","");
-//	        	
-//	        		 if(property2Check.contains("userSource")  ){
-//	        			 Resource userSourceR = voidModel.createResource(userSource);
-//	                	 voidBase.addProperty(Void.subjectsTarget, userSourceR);
-//	        		 }
-//        		 }
-//        	 }
-//        	
-//         }
+         if (userSource !=null ){
+        	 
+	        Resource userSourceR = voidModel.createResource((userSource.get("URI")).toString());
+	        voidBase.addProperty(Void.subjectsTarget, userSourceR);    
+         }
          System.out.println("userTarget==> " +userTarget);
          System.out.println(userTarget.toString());
-//         if (userTarget !="" ){
-//        	 String[] splitingUserTarget= userTarget.split(","); 
-//        	
-//        	 for(int j = 0; j <splitingUserTarget.length ; j++ )
-//        	 {
-//        		 String[] couple = splitingUserTarget[j].split("=");
-//        		 String property2Check = couple[0];
-//        		 if (couple.length >1){
-//	        		 String value = couple[1].replace("}","");
-//	        	
-//	        		 if(property2Check.contains("userTarget")  ){
-//	        			 Resource userTargetR = voidModel.createResource(value);
-//	                	 voidBase.addProperty(Void.objectsTarget, userTargetR);
-//	        		 }
-//        		 }
-//        	 }
-//        	 
-//         }
+         if (userTarget !=null ){
+        	 Resource userTargetR = voidModel.createResource((userTarget.get("URI")).toString());
+        	 voidBase.addProperty(Void.objectsTarget, userTargetR);
+        	 
+         }
          
          if (justification !="" ){
         	 Resource justificationR = voidModel.createResource(justification);
