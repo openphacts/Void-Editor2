@@ -21,4 +21,5 @@ public class LinksetAttributes{
 	  public String justification ="";
 	  public Object userTarget ="";
 	  public Object userSource ="";
+	  public String assertionMethod = "";
 }

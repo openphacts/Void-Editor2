@@ -102,6 +102,20 @@
             </div>
         </div>
         <br>
+        <div class="form-group row">
+            <div class="spanLabel3 ">
+                <label for="inputLicence">How were the links in the Linkset asserted:</label>
+            </div>
+            <div class="span3">
+                <select class="selectpicker" id='assertionMethod' ng-model="data.assertionMethod">
+                    <option  value="http://purl.obolibrary.org/obo/ECO_0000203" >Automatic assertion</option>
+                    <option  value="http://purl.obolibrary.org/obo/ECO_0000218" >Manual assertion</option>
+                </select>
+                <img  src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                      popover="Please specify the method by which the links in the Linkset have been asserted.Please note that: manual assertion includes computer generated assertions that have been manually verified..">
+            </div>
+        </div>
+        <br>
 
     </div>
 

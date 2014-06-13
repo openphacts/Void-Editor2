@@ -68,7 +68,8 @@ public class LinksetTurtle {
 	private String justification ="";
 	private LinkedHashMap userTarget =null;
 	private LinkedHashMap userSource =null;
-	  
+	private String assertionMethod = "";
+	
 	private Validator validator = null;
 	/**
 	 * @param obj This object provides all data extracted from Angular side.
@@ -89,6 +90,7 @@ public class LinksetTurtle {
 	    this.justification = obj.justification;
 	    this.userTarget = (LinkedHashMap) obj.userTarget;
 	    this.userSource = (LinkedHashMap) obj.userSource;
+	    this.assertionMethod = obj.assertionMethod;
 	    
 		System.out.println(obj.datePublish);
 	    if (obj.datePublish.equals("N/A")){
@@ -216,19 +218,21 @@ public class LinksetTurtle {
         	 Resource relationshipR = voidModel.createResource(relationship);
         	 voidBase.addProperty(Void.linkPredicate, relationshipR);
          }
-         System.out.println("userSource => " + userSource);
-         System.out.println(userSource.toString());
          if (userSource !=null ){
         	 
 	        Resource userSourceR = voidModel.createResource((userSource.get("URI")).toString());
 	        voidBase.addProperty(Void.subjectsTarget, userSourceR);    
          }
-         System.out.println("userTarget==> " +userTarget);
-         System.out.println(userTarget.toString());
+
+         if(assertionMethod!=""){
+        	 Resource assertionMethodRersource = voidModel.createResource(assertionMethod);
+        	 Property assertionMethodProperty = voidModel.createProperty("http://vocabularies.bridgedb.org/ops#assertionMethod");
+        	 voidBase.addProperty( assertionMethodProperty, assertionMethodRersource);
+         }
+         
          if (userTarget !=null ){
         	 Resource userTargetR = voidModel.createResource((userTarget.get("URI")).toString());
         	 voidBase.addProperty(Void.objectsTarget, userTargetR);
-        	 
          }
          
          if (justification !="" ){

@@ -5,7 +5,7 @@ var linksetAppControllers = angular.module('linksetAppControllers', ['jsonServic
                                'modalControllers' ]);
 
 linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'voidData', 'ORCIDService',
-    function ($scope, $rootScope, voidData, uploadUserData , ORCIDService) {
+    function ($scope, $rootScope, voidData , ORCIDService) {
         $scope.title = 'Linkset Creator';
         $scope.mustFieldPerPage = [];
         $rootScope.disabledExport = false;
@@ -36,6 +36,7 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.noDescription = -1;
         $rootScope.haveStatsFinished = 1;
         $rootScope.data.ORCID = "";
+        $rootScope.data.assertionMethod = "http://purl.obolibrary.org/obo/ECO_0000218";
         $rootScope.doYouHaveOrcidValue = true;
         var ua = window.navigator.userAgent;
         $rootScope.msie = ua.indexOf ( ".NET" );
