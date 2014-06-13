@@ -1,0 +1,57 @@
+<div class="span12 carousel-content" ng-controller="linksetFormCtrl">
+         <span ng-switch="slide.active">
+      <div ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
+      <div ng-switch-when="false"></div>
+     </span>
+
+    <h1>Your Target Dataset:</h1>
+    <br>
+
+    <div class="container-fluid" ng-controller="sourceCtrl">
+        <div class='span1'></div>
+        <div class="span3AndABit">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                              <span style="font-weight: normal; font-size:16px;line-height: 20px;">
+                                  </span>
+                    </h3>
+                </div>
+                <div class="panel-body" id="accordion" style="font-size:17px;">
+                    <ul class="list-group" id="OPSSources"  style="text-align: center; cursor:pointer;">
+                        <li ng-repeat="source in sources" class="thumbnail" id="{{ source.$$hashKey }}" ng-click="selectOption(source._about , 'source')">
+                            {{source.title}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="span2AndABit">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"></h3>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="span3AndABit">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"></h3>
+                </div>
+                <div class="panel-body ">
+                    <ul class="list-group" id="OPSSources"  style="text-align: center; cursor:pointer;">
+                        <!--<li ng-repeat="source in sources" class="thumbnail" id="100{{ source.$$hashKey }}" ng-click="selectOption(source._about , 'target')">-->
+                            <!--{{source.title}}-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

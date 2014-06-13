@@ -1,0 +1,122 @@
+<div class="span12 carousel-content  " ng-controller="linksetFormCtrl" >
+      <span ng-switch="slide.active">
+      <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
+      <div  ng-switch-when="false"></div>
+     </span>
+
+    <div class="span9 offset1AndABit" >
+
+        <div class="row">
+            <div class="span7 ">
+                <h1>Linking information</h1>
+                <br>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="spanLabel3">
+                <label for="relationship">Mapping relationship:*</label>
+            </div>
+            <div class="span3">
+                <select class="selectpicker" id='relationship' ng-model="data.relationship">
+                    <option  selected="selected"  value="rdfs:seeAlso" >The linked resource have relevant information regarding the subject.</option>
+                    <option  value="skos:relatedMatch" >Resources are in some way associated</option>
+                    <option  value="skos:closeMatch" >Under some assumptions or applications, resources are the same.</option>
+                    <option  value="skos:exactMatch" >Under the assumptions of most applications, resources are the same.</option>
+                    <option  value="owl:sameAs" > Under all assumptions linked resources are the same.</option>
+                    <option  value="owl:equivalentClass" >They are equivalent classes.</option>
+                    <option  value="skos:broadMatch" >Target resource is more general than the subject resource. </option>
+                    <option  value="skos:narrowMatch" >Target resource is more specific than the subject resource. </option>
+                </select>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="Relationship">
+            </div>
+        </div>
+<br>
+        <div class="form-group row">
+            <div class="spanLabel3">
+                <label for="justification">Linkset Justification:*</label>
+            </div>
+            <div class="span3">
+                <select class="selectpicker" id='justification' ng-model="data.justification" >
+                    <option  value="http://semanticscience.org/resource/SIO_010004">Chemical entity</option>
+                    <option  value="http://semanticscience.org/resource/CHEMINF_000480">Has component with uncharged counterpart</option>
+                    <option  value="http://semanticscience.org/resource/CHEMINF_000459">Has isotopically unspecified parent</option>
+                    <option  value="http://semanticscience.org/resource/CHEMINF_000486">Has major tautomer at pH 7.4</option>
+                    <option  value="http://semanticscience.org/resource/CHEMINF_000458">Has OPS normalized counterpart</option>
+                    <option  value="http://purl.obolibrary.org/obo#has_part">Has part</option>
+                    <option  value="http://semanticscience.org/resource/CHEMINF_000456">Has stereoundefined parent</option>
+                    <option  value="http://semanticscience.org/resource/CHEMINF_000460">Has uncharged counterpart</option>
+                    <option  selected="selected" value="http://semanticscience.org/resource/CHEMINF_000059">InChI Key</option>
+                    <option  value="http://purl.obolibrary.org/obo#is_tautomer_of">Is tautomer of</option>
+                </select>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="The justification.">
+            </div>
+        </div>
+
+<br>
+        <div class="form-group row">
+            <div class="spanLabel3 ">
+                <label for="assertionMethod">How were the links in the Linkset asserted:</label>
+            </div>
+            <div class="span3">
+                <select class="selectpicker" id='assertionMethod' ng-model="data.assertionMethod">
+                    <option  value="http://purl.obolibrary.org/obo/ECO_0000203" >Automatic assertion</option>
+                    <option  value="http://purl.obolibrary.org/obo/ECO_0000218" >Manual assertion</option>
+                </select>
+                <img  src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                      popover="Please specify the method by which the links in the Linkset have been asserted.Please note that: manual assertion includes computer generated assertions that have been manually verified..">
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="spanLabel3">
+                <label for="sDatatype">Subjects Datatype:*</label>
+            </div>
+            <div class="span3">
+                <select class="selectpicker" id='sDatatype' ng-model="data.subjectDatatype" >
+                    <option  value="http://semanticscience.org/resource/SIO_001166">Annotation</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010004">Chemical Entity</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010299">Disease</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010038">Drug</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010035">Gene</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010432">Ligand</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010099">mRNA</option>
+                    <option  value="http://semanticscience.org/resource/SIO_001107">Pathway</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010043">Protein</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010009">RNA</option>
+
+                </select>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="The Datatype.">
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="spanLabel3">
+                <label for="tDatatype">Targets Datatype:*</label>
+            </div>
+            <div class="span3">
+                <select class="selectpicker" id='tDatatype' ng-model="data.targetDatatype" >
+                    <option  value="http://semanticscience.org/resource/SIO_001166">Annotation</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010004">Chemical Entity</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010299">Disease</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010038">Drug</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010035">Gene</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010432">Ligand</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010099">mRNA</option>
+                    <option  value="http://semanticscience.org/resource/SIO_001107">Pathway</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010043">Protein</option>
+                    <option  value="http://semanticscience.org/resource/SIO_010009">RNA</option>
+
+                </select>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="The Datatype.">
+            </div>
+        </div>
+        <br>
+    </div>
+
+</div>
