@@ -26,7 +26,7 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.alerts = [];
         $rootScope.data.downloadFrom = "";
         $rootScope.mustFields = [];
-        $rootScope.isCollapsed = false;
+
         $rootScope.showLoader = false;
         $rootScope.uploadErrorMessages = "";
         $rootScope.noURI = -1;
@@ -81,15 +81,14 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
 
         });
 
-
         $rootScope.$on('DataChanged', function (event, x) {
             $rootScope.data = x;
         });
 
         $rootScope.$on('setUserSource', function (event, x) {
             $rootScope.data.userSource  = x;
-            console.log("setUserSource ==> ");
-            console.log($rootScope.userSource );
+            console.log("setUserSource ");
+            console.log($rootScope.data.userSource);
         });
 
         $rootScope.$on('setUserTarget', function (event, x) {
@@ -198,10 +197,6 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                 header = "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
 
             $rootScope.checkSources ();
-//            if ($rootScope.data.title == "") {
-//                if (returnString == "") returnString += header;
-//                returnString += "<p class='neededFields'>Title of your dataset in \"Core Info\"</p>";
-//            }
             if ($rootScope.data.description == "") {
                 if (returnString == "") returnString += header;
                 returnString += "<p class='neededFields'>Description for your dataset in \"Core Info\"</p>";
@@ -287,18 +282,12 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                 case "descriptionSource":
                     $rootScope.alerts.push({ id: "descriptionSource", type: 'error', msg: 'Ooops! You forgot to gives us a description for source you cited! Please provide this information.' });
                     break;
-//                case "title":
-//                    $rootScope.alerts.push({ id: "title", type: 'error', msg: 'Ooops! You forgot to gives us a title for your dataset! Please provide this information.' });
-//                    break;
                 case "description":
                     $rootScope.alerts.push({ id: "description", type: 'error', msg: 'Ooops! You forgot to gives us a description! Please provide this information.' });
                     break;
                 case "publisher":
                     $rootScope.alerts.push({ id: "publisher", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the publisher you choose! Please provide this information.' });
                     break;
-//                case "webpage":
-//                    $rootScope.alerts.push({ id: "webpage", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the webpage of your documentation! Please provide this information.' });
-//                    break;
                 case "downloadFrom":
                     $rootScope.alerts.push({ id: "downloadFrom", type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF data from! Please provide this information.' });
                     break;
@@ -336,7 +325,7 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
             if (i != 0)   temp = "partials/linksets/page" + i + ".html";
             else  temp = "partials/linksets/page.html";
 
-            var percentageOfChange = (100 / 7 ) - 0.0001;
+            var percentageOfChange = (100 / 6 ) - 0.0001;
             $rootScope.dynamicProgressStep = percentageOfChange;
             $rootScope.mustFields.push({'index': i, 'mustFields': mustFields });
             $rootScope.$broadcast("changedMustFields", $rootScope.mustFields);
@@ -347,10 +336,10 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
         $scope.addSlide(1, "Core Info", [ "description"]);
         $scope.addSlide(2, "Publishing Info", ["publisher",  "downloadFrom"]);
        // $scope.addSlide(3, "Versioning", []);
-        $scope.addSlide(3, "Source", []);
-        $scope.addSlide(4, "Target", []);
-        $scope.addSlide(5, "Links", []);
-        $scope.addSlide(6, "Export RDF", []);
+        $scope.addSlide(3, "Source / Target", []);
+        //$scope.addSlide(4, "Target", []);
+        $scope.addSlide(4, "Link Info", []);
+        $scope.addSlide(5, "Export RDF", []);
 
         $scope.changeProgressBar = function (change) {
             $rootScope.dynamicProgress = change;
@@ -362,14 +351,21 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
 linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonService', 'voidData',
     function ($rootScope, $scope, JsonService, voidData) {
         $scope.userSource = {};
+        $scope.userSourceTitle = "";
         $scope.userTarget = {};
+        $scope.userTargetTitle = "";
         $scope.sourceID = "";
+        $scope.subSourceID = "";
         $scope.targetID = "";
 
         $scope.titles = [];
         $scope.aboutOfTitles = [];
         $scope.descriptionsOfTitles = [];
         $scope.sources = [];
+        $scope.subSources = [];
+        $scope.subTargets = [];
+        $scope.isSource = true;
+        $scope.isTarget = true;
 
         $scope.noTitleFilter = function (item) {
             return typeof item.title == 'string';
@@ -395,31 +391,85 @@ linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSe
         $scope.selectOption = function(value, from){
             console.log(value);
             var found = -1;
-            for (var i = 0; i < $scope.sources.length; i++) {
-                if ($scope.sources[i]._about == value) found = i;
-            }
+            if (from == "source" ){
 
-            if (found != -1 && value!= undefined && value != ""){
-                if (from == "source" ){
+                for (var i = 0; i < $scope.sources.length; i++) {
+                    if ($scope.sources[i]._about == value) found = i;
+                }
+
+                if (found != -1 && value!= undefined && value != ""){
+
+                        //change old one back to white
+                        $(  $scope.sourceID ).change(
+                            function (){
+                                $("div"+$scope.sourceID +">.accordion-heading").css('background-color',"white");
+                                $("div"+$scope.sourceID +">.accordion-heading>a").css('color',"black");
+                            }
+                        ).change();
+
+                        $( "#"+  $scope.sources[found].$$hashKey ).change(
+                            function (){
+                                $("div#"+ $scope.sources[found].$$hashKey +">.accordion-heading").css('background-color',"#149bdf");
+                                $("div#"+ $scope.sources[found].$$hashKey +">.accordion-heading>a").css('color',"#f5f5f5");
+                            }
+                        ).change();
+                        $scope.subSources = [];
+                        if($scope.sources[found].subset != null || $scope.sources[found].subset != undefined) {
+                            for (var i = 0; i < $scope.sources[found].subset.length; i++) {
+                                if ($scope.sources[found].subset[i].title != undefined) {
+                                    $scope.subSources.push($scope.sources[found].subset[i]);
+                                }
+                            }
+                        }
+                        $scope.sourceID = "#"+  $scope.sources[found].$$hashKey;
+
+                        if ( $scope.subSources.length >0 ){
+                            $scope.isSource = true;
+                            $scope.userSource = {"title":  $scope.subSources[0].title , "type": "RDF", "URI": $scope.subSources[0]._about,
+                                "webpage": $scope.sources[found].webpage, "description": $scope.subSources[0].description};
+                            voidData.setUserSource($scope.userSource);
+                            $scope.userSourceTitle = $scope.userSource.URI;
+                        }
+                        else {
+                            $scope.isSource = false;
+                            $scope.userSource = {"title":  $scope.titles[found] , "type": "RDF", "URI": value,
+                                "webpage": $scope.sources[found].webpage, "description":  $scope.descriptionsOfTitles[found] };
+                            voidData.setUserSource($scope.userSource);
+                        }
+
+
+                    }
+            } else {
+                for (var i = 0; i < $scope.sources.length; i++) {
+                    if ($scope.sources[i]._about == value) found = i;
+                }
+                if (found != -1 && value != undefined && value != "") {
                     //change old one back to white
-                    $(  $scope.sourceID ).change(
+                    $(  $scope.targetID ).change(
                         function (){
-                            $(this).css('background-color',"white");
-                            $(this).css('color',"black");
-                        }
-                    ).change();
-                    $( "#"+  $scope.sources[found].$$hashKey ).change(
-                        function (){
-                            $(this).css('background-color',"#149bdf");
-                            $(this).css('color',"#f5f5f5");
+                            $("div"+$scope.targetID +">.accordion-heading").css('background-color',"white");
+                            $("div"+$scope.targetID +">.accordion-heading>a").css('color',"black");
                         }
                     ).change();
 
-                    $scope.sourceID = "#"+  $scope.sources[found].$$hashKey;
-
-                    $scope.userSource = {"title":  $scope.titles[found] , "type": "RDF", "URI": value,
-                            "webpage": $scope.sources[found].webpage, "description":  $scope.descriptionsOfTitles[found] };
-                    voidData.setUserSource($scope.userSource);
+                    $( "#100"+  $scope.sources[found].$$hashKey ).change(
+                        function (){
+                            $("div#100"+ $scope.sources[found].$$hashKey  +">.accordion-heading").css('background-color',"#149bdf");
+                            $("div#100"+ $scope.sources[found].$$hashKey +">.accordion-heading>a").css('color',"#f5f5f5");
+                        }
+                    ).change();
+                    $scope.subTargets = [];
+                    if($scope.sources[found].subset != null || $scope.sources[found].subset != undefined) {
+                        for (var i = 0; i < $scope.sources[found].subset.length; i++) {
+                            if ($scope.sources[found].subset[i].title != undefined) {
+                                $scope.subTargets.push($scope.sources[found].subset[i]);
+                            }
+                        }
+                    }
+                    $scope.targetID = "#100" + $scope.sources[found].$$hashKey;
+                    $scope.userTarget = {"title": $scope.titles[found], "type": "RDF", "URI": value,
+                        "webpage": $scope.sources[found].webpage, "description": $scope.descriptionsOfTitles[found] };
+                    voidData.setUserTarget($scope.userTarget);
                 }
             }
         }

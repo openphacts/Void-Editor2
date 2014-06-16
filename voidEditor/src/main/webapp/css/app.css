@@ -51,6 +51,19 @@ footer {
 .span3AndABit {width: 280px;}
 .span2AndABit {width: 220px;}
 
+.accordion-heading .accordion-toggle {
+    display: block;
+    padding: 5px 15px;
+    font-size: 17px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.accordion-heading>a{
+    color:black;
+    text-decoration: none;
+}
+
 .select-mini {
     font-size: 11px;
     height: 30px;

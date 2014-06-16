@@ -4,7 +4,7 @@
       <div ng-switch-when="false"></div>
      </span>
 
-    <h1>Your Source Dataset:</h1>
+    <h1>Linking Datasets:</h1>
     <br>
 
     <div class="container-fluid" ng-controller="sourceCtrl">
@@ -12,28 +12,38 @@
         <div class="span3AndABit">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">
+                    <h3 class="panel-title"> Source Dataset
                               <span style="font-weight: normal; font-size:16px;line-height: 20px;">
                                   </span>
                     </h3>
                 </div>
-                <div class="panel-body" id="accordion" style="font-size:17px;">
-                    <ul class="list-group" id="OPSSources"  style="text-align: center; cursor:pointer;">
-                        <li ng-repeat="source in sources" class="thumbnail" id="{{ source.$$hashKey }}" ng-click="selectOption(source._about , 'source')">
-                            {{source.title}}
-                        </li>
-                    </ul>
+                <div class="panel-body" id="accordion" style="font-size:16px;">
+                  
+                    <accordion close-others="true">
+                        <accordion-group heading="{{source.title}}" ng-repeat="source in sources"
+                                         id="{{ source.$$hashKey }}"ng-click="selectOption(source._about , 'source')">
+                            <select class="selectpicker" id='subsources' ng-model="userSourceTitle"  ng-hide="!isSource">
+                                <option  ng-repeat="subSource in subSources"  value="subSource.URI" >{{subSource.title}}</option>
+                            </select >
+                            <span  ng-hide="isSource"> No further subsets.</span>
+                        </accordion-group>
+                     </accordion>
                 </div>
             </div>
         </div>
 
-        <div class="span2AndABit">
+        <div class="span2">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title"></h3>
-
                 </div>
-
+                <div class="panel-body ">
+                    <!--<ul class="list-group" id="OPSSubSources"  style="text-align: center; cursor:pointer;">-->
+                        <!--<li ng-repeat="source in subSources" class="thumbnail"  id="{{ source.$$hashKey }}" ng-click="selectOption(source._about , 'subsource')">-->
+                            <!--{{source.title}}-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                </div>
             </div>
 
 
@@ -41,14 +51,17 @@
         <div class="span3AndABit">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"></h3>
+                    <h3 class="panel-title">Target Dataset</h3>
                 </div>
                 <div class="panel-body ">
-                    <ul class="list-group" id="OPSSources"  style="text-align: center; cursor:pointer;">
-                        <!--<li ng-repeat="source in sources" class="thumbnail" id="100{{ source.$$hashKey }}" ng-click="selectOption(source._about , 'target')">-->
-                            <!--{{source.title}}-->
-                        <!--</li>-->
-                    </ul>
+                    <accordion close-others="true">
+                        <accordion-group heading="{{source.title}}" ng-repeat="source in sources"
+                                         id="100{{ source.$$hashKey }}"ng-click="selectOption(source._about , 'target')">
+                            <select class="selectpicker" id='relationships' ng-model="data.subSource">
+                                <option  ng-repeat="subSource in subSources"  value="subSource.title" >{{subSource.title}}</option>
+                            </select>
+                        </accordion-group>
+                    </accordion>
                 </div>
             </div>
         </div>

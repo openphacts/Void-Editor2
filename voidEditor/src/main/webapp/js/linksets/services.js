@@ -6,7 +6,7 @@ var jsonService = angular.module('jsonService', ['ngResource'])
         return $resource('https://beta.openphacts.org/1.3/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json');
     });
 
-var URLPreface = "/voidEditor"; // to be changed between dev and prod
+var URLPreface ="";// "/voidEditor"; // to be changed between dev and prod
 
 var ORCIDService = angular.module('ORCIDService', [])
     .service('ORCIDService', function ($rootScope, $http) {
