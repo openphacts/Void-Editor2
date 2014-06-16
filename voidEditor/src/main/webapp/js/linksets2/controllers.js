@@ -351,9 +351,7 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
 linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonService', 'voidData',
     function ($rootScope, $scope, JsonService, voidData) {
         $scope.userSource = {};
-        $scope.userSourceTitle = "";
         $scope.userTarget = {};
-        $scope.userTargetTitle = "";
         $scope.sourceID = "";
         $scope.subSourceID = "";
         $scope.targetID = "";
@@ -428,7 +426,6 @@ linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSe
                             $scope.userSource = {"title":  $scope.subSources[0].title , "type": "RDF", "URI": $scope.subSources[0]._about,
                                 "webpage": $scope.sources[found].webpage, "description": $scope.subSources[0].description};
                             voidData.setUserSource($scope.userSource);
-                            $scope.userSourceTitle = $scope.userSource.URI;
                         }
                         else {
                             $scope.isSource = false;
@@ -436,8 +433,6 @@ linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSe
                                 "webpage": $scope.sources[found].webpage, "description":  $scope.descriptionsOfTitles[found] };
                             voidData.setUserSource($scope.userSource);
                         }
-
-
                     }
             } else {
                 for (var i = 0; i < $scope.sources.length; i++) {
@@ -445,31 +440,42 @@ linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSe
                 }
                 if (found != -1 && value != undefined && value != "") {
                     //change old one back to white
-                    $(  $scope.targetID ).change(
-                        function (){
-                            $("div"+$scope.targetID +">.accordion-heading").css('background-color',"white");
-                            $("div"+$scope.targetID +">.accordion-heading>a").css('color',"black");
+                    $($scope.targetID).change(
+                        function () {
+                            $("div" + $scope.targetID + ">.accordion-heading").css('background-color', "white");
+                            $("div" + $scope.targetID + ">.accordion-heading>a").css('color', "black");
                         }
                     ).change();
 
-                    $( "#100"+  $scope.sources[found].$$hashKey ).change(
-                        function (){
-                            $("div#100"+ $scope.sources[found].$$hashKey  +">.accordion-heading").css('background-color',"#149bdf");
-                            $("div#100"+ $scope.sources[found].$$hashKey +">.accordion-heading>a").css('color',"#f5f5f5");
+                    $("#100" + $scope.sources[found].$$hashKey).change(
+                        function () {
+                            $("div#100" + $scope.sources[found].$$hashKey + ">.accordion-heading").css('background-color', "#149bdf");
+                            $("div#100" + $scope.sources[found].$$hashKey + ">.accordion-heading>a").css('color', "#f5f5f5");
                         }
                     ).change();
+
                     $scope.subTargets = [];
-                    if($scope.sources[found].subset != null || $scope.sources[found].subset != undefined) {
+                    if ($scope.sources[found].subset != null || $scope.sources[found].subset != undefined) {
                         for (var i = 0; i < $scope.sources[found].subset.length; i++) {
                             if ($scope.sources[found].subset[i].title != undefined) {
                                 $scope.subTargets.push($scope.sources[found].subset[i]);
                             }
                         }
                     }
-                    $scope.targetID = "#100" + $scope.sources[found].$$hashKey;
-                    $scope.userTarget = {"title": $scope.titles[found], "type": "RDF", "URI": value,
-                        "webpage": $scope.sources[found].webpage, "description": $scope.descriptionsOfTitles[found] };
-                    voidData.setUserTarget($scope.userTarget);
+
+                    $scope.targetID = "#100"+  $scope.sources[found].$$hashKey;
+                    if ($scope.subTargets.length > 0) {
+                        $scope.isTarget = true;
+                        $scope.userTarget = {"title": $scope.subTargets[0].title, "type": "RDF", "URI": $scope.subTargets[0]._about,
+                            "webpage": $scope.sources[found].webpage, "description": $scope.subTargets[0].description};
+                        voidData.setUserTarget($scope.userSource);
+                    }
+                    else {
+                        $scope.isTarget = false;
+                        $scope.userTarget = {"title": $scope.titles[found], "type": "RDF", "URI": value,
+                            "webpage": $scope.sources[found].webpage, "description": $scope.descriptionsOfTitles[found] };
+                        voidData.setUserTarget($scope.userSource);
+                    }
                 }
             }
         }

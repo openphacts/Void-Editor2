@@ -18,13 +18,14 @@
                     </h3>
                 </div>
                 <div class="panel-body" id="accordion" style="font-size:16px;">
-                  
+
                     <accordion close-others="true">
                         <accordion-group heading="{{source.title}}" ng-repeat="source in sources"
                                          id="{{ source.$$hashKey }}"ng-click="selectOption(source._about , 'source')">
-                            <select class="selectpicker" id='subsources' ng-model="userSourceTitle"  ng-hide="!isSource">
-                                <option  ng-repeat="subSource in subSources"  value="subSource.URI" >{{subSource.title}}</option>
-                            </select >
+                            <select ng-model="userSourceTitle" ng-options="subSource.title for subSource in subSources"
+                                    ng-hide="!isSource">
+                                <option value="">-- choose source--</option>
+                            </select>
                             <span  ng-hide="isSource"> No further subsets.</span>
                         </accordion-group>
                      </accordion>
@@ -32,22 +33,8 @@
             </div>
         </div>
 
-        <div class="span2">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"></h3>
-                </div>
-                <div class="panel-body ">
-                    <!--<ul class="list-group" id="OPSSubSources"  style="text-align: center; cursor:pointer;">-->
-                        <!--<li ng-repeat="source in subSources" class="thumbnail"  id="{{ source.$$hashKey }}" ng-click="selectOption(source._about , 'subsource')">-->
-                            <!--{{source.title}}-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                </div>
-            </div>
+        <div class="span2"></div>
 
-
-        </div>
         <div class="span3AndABit">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -57,9 +44,11 @@
                     <accordion close-others="true">
                         <accordion-group heading="{{source.title}}" ng-repeat="source in sources"
                                          id="100{{ source.$$hashKey }}"ng-click="selectOption(source._about , 'target')">
-                            <select class="selectpicker" id='relationships' ng-model="data.subSource">
-                                <option  ng-repeat="subSource in subSources"  value="subSource.title" >{{subSource.title}}</option>
+                            <select ng-model="userTargetTitle" ng-options="subTarget.title for subTarget in subTargets"
+                                    ng-hide="!isTarget">
+                                <option value="">-- choose source--</option>
                             </select>
+                            <span  ng-hide="isTarget"> No further subsets.</span>
                         </accordion-group>
                     </accordion>
                 </div>
