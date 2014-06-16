@@ -45,7 +45,7 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.data.userTarget = "";
         $rootScope.data.subjectDatatype = "http://semanticscience.org/resource/SIO_010299";
         $rootScope.data.targetDatatype = "http://semanticscience.org/resource/SIO_010035";
-        $rootScope.data.relationship = "owl:sameAs";
+        $rootScope.data.relationship = "http://www.w3.org/2004/02/skos/core#closeMatch";
         $rootScope.data.justification = "http://semanticscience.org/resource/CHEMINF_000059";
 
         $rootScope.otherLicence = function (val) {
@@ -142,11 +142,6 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                     if ($rootScope.mustFields[i].index == index) {
                         for (var j = 0; j < $rootScope.mustFields[i].mustFields.length; j++) {
                             var mustFieldsToCheck = $rootScope.mustFields[i].mustFields[j];
-                            if (mustFieldsToCheck == "title" && ( $rootScope.data.title.length < 2)) {
-                                if ($rootScope.checkIfAlertNeedsAdding("title")) $rootScope.addAlert("title");
-                            } else if (mustFieldsToCheck == "title" && $rootScope.data.title.length > 2) {
-                                $rootScope.removeAlert("title");
-                            }
                             if (mustFieldsToCheck == "description" && $rootScope.data.description.length < 5) {
                                 if ($rootScope.checkIfAlertNeedsAdding("description")) $rootScope.addAlert("description");
                             } else if (mustFieldsToCheck == "description" && $rootScope.data.description.length > 5) {
@@ -156,11 +151,6 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                                 if ($rootScope.checkIfAlertNeedsAdding("publisher")) $rootScope.addAlert("publisher");
                             } else if (mustFieldsToCheck == "publisher" && $rootScope.data.publisher.indexOf("://") >= 0) {
                                 $rootScope.removeAlert("publisher");
-                            }
-                            if (mustFieldsToCheck == "webpage" && $rootScope.data.webpage.indexOf("://") == -1) {
-                                if ($rootScope.checkIfAlertNeedsAdding("webpage"))$rootScope.addAlert("webpage");
-                            } else if (mustFieldsToCheck == "webpage" && $rootScope.data.webpage.indexOf("://") >= 0 ) {
-                                $rootScope.removeAlert("webpage");
                             }
                             if (mustFieldsToCheck == "downloadFrom" && $rootScope.data.downloadFrom.indexOf("://") == -1) {
                                 if ($rootScope.checkIfAlertNeedsAdding("downloadFrom")) $rootScope.addAlert("downloadFrom");
@@ -208,10 +198,10 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                 header = "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
 
             $rootScope.checkSources ();
-            if ($rootScope.data.title == "") {
-                if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'>Title of your dataset in \"Core Info\"</p>";
-            }
+//            if ($rootScope.data.title == "") {
+//                if (returnString == "") returnString += header;
+//                returnString += "<p class='neededFields'>Title of your dataset in \"Core Info\"</p>";
+//            }
             if ($rootScope.data.description == "") {
                 if (returnString == "") returnString += header;
                 returnString += "<p class='neededFields'>Description for your dataset in \"Core Info\"</p>";
@@ -220,10 +210,10 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                 if (returnString == "") returnString += header;
                 returnString += "<p class='neededFields'>Publishing institution in \"Publishing Info\"</p>";
             }
-            if ($rootScope.data.webpage == "") {
-                if (returnString == "") returnString +=header;
-                returnString += "<p class='neededFields'>Webpage of documentation in \"Publishing Info\" </p>";
-            }
+//            if ($rootScope.data.webpage == "") {
+//                if (returnString == "") returnString +=header;
+//                returnString += "<p class='neededFields'>Webpage of documentation in \"Publishing Info\" </p>";
+//            }
             if ($rootScope.data.downloadFrom == "") {
                 if (returnString == "") returnString += header;
                 returnString += "<p class='neededFields'> RDF download link in \"Publishing Info\" </p> ";
@@ -297,18 +287,18 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                 case "descriptionSource":
                     $rootScope.alerts.push({ id: "descriptionSource", type: 'error', msg: 'Ooops! You forgot to gives us a description for source you cited! Please provide this information.' });
                     break;
-                case "title":
-                    $rootScope.alerts.push({ id: "title", type: 'error', msg: 'Ooops! You forgot to gives us a title for your dataset! Please provide this information.' });
-                    break;
+//                case "title":
+//                    $rootScope.alerts.push({ id: "title", type: 'error', msg: 'Ooops! You forgot to gives us a title for your dataset! Please provide this information.' });
+//                    break;
                 case "description":
                     $rootScope.alerts.push({ id: "description", type: 'error', msg: 'Ooops! You forgot to gives us a description! Please provide this information.' });
                     break;
                 case "publisher":
                     $rootScope.alerts.push({ id: "publisher", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the publisher you choose! Please provide this information.' });
                     break;
-                case "webpage":
-                    $rootScope.alerts.push({ id: "webpage", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the webpage of your documentation! Please provide this information.' });
-                    break;
+//                case "webpage":
+//                    $rootScope.alerts.push({ id: "webpage", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the webpage of your documentation! Please provide this information.' });
+//                    break;
                 case "downloadFrom":
                     $rootScope.alerts.push({ id: "downloadFrom", type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF data from! Please provide this information.' });
                     break;
@@ -354,8 +344,8 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
         };
 
         $scope.addSlide(0, "User Info", []);
-        $scope.addSlide(1, "Core Info", ["title" , "description"]);
-        $scope.addSlide(2, "Publishing Info", ["publisher", "webpage" , "downloadFrom"]);
+        $scope.addSlide(1, "Core Info", [ "description"]);
+        $scope.addSlide(2, "Publishing Info", ["publisher",  "downloadFrom"]);
        // $scope.addSlide(3, "Versioning", []);
         $scope.addSlide(3, "Source", []);
         $scope.addSlide(4, "Target", []);

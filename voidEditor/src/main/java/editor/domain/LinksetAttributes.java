@@ -22,4 +22,6 @@ public class LinksetAttributes{
 	  public Object userTarget ="";
 	  public Object userSource ="";
 	  public String assertionMethod = "";
+	  public String subjectDatatype = "";
+	  public String targetDatatype = "";
 }

@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.UUID;
 
@@ -69,8 +70,10 @@ public class LinksetTurtle {
 	private LinkedHashMap userTarget =null;
 	private LinkedHashMap userSource =null;
 	private String assertionMethod = "";
-	
+	private String subjectDatatype = "";
+	private String targetDatatype = "";
 	private Validator validator = null;
+	private HashMap justificationDataset  = new HashMap<String, String>();
 	/**
 	 * @param obj This object provides all data extracted from Angular side.
 	 */
@@ -78,10 +81,8 @@ public class LinksetTurtle {
 		this.givenName = obj.givenName;
 		this.familyName= obj.familyName ;
 		this.userEmail = obj.userEmail;
-		this.title = obj.title;
 		this.description = obj.description ; 
 		this.publisher = obj.publisher;
-	    this.webpage= obj.webpage ;
 	    this.licence = obj.licence;
 	    this.downloadFrom = obj.downloadFrom;
 	    this.URI = obj.URI;
@@ -105,6 +106,8 @@ public class LinksetTurtle {
 	    System.out.println(obj.yearPublish);
 	    this.setYearPublish(Integer.parseInt(obj.yearPublish));
 	    
+	    
+	    createJustificationMap();
 	}
 	
 	
@@ -148,11 +151,18 @@ public class LinksetTurtle {
          publishmentDate.set( getYearPublish(),getMonthPublish() -1 , getDatePublish() , 0, 0, 0);
          Literal publishmentLiteral = voidModel.createTypedLiteral(publishmentDate);
          Literal titleLiteral ;
-         if (title =="") {
-        	 titleLiteral = voidModel.createLiteral( "-", "en");
-         }else{
-        	 titleLiteral = voidModel.createLiteral(title, "en");
+         if (userSource.get("URI") !=null && userTarget.get("URI")!=null && title==null ){
+        	 title =  userSource.get("title")+ "-"+ justificationDataset.get(justification) + "-"+ userTarget.get("title");
+         }else if (userSource.get("title") !=null &&title==null   ){
+        	 title =  userSource.get("title")+ "-"+justificationDataset.get(justification) + "-"+ "";
+         }else if( userTarget.get("URI")!=null && title==null ){
+        	 title =  "source"+ "-"+justificationDataset.get(justification) + "-"+ userTarget.get("title");
+         }else if( title==null){
+        	 title =  "source"+ "-"+justificationDataset.get(justification) + "-"+ "target";
          }
+         
+         titleLiteral = voidModel.createLiteral(title, "en");
+         
          Literal descriptionLiteral;
          if (title =="" ) {
         	 descriptionLiteral = voidModel.createLiteral("-", "en");
@@ -199,11 +209,6 @@ public class LinksetTurtle {
         	 voidBase.addProperty(DCTerms.publisher, identifiersOrg);
          }
         
-         if (webpage !=""){
-        	 Resource landingPage = voidModel.createResource(webpage);
-        	 voidBase.addProperty(DCAT.landingPage, landingPage);
-         }
-         
          if (downloadFrom !=""){
         	   Resource mainDatadump = voidModel.createResource(downloadFrom);
         	   voidBase.addProperty(Void.dataDump, mainDatadump);
@@ -218,8 +223,7 @@ public class LinksetTurtle {
         	 Resource relationshipR = voidModel.createResource(relationship);
         	 voidBase.addProperty(Void.linkPredicate, relationshipR);
          }
-         if (userSource !=null ){
-        	 
+         if (userSource !=null && userSource.get("URI") != null ){
 	        Resource userSourceR = voidModel.createResource((userSource.get("URI")).toString());
 	        voidBase.addProperty(Void.subjectsTarget, userSourceR);    
          }
@@ -230,7 +234,7 @@ public class LinksetTurtle {
         	 voidBase.addProperty( assertionMethodProperty, assertionMethodRersource);
          }
          
-         if (userTarget !=null ){
+         if (userTarget !=null  && userTarget.get("URI")!=null){
         	 Resource userTargetR = voidModel.createResource((userTarget.get("URI")).toString());
         	 voidBase.addProperty(Void.objectsTarget, userTargetR);
          }
@@ -282,6 +286,19 @@ public class LinksetTurtle {
 		 }
 	}
 	
+     private void createJustificationMap(){
+		justificationDataset.put("http://semanticscience.org/resource/SIO_010004", "Chemical entity");
+ 		justificationDataset.put("http://semanticscience.org/resource/CHEMINF_000480", "Has component with uncharged counterpart");
+ 		justificationDataset.put("http://semanticscience.org/resource/CHEMINF_000486", "Has major tautomer at pH 7.4");
+ 		justificationDataset.put("http://semanticscience.org/resource/CHEMINF_000458", "Has OPS normalized counterpart");
+ 		justificationDataset.put("http://purl.obolibrary.org/obo#has_part", "Has part");
+ 		justificationDataset.put("http://semanticscience.org/resource/CHEMINF_000456", "Has stereoundefined parent");
+ 		justificationDataset.put("http://semanticscience.org/resource/CHEMINF_000460", "Has uncharged counterpart");
+ 		justificationDataset.put("http://semanticscience.org/resource/CHEMINF_000059", "InChI Key");
+ 		justificationDataset.put("http://purl.obolibrary.org/obo#is_tautomer_of", "Is tautomer of");
+ 	}
+     
+     
 	public String getVoid(){
 		String outputString ="";
 		BufferedReader read = null;

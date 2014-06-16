@@ -29,7 +29,7 @@
 
         <div  class="form-group row" ng-controller="DatepickerCtrl">
             <div class="spanLabel3">
-                <label for="inputDateofPublishment">When did these RDF data get published?*</label>
+                <label for="inputDateofPublishment">When was the Linkset published?*</label>
             </div>
             <div class="span3">
                 <select class="select-mini-date " ng-model="data.datePublish"  >
@@ -48,20 +48,6 @@
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
                      popover="If you are only aware of the year please select 1st of January of the corresponding year.
                                 If aware of month only select 1st of that month. This information is required.">
-            </div>
-        </div>
-        <br>
-
-        <div class="form-group row">
-            <div class="spanLabel3 ">
-                <label for="inputWebpage">Webpage of documentation for your dataset*:</label>
-            </div>
-            <div class="span3">
-                <input type="url" class="form-control input-large" id="inputWebpage" ng-model="data.webpage" required
-                       placeholder="http://" >
-                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
-                     popover="A Web page that can be navigated to in a Web browser
-                     to gain access to the dataset, its distributions and/or additional information. This information is required and must be a URL.">
             </div>
         </div>
         <br>
@@ -101,20 +87,7 @@
                      popover="Where could we download the data from if we required to. This information is required and must be URL.">
             </div>
         </div>
-        <!--<br>-->
-        <!--<div class="form-group row">-->
-            <!--<div class="spanLabel3 ">-->
-                <!--<label for="inputLicence">How were the links in the Linkset asserted:</label>-->
-            <!--</div>-->
-            <!--<div class="span3">-->
-                <!--<select class="selectpicker" id='assertionMethod' ng-model="data.assertionMethod">-->
-                    <!--<option  value="http://purl.obolibrary.org/obo/ECO_0000203" >Automatic assertion</option>-->
-                    <!--<option  value="http://purl.obolibrary.org/obo/ECO_0000218" >Manual assertion</option>-->
-                <!--</select>-->
-                <!--<img  src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"-->
-                      <!--popover="Please specify the method by which the links in the Linkset have been asserted.Please note that: manual assertion includes computer generated assertions that have been manually verified..">-->
-            <!--</div>-->
-        <!--</div>-->
+
         <br>
 
     </div>

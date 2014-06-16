@@ -9,10 +9,10 @@
 
     <div class="container-fluid" ng-controller="sourceCtrl">
         <div class='span1'></div>
-        <div class="span3AndABit">
+        <div class="span3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Your Source Dataset
+                    <h3 class="panel-title">Source Dataset
                               <span style="font-weight: normal; font-size:16px;line-height: 20px;">
                                   </span>
                     </h3>
@@ -39,17 +39,17 @@
                     </h3>
 
                 </div>
-                <div class="panel-body" id="accordion" style="font-size:17px;"  ng-controller="linksetFormCtrl">
+                <div class="panel-body" id="relationship" style="font-size:17px;"  ng-controller="linksetFormCtrl">
                     <span> Mapping relationship:</span>
-                    <select class="selectpicker" id='relationship' ng-model="data.relationship">
-                        <option  selected="selected"  value="rdfs:seeAlso" >The linked resource have relevant information regarding the subject.</option>
-                        <option  value="skos:relatedMatch" >Resources are in some way associated</option>
-                        <option  value="skos:closeMatch" >Under some assumptions or applications, resources are the same.</option>
-                        <option  value="skos:exactMatch" >Under the assumptions of most applications, resources are the same.</option>
-                        <option  value="owl:sameAs" > Under all assumptions linked resources are the same.</option>
-                        <option  value="owl:equivalentClass" >They are equivalent classes.</option>
-                        <option  value="skos:broadMatch" >Target resource is more general than the subject resource. </option>
-                        <option  value="skos:narrowMatch" >Target resource is more specific than the subject resource. </option>
+                    <select class="selectpicker" id='relationships' ng-model="data.relationship">
+                        <option  selected="selected"  value="rdfs:seeAlso" >rdfs:seeAlso</option>
+                        <option  value="http://www.w3.org/2004/02/skos/core#relatedMatch" >skos:relatedMatch</option>
+                        <option  value="http://www.w3.org/2004/02/skos/core#closeMatch" >skos:closeMatch</option>
+                        <option  value="http://www.w3.org/2004/02/skos/core#exactMatch" >skos:exactMatch</option>
+                        <option  value="http://www.w3.org/TR/owl-ref/#sameAs" > owl:sameAs</option>
+                        <option  value="http://www.w3.org/TR/owl-ref/#equivalentClass" >owl:equivalentClass</option>
+                        <option  value="http://www.w3.org/2004/02/skos/core#broadMatch" >skos:broadMatch </option>
+                        <option  value="http://www.w3.org/2004/02/skos/core#narrowMatch" >skos:narrowMatch </option>
                     </select>
                     <br><br>
 
@@ -72,13 +72,13 @@
 
 
         </div>
-        <div class="span3AndABit">
+        <div class="span3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Your Target Dataset</h3>
+                    <h3 class="panel-title">Target Dataset</h3>
                 </div>
                 <div class="panel-body ">
-                    <ul class="list-group" id="OPSSources"  style="text-align: center; cursor:pointer;">
+                    <ul class="list-group" id="OPSTargets"  style="text-align: center; cursor:pointer;">
                         <li ng-repeat="source in sources" class="thumbnail" id="100{{ source.$$hashKey }}" ng-click="selectOption(source._about , 'target')">
                             {{source.title}}
                         </li>

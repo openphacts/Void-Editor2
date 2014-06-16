@@ -12,22 +12,20 @@
                 <br>
             </div>
         </div>
-
-
         <div class="form-group row">
             <div class="spanLabel3">
-                <label for="relationship">Mapping relationship:*</label>
+                <label for="relationships">Mapping relationship:*</label>
             </div>
             <div class="span3">
-                <select class="selectpicker" id='relationship' ng-model="data.relationship">
-                    <option  selected="selected"  value="rdfs:seeAlso" >The linked resource have relevant information regarding the subject.</option>
-                    <option  value="skos:relatedMatch" >Resources are in some way associated</option>
-                    <option  value="skos:closeMatch" >Under some assumptions or applications, resources are the same.</option>
-                    <option  value="skos:exactMatch" >Under the assumptions of most applications, resources are the same.</option>
-                    <option  value="owl:sameAs" > Under all assumptions linked resources are the same.</option>
-                    <option  value="owl:equivalentClass" >They are equivalent classes.</option>
-                    <option  value="skos:broadMatch" >Target resource is more general than the subject resource. </option>
-                    <option  value="skos:narrowMatch" >Target resource is more specific than the subject resource. </option>
+                <select class="selectpicker" id='relationships' ng-model="data.relationship">
+                    <option  selected="selected"  value="rdfs:seeAlso" >rdfs:seeAlso</option>
+                    <option  value="http://www.w3.org/2004/02/skos/core#relatedMatch" >skos:relatedMatch</option>
+                    <option  value="http://www.w3.org/2004/02/skos/core#closeMatch" >skos:closeMatch</option>
+                    <option  value="http://www.w3.org/2004/02/skos/core#exactMatch" >skos:exactMatch</option>
+                    <option  value="http://www.w3.org/TR/owl-ref/#sameAs" > owl:sameAs</option>
+                    <option  value="http://www.w3.org/TR/owl-ref/#equivalentClass" >owl:equivalentClass</option>
+                    <option  value="http://www.w3.org/2004/02/skos/core#broadMatch" >skos:broadMatch </option>
+                    <option  value="http://www.w3.org/2004/02/skos/core#narrowMatch" >skos:narrowMatch </option>
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
                      popover="Relationship">

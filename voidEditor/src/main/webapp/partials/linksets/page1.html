@@ -16,7 +16,7 @@
         </div>
         <div class="form-group row">
             <div class="spanLabel1 offset1">
-                <label for="inputTitle">Title of your linkset*:</label>
+                <label for="inputTitle">Title of your linkset:</label>
             </div>
             <div class="span3">
                 <input type="text" class="form-control input-large" id="inputTitle" placeholder=""
@@ -28,21 +28,6 @@
         </div>
         <br>
 
-        <div class="form-group row ">
-            <div class="spanLabel1 offset1">
-                <label for="inputURI">A URI describing your linkset:</label>
-            </div>
-            <div class="span3">
-                <input type="url" class="form-control input-large" id="inputURI" placeholder="http://" name="inputURI"
-                       ng-model="data.URI">
-                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                     popover="You can define a URI for your linkset. This URI is the resource that describes the linkset.
-                     If you leave it blank, a default will be used.">
-            </div>
-        </div>
-
-
-        <br>
 
         <div class="form-group row">
             <div class="spanLabel1 offset1">
@@ -50,9 +35,10 @@
             </div>
             <div class="span3">
                 <textarea type="text" class="form-control" rows="5" id="inputDescription" required name="inputDescription"
-                          placeholder="What is this dataset about?" ng-model="data.description"></textarea>
+                          placeholder="What is this Linkset about?" ng-model="data.description"></textarea>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                     popover="A description of the connection your linkset so we can understand it contains. This information is required.">
+                     popover="A description of the connection your Linkset so we can understand it contains. Please provide as much detail as possible
+                      regarding: how the links are created, which datasets are involved and why is this Linkset created. This information is required.">
             </div>
         </div>
         <br>
