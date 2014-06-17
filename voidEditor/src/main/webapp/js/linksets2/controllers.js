@@ -26,7 +26,6 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.alerts = [];
         $rootScope.data.downloadFrom = "";
         $rootScope.mustFields = [];
-
         $rootScope.showLoader = false;
         $rootScope.uploadErrorMessages = "";
         $rootScope.noURI = -1;
@@ -41,8 +40,8 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         var ua = window.navigator.userAgent;
         $rootScope.msie = ua.indexOf ( ".NET" );
         $rootScope.finalHeader = "Almost there...";
-        $rootScope.data.userSource = "";
-        $rootScope.data.userTarget = "";
+        $rootScope.data.userSource = {};
+        $rootScope.data.userTarget = {};
         $rootScope.data.subjectDatatype = "http://semanticscience.org/resource/SIO_010299";
         $rootScope.data.targetDatatype = "http://semanticscience.org/resource/SIO_010035";
         $rootScope.data.relationship = "http://www.w3.org/2004/02/skos/core#closeMatch";
@@ -133,10 +132,10 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
             $rootScope.alerts.push({ type: 'success', msg: 'Well done! You successfully downloaded your void.ttl! - If download does not start, please make sure you allow popups.' });
         });
 
-
+        // called by carousel creator in the index.html of the website
         $rootScope.checkMustFieldsOnPreviousPage = function (index) {
             if (index >= 0 && index < $rootScope.mustFields.length) {
-//                console.log("got in if statement");
+                console.log("Got in checkMustFieldsOnPreviousPage ==>" + index);
                 for (var i = 0; i < $rootScope.mustFields.length; i++) {
                     if ($rootScope.mustFields[i].index == index) {
                         for (var j = 0; j < $rootScope.mustFields[i].mustFields.length; j++) {
@@ -156,6 +155,17 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                             } else if (mustFieldsToCheck == "downloadFrom" && $rootScope.data.downloadFrom.indexOf("://") >= -1){
                                 $rootScope.removeAlert("downloadFrom");
                             }
+                            if (mustFieldsToCheck == "userSource" && Object.keys($rootScope.data.userSource).length ===0) {
+                                if ($rootScope.checkIfAlertNeedsAdding("userSource")) $rootScope.addAlert("userSource");
+                            } else if (mustFieldsToCheck == "userSource" && Object.keys($rootScope.data.userSource).length >0){
+                                $rootScope.removeAlert("userSource");
+                            }
+                            if (mustFieldsToCheck == "userTarget" &&  Object.keys($rootScope.data.userTarget).length ===0) {
+                                if ($rootScope.checkIfAlertNeedsAdding("userTarget")) $rootScope.addAlert("userTarget");
+                            } else if (mustFieldsToCheck == "userTarget" && Object.keys($rootScope.data.userTarget).length>0){
+                                $rootScope.removeAlert("userTarget");
+                            }
+
                         }
                     }//if
                 }//for
@@ -185,8 +195,6 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
             else if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("://") == -1)) {
                 result = $rootScope.addAlert("licence");
             }
-            else if ($rootScope.noWebpage != -1) result=$rootScope.addAlert("webpageSource");
-            else if ($rootScope.noDescription != -1) result=$rootScope.addAlert("webpageSource");
             else result = "passed";
 
             voidData.setUriForSourcesExist(result);
@@ -199,7 +207,7 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
             $rootScope.checkSources ();
             if ($rootScope.data.description == "") {
                 if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'>Description for your dataset in \"Core Info\"</p>";
+                returnString += "<p class='neededFields'>Description for your Linkset in \"Core Info\"</p>";
             }
             if ($rootScope.data.publisher == "") {
                 if (returnString == "") returnString += header;
@@ -217,18 +225,17 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                 if (returnString == "") returnString += header;
                 returnString += "<p class='neededFields'> A URI for the source you cited in \"Sources \" </p> ";
             }
-            if ($rootScope.noVersion != -1) {
+
+            if (Object.keys($rootScope.data.userSource).length ===0) {
                 if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'> A version number for the source you cited in \"Sources \" </p> ";
+                returnString += "<p class='neededFields'>The Source Dataset of your Linkset \"Source/Target\"</p>";
             }
-            if ($rootScope.noWebpage != -1) {
-                if (returnString == "") returnString +=header;
-                returnString += "<p class='neededFields'> A webpage for the source you cited in \"Sources \" </p> ";
+
+            if (Object.keys($rootScope.data.userTarget).length ===0) {
+                if (returnString == "") returnString += header;
+                returnString += "<p class='neededFields'>The Target Dataset of your Linkset \" Source/Target \"</p>";
             }
-            if ($rootScope.noDescription != -1) {
-                if (returnString == "") returnString +=header;
-                returnString += "<p class='neededFields'> A description for the source you cited in \"Sources \" </p> ";
-            }
+
 
             if (returnString == ""){
                  $rootScope.disabledExport = false
@@ -263,29 +270,23 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
 
         $rootScope.addAlert = function(id2Add){
             switch(id2Add) {
-                case "URI":
-                    $rootScope.alerts.push({ id: "URI", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the source you cited! Please provide this information.' });
-                    break;
                 case "licence":
                     $rootScope.alerts.push({ id: "licence", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the licence you choose! Please provide this information.' });
                     break;
-                case "versionSource":
-                    $rootScope.alerts.push({ id: "versionSource", type: 'error', msg: 'Ooops! You forgot to gives us a version for the source you cited! Please provide this information.' });
-                    break;
-                case "webpageSource":
-                    $rootScope.alerts.push({ id: "webpageSource", type: 'error', msg: 'Ooops! You forgot to gives us a webpage for source you cited! Please provide this information.' });
-                    break;
-                case "descriptionSource":
-                    $rootScope.alerts.push({ id: "descriptionSource", type: 'error', msg: 'Ooops! You forgot to gives us a description for source you cited! Please provide this information.' });
-                    break;
                 case "description":
-                    $rootScope.alerts.push({ id: "description", type: 'error', msg: 'Ooops! You forgot to gives us a description! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "description", type: 'error', msg: 'Ooops! You forgot to gives us a Linkset description! Please provide this information.' });
                     break;
                 case "publisher":
                     $rootScope.alerts.push({ id: "publisher", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the publisher you choose! Please provide this information.' });
                     break;
                 case "downloadFrom":
-                    $rootScope.alerts.push({ id: "downloadFrom", type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF data from! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "downloadFrom", type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF from! Please provide this information.' });
+                    break;
+                case "userSource":
+                    $rootScope.alerts.push({ id: "userSource", type: 'error', msg: 'Ooops! You forgot to gives us the Source Dataset of your Linkset! Please provide this information.' });
+                    break;
+                case "userTarget":
+                    $rootScope.alerts.push({ id: "userTarget", type: 'error', msg: 'Ooops! You forgot to gives us the Target Dataset of your Linkset! Please provide this information.' });
                     break;
             }
             return "failed";
@@ -332,7 +333,7 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
         $scope.addSlide(1, "Core Info", [ "description"]);
         $scope.addSlide(2, "Publishing Info", ["publisher",  "downloadFrom"]);
        // $scope.addSlide(3, "Versioning", []);
-        $scope.addSlide(3, "Source / Target", []);
+        $scope.addSlide(3, "Source / Target", ["userSource" ,"userTarget"]);
         $scope.addSlide(4, "Link Info", []);
         $scope.addSlide(5, "Export RDF", []);
 

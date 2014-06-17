@@ -22,7 +22,6 @@ import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 import com.hp.hpl.jena.vocabulary.DC;
@@ -30,6 +29,7 @@ import com.hp.hpl.jena.vocabulary.DCTerms;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.XSD;
 
+import editor.ontologies.BDB;
 import editor.ontologies.DCAT;
 import editor.ontologies.Freq;
 import editor.ontologies.Pav;
@@ -73,7 +73,7 @@ public class LinksetTurtle {
 	private String subjectDatatype = "";
 	private String targetDatatype = "";
 	private Validator validator = null;
-	private HashMap justificationDataset  = new HashMap<String, String>();
+	private HashMap<String, String> justificationDataset  = new HashMap<String, String>();
 	/**
 	 * @param obj This object provides all data extracted from Angular side.
 	 */
@@ -131,9 +131,9 @@ public class LinksetTurtle {
          voidModel.setNsPrefix("freq", Freq.getURI());
          voidModel.setNsPrefix("dc", DC.getURI());
          voidModel.setNsPrefix("dcat", DCAT.getURI());
-         voidModel.setNsPrefix("bdb", "http://vocabularies.bridgedb.org/ops");
+         voidModel.setNsPrefix("bdb", BDB.getURI());
          voidModel.setNsPrefix("", "#");
-         
+    
          //Populate void.ttl
          //Dataset Description info
          Resource voidDescriptionBase = voidModel.createResource("");
@@ -152,6 +152,7 @@ public class LinksetTurtle {
          publishmentDate.set( getYearPublish(),getMonthPublish() -1 , getDatePublish() , 0, 0, 0);
          Literal publishmentLiteral = voidModel.createTypedLiteral(publishmentDate);
          Literal titleLiteral ;
+         //Creating the appropriate title
          if (userSource.get("URI") !=null && userTarget.get("URI")!=null && title==null ){
         	 title =  userSource.get("title")+ "-"+ justificationDataset.get(justification) + "-"+ userTarget.get("title");
          }else if (userSource.get("title") !=null &&title==null   ){
@@ -224,40 +225,43 @@ public class LinksetTurtle {
         	 Resource relationshipR = voidModel.createResource(relationship);
         	 voidBase.addProperty(Void.linkPredicate, relationshipR);
          }
+         System.out.println("userSource ==>" + userSource.toString());
          if (userSource !=null && userSource.get("URI") != null ){
 	        Resource userSourceR = voidModel.createResource((userSource.get("URI")).toString());
 	        voidBase.addProperty(Void.subjectsTarget, userSourceR);    
+         } else if (userSource !=null && userSource.get("_about") != null){
+        	 Resource userSourceR = voidModel.createResource((userSource.get("_about")).toString());
+ 	        voidBase.addProperty(Void.subjectsTarget, userSourceR);  
          }
 
          if(assertionMethod!=""){
         	 Resource assertionMethodRersource = voidModel.createResource(assertionMethod);
-        	 Property assertionMethodProperty = voidModel.createProperty("http://vocabularies.bridgedb.org/ops#assertionMethod");
-        	 voidBase.addProperty( assertionMethodProperty, assertionMethodRersource);
+        	 voidBase.addProperty( BDB.assertionMethod, assertionMethodRersource);
          }
          
          if(targetDatatype!=""){
         	 Resource targetDatatypeRersource = voidModel.createResource(targetDatatype);
-        	 Property assertionMethodProperty = voidModel.createProperty("http://vocabularies.bridgedb.org/ops#objectsDatatype");
-        	 voidBase.addProperty( assertionMethodProperty, targetDatatypeRersource);
+        	 voidBase.addProperty( BDB.targetDatatype, targetDatatypeRersource);
          }
          
          if(subjectDatatype!=""){
         	 Resource subjectDatatypeRersource = voidModel.createResource(subjectDatatype);
-        	 Property subjectDatatypeProperty = voidModel.createProperty("http://vocabularies.bridgedb.org/ops#subjectsDatatype");
-        	 voidBase.addProperty( subjectDatatypeProperty, subjectDatatypeRersource);
+        	 voidBase.addProperty( BDB.subjectDatatype, subjectDatatypeRersource);
          }
          
-         if (userTarget !=null  && userTarget.get("URI")!=null){
+         System.out.println("userTarget ==>" + userTarget.toString());
+         if (userTarget != null  && userTarget.get("URI")!=null){
         	 Resource userTargetR = voidModel.createResource((userTarget.get("URI")).toString());
         	 voidBase.addProperty(Void.objectsTarget, userTargetR);
+         }else if (userTarget !=null && userTarget.get("_about") != null){
+        	 Resource userTargetR = voidModel.createResource((userTarget.get("_about")).toString());
+        	 voidBase.addProperty(Void.objectsTarget, userTargetR);  
          }
          
          if (justification !="" ){
         	 Resource justificationR = voidModel.createResource(justification);
-        	 Property LinksetJustification = voidModel.createProperty( "http://vocabularies.bridgedb.org/ops#linksetJustification" );
-        	 voidBase.addProperty(LinksetJustification, justificationR);
+        	 voidBase.addProperty(BDB.linksetJustification, justificationR);
          }
-         
          
          BufferedWriter bw = null;
          try

@@ -64,7 +64,7 @@ public class LinksetRestService {
 		file = new File(results.getLocation());
 		System.out.println("IN linkset REST -- file");
 		ResponseBuilder response = Response.ok((Object) file);
-		response.header("Content-Disposition","attachment; filename=void.voidCreator.ttl");
+		response.header("Content-Disposition","attachment; filename=void.LinksetCreator.ttl");
 		return response.build();
 	 }
 	 
