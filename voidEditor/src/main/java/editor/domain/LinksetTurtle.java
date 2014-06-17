@@ -92,8 +92,9 @@ public class LinksetTurtle {
 	    this.userTarget = (LinkedHashMap) obj.userTarget;
 	    this.userSource = (LinkedHashMap) obj.userSource;
 	    this.assertionMethod = obj.assertionMethod;
+	    this.subjectDatatype = obj.subjectDatatype;
+	    this.targetDatatype = obj.targetDatatype;
 	    
-		System.out.println(obj.datePublish);
 	    if (obj.datePublish.equals("N/A")){
 	    	this.setDatePublish(1) ;
 	    }else {
@@ -232,6 +233,14 @@ public class LinksetTurtle {
         	 Resource assertionMethodRersource = voidModel.createResource(assertionMethod);
         	 Property assertionMethodProperty = voidModel.createProperty("http://vocabularies.bridgedb.org/ops#assertionMethod");
         	 voidBase.addProperty( assertionMethodProperty, assertionMethodRersource);
+         }
+         
+         if(targetDatatype!=""){
+        	 
+         }
+         
+         if(subjectDatatype!=""){
+        	 
          }
          
          if (userTarget !=null  && userTarget.get("URI")!=null){

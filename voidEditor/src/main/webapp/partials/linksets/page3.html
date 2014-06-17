@@ -4,12 +4,12 @@
       <div ng-switch-when="false"></div>
      </span>
 
-    <h1>Linking Datasets:</h1>
+    <h1>The Linking Datasets</h1>
     <br>
 
     <div class="container-fluid" ng-controller="sourceCtrl">
-        <div class='span1'></div>
-        <div class="span3AndABit">
+        <div class='span2'></div>
+        <div class="span3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title"> Source Dataset
@@ -18,14 +18,13 @@
                     </h3>
                 </div>
                 <div class="panel-body" id="accordion" style="font-size:16px;">
-
                     <accordion close-others="true">
                         <accordion-group heading="{{source.title}}" ng-repeat="source in sources"
-                                         id="{{ source.$$hashKey }}"ng-click="selectOption(source._about , 'source')">
-                            <select ng-model="userSourceTitle" ng-options="subSource.title for subSource in subSources"
-                                    ng-hide="!isSource">
-                                <option value="">-- choose source--</option>
-                            </select>
+                                         id="{{ source.$$hashKey }}" ng-click="selectOption(source._about , 'source')">
+                                <select ng-model="userSourceIndex" ng-options="subSource.title for subSource in subSources"
+                                        ng-hide="!isSource" ng-change="updateSelection(userSourceIndex, 'source')">
+                                    <option value="">-- choose source--</option>
+                                </select>
                             <span  ng-hide="isSource"> No further subsets.</span>
                         </accordion-group>
                      </accordion>
@@ -33,9 +32,9 @@
             </div>
         </div>
 
-        <div class="span2"></div>
+        <div class="span1"></div>
 
-        <div class="span3AndABit">
+        <div class="span3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Target Dataset</h3>
@@ -43,9 +42,9 @@
                 <div class="panel-body ">
                     <accordion close-others="true">
                         <accordion-group heading="{{source.title}}" ng-repeat="source in sources"
-                                         id="100{{ source.$$hashKey }}"ng-click="selectOption(source._about , 'target')">
-                            <select ng-model="userTargetTitle" ng-options="subTarget.title for subTarget in subTargets"
-                                    ng-hide="!isTarget">
+                                         id="100{{ source.$$hashKey }}" ng-click="selectOption(source._about , 'target')">
+                            <select ng-model="userTargetIndex" ng-options="subTarget.title for subTarget in subTargets"
+                                    ng-hide="!isTarget" ng-change="updateSelection(userTargetIndex, 'target')">
                                 <option value="">-- choose source--</option>
                             </select>
                             <span  ng-hide="isTarget"> No further subsets.</span>
