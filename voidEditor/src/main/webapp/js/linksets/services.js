@@ -6,25 +6,25 @@ var jsonService = angular.module('jsonService', ['ngResource'])
         return $resource('https://beta.openphacts.org/1.3/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json');
     });
 
-var URLPreface =  "/voidEditor"; // to be changed between dev and prod
+var URLPreface = "/voidEditor"; // to be changed between dev and prod
 
 var ORCIDService = angular.module('ORCIDService', [])
     .service('ORCIDService', function ($rootScope, $http) {
 
         this.callORCIDEndpoint = function (id) {
-            var URL =  'http://pub.orcid.org/' + id + '/orcid-bio';
+            var URL = 'http://pub.orcid.org/' + id + '/orcid-bio';
             $.ajax({
                 type: 'GET',
                 url: URL,
                 headers: {
-                    "Accept":"application/orcid+json"
+                    "Accept": "application/orcid+json"
                 },
                 success: function (data) {
                     $rootScope.$broadcast('SuccessORCIDData', data);
                 },
                 error: function (status) {
                     console.log("ORCID SERVICE ERROR + status => " + status);
-                    var er = "Could not retrieve information from your ORCID." ;
+                    var er = "Could not retrieve information from your ORCID.";
                     $rootScope.$broadcast('FailORCIDData', er);
                 }
             });
@@ -39,13 +39,12 @@ var voidDataService = angular.module('voidDataService', [])
         fileLocation = "";
         data = {};
         uriForSourcesExist = "passed";
-        outputURL = URLPreface+'/rest/linkset/output';
+        outputURL = URLPreface + '/rest/linkset/output';
 
         this.setTurtle = function (value) {
             turtleData = value;
             $rootScope.$broadcast('TurtleChanged', turtleData);
         };
-
 
 
         this.setSourceData = function (value) {
@@ -57,12 +56,12 @@ var voidDataService = angular.module('voidDataService', [])
             return turtleData;
         };
 
-        this.setUserTarget = function(value){
+        this.setUserTarget = function (value) {
             data.userTarget = value;
             $rootScope.$broadcast('setUserTarget', data.userTarget);
         }
 
-        this.setUserSource= function(value){
+        this.setUserSource = function (value) {
             data.userSource = value;
             $rootScope.$broadcast('setUserSource', data.userSource);
         }
@@ -114,8 +113,12 @@ var voidDataService = angular.module('voidDataService', [])
                 url: outputURL,
                 data: JSON.stringify(data),
                 contentType: "application/json",
-                success: function () {$rootScope.$broadcast('SuccessDownload');},
-                error: function (status) {$rootScope.$broadcast('FailedDownload', status);},
+                success: function () {
+                    $rootScope.$broadcast('SuccessDownload');
+                },
+                error: function (status) {
+                    $rootScope.$broadcast('FailedDownload', status);
+                },
                 async: false
             });
             return true;
