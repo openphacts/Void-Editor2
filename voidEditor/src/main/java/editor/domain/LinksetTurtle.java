@@ -236,11 +236,15 @@ public class LinksetTurtle {
          }
          
          if(targetDatatype!=""){
-        	 
+        	 Resource targetDatatypeRersource = voidModel.createResource(targetDatatype);
+        	 Property assertionMethodProperty = voidModel.createProperty("http://vocabularies.bridgedb.org/ops#objectsDatatype");
+        	 voidBase.addProperty( assertionMethodProperty, targetDatatypeRersource);
          }
          
          if(subjectDatatype!=""){
-        	 
+        	 Resource subjectDatatypeRersource = voidModel.createResource(subjectDatatype);
+        	 Property subjectDatatypeProperty = voidModel.createProperty("http://vocabularies.bridgedb.org/ops#subjectsDatatype");
+        	 voidBase.addProperty( subjectDatatypeProperty, subjectDatatypeRersource);
          }
          
          if (userTarget !=null  && userTarget.get("URI")!=null){
