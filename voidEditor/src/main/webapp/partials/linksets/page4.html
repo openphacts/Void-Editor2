@@ -28,7 +28,8 @@
                     <option  value="http://www.w3.org/2004/02/skos/core#narrowMatch" >skos:narrowMatch </option>
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                     popover="Relationship">
+                     popover="The mapping predicate that captures the way in which the two identifiers are related.The mapping should respect the semantics of the relationship,
+                     e.g. the owl:sameAs relationship must only be used when the two identifiers are completely interchangeable.">
             </div>
         </div>
 <br>
@@ -50,7 +51,8 @@
                     <option  value="http://purl.obolibrary.org/obo#is_tautomer_of">Is tautomer of</option>
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                     popover="The justification.">
+                     popover="The reason why the Linkset claims these concepts are equivalent. For example:
+                      A linkset between two chemicals that share the same chemical structure would use the value 'InChI Key'.">
             </div>
         </div>
 
@@ -65,7 +67,8 @@
                     <option  value="http://purl.obolibrary.org/obo/ECO_0000218" >Manual assertion</option>
                 </select>
                 <img  src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
-                      popover="Please specify the method by which the links in the Linkset have been asserted.Please note that: manual assertion includes computer generated assertions that have been manually verified..">
+                      popover="Please specify the method by which the links in the Linkset have been asserted.
+                      Please note that: manual assertion includes computer generated assertions that have been manually verified.">
             </div>
         </div>
         <br>
@@ -88,7 +91,8 @@
 
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                     popover="The Datatype.">
+                     popover="The type of concept the subjects of the triples in the Linkset represent. For example:
+                     A linkset between ConceptWiki and ChemSpider would declare its subjects datatype to be Chemical Entities.">
             </div>
         </div>
         <br>
@@ -111,7 +115,8 @@
 
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                     popover="The Datatype.">
+                     popover="The type of concept the objects of the triples in the Linkset represent.
+                     A linkset between ChemSpider and ConceptWiki would declare its objects datatype to be Chemical Entities. ">
             </div>
         </div>
         <br>
