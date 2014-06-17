@@ -1,0 +1,69 @@
+<div class="span12 carousel-content" ng-controller="editorFormCtrl">
+    <span ng-switch="slide.active">
+      <div ng-switch-when="true">{{changeProgressBar(slide.progress) }}</div>
+      <div ng-switch-when="false"></div>
+    </span>
+
+    <div class="span10 offset2">
+
+        <div class="row">
+            <div class="span7 offsetHalf">
+                <h1> Versioning information for the RDF</h1>
+                <br>
+                <br>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="spanLabel2 offset1">
+                <label for="inputVersion">Version / Release ID:</label>
+            </div>
+            <div class="span3">
+                <input type="text" class="form-control input-large" id="inputVersion"
+                       ng-model="data.version" placeholder="0.0.1">
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="Typically a number or name that identifies uniquely the data.
+                            If its the first release of this data please use 1.0.0 .
+                            Typical examples would be: 0.1, 21, 0.0.5">
+            </div>
+
+        </div>
+        <br>
+
+        <div class="form-group row">
+            <div class="spanLabel2 offset1">
+                <label for="inputPreviousVersion">Link to previous version:</label>
+            </div>
+            <div class="span3">
+                <input type="url" class="form-control input-large"
+                       ng-model="data.previousVersion" id="inputPreviousVersion" placeholder="http://">
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="The previous version of a dataset description in a lineage. Must provide URL. If no such version exist, please leave blank.">
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group row">
+            <div class="spanLabel2 offset1">
+                <label for="inputUpdateFreq">Dataset update frequency of this dataset:</label>
+            </div>
+            <div class="span3">
+                <select class="selectpicker" size="8" id="inputUpdateFreq" ng-model="data.updateFrequency">
+                    <option value="Annual">Annual</option>
+                    <option value="Quarterly">Quarterly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Continuous">Continuous</option>
+                    <option value="Irregular">Irregular</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Don't know">Don't know</option>
+                </select>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover="How often do you update your dataset? Please choose one of the eight following options.">
+            </div>
+        </div>
+        <br>
+
+
+    </div>
+</div>

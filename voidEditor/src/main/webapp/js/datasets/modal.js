@@ -46,7 +46,47 @@ modalControllers.controller('ModalAboutCtrl', ['$scope', '$rootScope' , '$modal'
         };
     }]);
 
+
+
+
 modalControllers.controller('ModalInstanceAboutCtrl', ['$rootScope' , '$scope', '$modalInstance',
+    function ($rootScope, $scope, $modalInstance) {
+        $scope.closeModal = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    }]);
+
+//modal for adding more than one contributer
+modalControllers.controller('ModalContributorsCtrl', ['$scope', '$rootScope' , '$modal',
+    function ($scope, $rootScope, $modal) {
+        $scope.open = function () {
+            $modal.open({
+                templateUrl: 'myModalContentContributors.html',
+                controller: "ModalInstanceContributorsCtrl"
+            });
+            $rootScope.$broadcast('getContributors');
+        };
+    }]);
+
+modalControllers.controller('ModalInstanceContributorsCtrl', ['$rootScope' , '$scope', '$modalInstance',
+    function ($rootScope, $scope, $modalInstance) {
+        $scope.closeModal = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    }]);
+
+//modal which manager import
+modalControllers.controller('ModalImportCtrl', ['$scope', '$rootScope' , '$modal',
+    function ($scope, $rootScope, $modal) {
+        $scope.open = function () {
+            $modal.open({
+                templateUrl: 'myModalImport.html',
+                controller: "ModalInstanceImportCtrl"
+            });
+        };
+    }]);
+
+modalControllers.controller('ModalInstanceImportCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {
         $scope.closeModal = function () {
             $modalInstance.dismiss('cancel');
