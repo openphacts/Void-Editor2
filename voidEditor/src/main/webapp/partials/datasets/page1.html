@@ -22,6 +22,7 @@
                 <input type="text" class="form-control input-large" id="inputTitle" placeholder=""
                        ng-model="data.title" required>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="A name given to the dataset for which the VoID is being created for. This information is required.">
             </div>
 
@@ -36,6 +37,7 @@
                 <input type="url" class="form-control input-large" id="inputURI" placeholder="http://" name="inputURI"
                        ng-model="data.URI">
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="You can define a URI for your dataset. This URI is the resource that describes the dataset.
                      If you leave it blank, a default will be used.">
             </div>
@@ -52,6 +54,7 @@
                 <textarea type="text" class="form-control" rows="5" id="inputDescription" required name="inputDescription"
                           placeholder="What is this dataset about?" ng-model="data.description"></textarea>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="A description of the dataset so we can understand it contains. This information is required.">
             </div>
         </div>

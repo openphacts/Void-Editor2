@@ -15,7 +15,7 @@
                     <h3 class="panel-title">Can you name them?
                               <span style="font-weight: normal; font-size:16px;line-height: 20px;"><img
                                       src="img/QuestionMarkIcon16.gif" popover-placement="right"
-                                      popover-trigger="mouseenter"
+                                      popover-trigger="mouseenter" popover-append-to-body="true"
                                       popover=" Dataset sources you are referencing. If you own these data, please skip this step.
                                                  To remove a selected source, please press the '-' symbol.">
                                   </span>
@@ -77,7 +77,7 @@
                                        type="text" collapse="isCollapsed"
                                        placeholder="1.0.0">
                                 <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
-                                     popover-placement="right" popover-trigger="mouseenter"
+                                     popover-placement="right" popover-trigger="mouseenter" popover-append-to-body="true"
                                      popover="Please specify version of dataset you are referencing. This information is required.">
                             </div>
 
@@ -87,7 +87,7 @@
                                 <input class="input-medium" ng-hide="isCollapsed" name="noURI" required
                                        collapse="isCollapsed"
                                        ng-model="source.URI" type="url" placeholder="http://">
-                                <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
+                                <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed" popover-append-to-body="true"
                                      popover-placement="right" popover-trigger="mouseenter"
                                      popover="Please make sure URL specified which contains 'http://'. This information is required.">
                             </div>
@@ -99,7 +99,7 @@
                                        collapse="isCollapsed"
                                        ng-model="source.webpage" type="url" placeholder="http://">
                                 <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
-                                     popover-placement="right" popover-trigger="mouseenter"
+                                     popover-placement="right" popover-trigger="mouseenter" popover-append-to-body="true"
                                      popover="A Web page that can be navigated to in a Web browser
                                       to gain access to the dataset, its distributions and/or additional information.
                                        This information is required and must be a URL.">
@@ -111,7 +111,7 @@
                                        collapse="isCollapsed"
                                        ng-model="source.description" type="text" placeholder="Please provide...">
                                 <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
-                                     popover-placement="right" popover-trigger="mouseenter"
+                                     popover-placement="right" popover-trigger="mouseenter" popover-append-to-body="true"
                                      popover="A description of the dataset so we can understand it contains. This information is required.">
                             </div>
 

@@ -22,7 +22,9 @@
                 <input type="text" class="form-control input-large" id="inputTitle" placeholder=""
                        ng-model="data.title" required>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                     popover="A name given to the dataset for which the VoID is being created for. This information is required.">
+                     popover-append-to-body="true"
+                     popover="A name given to the Linkset, for which the VoID is being created for.
+                     If this information is not provided a title will be automatically generated using the Linking information.">
             </div>
 
         </div>
@@ -35,8 +37,9 @@
             </div>
             <div class="span3">
                 <textarea type="text" class="form-control" rows="5" id="inputDescription" required name="inputDescription"
-                          placeholder="What is this Linkset about?" ng-model="data.description"></textarea>
+                          placeholder="What is this Linkset about?" ng-model="data.description" ></textarea>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="A description of the connection your Linkset so we can understand it contains. Please provide as much detail as possible
                       regarding: how the links are created, which datasets are involved and why is this Linkset created. This information is required.">
             </div>

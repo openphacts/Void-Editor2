@@ -28,8 +28,8 @@
                     <option  value="http://www.w3.org/2004/02/skos/core#narrowMatch" >skos:narrowMatch </option>
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                     popover="The mapping predicate that captures the way in which the two identifiers are related.The mapping should respect the semantics of the relationship,
-                     e.g. the owl:sameAs relationship must only be used when the two identifiers are completely interchangeable.">
+                     popover-append-to-body="true"
+                     popover="Select the relationship that is used in the data.">
             </div>
         </div>
 <br>
@@ -39,18 +39,40 @@
             </div>
             <div class="span3">
                 <select class="selectpicker" id='justification' ng-model="data.justification" >
-                    <option  value="http://semanticscience.org/resource/SIO_010004">Chemical entity</option>
-                    <option  value="http://semanticscience.org/resource/CHEMINF_000480">Has component with uncharged counterpart</option>
-                    <option  value="http://semanticscience.org/resource/CHEMINF_000459">Has isotopically unspecified parent</option>
-                    <option  value="http://semanticscience.org/resource/CHEMINF_000486">Has major tautomer at pH 7.4</option>
-                    <option  value="http://semanticscience.org/resource/CHEMINF_000458">Has OPS normalized counterpart</option>
-                    <option  value="http://purl.obolibrary.org/obo#has_part">Has part</option>
-                    <option  value="http://semanticscience.org/resource/CHEMINF_000456">Has stereoundefined parent</option>
-                    <option  value="http://semanticscience.org/resource/CHEMINF_000460">Has uncharged counterpart</option>
-                    <option  selected="selected" value="http://semanticscience.org/resource/CHEMINF_000059">InChI Key</option>
-                    <option  value="http://purl.obolibrary.org/obo#is_tautomer_of">Is tautomer of</option>
+                    <optgroup label="Chemical Justifications ">
+                        <option  value="http://semanticscience.org/resource/SIO_010004">Chemical entity</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000480">Has component with uncharged counterpart</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000459">Has isotopically unspecified parent</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000486">Has major tautomer at pH 7.4</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000458">Has OPS normalized counterpart</option>
+                        <option  value="http://purl.obolibrary.org/obo#has_part">Has part</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000456">Has stereoundefined parent</option>
+                        <option  value="http://semanticscience.org/resource/CHEMINF_000460">Has uncharged counterpart</option>
+                        <option  selected="selected" value="http://semanticscience.org/resource/CHEMINF_000059">InChI Key</option>
+                        <option  value="http://purl.obolibrary.org/obo#is_tautomer_of">Is tautomer of</option>
+                    </optgroup>
+                    <optgroup label=" Relating Pathways">
+                        <option  value="http://semanticscience.org/resource/SIO_001107">Pathway</option>
+                        <option  value="http://edamontology.org/data_2342">Pathway name</option>
+                    </optgroup>
+                    <optgroup label="Relating Targets">
+                        <option  value="http://semanticscience.org/resource/SIO_000986">Functional RNA coding gene</option>
+                        <option  value="http://semanticscience.org/resource/SIO_010035">Gene</option>
+                        <option  value="http://www.obofoundry.org/ro/ro.owl#has_part">Has part</option>
+                        <option  value="http://semanticscience.org/resource/SIO_010099">mRNA</option>
+                        <option  value="http://semanticscience.org/resource/SIO_010043">Protein</option>
+                        <option  value="http://semanticscience.org/resource/SIO_000985">Protein coding gene</option>
+                        <option  value="http://edamontology.org/data_1460">Protein structure</option>
+                        <option  value="http://semanticscience.org/resource/SIO_010009">RNA</option>
+                        <option  value="http://semanticscience.org/resource/SIO_010423">Target</option>
+                    </optgroup>
+                    <optgroup label="Miscellaneous">
+                        <option  value="http://semanticscience.org/resource/SIO_001166">Annotation</option>
+                        <option  value="http://semanticscience.org/resource/SIO_001171">Database cross-reference</option>
+                    </optgroup>
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="The reason why the Linkset claims these concepts are equivalent. For example:
                       A linkset between two chemicals that share the same chemical structure would use the value 'InChI Key'.">
             </div>
@@ -67,6 +89,7 @@
                     <option  value="http://purl.obolibrary.org/obo/ECO_0000218" >Manual assertion</option>
                 </select>
                 <img  src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                      popover-append-to-body="true"
                       popover="Please specify the method by which the links in the Linkset have been asserted.
                       Please note that: manual assertion includes computer generated assertions that have been manually verified.">
             </div>
@@ -91,6 +114,7 @@
 
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="The type of concept the subjects of the triples in the Linkset represent. For example:
                      A linkset between ConceptWiki and ChemSpider would declare its subjects datatype to be Chemical Entities.">
             </div>
@@ -115,6 +139,7 @@
 
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="The type of concept the objects of the triples in the Linkset represent.
                      A linkset between ChemSpider and ConceptWiki would declare its objects datatype to be Chemical Entities. ">
             </div>

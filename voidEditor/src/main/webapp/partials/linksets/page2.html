@@ -20,6 +20,7 @@
             <div class="span3">
                 <input type="url" class="form-control input-large" id="inputPublisher"   ng-model="data.publisher" placeholder="http://" required>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="Please provide the URL of the institution responsible for making the resource available.
                      For example : For ChEMBL, the publisher would be the EBI. This information is required.">
             </div>
@@ -46,6 +47,7 @@
                 </select>
 
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="If you are only aware of the year please select 1st of January of the corresponding year.
                                 If aware of month only select 1st of that month. This information is required.">
             </div>
@@ -69,22 +71,26 @@
                         <option  value="N/A">Don't know</option>
                 </select>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"  id="legalPopover"
                      popover="Please visit www.tldrlegal.com to view more information regarding licencing. This information is required.">
                 <input ng-show="showOther" ng-model="data.licence" type="url" placeholder="Please Specify...">
-                <img  ng-show="showOther" src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
-                     popover="Please provide a URL pointing to this licence. So that we have an indepth understanding of the licence you wish to use. This information is required.">
+                <img  ng-show="showOther" src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter"
+                      popover-append-to-body="true" class="pull-right"
+                     popover="Please provide a URL pointing to this licence.
+                     So that we have an indepth understanding of the licence you wish to use. This information is required.">
              </div>
         </div>
         <br>
         <div class="form-group row">
             <div class="spanLabel3 ">
-                <label for="inputDownload">Where could we download your RDF from?*</label>
+                <label for="inputDownload">Where could we download your Linkset from?*</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-large" id="inputDownload"  ng-model="data.downloadFrom" required
                         placeholder="http://rdf.example.com">
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
-                     popover="Where could we download the data from if we required to. This information is required and must be URL.">
+                     popover-append-to-body="true"
+                     popover="Where could we download this Linkset from if we required to. This information is required and must be URL.">
             </div>
         </div>
 

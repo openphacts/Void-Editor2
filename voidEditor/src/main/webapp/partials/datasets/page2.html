@@ -37,6 +37,7 @@
                     <div class="modal-header ">
                             <h3>Contributors to dataset <span  style="font-size: 12px;line-height: 15px;">
                                 <img src="img/QuestionMarkIcon16.gif" popover-placement="bottom" popover-trigger="mouseenter" class="pull-right"
+                                     popover-append-to-body="true"
                                      popover="Please provide the personal information of all the contributors to this dataset
                                                 and how they contributed ( can select more than one).
                                       Author: Is the person which authored the knowledge expressed by this resource.
@@ -177,6 +178,7 @@
 
              </div>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="Please provide any additional contributors to the creation of this dataset which you are currently
                      describing.">
             </div>
@@ -202,6 +204,7 @@
                 </select>
 
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="If you are only aware of the year please select 1st of January of the corresponding year.
                                 If aware of month only select 1st of that month. This information is required.">
             </div>
@@ -216,6 +219,7 @@
                 <input type="url" class="form-control input-large" id="inputWebpage" ng-model="data.webpage" required
                        placeholder="http://" >
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="A Web page that can be navigated to in a Web browser
                      to gain access to the dataset, its distributions and/or additional information. This information is required and must be a URL.">
             </div>
@@ -241,7 +245,8 @@
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
                      popover="Please visit www.tldrlegal.com to view more information regarding licencing. This information is required.">
                 <input ng-show="showOther" ng-model="data.licence" type="url" placeholder="Please Specify...">
-                <img  ng-show="showOther" src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                <img  ng-show="showOther" src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                      popover-append-to-body="true" popover-trigger="mouseenter" class="pull-right"
                      popover="Please provide a URL pointing to this licence. So that we have an indepth understanding of the licence you wish to use. This information is required.">
              </div>
         </div>
@@ -254,6 +259,7 @@
                 <input type="url" class="form-control input-large" id="inputDownload"  ng-model="data.downloadFrom" required
                         placeholder="http://rdf.example.com">
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true"
                      popover="Where could we download the data from if we required to. This information is required and must be URL.">
             </div>
         </div>
@@ -266,7 +272,7 @@
                 <input type="url" class="form-control input-large" id="inputSparql" onchange="angular.element(this).scope().callSparqlEndpoint()"
                        ng-model="data.sparqlEndpoint" placeholder="http://">
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
-                     class="pull-right"
+                     class="pull-right" popover-append-to-body="true"
                      popover="If you do not have one, please leave blank. An example of a sparql endpoint URL is: 'http://bioportal.bio2rdf.org/sparql' ">
             </div>
         </div>
@@ -280,7 +286,7 @@
                 <input type="hidden" name="MAX_FILE_SIZE" value="1000" />
                 <input type="file" style="width: 200px" id="inputUserData" name="file" size="40" onchange="angular.element(this).scope().letUserUploadData(this.files)"/>
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
-                     class="pull-right"
+                     class="pull-right" popover-append-to-body="true"
                      popover="Not mandatory. If you have provided a sparql endpoint statistical analysis will be done on the endpoint.
                         Please provide your RDF data file. Maximum size 10MB. ZIPs are not accepted.">
             </div>

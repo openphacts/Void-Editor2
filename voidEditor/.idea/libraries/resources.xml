@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="resources">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/java/editor/resources/metadata-1.1-SNAPSHOT.one-jar.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/java/editor/resources/rdf-tools-1.1-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/java/editor/resources/metadata-1.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

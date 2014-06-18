@@ -27,6 +27,7 @@ import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.DCTerms;
 import com.hp.hpl.jena.vocabulary.DCTypes;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 import com.hp.hpl.jena.vocabulary.XSD;
 
 import editor.ontologies.DCAT;
@@ -135,6 +136,7 @@ public class VoidTurtle {
          voidModel.setNsPrefix("freq", Freq.getURI());
          voidModel.setNsPrefix("dc", DC.getURI());
          voidModel.setNsPrefix("dcat", DCAT.getURI());
+         voidModel.setNsPrefix("rdfs", RDFS.getURI());
          voidModel.setNsPrefix("", "#");
          
          //Populate void.ttl
@@ -216,9 +218,12 @@ public class VoidTurtle {
         	   voidBase.addProperty(Void.dataDump, mainDatadump);
          }
          
-         if (licence !="" ){
+         if (licence !="" && !licence.contains("N/A")){
         	 Resource license = voidModel.createResource(licence);
         	 voidBase.addProperty(DCTerms.license, license);
+         }else if (licence.contains("N/A")){
+        	 //:dataset dct:license [ rdfs:label "unknown" ];
+        	 voidBase.addProperty(DCTerms.license, voidModel.createResource().addProperty(RDFS.label , "unknown"));
          }
          
          if (sparqlEndpoint !=""){
