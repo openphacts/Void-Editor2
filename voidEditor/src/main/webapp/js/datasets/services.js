@@ -230,7 +230,6 @@ var voidDataService = angular.module('voidDataService', [])
                 async: false
             });
             return true;
-
         };
 
     });
