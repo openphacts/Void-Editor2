@@ -74,6 +74,7 @@ public class VoidTurtle {
 	private String numberOfUniqueSubjects="";
 	private String numberOfUniqueObjects ="";
 	private String ORCID = "";
+	private String datasetType = "";
 	
 	private Validator validator = null;
 	/**
@@ -100,22 +101,16 @@ public class VoidTurtle {
 	    this.numberOfUniqueObjects =obj.numberOfUniqueObjects;
 	    this.ORCID = obj.ORCID;
 	    this.contributors = (ArrayList) obj.contributors;
-
-		System.out.println(obj.datePublish);
+	    this.datasetType = obj.datasetType;
+	    
 	    if (obj.datePublish.equals("N/A")){
 	    	this.setDatePublish(1) ;
 	    }else {
 	    	this.setDatePublish(Integer.parseInt(obj.datePublish));
 	    }
-	    
-	    System.out.println(obj.monthPublish);
 	    this.setMonthPublish(Integer.parseInt(obj.monthPublish));
-	    
-	    System.out.println(obj.yearPublish);
 	    this.setYearPublish(Integer.parseInt(obj.yearPublish));
-	    
 	}
-	
 	
 	/**
 	 * Using data from the constructor it creates dataset description.
@@ -136,6 +131,7 @@ public class VoidTurtle {
          voidModel.setNsPrefix("freq", Freq.getURI());
          voidModel.setNsPrefix("dc", DC.getURI());
          voidModel.setNsPrefix("dcat", DCAT.getURI());
+         voidModel.setNsPrefix("dctypes", DCTypes.getURI());
          voidModel.setNsPrefix("rdfs", RDFS.getURI());
          voidModel.setNsPrefix("", "#");
          
@@ -162,6 +158,7 @@ public class VoidTurtle {
          }else{
         	 titleLiteral = voidModel.createLiteral(title, "en");
          }
+         
          Literal descriptionLiteral;
          if (title =="" ) {
         	 descriptionLiteral = voidModel.createLiteral("-", "en");
@@ -174,7 +171,12 @@ public class VoidTurtle {
          }
          
          Resource voidBase = voidModel.createResource(URI);
-         voidBase.addProperty(RDF.type, Void.Dataset);
+         if (datasetType!="" && !datasetType.contains("Not")){
+        	 voidBase.addProperty(RDF.type, Void.Dataset);
+         }else{
+        	 voidBase.addProperty(RDF.type, DCTypes.Dataset);
+         }
+         
          voidBase.addProperty(DCTerms.title, titleLiteral);
          voidBase.addProperty(DCTerms.description, descriptionLiteral);
          voidBase.addProperty(DCTerms.issued, publishmentLiteral);
@@ -213,9 +215,12 @@ public class VoidTurtle {
         	 voidBase.addProperty(DCAT.landingPage, landingPage);
          }
          
-         if (downloadFrom !=""){
+         if (downloadFrom !="" && !datasetType.contains("Not")){
         	   Resource mainDatadump = voidModel.createResource(downloadFrom);
         	   voidBase.addProperty(Void.dataDump, mainDatadump);
+         }else if (downloadFrom !=""){
+        	 Resource distribution = voidModel.createResource(downloadFrom);
+      	     voidBase.addProperty(DCAT.distribution , distribution);
          }
          
          if (licence !="" && !licence.contains("N/A")){
@@ -322,10 +327,7 @@ public class VoidTurtle {
  	              if (tmpAuthor.contains("true")){
  	            	 voidBase.addProperty(Pav.authoredBy, resourceForContributor);
 	              }
- 	             
         	  }
-        	
-              
         	  System.out.println("===========");
          }
          /**

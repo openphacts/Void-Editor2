@@ -26,4 +26,5 @@ public class VoidAttributes{
 	  public String numberOfUniqueSubjects="";
 	  public String numberOfUniqueObjects ="";
 	  public String ORCID ="";
+	  public String datasetType = "";
 }

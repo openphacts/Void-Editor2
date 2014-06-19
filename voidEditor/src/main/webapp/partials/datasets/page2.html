@@ -253,14 +253,14 @@
         <br>
         <div class="form-group row">
             <div class="spanLabel3 ">
-                <label for="inputDownload">Where could we download your RDF from?*</label>
+                <label for="inputDownload">{{LinkToDownloadDataQuestion}}</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-large" id="inputDownload"  ng-model="data.downloadFrom" required
-                        placeholder="http://rdf.example.com">
+                        placeholder="http://data.example.com">
                 <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
                      popover-append-to-body="true"
-                     popover="Where could we download the data from if we required to. This information is required and must be URL.">
+                     popover="{{LinkToDownloadDataHelp}}">
             </div>
         </div>
         <br>

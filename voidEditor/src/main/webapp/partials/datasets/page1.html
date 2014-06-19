@@ -42,8 +42,20 @@
                      If you leave it blank, a default will be used.">
             </div>
         </div>
-
-
+        <br>
+        <div class="form-group row">
+            <div class="spanLabel1 offset1 ">
+                <label for="rdfOrNot">What type is your dataset?*:</label>
+            </div>
+            <div class="span3">
+                <select class="selectpicker" id='rdfOrNot' ng-model="data.datasetType" ng-change="changeQuestionForDownloadData()">
+                    <option  value="RDF">RDF Dataset</option>
+                    <option  value="Not">Non-RDF Dataset</option>
+                </select>
+                <img src="img/QuestionMarkIcon16.gif" popover-placement="right"  popover-trigger="mouseenter" class="pull-right"
+                     popover-append-to-body="true" popover="Please declare the type of the dataset you are describing. This information is required.">
+                </div>
+        </div>
         <br>
 
         <div class="form-group row">

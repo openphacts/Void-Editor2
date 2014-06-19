@@ -43,10 +43,14 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.data.numberOfUniqueObjects ="";
         $rootScope.haveStatsFinished = 1;
         $rootScope.data.ORCID = "";
+        $rootScope.data.datasetType = "RDF";
         $rootScope.doYouHaveOrcidValue = true;
+
         var ua = window.navigator.userAgent;
         $rootScope.msie = ua.indexOf ( ".NET" );
         $rootScope.finalHeader = "Almost there...";
+        $rootScope.LinkToDownloadDataQuestion = "Where could we download your RDF from?*";
+        $rootScope.LinkToDownloadDataHelp = "Where could we download the data from if we required to. This information is required and must be URL.";
 
         $rootScope.otherLicence = function (val) {
             if (val == "other") {
@@ -226,9 +230,22 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.showLoader = false;
         });
 
+        $rootScope.changeQuestionForDownloadData= function(){
+            console.log($rootScope.data.datasetType);
+            if ($rootScope.data.datasetType == "RDF"){
+                $rootScope.LinkToDownloadDataQuestion = "Where could we download your RDF from?*";
+                $rootScope.LinkToDownloadDataHelp = "Where could we download the data from if we required to. " +
+                    "This information is required and must be URL.";
+            }else{
+                $rootScope.LinkToDownloadDataQuestion = "Dataset distribution description for your dataset:*";
+                $rootScope.LinkToDownloadDataHelp = "Where could we find the dataset distribution description, if we required to." +
+                    " This information is required and must be URL.";
+            }
+            $rootScope.removeAlert("downloadFrom");
+        }
+
         $rootScope.checkMustFieldsOnPreviousPage = function (index) {
             if (index >= 0 && index < $rootScope.mustFields.length) {
-//                console.log("got in if statement");
                 for (var i = 0; i < $rootScope.mustFields.length; i++) {
                     if ($rootScope.mustFields[i].index == index) {
                         for (var j = 0; j < $rootScope.mustFields[i].mustFields.length; j++) {
@@ -317,7 +334,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
             if ($rootScope.data.downloadFrom == "") {
                 if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'> RDF download link in \"Publishing Info\" </p> ";
+                if ($rootScope.data.datasetType == "RDF") {
+                    returnString += "<p class='neededFields'> RDF download link in \"Publishing Info\" </p> ";
+                }else{
+                    returnString += "<p class='neededFields'> Dataset distribution description in \"Publishing Info\" </p> ";
+                }
             }
             if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("http") == -1)) {
                 if (returnString == "") returnString += header;
@@ -408,7 +429,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                     $rootScope.alerts.push({ id: "webpage", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the webpage of your documentation! Please provide this information.' });
                     break;
                 case "downloadFrom":
-                    $rootScope.alerts.push({ id: "downloadFrom", type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF data from! Please provide this information.' });
+                    if ($rootScope.data.datasetType == "RDF") {
+                        $rootScope.alerts.push({ id: "downloadFrom", type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF data from! Please provide this information.' });
+                    }else{
+                        $rootScope.alerts.push({ id: "downloadFrom", type: 'error', msg: 'Ooops! You forgot to gives us a dataset distribution description! Please provide this information.' });
+                    }
                     break;
             }
             return "failed";
@@ -432,7 +457,7 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
 editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scope', 'voidData', 'ContributorORCIDService',
     function ($rootScope, $scope , voidData ,ContributorORCIDService) {
         $scope.contributors = $rootScope.data.contributors;
-        $scope.orcidCheck = 0
+        $scope.orcidCheck = 0;
 
         if ( $scope.contributors.length == 0 ){
             $scope.contributors.push({name : "New" , surname : "Contributor" , orcid:"", email:"-" , id:0, author:false ,curator:false, contributor:true});
