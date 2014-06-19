@@ -22,6 +22,7 @@ public class DCAT {
     
     /** <p>The rdfs:Class that is the rdf:type of all entities in a class-based partition.</p> */
     public static final Property landingPage = m_model.createProperty( "http://www.w3.org/ns/dcat#landingPage" );
-    
+
+    /** <p> Used to describe a dataset that is not RDF.</p>*/
     public static final Property distribution = m_model.createProperty( "http://www.w3.org/ns/dcat#Distribution" );
 }

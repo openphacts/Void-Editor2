@@ -25,7 +25,8 @@ import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 import editor.ontologies.Pav;
 import editor.validator.RdfChecker;
 /**
- * 
+ *
+ * @since 19/06/2014
  * @author Lefteris Tatakis
  *
  */
@@ -68,7 +69,6 @@ public class VoidUpload {
 		} else {
 			mainResourse = model.getResource("file://"+path); 
 		}
-		//Resource mainResourse = model.getResource(path); // for windows
 		// Get createdBy information
 		Resource createdBy = mainResourse.getProperty(Pav.createdBy).getResource();
 		if (createdBy.hasProperty(FOAF.family_name)) result.put("familyName", createdBy.getProperty(FOAF.family_name).getString());

@@ -27,19 +27,31 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import editor.validator.RdfChecker;
 /**
- * 
+ *
+ * @since 19/06/2014
  * @author Lefteris Tatakis
  *
  */
 	public class DataUpload {
 		private  File importedFile;
 		private JSONObject result ;
-		
+
+    /**
+     *
+     * @param uploadedInputStream
+     * @throws RDFParseException
+     * @throws RDFHandlerException
+     */
 		public DataUpload(InputStream uploadedInputStream) throws RDFParseException, RDFHandlerException{
 			importedFile = writeToTempFile(uploadedInputStream);
 			processData();
 		}
-		
+
+    /**
+     *
+     * @throws RDFParseException
+     * @throws RDFHandlerException
+     */
 		private void processData() throws RDFParseException, RDFHandlerException {
 			 
 			checkRDF();
@@ -65,21 +77,21 @@ import editor.validator.RdfChecker;
 		public JSONObject getStatistics(){
 			return result;
 		}
-		
+
+    /**
+     *
+     * @throws RDFParseException
+     * @throws RDFHandlerException
+     */
 		private void checkRDF() throws RDFParseException, RDFHandlerException {
 			RdfChecker checker = new RdfChecker();
 	         try {
 				checker.check(importedFile);
 		  	 } catch (RDFParseException e) {
-				System.err.println("In Imported file --> Got a RDFParseException!! ");
-				//e.printStackTrace();
 				throw new RDFParseException("Input file parse error. Is it RDF?");
 			 } catch (RDFHandlerException e) {
-				System.out.println("In Imported file --> Got a RDFHandlerException ");
-				//e.printStackTrace();
 				throw new RDFHandlerException("Input file Handling error. Is it RDF?");
 			 } catch (IOException e) {
-				System.out.println("In Imported file --> Got a IOException ");
 				e.printStackTrace();
 			 }
 		}

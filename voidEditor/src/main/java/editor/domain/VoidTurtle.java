@@ -42,7 +42,9 @@ import editor.validator.Validator;
  *  This class is provided all the data specified in the voidAttributes {@link voidAttributes}.
  *  The data is provided from that browser side of the project.
  *  It places all data in the appropriate field of the dataset description.
- * 
+ *
+ * @since 19/06/2014
+ *
  * @author Lefteris Tatakis
  * @author Andra Waagmeester 
  */

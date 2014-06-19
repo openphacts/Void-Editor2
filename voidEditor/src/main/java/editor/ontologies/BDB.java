@@ -22,12 +22,13 @@ public class BDB {
     
     /** <p>The rdfs:Class that is the rdf:type of all entities in a class-based partition.</p> */
     public static final Property class_ = m_model.createProperty( "http://vocabularies.bridgedb.org/ops#class" );
-    
+
+    /** Assertion Method which created the Linkset. */
    public static final Property assertionMethod= m_model.createProperty("http://vocabularies.bridgedb.org/ops#assertionMethod");
-   
+    /** Objects Datatype of Linkset. */
    public static final Property targetDatatype= m_model.createProperty("http://vocabularies.bridgedb.org/ops#objectsDatatype");
-   
+    /** Subjects Datatype of Linkset.*/
    public static final Property subjectDatatype= m_model.createProperty("http://vocabularies.bridgedb.org/ops#subjectsDatatype");
-   
+    /** <p> The formal justification of the linkset.</p>*/
    public static final Property linksetJustification = m_model.createProperty( "http://vocabularies.bridgedb.org/ops#linksetJustification" );
 }

@@ -11,13 +11,15 @@ import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.Model;
 
 /**
- * A class which will be responsible for handling all statistical queries for 
- * sparql endpoints and data which is upload to the VE through the interface.
+ * The class which is responsible for handling all statistical queries for
+ * sparql endpoints and data uploaded to the VE.
+ * @version  3.1.8
+ * @since 19/06/2014
  * @author Lefteris Tatakis
- *
  */
 
 public class DatasetStatistics {
+
 	//get total number of triples
 	//select count(*) where {?x ?y ?z}  
 	private String totalNumberOfTriples = "SELECT DISTINCT (COUNT(*) as ?count) WHERE {?s ?p ?o} ";
@@ -50,7 +52,6 @@ public class DatasetStatistics {
 	
 	
 	public JSONObject queryLocalDataModel(Model model){
-		//TODO can do each one of these in separate threads
 		 tnotExec = QueryExecutionFactory.create( totalNumberOfTriplesQuery , model);
 	     nousExec = QueryExecutionFactory.create( numberOfUniqueSubjectsQuery, model);
 	     nouoExec = QueryExecutionFactory.create( numberOfUniqueObjectsQuery, model);
@@ -65,19 +66,32 @@ public class DatasetStatistics {
 		return statisticts;
 	}
 
+    /**
+     *
+     * @param endpoint
+     * @return Number of unique subjects in Sparql Endpoint
+     */
 	public JSONObject querySparqlEndpointUniqueSubject(String endpoint) {
 		nousExec = QueryExecutionFactory.sparqlService(endpoint, numberOfUniqueSubjectsQuery);
 		nousExec.setTimeout(600000);
 		return getUniqueSubject( );
 	}
 
-	
+    /**
+     *
+     * @param endpoint
+     * @return Number of unique objects in Sparql Endpoint
+     */
 	public JSONObject querySparqlEndpointUniqueObjects(String endpoint) {
 		nouoExec = QueryExecutionFactory.sparqlService(endpoint, numberOfUniqueObjectsQuery);
 		nouoExec.setTimeout(600000);
 		return getUniqueObjects( );
 	}
-
+    /**
+     *
+     * @param endpoint
+     * @return Total number of triples in Sparql Endpoint
+     */
 	public JSONObject querySparqlEndpointTotalTriples(String endpoint) {
 		tnotExec = QueryExecutionFactory.sparqlService(endpoint, totalNumberOfTriplesQuery);
 		tnotExec.setTimeout(600000);

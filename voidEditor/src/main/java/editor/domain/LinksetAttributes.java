@@ -1,7 +1,10 @@
 package editor.domain;
 
-
-
+/**
+ * The object which represents the information sent from the AngularJS side for the Linkset Void Creation.
+ * @since 19/06/2014
+ * @author Lefteris Tatakis
+ */
 public class LinksetAttributes{
 	  public String givenName = "";	
 	  public String familyName = "";

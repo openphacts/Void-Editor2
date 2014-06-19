@@ -39,18 +39,25 @@ import editor.ontologies.Void;
 import editor.validator.RdfChecker;
 import editor.validator.Validator;
 /**
- *  This java class is based on work of : Andra Waagmeester 
- *  This class is provided all the data specified in the voidAttributes {@link voidAttributes}.
+ *  This java class is based on work of : Andra Waagmeester
+ *  <p>
+ *  All the data used in this class is retrieved from the the voidAttributes class.
  *  The data is provided from that browser side of the project.
  *  It places all data in the appropriate field of the dataset description.
- * 
+ *  The outputed VoID of this program complies to the
+ *  <a href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/" target="_blank">OPS Dataset Description Specification</a>.
+ *  </p>
+ *
+ * @since 19/06/2014
  * @author Lefteris Tatakis
  * @author Andra Waagmeester 
  */
 
 @XmlRootElement
 public class LinksetTurtle {
-
+    /**
+     * All the variables here correspond to the inputs from the user.
+     */
 	private String givenName ;	
 	private String familyName;	
     private String userEmail;
@@ -75,7 +82,9 @@ public class LinksetTurtle {
 	private String targetDatatype = "";
 	private Validator validator = null;
 	private HashMap<String, String> justificationDataset  = new HashMap<String, String>();
+
 	/**
+     * Takes in the parameters provided by the User and starts the process of the Void creation.
 	 * @param obj This object provides all data extracted from Angular side.
 	 */
 	public LinksetTurtle(LinksetAttributes obj){
@@ -115,6 +124,7 @@ public class LinksetTurtle {
 	
 	/**
 	 * Using data from the constructor it creates dataset description.
+     *
 	 * @throws VoidValidatorException 
 	 * @throws IOException 
 	 * @throws RDFHandlerException 
@@ -230,7 +240,7 @@ public class LinksetTurtle {
         	 Resource relationshipR = voidModel.createResource(relationship);
         	 voidBase.addProperty(Void.linkPredicate, relationshipR);
          }
-         System.out.println("userSource ==>" + userSource.toString());
+
          if (userSource !=null && userSource.get("URI") != null ){
 	        Resource userSourceR = voidModel.createResource((userSource.get("URI")).toString());
 	        voidBase.addProperty(Void.subjectsTarget, userSourceR);    
@@ -254,7 +264,6 @@ public class LinksetTurtle {
         	 voidBase.addProperty( BDB.subjectDatatype, subjectDatatypeRersource);
          }
          
-         System.out.println("userTarget ==>" + userTarget.toString());
          if (userTarget != null  && userTarget.get("URI")!=null){
         	 Resource userTargetR = voidModel.createResource((userTarget.get("URI")).toString());
         	 voidBase.addProperty(Void.objectsTarget, userTargetR);
@@ -282,32 +291,33 @@ public class LinksetTurtle {
          }
          
          checkRDF();
-         
-         ///validateRDFForOPS();
 	}
 
-	
+    /**
+     * Checks if the RDF outputed is correct and valid.
+     * @throws RDFParseException
+     * @throws RDFHandlerException
+     * @throws IOException
+     */
 	private void checkRDF() throws RDFParseException, RDFHandlerException, IOException {
 		RdfChecker checker = new RdfChecker();
          try {
 			checker.check(output);
 	  	 } catch (RDFParseException e) {
-			System.err.println("Got a RDFParseException!! ");
 			e.printStackTrace();
 			throw new RDFParseException("The editor created a wrong file - please contact Lefteris.");
 		 } catch (RDFHandlerException e) {
-			System.out.println("Got a RDFHandlerException ");
 			e.printStackTrace();
-			System.out.println("==========================");
 			throw new RDFHandlerException("The editor handled a wrong file - please contact Lefteris.");
 		 } catch (IOException e) {
-			System.out.println("Got a IOException ");
 			e.printStackTrace();
-			System.out.println("==========================");
 			throw new IOException("The editor could not find the file - please contact Lefteris.");
 		 }
 	}
-	
+
+    /**
+     * A mapping function to help find the appropriate value for the information which is returned from the user side.
+     */
      private void createJustificationMap(){
 		justificationDataset.put("http://semanticscience.org/resource/SIO_010004", "Chemical entity");
  		justificationDataset.put("http://semanticscience.org/resource/CHEMINF_000480", "Has component with uncharged counterpart");
@@ -319,8 +329,11 @@ public class LinksetTurtle {
  		justificationDataset.put("http://semanticscience.org/resource/CHEMINF_000059", "InChI Key");
  		justificationDataset.put("http://purl.obolibrary.org/obo#is_tautomer_of", "Is tautomer of");
  	}
-     
-     
+
+    /**
+     * A quality control function to test if output is valid.
+     * @return The VoID created in a String.
+     */
 	public String getVoid(){
 		String outputString ="";
 		BufferedReader read = null;
