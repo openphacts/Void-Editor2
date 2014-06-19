@@ -30,19 +30,27 @@ import editor.validator.RdfChecker;
  * @author Lefteris Tatakis
  *
  */
+//TODO Javadoc
 public class VoidUpload {
 
 	private String importedFromSource = "http://purl.org/pav/importedFrom";
 	private String authoredBy = "http://purl.org/pav/authoredBy";
 	private String contributedBy = "http://purl.org/pav/contributedBy";
 	private String curatedBy = "http://purl.org/pav/curatedBy";
-	private  File importedFile;
+	private File importedFile;
+
 	private VoidAttributes attributes = new VoidAttributes() ;
 	private Map<String, Object> mainDatasetSubjects = new HashMap<String, Object>();
 	private Map<String, String> sourceDatasetSubjects = new HashMap<String, String>();
 	private Map<String, String> contrDatasetSubjects = new HashMap<String, String>();
 	private JSONObject result ;
-	
+
+    /**
+     *
+     * @param uploadedInputStream
+     * @throws RDFParseException
+     * @throws RDFHandlerException
+     */
 	public VoidUpload(InputStream uploadedInputStream) throws RDFParseException, RDFHandlerException {
 		importedFile = writeToTempFile(uploadedInputStream);
 		result = new JSONObject();
@@ -230,13 +238,10 @@ public class VoidUpload {
          try {
 			checker.check(importedFile);
          } catch (RDFParseException e) {
-				System.err.println("In Imported file --> Got a RDFParseException!! ");
 				throw new RDFParseException("Inputed VOID file parse error. Is it RDF?");
 			 } catch (RDFHandlerException e) {
-				System.out.println("In Imported file -->Got a RDFHandlerException ");
 				throw new RDFHandlerException("Input VOID file Handling error. Is it RDF?");
 			 } catch (IOException e) {
-				System.out.println("In Imported file -->Got a IOException ");
 				e.printStackTrace();
 			 }
 	}
@@ -246,6 +251,9 @@ public class VoidUpload {
 		printIterator(iter);
 	}
 
+    /**
+     *
+     */
 	private void createSubjectMap(){
 		mainDatasetSubjects.put("http://purl.org/dc/terms/description" , "description" ); 
 		mainDatasetSubjects.put("http://purl.org/dc/terms/publisher", "publisher");
@@ -262,15 +270,20 @@ public class VoidUpload {
 		mainDatasetSubjects.put("http://purl.org/dc/terms/title" , "title");
 		mainDatasetSubjects.put("http://rdfs.org/ns/void#sparqlEndpoint" , "sparqlEndpoint");
 	}
-	
+
+    /**
+     *
+     */
 	private void createSourceMap(){
 		sourceDatasetSubjects.put("http://purl.org/dc/terms/description", "description");
 		sourceDatasetSubjects.put("http://purl.org/dc/terms/title", "title");
 		sourceDatasetSubjects.put("http://purl.org/pav/version", "version");
 		sourceDatasetSubjects.put("http://www.w3.org/ns/dcat#landingPage", "webpage");
 	}
-	
-	
+
+    /**
+     *
+     */
 	private void createContributorMap(){
 		contrDatasetSubjects.put("http://xmlns.com/foaf/0.1/mbox", "email");
 		contrDatasetSubjects.put("http://xmlns.com/foaf/0.1/givenname", "name");
@@ -296,7 +309,12 @@ public class VoidUpload {
 			    System.out.println(" .");
 		   }
 	}
-	
+
+    /**
+     *
+     * @param uploadedInputStream
+     * @return A temporary file to be processed.
+     */
 	private File writeToTempFile(InputStream uploadedInputStream) {
 			File fileOutput= null;
 			OutputStream out = null;

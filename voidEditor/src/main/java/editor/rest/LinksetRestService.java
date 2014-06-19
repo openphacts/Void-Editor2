@@ -20,16 +20,21 @@ import editor.domain.LinksetAttributes;
 import editor.domain.VoidAttributes;
 import editor.service.LinksetService;
 /**
- * Using Restful to send information back and forth. 
- * 
- * @author Lefteris Tatakis
+ * The RESTful service to create and view the Linkset VoID.
  *
+ * @since 19/06/2014
+ * @author Lefteris Tatakis
  */
 @Path("/linkset")
 public class LinksetRestService {
  
 	private static final LinksetService  results = new LinksetService();
-	
+
+    /**
+     * Allow the users to view there progress in creating the Linkset VoID.(Under the Hood)
+     * @param data Attributes provided by the user.
+     * @return A String that contains all the VoID created.
+     */
 	@Path("/output")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -54,8 +59,15 @@ public class LinksetRestService {
 		
 		return output;
 	}
-	 
-	// I prefer to throw an error to the users than give them now valid output.
+
+    /**
+     *  Given the information from the UI, create the Linkset VoID and then sent it back to the UI to be downloaded.
+      * @return The Linkset VoID to be given to OPS
+     * @throws RDFParseException
+     * @throws RDFHandlerException
+     * @throws VoidValidatorException
+     * @throws IOException
+     */
 	@Path("/file")
 	@GET
 	@Produces("application/text")

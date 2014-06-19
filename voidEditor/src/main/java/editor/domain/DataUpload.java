@@ -27,6 +27,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import editor.validator.RdfChecker;
 /**
+ * This class handles potential datasets which will be eventually statistically analysed.
  *
  * @since 19/06/2014
  * @author Lefteris Tatakis
@@ -37,7 +38,7 @@ import editor.validator.RdfChecker;
 		private JSONObject result ;
 
     /**
-     *
+     * Contructor. Called by VoidService in order to process the data the user provided.
      * @param uploadedInputStream
      * @throws RDFParseException
      * @throws RDFHandlerException
@@ -48,7 +49,7 @@ import editor.validator.RdfChecker;
 		}
 
     /**
-     *
+     * This class checks if data is valid and then calls the statistical analysis classes.
      * @throws RDFParseException
      * @throws RDFHandlerException
      */
@@ -79,7 +80,7 @@ import editor.validator.RdfChecker;
 		}
 
     /**
-     *
+     * Checks that the RDF which is imported is valid.
      * @throws RDFParseException
      * @throws RDFHandlerException
      */
@@ -95,7 +96,11 @@ import editor.validator.RdfChecker;
 				e.printStackTrace();
 			 }
 		}
-		
+
+    /**
+     * Testing class - to print all statements.
+     * @param model
+     */
 		private void printModel (Model model){
 			StmtIterator iter = model.listStatements();
 			printIterator(iter);
@@ -119,7 +124,12 @@ import editor.validator.RdfChecker;
 				    System.out.println(" .");
 			   }
 		}
-		
+
+        /**
+         * Write the RDF created to temp file for processing.
+         * @param uploadedInputStream
+         * @return
+         */
 		private File writeToTempFile(InputStream uploadedInputStream) {
 				File fileOutput= null;
 				OutputStream out = null;

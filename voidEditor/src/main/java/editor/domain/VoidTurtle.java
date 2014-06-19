@@ -80,6 +80,7 @@ public class VoidTurtle {
 	
 	private Validator validator = null;
 	/**
+     * Retrieves all variables from its parameter. Sets all appropriate variable values. Creates appropriate date format.
 	 * @param obj This object provides all data extracted from Angular side.
 	 */
 	public VoidTurtle(VoidAttributes obj){
@@ -122,7 +123,7 @@ public class VoidTurtle {
 	 * @throws RDFParseException 
 	 */
 	public void createVoid() throws VoidValidatorException, RDFParseException, RDFHandlerException, IOException{
-		
+		//TODO document
 		 Model voidModel = ModelFactory.createDefaultModel();
 		 voidModel.setNsPrefix("xsd", XSD.getURI());
          voidModel.setNsPrefix("void", Void.getURI());
@@ -402,7 +403,10 @@ public class VoidTurtle {
          validateRDFForOPS();
 	}
 
-
+    /**
+     * Validating the RDF againsts the RDF spec found at : http://www.openphacts.org/specs/2013/WD-datadesc-20130912/
+     * @throws VoidValidatorException
+     */
 	private void validateRDFForOPS() throws VoidValidatorException{
 		
 		try {
@@ -414,7 +418,13 @@ public class VoidTurtle {
 		}
 		 if ( !validator.passedTests()  ) throw new VoidValidatorException("The editor created a not valid file - please contact Lefteris.");
 	}
-	
+
+    /**
+     * Checks if the RDF produced in correct.
+     * @throws RDFParseException
+     * @throws RDFHandlerException
+     * @throws IOException
+     */
 	private void checkRDF() throws RDFParseException, RDFHandlerException, IOException {
 		RdfChecker checker = new RdfChecker();
          try {
@@ -435,7 +445,11 @@ public class VoidTurtle {
 			throw new IOException("The editor could not find the file - please contact Lefteris.");
 		 }
 	}
-	
+
+    /**
+     * <p>Return to the VoidService the VoID created in  a string format in order to be displayed in the  Under the Hood window.</p>
+     * @return VoID created in a String.
+     */
 	public String getVoid(){
 		String outputString ="";
 		BufferedReader read = null;
@@ -457,7 +471,10 @@ public class VoidTurtle {
 	public String getValidationResults(){
 		return validator.showResult();
 	}
-	
+
+    /**
+     * @return Location of the temporary file containing the VoID.
+     */
 	public String getLocation(){
 		output.deleteOnExit();
 		return output.getAbsolutePath();

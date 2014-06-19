@@ -11,9 +11,9 @@ import uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader;
 import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 
 /**
- * Based on the work from Christian this class will be provided the void I create and 
- * check if it follows OPS standarts.
- * @author Lefteris
+ * Based on the work from Christian Brenninkmeijer this class is  provided the void, creates and
+ * checks it according to the OPS standards.
+ * @author Lefteris Tatakis
  *
  */
 public class Validator {
@@ -22,7 +22,11 @@ public class Validator {
 	private static MetaDataSpecification specifications;
     private static final boolean INCLUDE_WARNINGS = true;
     private String result;
-    
+
+    /**
+     * @param file VoID file to be validated.
+     * @throws VoidValidatorException
+     */
 	public Validator (File file) throws VoidValidatorException{
 	        minReader = RdfFactory.getMemory();
 	        minContext = minReader.loadFile(file);
