@@ -68,7 +68,7 @@ public class DatasetStatistics {
 
     /**
      *
-     * @param endpoint
+     * @param endpoint  Sparql Endpoint to be queried.
      * @return Number of unique subjects in Sparql Endpoint
      */
 	public JSONObject querySparqlEndpointUniqueSubject(String endpoint) {
@@ -79,7 +79,7 @@ public class DatasetStatistics {
 
     /**
      *
-     * @param endpoint
+     * @param endpoint Sparql Endpoint to be queried.
      * @return Number of unique objects in Sparql Endpoint
      */
 	public JSONObject querySparqlEndpointUniqueObjects(String endpoint) {
@@ -89,7 +89,7 @@ public class DatasetStatistics {
 	}
     /**
      *
-     * @param endpoint
+     * @param endpoint  Sparql Endpoint to be queried.
      * @return Total number of triples in Sparql Endpoint
      */
 	public JSONObject querySparqlEndpointTotalTriples(String endpoint) {
