@@ -58,61 +58,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.LinkToDownloadDataQuestion = "Where could we download your RDF from?*";
         $rootScope.LinkToDownloadDataHelp = "Where could we download the data from if we required to. This information is required and must be URL.";
 
-        /**
-         * @function
-         * @description When the user chooses to describe a licence that is not provided.
-         * @param val
-         */
-        $rootScope.otherLicence = function (val) {
-            if (val == "other") {
-                $rootScope.data.licence = "";
-                $rootScope.showOther = true;
-            } else {
-                $rootScope.showOther = false;
-            }
-        };
-        
-        /**
-         * @function
-         * @description
-         * @param files
-         */
-        $rootScope.letUserUploadData = function (files) {
-            var data = new FormData();
-            $rootScope.uploadErrorMessages = "";
-            $rootScope.showLoader = true;
-            data.append('file', files[0]);//first file
-            uploadUserData.process(data);
-        };
-        /**
-         * @function
-         * @description
-         */
-        $rootScope.callORCIDEndpoint = function() {
-            if ( $rootScope.data.ORCID !=undefined&&  $rootScope.data.ORCID.length >= 16 )
-            {
-                var tmp =  $rootScope.data.ORCID.replace(/-/g, '');
-                if (tmp.length>=16){
-                    ORCIDService.callORCIDEndpoint($rootScope.data.ORCID);
-                }
-            }
-        }
-        /**
-         * @function
-         * @description
-         */
-        $rootScope.callSparqlEndpoint = function() {
-            if ( $rootScope.data.sparqlEndpoint !=undefined&&  $rootScope.data.sparqlEndpoint.indexOf("://") != -1)
-            {
-                console.log("got in callSparqlEndpoint");
-                $rootScope.haveStatsFinished = -1;
-                voidData.querySparqlEndPoint($rootScope.data);
-            }
-        }
-
-
         $rootScope.$on('SuccessORCIDData', function (event, ORCIDJSON) {
-            console.log("SuccessORCIDData");
             console.log(ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"]);
             var details = ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"];
             $rootScope.data.givenName =details["given-names"].value;
@@ -248,18 +194,86 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.showLoader = false;
         });
 
+        $rootScope.$on('checkSources', function (event) {
+            var result;
+            $rootScope.checkSources ();
+
+            if ($rootScope.noURI != -1) result = $rootScope.addAlert("URI")
+            else if ($rootScope.noVersion != -1) $rootScope.addAlert("versionSource");
+            else if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("://") == -1)) {
+                result = $rootScope.addAlert("licence");
+            }
+            else if ($rootScope.noWebpage != -1) result=$rootScope.addAlert("webpageSource");
+            else if ($rootScope.noDescription != -1) result=$rootScope.addAlert("webpageSource");
+            else result = "passed";
+
+            voidData.setUriForSourcesExist(result);
+        });
+
         /**
          * @function
-         * @description
+         * @description Closes an alert displayed on screen.
          * @param index
          */
         $rootScope.closeAlert = function (index) {
             $rootScope.alerts.splice(index, 1);
         };
+        /**
+         * @function
+         * @description When the user chooses to describe a licence that is not provided.
+         * @param val
+         */
+        $rootScope.otherLicence = function (val) {
+            if (val == "other") {
+                $rootScope.data.licence = "";
+                $rootScope.showOther = true;
+            } else {
+                $rootScope.showOther = false;
+            }
+        };
 
         /**
          * @function
-         * @description
+         * @description User is uploading RDF data for statistical analysis.
+         * @param files
+         */
+        $rootScope.letUserUploadData = function (files) {
+            var data = new FormData();
+            $rootScope.uploadErrorMessages = "";
+            $rootScope.showLoader = true;
+            data.append('file', files[0]);//first file
+            uploadUserData.process(data);
+        };
+
+        /**
+         * @function
+         * @description Checks is the information provided is the correct length for an ORCID ID, if so call ORCID API.
+         */
+        $rootScope.callORCIDEndpoint = function() {
+            if ( $rootScope.data.ORCID !=undefined&&  $rootScope.data.ORCID.length >= 16 )
+            {
+                var tmp =  $rootScope.data.ORCID.replace(/-/g, '');
+                if (tmp.length>=16){
+                    ORCIDService.callORCIDEndpoint($rootScope.data.ORCID);
+                }
+            }
+        }
+        /**
+         * @function
+         * @description Queries Sparql Endpoint for statistical analysis.
+         */
+        $rootScope.callSparqlEndpoint = function() {
+            if ( $rootScope.data.sparqlEndpoint !=undefined&&  $rootScope.data.sparqlEndpoint.indexOf("://") != -1)
+            {
+                console.log("got in callSparqlEndpoint");
+                $rootScope.haveStatsFinished = -1;
+                voidData.querySparqlEndPoint($rootScope.data);
+            }
+        }
+
+        /**
+         * @function
+         * @description Changes the questions displayed to the user depending if the dataset provided is RDF or Not.
          */
         $rootScope.changeQuestionForDownloadData= function(){
             console.log($rootScope.data.datasetType);
@@ -277,8 +291,8 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
         /**
          * @function
-         * @description
-         * @param index
+         * @description Checks what fields that are required are not filled.
+         * @param index The page to have its fields checked.
          */
         $rootScope.checkMustFieldsOnPreviousPage = function (index) {
             if (index >= 0 && index < $rootScope.mustFields.length) {
@@ -318,8 +332,8 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         };
         /**
          * @function
-         * @description
-         * @param id2Check
+         * @description Checks if the alert required to be added, is already there.
+         * @param id2Check ID of the error.
          * @returns {boolean}
          */
         $rootScope.checkIfAlertNeedsAdding = function (id2Check){
@@ -331,7 +345,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         };
         /**
          * @function
-         * @description
+         * @description Removes an alert by its given ID.
          * @param id2Remove
          */
         $rootScope.removeAlert =function(id2Remove){
@@ -339,28 +353,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 if ($rootScope.alerts[k].id == id2Remove)$rootScope.alerts.splice(k, 1);
             }
         };
+
+
         /**
          * @function
-         * @description
-         */
-        $rootScope.$on('checkSources', function (event) {
-            var result;
-            $rootScope.checkSources ();
-
-            if ($rootScope.noURI != -1) result = $rootScope.addAlert("URI")
-            else if ($rootScope.noVersion != -1) $rootScope.addAlert("versionSource");
-            else if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("://") == -1)) {
-                result = $rootScope.addAlert("licence");
-            }
-            else if ($rootScope.noWebpage != -1) result=$rootScope.addAlert("webpageSource");
-            else if ($rootScope.noDescription != -1) result=$rootScope.addAlert("webpageSource");
-            else result = "passed";
-
-            voidData.setUriForSourcesExist(result);
-        });
-        /**
-         * @function
-         * @description
+         * @description In the final page of the UI display to the user once more what info is needed.
          * @returns {string}
          */
         $rootScope.fieldsToAdd = function () {
@@ -431,7 +428,6 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         };
         /**
          * @function
-         * @description
          */
         $rootScope.checkSources =function(){
             $rootScope.noURI = -1;
@@ -455,7 +451,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         }
         /**
          * @function
-         * @description
+         * @description Given the ID add the appropriate Alert / Error .
          * @param id2Add
          * @returns {string}
          */
@@ -506,16 +502,15 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
     function ($rootScope, $scope, $http, voidData) {
         /**
          * @function
-         * @description
+         * @description Calls the service to create  VoID for Modal.
          */
-
         $rootScope.createVoid = function () {
             voidData.createVoid();
         };
 
         /**
          * @function
-         * @description
+         * @description Calls service to create VoID for download.
          */
         $rootScope.downloadFile = function () {
             voidData.createVoidAndDownload();
@@ -543,7 +538,7 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
 
         /**
          * @function
-         * @description
+         * @description Calling ORCID Api to retrieve info for each contributor.
          * @param value
          */
         $scope.callORCIDEndpointContributor = function(value) {
@@ -571,7 +566,7 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
 
         /**
          * @function
-         * @description
+         * @description Add annother contributor to the list.
          */
         $scope.add = function () {
             if ($scope.contributors == undefined ) $scope.contributors = [];
@@ -584,7 +579,7 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
 
         /**
          * @function
-         * @description
+         * @description Save the contributors the user has provided.
          */
         $scope.save= function(){
             voidData.setContributorData($scope.contributors);
@@ -592,7 +587,7 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
 
         /**
          * @function
-         * @description
+         * @description Remove the selected contributor.
          * @param id
          */
         $scope.removeContributor = function (id) {
@@ -612,7 +607,8 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
     }]);
 
 /**
- *  @class angular_module.editorAppControllers.editorUploadCtrl
+ * @description Allows user to upload a VoID file so it can be updated.
+ * @class angular_module.editorAppControllers.editorUploadCtrl
  */
 editorAppControllers.controller('editorUploadCtrl', ['$rootScope' , '$scope', '$http', 'uploadVoidData',
     function ($rootScope, $scope, $http, uploadVoidData) {
@@ -624,9 +620,9 @@ editorAppControllers.controller('editorUploadCtrl', ['$rootScope' , '$scope', '$
         };
     }]);
 
-// This needs cleaning up - and to use json file to determine structure/ number of page
 /**
- *  @class angular_module.editorAppControllers.editorCarouselCtrl
+ * @description The controller which fills the carousel with the appropriate pages.
+ * @class angular_module.editorAppControllers.editorCarouselCtrl
  */
 editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
     function CarouselCtrl($scope, $rootScope) {
@@ -648,7 +644,9 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
             $rootScope.$broadcast("changedMustFields", $rootScope.mustFields);
             slides.push({'page': temp, 'index': i, 'progress': (i + 1) * percentageOfChange % 100, 'title': title });
         };
-
+        /**
+         * Slides to add - (ID , "Title" , [Fields that must be filled])
+         */
         $scope.addSlide(0, "User Info", []);
         $scope.addSlide(1, "Core Info", ["title" , "description"]);
         $scope.addSlide(2, "Publishing Info", ["publisher", "webpage" , "downloadFrom"]);
@@ -677,7 +675,6 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
 
         /**
          * @function
-         * @description
          * @param item
          * @returns {boolean}
          */
@@ -686,7 +683,7 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
         };
         /**
          * @function
-         * @description
+         * @description Extract titles of the sources from the OPS JSON.
          */
         $scope.extractTitlesOfSources = function () {
             for (var i = 0; i < $scope.sources.length; i++) {
@@ -703,7 +700,7 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
 
         /**
          * @function
-         * @description
+         * @description Add a source to the users cited sources.
          * @param value
          */
         $scope.addToSelected = function (value) {
