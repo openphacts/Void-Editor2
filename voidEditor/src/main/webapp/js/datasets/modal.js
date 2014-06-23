@@ -1,11 +1,16 @@
 'use strict';
 
-//angular.module('app', ['ui.bootstrap']);
-// http://angular-ui.github.io/bootstrap/
-
+/**
+ * @description All the Modal that are created here are based on : http://angular-ui.github.io/bootstrap/
+ * @class angular_module.modalControllers
+ */
 var modalControllers = angular.module('modalControllers', ['voidDataService']);
 
-// modal of Under the hood
+/**
+ * @class angular_module.modalControllers.ModalExportCtrl
+ * @description Modal for Under the hood.
+ * @function
+ */
 modalControllers.controller('ModalExportCtrl', ['$scope', '$rootScope' , '$modal', 'voidData',
     function ($scope, $rootScope, $modal, voidData) {
         $scope.open = function () {
@@ -20,7 +25,10 @@ modalControllers.controller('ModalExportCtrl', ['$scope', '$rootScope' , '$modal
             }
         };
     }]);
-
+/**
+ * @class angular_module.modalControllers.ModalInstanceCtrl
+ * @function
+ */
 modalControllers.controller('ModalInstanceCtrl', ['$rootScope' , '$scope', '$modalInstance', 'voidData',
     function ($rootScope, $scope, $modalInstance, voidData) {
         $scope.data = voidData.createVoid();
@@ -33,9 +41,11 @@ modalControllers.controller('ModalInstanceCtrl', ['$rootScope' , '$scope', '$mod
             $modalInstance.dismiss('cancel');
         };
     }]);
-
-// Modal which manages about pop up
-
+/**
+ * @class angular_module.modalControllers.ModalAboutCtrl
+ * @description Modal which manages about pop up.
+ * @function
+ */
 modalControllers.controller('ModalAboutCtrl', ['$scope', '$rootScope' , '$modal',
     function ($scope, $rootScope, $modal) {
         $scope.open = function () {
@@ -46,17 +56,21 @@ modalControllers.controller('ModalAboutCtrl', ['$scope', '$rootScope' , '$modal'
         };
     }]);
 
-
-
-
+/**
+ * @class angular_module.modalControllers.ModalInstanceAboutCtrl
+ * @function
+ */
 modalControllers.controller('ModalInstanceAboutCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {
         $scope.closeModal = function () {
             $modalInstance.dismiss('cancel');
         };
     }]);
-
-//modal for adding more than one contributer
+/**
+ * @class angular_module.modalControllers.ModalContributorsCtrl
+ * @description Modal for adding more than one contributor.
+ * @function
+ */
 modalControllers.controller('ModalContributorsCtrl', ['$scope', '$rootScope' , '$modal',
     function ($scope, $rootScope, $modal) {
         $scope.open = function () {
@@ -67,15 +81,21 @@ modalControllers.controller('ModalContributorsCtrl', ['$scope', '$rootScope' , '
             $rootScope.$broadcast('getContributors');
         };
     }]);
-
+/**
+ * @function
+ * @class angular_module.modalControllers.ModalInstanceContributorsCtrl
+ */
 modalControllers.controller('ModalInstanceContributorsCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {
         $scope.closeModal = function () {
             $modalInstance.dismiss('cancel');
         };
     }]);
-
-//modal which manager import
+/**
+ * @class angular_module.modalControllers.ModalImportCtrl
+ * @description Modal which manages import.
+ * @function
+ */
 modalControllers.controller('ModalImportCtrl', ['$scope', '$rootScope' , '$modal',
     function ($scope, $rootScope, $modal) {
         $scope.open = function () {
@@ -85,7 +105,10 @@ modalControllers.controller('ModalImportCtrl', ['$scope', '$rootScope' , '$modal
             });
         };
     }]);
-
+/**
+ * @function
+ * @class angular_module.modalControllers.ModalInstanceImportCtrl
+ */
 modalControllers.controller('ModalInstanceImportCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {
         $scope.closeModal = function () {

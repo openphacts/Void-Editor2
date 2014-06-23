@@ -39,18 +39,20 @@ import editor.ontologies.Void;
 import editor.validator.RdfChecker;
 import editor.validator.Validator;
 /**
- *  This java class is based on work of : Andra Waagmeester
+ *
  *  <p>
- *  All the data used in this class is retrieved from the the voidAttributes class.
+ *  All the data used in this class is retrieved from the the LinksetAttributes class.
  *  The data is provided from that browser side of the project.
  *  It places all data in the appropriate field of the dataset description.
  *  The outputed VoID of this program complies to the
  *  <a href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/" target="_blank">OPS Dataset Description Specification</a>.
  *  </p>
+ * This java class is based on work of : Andra Waagmeester.
  *
  * @since 19/06/2014
  * @author Lefteris Tatakis
- * @author Andra Waagmeester 
+ * @author Andra Waagmeester
+ * @see editor.domain.LinksetAttributes
  */
 
 @XmlRootElement
@@ -84,7 +86,7 @@ public class LinksetTurtle {
 	private HashMap<String, String> justificationDataset  = new HashMap<String, String>();
 
 	/**
-     * Takes in the parameters provided by the User and starts the process of the Void creation.
+     * Takes in the parameters provided by the user and starts the process of the VoID creation.
 	 * @param obj This object provides all data extracted from Angular side.
 	 */
 	public LinksetTurtle(LinksetAttributes obj){
@@ -116,7 +118,6 @@ public class LinksetTurtle {
 	    
 	    System.out.println(obj.yearPublish);
 	    this.setYearPublish(Integer.parseInt(obj.yearPublish));
-	    
 	    
 	    createJustificationMap();
 	}
@@ -174,11 +175,10 @@ public class LinksetTurtle {
          }else if( title==null){
         	 title =  "source"+ "-"+justificationDataset.get(justification) + "-"+ "target";
          }
-         
+
          titleLiteral = voidModel.createLiteral(title, "en");
-         
          Literal descriptionLiteral;
-         if (title =="" ) {
+         if (title=="" ) {
         	 descriptionLiteral = voidModel.createLiteral("-", "en");
          }else{
         	 descriptionLiteral = voidModel.createLiteral(description, "en");

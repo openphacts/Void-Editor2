@@ -1,13 +1,24 @@
 'use strict';
 
-/* Services */
+/* Services -- Singletons */
+
+/**
+ * @function JsonService
+ * @memberOf angular_module.jsonService
+ * @description Service to return all Open PHACTS Data sources through its API.
+ */
 var jsonService = angular.module('jsonService', ['ngResource'])
     .factory('JsonService', function ($resource) {
         return $resource('https://beta.openphacts.org/1.3/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json');
     });
 
-var URLPreface = "" ;//"/voidEditor"; // to be changed between dev and prod
+var URLPreface = "" ;
 
+/**
+ * @function uploadVoidData
+ * @memberOf angular_module.voidUploadService
+ * @description Service to allow the upload of VoID files to the server.
+ */
 var voidUploadService = angular.module('voidUploadService', [])
     .service('uploadVoidData', function ($rootScope, $http) {
          var URL = URLPreface+  '/rest/void/uploadVoid';
@@ -31,6 +42,11 @@ var voidUploadService = angular.module('voidUploadService', [])
         }
     });
 
+/**
+ * @function ORCIDService
+ * @memberOf angular_module.ORCIDService
+ * @description Service to allow the retrieval of ORCID infomation for an individual.
+ */
 var ORCIDService = angular.module('ORCIDService', [])
     .service('ORCIDService', function ($rootScope, $http) {
 
@@ -54,6 +70,11 @@ var ORCIDService = angular.module('ORCIDService', [])
         }
     });
 
+/**
+ * @function ContributorORCIDService
+ * @memberOf angular_module.ContributorORCIDService
+ * @description Service to allow the retrieval of ORCID infomation for an contributor.
+ */
 var ContributorORCIDService = angular.module('ContributorORCIDService', [])
     .service('ContributorORCIDService', function ($rootScope, $http) {
 
@@ -77,7 +98,11 @@ var ContributorORCIDService = angular.module('ContributorORCIDService', [])
         }
     });
 
-//will return statistics on the data
+/**
+ * @function uploadUserData
+ * @memberOf angular_module.userDataUploadService
+ * @description Service to allow the upload of VoID files to the server, will return statistics on the data.
+ */
 var dataUploadService = angular.module('userDataUploadService', [])
     .service('uploadUserData', function ($rootScope, $http) {
         var URL;
@@ -105,7 +130,11 @@ var dataUploadService = angular.module('userDataUploadService', [])
             });
         }
     });
-
+/**
+ * @function voidData
+ * @memberOf angular_module.voidDataService
+ * @description Service to allow does the majority of the calls and work for the creation and processing of the VoID.
+ */
 var voidDataService = angular.module('voidDataService', [])
     .service('voidData', function ($rootScope, $http, $window) {
         var turtleData, fileLocation, data, uriForSourcesExist, outputURL;
@@ -118,8 +147,11 @@ var voidDataService = angular.module('voidDataService', [])
         data.sources = [];
         data.contributors = [];
 
-        // it does three different calls to the server in order to get a faster result back
-        // than waiting for all three to finish
+        /**
+         * @function querySparqlEndPoint
+         * @description Queries SPARQL endpoint. Does three different calls to the server in order to get a faster result back.
+         * @param endpoint
+         */
         this.querySparqlEndPoint = function(endpoint){
             var  URLSub , URLObj, URLTriples;
 
@@ -154,37 +186,68 @@ var voidDataService = angular.module('voidDataService', [])
                     $rootScope.$broadcast('SuccessStatisticsUserDataUniqueObjects', data);
                 });
         }
-
+        /**
+         * @function setTurtle
+         * @description
+         * @param {JSON} value All the new information retrieved for the user.
+         */
         this.setTurtle = function (value) {
             turtleData = value;
             $rootScope.$broadcast('TurtleChanged', turtleData);
         };
 
+        /**
+         * @function
+         * @description  Allow a controller to retrieve latest user data.
+         * @returns {string}
+         */
         this.getTurtle = function () {
             return turtleData;
         };
 
+        /**
+         * @function
+         * @description Setting if the URI of sources exist.
+         * @param value
+         */
         this.setUriForSourcesExist = function (value) {
             uriForSourcesExist = value;
         };
-
+        /**
+         * @function
+         * @description Setting the data object in order to pass information to a separate constructor when needed.
+         * @param value
+         */
         this.setData = function (value) {
             data = value;
             $rootScope.$broadcast('DataChanged', data);
         };
-
+        /**
+         * @function
+         * @returns {{}}
+         */
         this.getData = function () {
             return data;
         };
-
+        /**
+         * @function
+         * @description Broadcasts a message to main controller to ensure all the correct sources are encapsulated.
+         */
         this.checkSources = function () {
             $rootScope.$broadcast("checkSources");
         };
-
+        /**
+         * @function
+         * @returns {string}
+         */
         this.checkIfUriForSourcesExist = function () {
             return uriForSourcesExist;
         };
-
+        /**
+         * @function
+         * @description Sends a message to the backend to create the VoID for the Modal.
+         * @returns {*}
+         */
         this.createVoid = function () {
             $rootScope.$broadcast('needData', data);
             $rootScope.$broadcast('StartLoader');
@@ -203,20 +266,34 @@ var voidDataService = angular.module('voidDataService', [])
                 });
 
         };
-
+        /**
+         * @function
+         * @param value
+         */
         this.setSourceData = function (value) {
             data.sources = value;
             $rootScope.$broadcast('DataSourcesChanged', data.sources);
         };
-
+        /**
+         * @function
+         * @param value
+         */
         this.setContributorData = function (value){
             data.contributors = value;
             $rootScope.$broadcast('ContributorsChanged', data.contributors);
         }
+        /**
+         * @function
+         * @returns {sources|*|Array|ConfigChain.sources}
+         */
         this.getSourceData = function () {
             return data.sources;
         };
-
+        /**
+         * @function
+         * @description Send message to the backend to create VoID and allow the download of it.
+         * @returns {boolean}
+         */
         this.createVoidAndDownload = function () {
 
             $rootScope.$broadcast('needData', data);

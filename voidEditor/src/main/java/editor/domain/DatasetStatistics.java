@@ -11,9 +11,7 @@ import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.Model;
 
 /**
- * The class which is responsible for handling all statistical queries for
- * sparql endpoints and data uploaded to the VE.
- * @version  3.1.8
+ * The class is responsible for handling all statistical queries of the sparql endpoint/RDF data uploaded to the VE.
  * @since 19/06/2014
  * @author Lefteris Tatakis
  */
@@ -49,8 +47,11 @@ public class DatasetStatistics {
 		numberOfUniqueSubjectsQuery= QueryFactory.create(numberOfUniqueSubjects);
 		numberOfUniqueObjectsQuery = QueryFactory.create(numberOfUniqueObjects);
 	}
-	
-	
+
+    /**
+     * @param model Model containing RDF.
+     * @return JSON Object that contains all stats needed
+     */
 	public JSONObject queryLocalDataModel(Model model){
 		 tnotExec = QueryExecutionFactory.create( totalNumberOfTriplesQuery , model);
 	     nousExec = QueryExecutionFactory.create( numberOfUniqueSubjectsQuery, model);

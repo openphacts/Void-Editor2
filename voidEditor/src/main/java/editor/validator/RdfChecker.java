@@ -17,6 +17,7 @@ import org.openrdf.rio.helpers.ParseErrorCollector;
 import org.openrdf.rio.helpers.RDFHandlerBase;
 
 /**
+ * Checks if RDF provided is correct.
  * @author Christian Brenninkmeijer
  */
 public class RdfChecker extends RDFHandlerBase implements RDFHandler {

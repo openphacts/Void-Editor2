@@ -1,8 +1,13 @@
 'use strict';
 
-
+/**
+ * @class angular_module.dateControllers
+ */
 var dateControllers = angular.module('dateControllers', []);
 
+/**
+ * @class angular_module.dateControllers.DatepickerCtrl
+ */
 dateControllers.controller('DatepickerCtrl', ['$scope', '$rootScope' ,
     function ($scope, $rootScope) {
         $scope.dates = [];

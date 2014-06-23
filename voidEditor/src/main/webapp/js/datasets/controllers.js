@@ -1,9 +1,15 @@
 'use strict';
 
-/* Controllers */
+/**
+ *  @class angular_module.editorAppControllers
+ */
 var editorAppControllers = angular.module('editorAppControllers', ['jsonService', 'voidDataService', 'voidUploadService', 'ORCIDService',
                                 'userDataUploadService','modalControllers' ,'ContributorORCIDService']);
-
+/**
+ *  @function
+ *  @description
+ *  @class angular_module.editorAppControllers.editorCtrl
+ */
 editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidData', 'uploadUserData', 'ORCIDService',
     function ($scope, $rootScope, voidData, uploadUserData , ORCIDService) {
         $scope.title = 'VoID Editor';
@@ -52,6 +58,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.LinkToDownloadDataQuestion = "Where could we download your RDF from?*";
         $rootScope.LinkToDownloadDataHelp = "Where could we download the data from if we required to. This information is required and must be URL.";
 
+        /**
+         * @function
+         * @description
+         * @param val
+         */
         $rootScope.otherLicence = function (val) {
             if (val == "other") {
                 $rootScope.data.licence = "";
@@ -61,6 +72,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
         };
         //Will also set statistics
+        /**
+         * @function
+         * @description
+         * @param files
+         */
         $rootScope.letUserUploadData = function (files) {
             var data = new FormData();
             $rootScope.uploadErrorMessages = "";
@@ -68,7 +84,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             data.append('file', files[0]);//first file
             uploadUserData.process(data);
         };
-
+        /**
+         * @function
+         * @description
+         */
         $rootScope.callORCIDEndpoint = function() {
             if ( $rootScope.data.ORCID !=undefined&&  $rootScope.data.ORCID.length >= 16 )
             {
@@ -78,7 +97,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 }
             }
         }
-
+        /**
+         * @function
+         * @description
+         */
         $rootScope.callSparqlEndpoint = function() {
             if ( $rootScope.data.sparqlEndpoint !=undefined&&  $rootScope.data.sparqlEndpoint.indexOf("://") != -1)
             {
@@ -173,10 +195,6 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             voidData.setData($rootScope.data);
         });
 
-        $rootScope.closeAlert = function (index) {
-            $rootScope.alerts.splice(index, 1);
-        };
-
         $rootScope.$on("FailedDownload", function (ev, status) {
             $rootScope.alerts.push({ type: 'error', msg: 'Failed to download void.' });
         });
@@ -230,6 +248,19 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.showLoader = false;
         });
 
+        /**
+         * @function
+         * @description
+         * @param index
+         */
+        $rootScope.closeAlert = function (index) {
+            $rootScope.alerts.splice(index, 1);
+        };
+
+        /**
+         * @function
+         * @description
+         */
         $rootScope.changeQuestionForDownloadData= function(){
             console.log($rootScope.data.datasetType);
             if ($rootScope.data.datasetType == "RDF"){
@@ -244,6 +275,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.removeAlert("downloadFrom");
         }
 
+        /**
+         * @function
+         * @description
+         * @param index
+         */
         $rootScope.checkMustFieldsOnPreviousPage = function (index) {
             if (index >= 0 && index < $rootScope.mustFields.length) {
                 for (var i = 0; i < $rootScope.mustFields.length; i++) {
@@ -280,7 +316,12 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 }//for
             }//if
         };
-
+        /**
+         * @function
+         * @description
+         * @param id2Check
+         * @returns {boolean}
+         */
         $rootScope.checkIfAlertNeedsAdding = function (id2Check){
             var addAlert = true;
             for (var k = 0; k < $rootScope.alerts.length; k++) {
@@ -288,13 +329,20 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
             return addAlert;
         };
-
+        /**
+         * @function
+         * @description
+         * @param id2Remove
+         */
         $rootScope.removeAlert =function(id2Remove){
             for (var k = 0; k < $rootScope.alerts.length; k++) {
                 if ($rootScope.alerts[k].id == id2Remove)$rootScope.alerts.splice(k, 1);
             }
         };
-
+        /**
+         * @function
+         * @description
+         */
         $rootScope.$on('checkSources', function (event) {
             var result;
             $rootScope.checkSources ();
@@ -310,7 +358,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
             voidData.setUriForSourcesExist(result);
         });
-
+        /**
+         * @function
+         * @description
+         * @returns {string}
+         */
         $rootScope.fieldsToAdd = function () {
             var returnString = "",
                 header = "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
@@ -377,7 +429,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
             return returnString;
         };
-
+        /**
+         * @function
+         * @description
+         */
         $rootScope.checkSources =function(){
             $rootScope.noURI = -1;
             $rootScope.noVersion = -1;
@@ -398,7 +453,12 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 }
             }
         }
-
+        /**
+         * @function
+         * @description
+         * @param id2Add
+         * @returns {string}
+         */
         $rootScope.addAlert = function(id2Add){
             switch(id2Add) {
                 case "URI":
@@ -439,21 +499,33 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             return "failed";
         }
     }]);
-
+/**
+ *  @class angular_module.editorAppControllers.editorFormCtrl
+ */
 editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$http', 'voidData',
     function ($rootScope, $scope, $http, voidData) {
+        /**
+         * @function
+         * @description
+         */
 
         $rootScope.createVoid = function () {
             voidData.createVoid();
         };
 
+        /**
+         * @function
+         * @description
+         */
         $rootScope.downloadFile = function () {
             voidData.createVoidAndDownload();
             window.open('/rest/void/file');
         };
     }]);
 
-
+/**
+ *  @class angular_module.editorAppControllers.editorContributorsCtrl
+ */
 editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scope', 'voidData', 'ContributorORCIDService',
     function ($rootScope, $scope , voidData ,ContributorORCIDService) {
         $scope.contributors = $rootScope.data.contributors;
@@ -469,7 +541,11 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
             $scope.contributors = x;
         });
 
-
+        /**
+         * @function
+         * @description
+         * @param value
+         */
         $scope.callORCIDEndpointContributor = function(value) {
             console.log(angular.element(value).scope().$index);
             var index = angular.element(value).scope().$index;
@@ -493,7 +569,10 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
             $scope.$apply();
         });
 
-
+        /**
+         * @function
+         * @description
+         */
         $scope.add = function () {
             if ($scope.contributors == undefined ) $scope.contributors = [];
             if ($scope.contributors.length>0 )
@@ -503,10 +582,19 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
             voidData.setContributorData($scope.contributors);
         };
 
+        /**
+         * @function
+         * @description
+         */
         $scope.save= function(){
             voidData.setContributorData($scope.contributors);
         }
 
+        /**
+         * @function
+         * @description
+         * @param id
+         */
         $scope.removeContributor = function (id) {
             var found = false;
             console.log("removeContributor - " + $scope.contributors.length);
@@ -523,8 +611,9 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
 
     }]);
 
-
-
+/**
+ *  @class angular_module.editorAppControllers.editorUploadCtrl
+ */
 editorAppControllers.controller('editorUploadCtrl', ['$rootScope' , '$scope', '$http', 'uploadVoidData',
     function ($rootScope, $scope, $http, uploadVoidData) {
         $rootScope.uploadVoid = function (files) {
@@ -536,6 +625,9 @@ editorAppControllers.controller('editorUploadCtrl', ['$rootScope' , '$scope', '$
     }]);
 
 // This needs cleaning up - and to use json file to determine structure/ number of page
+/**
+ *  @class angular_module.editorAppControllers.editorCarouselCtrl
+ */
 editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
     function CarouselCtrl($scope, $rootScope) {
         $scope.interval = -1;
@@ -570,7 +662,9 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
 
     }
 ]);
-
+/**
+ *  @class angular_module.editorAppControllers.sourceCtrl
+ */
 editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonService', 'voidData',
     function ($rootScope, $scope, JsonService, voidData) {
         $scope.userSources = [];
@@ -581,10 +675,19 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
         $scope.sources = [];
         $scope.showInputURI = false;
 
+        /**
+         * @function
+         * @description
+         * @param item
+         * @returns {boolean}
+         */
         $scope.noTitleFilter = function (item) {
             return typeof item.title == 'string';
         };
-
+        /**
+         * @function
+         * @description
+         */
         $scope.extractTitlesOfSources = function () {
             for (var i = 0; i < $scope.sources.length; i++) {
                 $scope.titles.push($scope.sources[i].title);
@@ -598,6 +701,11 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
             $scope.extractTitlesOfSources();
         });
 
+        /**
+         * @function
+         * @description
+         * @param value
+         */
         $scope.addToSelected = function (value) {
             var found = 0;
             if ($scope.userSources == undefined ) $scope.userSources = [];
@@ -624,6 +732,11 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
             }
         };
 
+        /**
+         * @function
+         * @description
+         * @param value
+         */
         $scope.removeSelected = function (value) {
             var found = false;
             var i = 0;
