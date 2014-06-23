@@ -39,13 +39,11 @@ import editor.validator.RdfChecker;
 import editor.validator.Validator;
 
 /**
- * This java class is based on work of : Andra Waagmeester
- * This class is provided all the data specified in the voidAttributes.
- * The data is provided from that browser side of the project.
- * It places all data in the appropriate field of the dataset description.
+ * Main class for the creation of the VoID file for the dataset descriptions.
+ * The data is provided from that browser side of the project(specified in the voidAttributes).
+ * This java class is based on work of Andra Waagmeester.
  *
  * @author Lefteris Tatakis
- * @author Andra Waagmeester
  */
 
 @XmlRootElement
@@ -80,8 +78,7 @@ public class VoidTurtle {
     private Validator validator = null;
 
     /**
-     * Retrieves all variables from its parameter. Sets all appropriate variable values. Creates appropriate date format.
-     *
+     * Retrieves all variables from the passed VoidAttributes object. Sets all appropriate variable values.
      * @param obj This object provides all data extracted from Angular side.
      */
     public VoidTurtle(VoidAttributes obj) {
@@ -117,7 +114,7 @@ public class VoidTurtle {
     }
 
     /**
-     * Using data from the constructor it creates dataset description.
+     * Using data from the constructor it creates the VoID dataset description.
      *
      * @throws VoidValidatorException
      * @throws IOException
@@ -410,7 +407,7 @@ public class VoidTurtle {
     }
 
     /**
-     * Validating the RDF againsts the RDF spec found at : http://www.openphacts.org/specs/2013/WD-datadesc-20130912/
+     * Validating the RDF against the RDF spec found at <a href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/" > OPS specification</a>.
      *
      * @throws VoidValidatorException
      */
@@ -451,7 +448,8 @@ public class VoidTurtle {
     }
 
     /**
-     * <p>Return to the VoidService the VoID created in  a string format in order to be displayed in the  Under the Hood window.</p>
+     * <p>Return the VoID created in a string format.</p>
+     * Used  the "Under the Hood" modal.
      *
      * @return VoID created in a String.
      */
@@ -481,6 +479,9 @@ public class VoidTurtle {
         return outputString;
     }
 
+    /**
+     * @return The result the OPS validator produces for the VoID file created.
+     */
     public String getValidationResults() {
         return validator.showResult();
     }

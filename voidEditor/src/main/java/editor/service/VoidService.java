@@ -36,7 +36,7 @@ public class VoidService {
 	public VoidService  (){}
 
     /**
-     *
+     * Set the VoidAttributes information.
      * @param info The information from the user.
      */
 	public void setVoidInfo(VoidAttributes info){
@@ -60,8 +60,8 @@ public class VoidService {
 	}
 
     /**
-     *
-     * @return The result of the OPS validetor regarding the quality of the created RDF.
+     * Validates created VoID to the OPS validator and returns the results.
+     * @return The result of the OPS validator regarding the quality of the created RDF.
      * @throws RDFParseException
      * @throws RDFHandlerException
      * @throws VoidValidatorException
@@ -88,7 +88,7 @@ public class VoidService {
 	}
 
     /**
-     * <p>Given the VoID the user wants to upload and reuse, process it in VoID upload and prepare the results to be sent
+     * <p>Given a VoID from the user process it, upload it and prepare the results to be sent
      * back to the users.</p>
      * @param uploadedInputStream
      * @throws RDFParseException
@@ -98,10 +98,9 @@ public class VoidService {
 		upload = new VoidUpload(uploadedInputStream );
 		jsonUpload = upload.getResult();
 	}
-	// using separate instances of DatasetStatistics in order to get results faster
 
     /**
-     * Doing Stats - Unique Subjects
+     * Statistical analysis of Sparql endpoint provided (Unique Subjects).
      * @param endpoint The URL of the SPARQL endpoint that we want to communicate with.
      */
 	public void sparqlStatsUniqueSubjects(String endpoint) {
@@ -109,7 +108,7 @@ public class VoidService {
 		statisticsUniqueSubjects = stats.querySparqlEndpointUniqueSubject(endpoint);
 	}
     /**
-     * Doing Stats - Unique Objects
+     *  Statistical analysis of Sparql endpoint provided ( Unique Objects).
      * @param endpoint The URL of the SPARQL endpoint that we want to communicate with.
      */
 	public void sparqlStatsUniqueObjects(String endpoint) {
@@ -117,7 +116,7 @@ public class VoidService {
 		statisticsUniqueObjects = stats.querySparqlEndpointUniqueObjects(endpoint);
 	}
     /**
-     * Doing Stats - Total number of triples
+     *  Statistical analysis of Sparql endpoint provided (Total number of triples).
      * @param endpoint The URL of the SPARQL endpoint that we want to communicate with.
      */
 	public void sparqlStatsTotalTriples(String endpoint) {
@@ -138,7 +137,7 @@ public class VoidService {
 	}
 
     /**
-     * Allow the RESTful service to upload a RDF dataset file for stat analysis.
+     * Allow the RESTful service to upload a RDF dataset file for statistical analysis.
      * @param uploadedInputStream The input stream (file) of the RDF data to be processed.
      * @throws RDFParseException
      * @throws RDFHandlerException

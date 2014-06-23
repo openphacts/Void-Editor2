@@ -7,19 +7,17 @@ import java.io.InputStream;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
+/**
+ * Testing VoID upload.
+ * @author Lefteris Tatakis
+ */
 public class VoidUploadTest {
 
 	public static void main(String[] args) {
-
-		//read file
 		InputStream is = null;
-		 
 		try {
- 
 			 is = new FileInputStream("C:\\Users\\Lefteris\\Desktop\\Void-Editor2\\voidEditor\\src\\test\\res\\editor\\domain\\testVoid.ttl");
-			 
 			 VoidUpload temp = new VoidUpload(is);
-			 
 		} catch (RDFParseException  e) {
 			e.printStackTrace();
 		} catch ( RDFHandlerException e) {

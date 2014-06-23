@@ -11,7 +11,11 @@ import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 import editor.domain.VoidAttributes;
 import editor.service.VoidService;
 
-public class TestMyValidator {
+/**
+ * Test to check internal validator is working correctly.
+ * @author Lefteris Tatakis
+ */
+public class InternalValidatorTest {
 	private static File file;
 	private static Validator validator;
 

@@ -13,7 +13,8 @@ public class Voag {
     public static final String NS = "http://voag.linkedmodel.org/schema/voag#";
     
     /** <p>The namespace of the vocabulary as a string</p>
-     *  @see #NS */
+     *  @see #NS
+     *  @return Namespace */
     public static String getURI() {return NS;}
     
     /** <p>The namespace of the vocabulary as a resource</p> */

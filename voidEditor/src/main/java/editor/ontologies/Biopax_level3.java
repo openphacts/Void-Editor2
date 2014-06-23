@@ -13,7 +13,8 @@ public class Biopax_level3 {
     public static final String BIOPAX3 = "http://www.biopax.org/release/biopax-level3.owl#";
     
     /** <p>The namespace of the vocabulary as a string</p>
-     *  @see #NS */
+     *  @return Namespace
+     *  */
     public static String getURI() {return BIOPAX3;}
     
     /** <p>The namespace of the vocabulary as a resource</p> */
@@ -354,7 +355,7 @@ public class Biopax_level3 {
     
     /** <p>Definiiton: A reference to a term from an entity reference group ontology. 
      *  As of the writing of this documentation, there is no standard ontology of 
-     *  these terms, though a common type is ÔhomologyÕ.</p>
+     *  these terms, though a common type is ï¿½homologyï¿½.</p>
      */
     public static final Resource EntityReferenceTypeVocabulary = m_model.createResource( "http://www.biopax.org/release/biopax-level3.owl#EntityReferenceTypeVocabulary" );
     

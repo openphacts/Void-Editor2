@@ -13,7 +13,8 @@ public class Chem2bio2rdf {
     public static final String NS = "http://chem2bio2rdf.org/chem2bio2rdf.owl#";
     
     /** <p>The namespace of the vocabulary as a string</p>
-     *  @see #NS */
+     *  @see #NS
+     *  @return Namespace*/
     public static String getURI() {return NS;}
     
     /** <p>The namespace of the vocabulary as a resource</p> */
@@ -201,7 +202,7 @@ public class Chem2bio2rdf {
      *  of DNA and RNA physical entities.) Here, we not only include gene but also 
      *  its gene expression products (e.g., protein, mRNA). Since chemogenomics is 
      *  often talking about the interactions between chemical and protein. In general, 
-     *  itÕs assumed that the proteins expressed from the same gene have very similar 
+     *  itï¿½s assumed that the proteins expressed from the same gene have very similar 
      *  binding activity, so we often use compound XXX interacts with XXX (gene symbol) 
      *  in literature and other places. We cover pharmagenomics and toxigenomics as 
      *  well, which have the data that describes compound interacting gene indirectly. 

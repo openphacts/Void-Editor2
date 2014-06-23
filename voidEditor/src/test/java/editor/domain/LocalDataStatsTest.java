@@ -8,6 +8,10 @@ import org.json.simple.JSONObject;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
+/**
+ * Test for stats.
+ * @author Lefteris Tatakis
+ */
 public class LocalDataStatsTest {
 
 	public static void main(String[] args) {

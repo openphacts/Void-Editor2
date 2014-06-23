@@ -20,7 +20,7 @@ import editor.domain.LinksetAttributes;
 import editor.domain.VoidAttributes;
 import editor.service.LinksetService;
 /**
- * The RESTful service to create and view the Linkset VoID.
+ * The RESTful service to create, download and view the produced Linkset VoID.
  *
  * @since 19/06/2014
  * @author Lefteris Tatakis
@@ -31,7 +31,7 @@ public class LinksetRestService {
 	private static final LinksetService  results = new LinksetService();
 
     /**
-     * Allow the users to view there progress in creating the Linkset VoID.(Under the Hood)
+     * Allow the users to view the Linkset VoID.(Under the Hood)
      * @param data Attributes provided by the user.
      * @return A String that contains all the VoID created.
      */

@@ -9,8 +9,8 @@ import org.json.simple.JSONObject;
 import org.junit.BeforeClass;
 import org.junit.Test;
 /**
+ * Tests for the Dataset Statistics
  * @author Lefteris
- *
  */
 public class DatasetStatsSparqlJunitTests {
 	private static DatasetStatistics obj;

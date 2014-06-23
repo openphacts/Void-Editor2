@@ -7,6 +7,10 @@ import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
 
+/**
+ * Tests sparql endpoint querying.
+ * @author Lefteris Tatakis
+ */
 public class SparqlEndpointQueryTest {
 	public static void main(String[] args) {
 		 String sparqlQueryString =  "SELECT DISTINCT (COUNT(DISTINCT ?o) as ?count) WHERE {?s ?p ?o}";

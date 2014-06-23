@@ -2,12 +2,12 @@
 
 /**
  * @description All the Modal that are created here are based on : http://angular-ui.github.io/bootstrap/
- * @class angular_module.modalControllers
+ * @class voidEditor.modalControllers
  */
 var modalControllers = angular.module('modalControllers', ['voidDataService']);
 
 /**
- * @class angular_module.modalControllers.ModalExportCtrl
+ * @class voidEditor.modalControllers.ModalExportCtrl
  * @description Modal for Under the hood.
  * @function
  */
@@ -26,7 +26,7 @@ modalControllers.controller('ModalExportCtrl', ['$scope', '$rootScope' , '$modal
         };
     }]);
 /**
- * @class angular_module.modalControllers.ModalInstanceCtrl
+ * @class voidEditor.modalControllers.ModalInstanceCtrl
  * @function
  */
 modalControllers.controller('ModalInstanceCtrl', ['$rootScope' , '$scope', '$modalInstance', 'voidData',
@@ -42,7 +42,7 @@ modalControllers.controller('ModalInstanceCtrl', ['$rootScope' , '$scope', '$mod
         };
     }]);
 /**
- * @class angular_module.modalControllers.ModalAboutCtrl
+ * @class voidEditor.modalControllers.ModalAboutCtrl
  * @description Modal which manages about pop up.
  * @function
  */
@@ -57,7 +57,7 @@ modalControllers.controller('ModalAboutCtrl', ['$scope', '$rootScope' , '$modal'
     }]);
 
 /**
- * @class angular_module.modalControllers.ModalInstanceAboutCtrl
+ * @class voidEditor.modalControllers.ModalInstanceAboutCtrl
  * @function
  */
 modalControllers.controller('ModalInstanceAboutCtrl', ['$rootScope' , '$scope', '$modalInstance',
@@ -67,7 +67,7 @@ modalControllers.controller('ModalInstanceAboutCtrl', ['$rootScope' , '$scope', 
         };
     }]);
 /**
- * @class angular_module.modalControllers.ModalContributorsCtrl
+ * @class voidEditor.modalControllers.ModalContributorsCtrl
  * @description Modal for adding more than one contributor.
  * @function
  */
@@ -83,7 +83,7 @@ modalControllers.controller('ModalContributorsCtrl', ['$scope', '$rootScope' , '
     }]);
 /**
  * @function
- * @class angular_module.modalControllers.ModalInstanceContributorsCtrl
+ * @class voidEditor.modalControllers.ModalInstanceContributorsCtrl
  */
 modalControllers.controller('ModalInstanceContributorsCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {
@@ -92,7 +92,7 @@ modalControllers.controller('ModalInstanceContributorsCtrl', ['$rootScope' , '$s
         };
     }]);
 /**
- * @class angular_module.modalControllers.ModalImportCtrl
+ * @class voidEditor.modalControllers.ModalImportCtrl
  * @description Modal which manages import.
  * @function
  */
@@ -107,7 +107,7 @@ modalControllers.controller('ModalImportCtrl', ['$scope', '$rootScope' , '$modal
     }]);
 /**
  * @function
- * @class angular_module.modalControllers.ModalInstanceImportCtrl
+ * @class voidEditor.modalControllers.ModalInstanceImportCtrl
  */
 modalControllers.controller('ModalInstanceImportCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {

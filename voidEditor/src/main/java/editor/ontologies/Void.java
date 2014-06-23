@@ -14,7 +14,8 @@ public class Void {
     public static final String NS = "http://rdfs.org/ns/void#";
     
     /** <p>The namespace of the vocabulary as a string</p>
-     *  @see #NS */
+     *  @see #NS
+     *  @return Namespace */
     public static String getURI() {return NS;}
     
     /** <p>The namespace of the vocabulary as a resource</p> */

@@ -1,12 +1,12 @@
 'use strict';
 
 /**
- * @class angular_module.dateControllers
+ * @class voidEditor.dateControllers
  */
 var dateControllers = angular.module('dateControllers', []);
 
 /**
- * @class angular_module.dateControllers.DatepickerCtrl
+ * @class voidEditor.dateControllers.DatepickerCtrl
  */
 dateControllers.controller('DatepickerCtrl', ['$scope', '$rootScope' ,
     function ($scope, $rootScope) {

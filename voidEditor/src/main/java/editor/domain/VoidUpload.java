@@ -31,7 +31,6 @@ import editor.validator.RdfChecker;
  * to extract all information and finally returns a JSON Object containing on the information acquired to be passed to the UI side.</p>
  *
  * @author Lefteris Tatakis
- * @since 19/06/2014
  */
 public class VoidUpload {
 
@@ -48,7 +47,7 @@ public class VoidUpload {
     private JSONObject result;
 
     /**
-     * Initialises the HashMaps and processes the input stream.
+     * Initialises the HashMaps and processes the input stream (file).
      *
      * @param uploadedInputStream An input stream provided by the UI, which represents the uploaded VoID file the user wants parsing.
      * @throws RDFParseException

@@ -15,7 +15,6 @@ import editor.rest.VoidRestService;
 /**
  * Provides the {@link VoidRestService} with a variety of functions that are used.
  *
- * @since 19/06/2014
  * @author Lefteris Tatakis
  */
 public class LinksetService {

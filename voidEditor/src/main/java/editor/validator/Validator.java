@@ -11,8 +11,9 @@ import uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader;
 import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 
 /**
- * Based on the work from Christian Brenninkmeijer this class is  provided the void, creates and
- * checks it according to the OPS standards.
+ * Based on the work from Christian Brenninkmeijer this class is  provided the VoID created and then
+ * checks it according to the OPS specification.
+ *
  * @author Lefteris Tatakis
  *
  */

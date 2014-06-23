@@ -12,12 +12,13 @@ import org.openrdf.rio.RDFParseException;
 import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 import editor.domain.VoidAttributes;
 
+/**
+ * Tests for the VoID Service.
+ * @author Lefteris Tatakis
+ */
 public class testVoidService {
 	private static VoidAttributes testInput ;
 	private static VoidService testObject ;
-
-	//TODO Test sources input
-	
 	// This class is not testing VoidUpload service - that is done in other tests
 	
 	@BeforeClass 

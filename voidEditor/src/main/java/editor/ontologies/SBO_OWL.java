@@ -13,7 +13,8 @@ public class SBO_OWL {
     public static final String NS = "http://biomodels.net/SBO/";
     
     /** <p>The namespace of the vocabulary as a string</p>
-     *  @see #NS */
+     *  @see #NS
+     *  @return Namespace*/
     public static String getURI() {return NS;}
     
     /** <p>The namespace of the vocabulary as a resource</p> */
@@ -167,7 +168,7 @@ public class SBO_OWL {
     public static final Resource SBO_0000028 = m_model.createResource( "http://biomodels.net/SBO/SBO_0000028" );
     
     /** <p>First general rate equation for reactions involving enzymes, it was presented 
-     *  in "Victor Henri. Lois GŽnŽrales de l'Action des Diastases. Paris, Hermann, 
+     *  in "Victor Henri. Lois Gï¿½nï¿½rales de l'Action des Diastases. Paris, Hermann, 
      *  1903.". The reaction is assumed to be made of a reversible of the binding 
      *  of the substrate to the enzyme, followed by the breakdown of the complex generating 
      *  the product. Ten years after Henri, Michaelis and Menten presented a variant 
@@ -1512,7 +1513,7 @@ public class SBO_OWL {
     public static final Resource SBO_0000207 = m_model.createResource( "http://biomodels.net/SBO/SBO_0000207" );
     
     /** <p>Chemical reaction where a proton is given by a compound, the acid, to another 
-     *  one, the base (Br¿nsted-Lowry definition). An alternative, more general, definition 
+     *  one, the base (Brï¿½nsted-Lowry definition). An alternative, more general, definition 
      *  is a reaction where a compound, the base, gives a pair of electrons to another, 
      *  the acid (Lewis definition).</p>
      */
@@ -3398,7 +3399,7 @@ public class SBO_OWL {
     
     /** <p>The Gibbs free energy change observed in a thermodynamic system when one mole 
      *  of substance reacts completely, under standard conditions (1 bar). The standard 
-     *  unit of measure is kJ/mol. symbol: ?Gû</p>
+     *  unit of measure is kJ/mol. symbol: ?Gï¿½</p>
      */
     public static final Resource SBO_0000583 = m_model.createResource( "http://biomodels.net/SBO/SBO_0000583" );
     

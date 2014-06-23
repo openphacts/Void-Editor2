@@ -13,7 +13,8 @@ public class Skos {
     public static final String NS = "http://www.w3.org/2004/02/skos/core#";
     
     /** <p>The namespace of the vocabulary as a string</p>
-     *  @see #NS */
+     *  @see #NS
+     *  @return Namespace */
     public static String getURI() {return NS;}
     
     /** <p>The namespace of the vocabulary as a resource</p> */

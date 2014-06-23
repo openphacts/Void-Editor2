@@ -4,7 +4,7 @@
 
 /**
  * @function JsonService
- * @memberOf angular_module.jsonService
+ * @memberOf voidEditor.jsonService
  * @description Service to return all Open PHACTS Data sources through its API.
  */
 var jsonService = angular.module('jsonService', ['ngResource'])
@@ -16,7 +16,7 @@ var URLPreface = "" ;
 
 /**
  * @function uploadVoidData
- * @memberOf angular_module.voidUploadService
+ * @memberOf voidEditor.voidUploadService
  * @description Service to allow the upload of VoID files to the server.
  */
 var voidUploadService = angular.module('voidUploadService', [])
@@ -44,7 +44,7 @@ var voidUploadService = angular.module('voidUploadService', [])
 
 /**
  * @function ORCIDService
- * @memberOf angular_module.ORCIDService
+ * @memberOf voidEditor.ORCIDService
  * @description Service to allow the retrieval of ORCID infomation for an individual.
  */
 var ORCIDService = angular.module('ORCIDService', [])
@@ -72,7 +72,7 @@ var ORCIDService = angular.module('ORCIDService', [])
 
 /**
  * @function ContributorORCIDService
- * @memberOf angular_module.ContributorORCIDService
+ * @memberOf voidEditor.ContributorORCIDService
  * @description Service to allow the retrieval of ORCID infomation for an contributor.
  */
 var ContributorORCIDService = angular.module('ContributorORCIDService', [])
@@ -100,7 +100,7 @@ var ContributorORCIDService = angular.module('ContributorORCIDService', [])
 
 /**
  * @function uploadUserData
- * @memberOf angular_module.userDataUploadService
+ * @memberOf voidEditor.userDataUploadService
  * @description Service to allow the upload of VoID files to the server, will return statistics on the data.
  */
 var dataUploadService = angular.module('userDataUploadService', [])
@@ -132,7 +132,7 @@ var dataUploadService = angular.module('userDataUploadService', [])
     });
 /**
  * @function voidData
- * @memberOf angular_module.voidDataService
+ * @memberOf voidEditor.voidDataService
  * @description Service to allow does the majority of the calls and work for the creation and processing of the VoID.
  */
 var voidDataService = angular.module('voidDataService', [])
@@ -188,7 +188,6 @@ var voidDataService = angular.module('voidDataService', [])
         }
         /**
          * @function setTurtle
-         * @description
          * @param {JSON} value All the new information retrieved for the user.
          */
         this.setTurtle = function (value) {

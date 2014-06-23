@@ -14,7 +14,8 @@ public class Wp {
     public static final String NS = "http://vocabularies.wikipathways.org/wp#";
     
     /** <p>The namespace of the vocabulary as a string</p>
-     *  @see #NS */
+     *  @see #NS
+     *  @return Namespace */
     public static String getURI() {return NS;}
     
     /** <p>The namespace of the vocabulary as a resource</p> */

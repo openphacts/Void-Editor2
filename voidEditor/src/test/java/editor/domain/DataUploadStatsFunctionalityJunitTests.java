@@ -12,6 +12,10 @@ import org.junit.Test;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
+/**
+ * Tests for data upload functionality.
+ * @author Lefteris Tatakis
+ */
 public class DataUploadStatsFunctionalityJunitTests {
 	private static JSONObject stats = null;
 	private DataUpload dataUploadFile = null;

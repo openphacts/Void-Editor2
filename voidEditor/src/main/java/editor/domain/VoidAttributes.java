@@ -1,7 +1,7 @@
 package editor.domain;
 
 /**
- * The object which represents the information sent from the AngularJS side for the  Void Dataset description.
+ * The object which represents the information sent from the AngularJS side, for the Void Dataset description creation.
  * @author Lefteris Tatakis
  */
 

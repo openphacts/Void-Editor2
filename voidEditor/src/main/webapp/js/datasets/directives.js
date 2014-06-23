@@ -1,6 +1,6 @@
 'use strict';
 /**
- * @class angular_module.editorAppDirectives
+ * @class voidEditor.editorAppDirectives
  */
 var editorAppDirectives = angular.module('editorAppDirectives', []);
 

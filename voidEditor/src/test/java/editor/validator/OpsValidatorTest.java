@@ -12,8 +12,11 @@ import uk.ac.manchester.cs.datadesc.validator.rdftools.RdfFactory;
 import uk.ac.manchester.cs.datadesc.validator.rdftools.RdfReader;
 import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 
-
-public class ChrisValidatorTest {
+/**
+ * Test to see if OPS Validator works correctly.
+ * @author Lefteris Tatakis
+ */
+public class OpsValidatorTest {
 	static RdfReader minReader;
     static Resource minContext;
     static MetaDataSpecification specifications;

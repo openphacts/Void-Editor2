@@ -38,23 +38,18 @@ import editor.ontologies.Prov;
 import editor.ontologies.Void;
 import editor.validator.RdfChecker;
 import editor.validator.Validator;
+
 /**
- *
- *  <p>
- *  All the data used in this class is retrieved from the the LinksetAttributes class.
- *  The data is provided from that browser side of the project.
- *  It places all data in the appropriate field of the dataset description.
+ * Main class for the creation of the VoID file for the Linkset descriptions.
+ * The data is provided from that browser side of the project(specified in the LinksetAttributes).
  *  The outputed VoID of this program complies to the
  *  <a href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/" target="_blank">OPS Dataset Description Specification</a>.
- *  </p>
- * This java class is based on work of : Andra Waagmeester.
+ * This java class is based on work of Andra Waagmeester.
  *
  * @since 19/06/2014
  * @author Lefteris Tatakis
- * @author Andra Waagmeester
  * @see editor.domain.LinksetAttributes
  */
-
 @XmlRootElement
 public class LinksetTurtle {
     /**
@@ -124,7 +119,7 @@ public class LinksetTurtle {
 	
 	
 	/**
-	 * Using data from the constructor it creates dataset description.
+	 * Using data from the constructor it creates the Linkset VoID .
      *
 	 * @throws VoidValidatorException 
 	 * @throws IOException 
@@ -294,7 +289,7 @@ public class LinksetTurtle {
 	}
 
     /**
-     * Checks if the RDF outputed is correct and valid.
+     * Checks if the RDF outputted is correct and valid.
      * @throws RDFParseException
      * @throws RDFHandlerException
      * @throws IOException
@@ -351,11 +346,15 @@ public class LinksetTurtle {
 		
 		return outputString;
 	}
-	
+
+    @Deprecated
 	public String getValidationResults(){
 		return validator.showResult();
 	}
-	
+
+    /**
+     * @return The location of the temporary VoID Linkset file created.
+     */
 	public String getLocation(){
 		output.deleteOnExit();
 		return output.getAbsolutePath();

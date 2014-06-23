@@ -1,14 +1,14 @@
 'use strict';
 
 /**
- *  @class angular_module.editorAppControllers
+ *  @class voidEditor.editorAppControllers
  */
 var editorAppControllers = angular.module('editorAppControllers', ['jsonService', 'voidDataService', 'voidUploadService', 'ORCIDService',
                                 'userDataUploadService','modalControllers' ,'ContributorORCIDService']);
 /**
  *  @function
  *  @description Main controller that instanciate all the information needed by the UI / VoID creation backend.
- *  @class angular_module.editorAppControllers.editorCtrl
+ *  @class voidEditor.editorAppControllers.editorCtrl
  */
 editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidData', 'uploadUserData', 'ORCIDService',
     function ($scope, $rootScope, voidData, uploadUserData , ORCIDService) {
@@ -496,7 +496,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         }
     }]);
 /**
- *  @class angular_module.editorAppControllers.editorFormCtrl
+ *  @class voidEditor.editorAppControllers.editorFormCtrl
  */
 editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$http', 'voidData',
     function ($rootScope, $scope, $http, voidData) {
@@ -519,7 +519,7 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
     }]);
 
 /**
- *  @class angular_module.editorAppControllers.editorContributorsCtrl
+ *  @class voidEditor.editorAppControllers.editorContributorsCtrl
  */
 editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scope', 'voidData', 'ContributorORCIDService',
     function ($rootScope, $scope , voidData ,ContributorORCIDService) {
@@ -608,7 +608,7 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
 
 /**
  * @description Allows user to upload a VoID file so it can be updated.
- * @class angular_module.editorAppControllers.editorUploadCtrl
+ * @class voidEditor.editorAppControllers.editorUploadCtrl
  */
 editorAppControllers.controller('editorUploadCtrl', ['$rootScope' , '$scope', '$http', 'uploadVoidData',
     function ($rootScope, $scope, $http, uploadVoidData) {
@@ -622,7 +622,7 @@ editorAppControllers.controller('editorUploadCtrl', ['$rootScope' , '$scope', '$
 
 /**
  * @description The controller which fills the carousel with the appropriate pages.
- * @class angular_module.editorAppControllers.editorCarouselCtrl
+ * @class voidEditor.editorAppControllers.editorCarouselCtrl
  */
 editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
     function CarouselCtrl($scope, $rootScope) {
@@ -661,7 +661,7 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
     }
 ]);
 /**
- *  @class angular_module.editorAppControllers.sourceCtrl
+ *  @class voidEditor.editorAppControllers.sourceCtrl
  */
 editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonService', 'voidData',
     function ($rootScope, $scope, JsonService, voidData) {
@@ -731,7 +731,6 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
 
         /**
          * @function
-         * @description
          * @param value
          */
         $scope.removeSelected = function (value) {

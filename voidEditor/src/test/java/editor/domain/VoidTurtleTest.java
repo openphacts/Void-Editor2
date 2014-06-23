@@ -5,9 +5,9 @@ import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/*
- *  Output void of this class is tested in the voidService Test Class
- *  Here testing the instantiation on correct input values through the process of the class.
+/**
+ *  Testing the instantiation on correct input values through the process of the class.
+ *  @author Lefteris Tatakis
  */
 public class VoidTurtleTest {
 	private static VoidAttributes testInput ;

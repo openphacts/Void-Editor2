@@ -22,8 +22,6 @@ public class CHEMINF {
 
 	public static final Property CHEMINF_000200 = property("CHEMINF_000200"); // has attribute
 
-	// SIO_000300	 has value
-
 	// Database Identifiers
 	public static final Resource CHEMINF_000405 = resource("CHEMINF_000405"); // ChemSpider
 	public static final Resource CHEMINF_000406 = resource("CHEMINF_000406"); // DrugBank

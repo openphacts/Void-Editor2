@@ -14,7 +14,8 @@ public class bibo {
     public static final String NS = "http://purl.org/ontology/bibo/";
     
     /** <p>The namespace of the vocabulary as a string</p>
-     *  @see #NS */
+     *  @see #NS
+     *  @return Namespace*/
     public static String getURI() {return NS;}
     
     /** <p>The namespace of the vocabulary as a resource</p> */

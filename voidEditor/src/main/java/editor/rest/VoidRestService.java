@@ -24,10 +24,9 @@ import com.sun.jersey.multipart.FormDataParam;
 import editor.domain.VoidAttributes;
 import editor.service.VoidService;
 /**
- * Using Restful to send information back and forth to the UI.
+ * Restful service to create, show and download VoID dataset description created.
  * 
  * @author Lefteris Tatakis
- *
  */
 @Path("/void")
 public class VoidRestService {
@@ -35,9 +34,9 @@ public class VoidRestService {
 	private static final VoidService  results = new VoidService();
 
     /**
-     * Created a temporary VoID file in order to display users their current progress.
+     * Creates a temporary VoID file in order to display users their current progress.
      * @param data The information captured from the user.
-     * @return The VoID file created in a String in order to be shown in Modal of "Under the Hood"
+     * @return The VoID file created in a String in order to be shown in the "Under the Hood" functionality.
      */
 	@Path("/output")
 	@POST
@@ -63,7 +62,7 @@ public class VoidRestService {
 	}
 
     /**
-     * Given all the appropriate user data, this will create a fully validated VoID dataset description that can be used
+     * Given all the appropriate user data, it creates a fully validated VoID dataset description that can be used
      * in the OPS project.
      * @return A file which will be downloaded by the users. This file is a validated and correct VoID dataset description.
      * @throws RDFParseException
@@ -85,7 +84,7 @@ public class VoidRestService {
 	 }
 
     /**
-     * <p>Translates the VoID the Users upload to the UI into a JSON Object which can be used by Angularjs to feel in the
+     * <p>Translates the VoID the users upload to the UI into a JSON Object. This object is then used by AngularJS to fill in the
      * information.</p>
      * @param uploadedInputStream An old VoID dataset description the users wish to update.
      * @return JSON Object that contains the information provided in the file uploaded by the user in a usable format.
@@ -112,7 +111,7 @@ public class VoidRestService {
 	}
 
     /**
-     *
+     * Uploading an RDF data file for statistical analysis.
      * @param uploadedInputStream RDF data the user want statistical analysis done on.
      * @return JSON Object containing Stats.
      */
@@ -137,7 +136,7 @@ public class VoidRestService {
 
     /**
      *
-     * @param endpoint The sparql endpoint the User wants to be statistically analysed.
+     * @param endpoint The sparql endpoint the user wants to be statistically analysed.
      * @return JSON Object containing Unique Objects.
      */
 	@Path("/sparqlStatsObject")
@@ -151,7 +150,7 @@ public class VoidRestService {
 
     /**
      *
-     * @param endpoint The sparql endpoint the User wants to be statistically analysed.
+     * @param endpoint The sparql endpoint the user wants to be statistically analysed.
      * @return JSON Object containing number of total triples.
      */
 	@Path("/sparqlStatsTotalTriples")
@@ -165,7 +164,7 @@ public class VoidRestService {
 
     /**
      *
-     * @param endpoint The sparql endpoint the User wants to be statistically analysed.
+     * @param endpoint The sparql endpoint the user wants to be statistically analysed.
      * @return JSON Object containing unique subjects.
      */
 	@Path("/sparqlStatsSubject")
@@ -178,7 +177,7 @@ public class VoidRestService {
 	}
 
     /**
-     * API service to check if created VoID is correctly validated by OPS Validator.
+     * API service to check if the created VoID is correctly validated by OPS Validator.
      * @param data The user input from the UI.
      * @return The result produced by the OPS Validator.
      */
@@ -202,7 +201,6 @@ public class VoidRestService {
 		} catch (IOException e) {
 			output = e.getMessage();
 		}
-		
 		return output;
 	}
 	

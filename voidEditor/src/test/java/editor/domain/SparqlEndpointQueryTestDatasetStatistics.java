@@ -2,7 +2,10 @@ package editor.domain;
 
 import org.json.simple.JSONObject;
 
-
+/**
+ * Testing multiple sparql endpoints.
+ * @author Lefteris Tatakis
+ */
 public class SparqlEndpointQueryTestDatasetStatistics {
 	public static void main(String[] args) {
 

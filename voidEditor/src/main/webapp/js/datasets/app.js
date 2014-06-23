@@ -1,11 +1,11 @@
 'use strict';
 /**
- * @namespace angular_module
+ * @namespace voidEditor
  */
 
 /**
  *  App Module
- * @class angular_module.editorApp
+ * @class voidEditor.editorApp
  */
 var editorApp = angular.module('editorApp', ['ngRoute' , 'editorAppControllers', 'editorAppDirectives', 'ngSanitize'
     , 'ui.bootstrap' , 'modalControllers' , 'dateControllers']);

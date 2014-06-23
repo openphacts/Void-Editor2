@@ -13,7 +13,8 @@ public class Gpml {
     public static final String NS = "http://vocabularies.wikipathways.org/gpml#";
     
     /** <p>The namespace of the vocabulary as a string</p>
-     *  @see #NS */
+     *  @see #NS
+     *  @return Namespace*/
     public static String getURI() {return NS;}
     
     /** <p>The namespace of the vocabulary as a resource</p> */

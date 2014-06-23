@@ -13,6 +13,10 @@ import org.junit.Test;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
+/**
+ * Testing the VoID upload functionality.
+ * @author Lefteris Tatakis
+ */
 public class VoidUploadJunitTest {
 	private static 	InputStream is = null;
 	private static VoidUpload temp ;
