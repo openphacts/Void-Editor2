@@ -7,7 +7,7 @@ var editorAppControllers = angular.module('editorAppControllers', ['jsonService'
                                 'userDataUploadService','modalControllers' ,'ContributorORCIDService']);
 /**
  *  @function
- *  @description
+ *  @description Main controller that instanciate all the information needed by the UI / VoID creation backend.
  *  @class angular_module.editorAppControllers.editorCtrl
  */
 editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidData', 'uploadUserData', 'ORCIDService',
@@ -60,7 +60,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
         /**
          * @function
-         * @description
+         * @description When the user chooses to describe a licence that is not provided.
          * @param val
          */
         $rootScope.otherLicence = function (val) {
@@ -71,7 +71,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 $rootScope.showOther = false;
             }
         };
-        //Will also set statistics
+        
         /**
          * @function
          * @description
