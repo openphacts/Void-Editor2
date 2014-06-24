@@ -9,24 +9,17 @@
     },
     "plugins": [],
     "templates": {
-        "systemName"            : "Linkset Creator",
+        "systemName"            : "Linkset Creator - JavaScript",
         "copyright"             : "VoID Editor v2 copyright © 2014 OpenPhacts - Lefteris Tatakis",
         "navType"               : "vertical",
         "theme"                 : "cerulean",
-        "linenums"              : "false",
-        "collapseSymbols"       : "true",
-        "inverseNav"            : "true",
-        "outputSourceFiles"     : "true" ,
-        "outputSourcePath"      : "true",
-        "dateFormat"            : "dddd, MMMM Do YYYY, h:mm:ss a",
-        "cleverLinks": false,
-        "monospaceLinks": false
+        "dateFormat"            : "dddd, MMMM Do YYYY, h:mm:ss a"
+
     },
     "opts": {
         "template": "C:\\Users\\Lefteris\\Documents\\JsJDoc\\jsdoc-master\\templates\\docstrap-master\\template",
         "encoding": "utf8",
         "destination": "C:\\Users\\Lefteris\\Desktop\\Void-Editor2\\voidEditor\\src\\main\\webapp\\docs\\js\\linkset",
-        "recurse": true,
-        "private": true
+        "recurse": true
     }
 }

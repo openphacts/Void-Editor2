@@ -4,7 +4,7 @@
 
 /**
  * @function JsonService
- * @memberOf voidEditor.jsonService
+ * @memberOf voidEditor.editorApp.jsonService
  * @description Service to return all Open PHACTS Data sources through its API.
  */
 var jsonService = angular.module('jsonService', ['ngResource'])
@@ -16,7 +16,7 @@ var URLPreface = "" ;
 
 /**
  * @function uploadVoidData
- * @memberOf voidEditor.voidUploadService
+ * @memberOf voidEditor.editorApp.voidUploadService
  * @description Service to allow the upload of VoID files to the server.
  */
 var voidUploadService = angular.module('voidUploadService', [])
@@ -44,7 +44,7 @@ var voidUploadService = angular.module('voidUploadService', [])
 
 /**
  * @function ORCIDService
- * @memberOf voidEditor.ORCIDService
+ * @memberOf voidEditor.editorApp.ORCIDService
  * @description Service to allow the retrieval of ORCID infomation for an individual.
  */
 var ORCIDService = angular.module('ORCIDService', [])
@@ -72,7 +72,7 @@ var ORCIDService = angular.module('ORCIDService', [])
 
 /**
  * @function ContributorORCIDService
- * @memberOf voidEditor.ContributorORCIDService
+ * @memberOf voidEditor.editorApp.ContributorORCIDService
  * @description Service to allow the retrieval of ORCID infomation for an contributor.
  */
 var ContributorORCIDService = angular.module('ContributorORCIDService', [])
@@ -100,7 +100,7 @@ var ContributorORCIDService = angular.module('ContributorORCIDService', [])
 
 /**
  * @function uploadUserData
- * @memberOf voidEditor.userDataUploadService
+ * @memberOf voidEditor.editorApp.userDataUploadService
  * @description Service to allow the upload of VoID files to the server, will return statistics on the data.
  */
 var dataUploadService = angular.module('userDataUploadService', [])
@@ -132,7 +132,7 @@ var dataUploadService = angular.module('userDataUploadService', [])
     });
 /**
  * @function voidData
- * @memberOf voidEditor.voidDataService
+ * @memberOf voidEditor.editorApp.voidDataService
  * @description Service to allow does the majority of the calls and work for the creation and processing of the VoID.
  */
 var voidDataService = angular.module('voidDataService', [])
@@ -196,7 +196,7 @@ var voidDataService = angular.module('voidDataService', [])
         };
 
         /**
-         * @function
+         * @function getTurtle
          * @description  Allow a controller to retrieve latest user data.
          * @returns {string}
          */
@@ -205,15 +205,15 @@ var voidDataService = angular.module('voidDataService', [])
         };
 
         /**
-         * @function
+         * @function setUriForSourcesExist
          * @description Setting if the URI of sources exist.
-         * @param value
+         * @param {} value
          */
         this.setUriForSourcesExist = function (value) {
             uriForSourcesExist = value;
         };
         /**
-         * @function
+         * @function setData
          * @description Setting the data object in order to pass information to a separate constructor when needed.
          * @param value
          */
@@ -222,30 +222,30 @@ var voidDataService = angular.module('voidDataService', [])
             $rootScope.$broadcast('DataChanged', data);
         };
         /**
-         * @function
-         * @returns {{}}
+         * @function getData
+         * @returns {JSON} All information that the user has entered.
          */
         this.getData = function () {
             return data;
         };
         /**
-         * @function
+         * @function checkSources
          * @description Broadcasts a message to main controller to ensure all the correct sources are encapsulated.
          */
         this.checkSources = function () {
             $rootScope.$broadcast("checkSources");
         };
         /**
-         * @function
-         * @returns {string}
+         * @function checkIfUriForSourcesExist
+         * @returns {string} Value if URI of a source exists.
          */
         this.checkIfUriForSourcesExist = function () {
             return uriForSourcesExist;
         };
         /**
-         * @function
+         * @function createVoid
          * @description Sends a message to the backend to create the VoID for the Modal.
-         * @returns {*}
+         * @returns {String}  VoID Dataset Description
          */
         this.createVoid = function () {
             $rootScope.$broadcast('needData', data);
@@ -266,32 +266,34 @@ var voidDataService = angular.module('voidDataService', [])
 
         };
         /**
-         * @function
-         * @param value
+         * @function setSourceData
+         * @description Sets the incorporated datasources variable and broadcasts a global message of 'DataSourcesChanged'.
+         * @param {JSON} value - A JSON Object containing all the incorporated datasources the user has selected.
          */
         this.setSourceData = function (value) {
             data.sources = value;
             $rootScope.$broadcast('DataSourcesChanged', data.sources);
         };
         /**
-         * @function
-         * @param value
+         * @function setContributorData
+         * @description Sets the contributors variable and broadcasts a global message of 'ContributorsChanged'.
+         * @param {JSON} value - JSON Object of contributors and all their information.
          */
         this.setContributorData = function (value){
             data.contributors = value;
             $rootScope.$broadcast('ContributorsChanged', data.contributors);
         }
         /**
-         * @function
-         * @returns {sources|*|Array|ConfigChain.sources}
+         * @function getSourceData
+         * @returns {JSON} JSON Object containing all the information of the incorporated sources.
          */
         this.getSourceData = function () {
             return data.sources;
         };
         /**
-         * @function
-         * @description Send message to the backend to create VoID and allow the download of it.
-         * @returns {boolean}
+         * @function createVoidAndDownload
+         * @description Send message to the backend to create VoID and allow the download of it by broadcasting 'SuccessDownload'.
+         * @returns {boolean} Informing the method has ended.
          */
         this.createVoidAndDownload = function () {
 

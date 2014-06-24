@@ -1,13 +1,22 @@
 'use strict';
 
-/* Services */
+/* Services - Singletons*/
+/**
+ * @function JsonService
+ * @memberOf linksetCreator.linksetApp.jsonService
+ * @description Service to return all Open PHACTS Data sources through its API.
+ */
 var jsonService = angular.module('jsonService', ['ngResource'])
     .factory('JsonService', function ($resource) {
         return $resource('https://beta.openphacts.org/1.3/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json');
     });
 
 var URLPreface = "" ;//"/voidEditor"; // to be changed between dev and prod
-
+/**
+ * @function ORCIDService
+ * @memberOf linksetCreator.linksetApp.ORCIDService
+ * @description Service to allow the retrieval of ORCID infomation for an individual.
+ */
 var ORCIDService = angular.module('ORCIDService', [])
     .service('ORCIDService', function ($rootScope, $http) {
 
@@ -31,7 +40,11 @@ var ORCIDService = angular.module('ORCIDService', [])
         }
     });
 
-
+/**
+ * @function voidData
+ * @memberOf linksetCreator.linksetApp.voidDataService
+ * @description Service to allow does the majority of the calls and work for the creation and processing of the VoID.
+ */
 var voidDataService = angular.module('voidDataService', [])
     .service('voidData', function ($rootScope, $http, $window) {
         var turtleData, fileLocation, data, uriForSourcesExist, outputURL;
@@ -41,51 +54,88 @@ var voidDataService = angular.module('voidDataService', [])
         uriForSourcesExist = "passed";
         outputURL = URLPreface + '/rest/linkset/output';
 
+        /**
+         * @function
+         * @param value
+         */
         this.setTurtle = function (value) {
             turtleData = value;
             $rootScope.$broadcast('TurtleChanged', turtleData);
         };
 
-
+        /**
+         * @function
+         * @param value
+         */
         this.setSourceData = function (value) {
             data.sources = value;
             $rootScope.$broadcast('DataSourcesChanged', data.sources);
         };
 
+        /**
+         * @function
+         * @returns {string}
+         */
         this.getTurtle = function () {
             return turtleData;
         };
 
+        /**
+         * @function
+         * @param value
+         */
         this.setUserTarget = function (value) {
             data.userTarget = value;
             $rootScope.$broadcast('setUserTarget', data.userTarget);
         }
 
+        /**
+         * @function
+         * @param value
+         */
         this.setUserSource = function (value) {
             data.userSource = value;
             $rootScope.$broadcast('setUserSource', data.userSource);
-        }
-
+        };
+        /**
+         * @function
+         * @param value
+         */
         this.setUriForSourcesExist = function (value) {
             uriForSourcesExist = value;
         };
-
+        /**
+         * @function
+         * @param value
+         */
         this.setData = function (value) {
             data = value;
             $rootScope.$broadcast('DataChanged', data);
         };
-
+        /**
+         * @function
+         * @returns {{}}
+         */
         this.getData = function () {
             return data;
         };
-
+        /**
+         * @function
+         * @returns {string}
+         */
         this.checkIfUriForSourcesExist = function () {
             return uriForSourcesExist;
         };
+        /**
+         * @function
+         */
         this.checkSources = function () {
             $rootScope.$broadcast("checkSources");
         };
-
+        /**
+         * @function
+         * @returns {*}
+         */
         this.createVoid = function () {
             $rootScope.$broadcast('needData', data);
             $rootScope.$broadcast('StartLoader');
@@ -104,7 +154,10 @@ var voidDataService = angular.module('voidDataService', [])
                 });
 
         };
-
+        /**
+         * @function
+         * @returns {boolean}
+         */
         this.createVoidAndDownload = function () {
 
             $rootScope.$broadcast('needData', data);

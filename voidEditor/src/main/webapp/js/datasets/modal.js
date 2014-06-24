@@ -2,14 +2,21 @@
 
 /**
  * @description All the Modal that are created here are based on : http://angular-ui.github.io/bootstrap/
- * @class voidEditor.modalControllers
+ * @author Lefteris Tatakis
+ * @class voidEditor.editorApp.modalControllers
  */
 var modalControllers = angular.module('modalControllers', ['voidDataService']);
 
 /**
- * @class voidEditor.modalControllers.ModalExportCtrl
- * @description Modal for Under the hood.
- * @function
+ *  @description  Modal for Under the hood.
+ *  @memberOf  voidEditor.editorApp.modalControllers
+ *  @class voidEditor.editorApp.modalControllers.ModalExportCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
+ *  @param {$modal} $modal - The Angularjs JS handler for modals.
  */
 modalControllers.controller('ModalExportCtrl', ['$scope', '$rootScope' , '$modal', 'voidData',
     function ($scope, $rootScope, $modal, voidData) {
@@ -25,9 +32,17 @@ modalControllers.controller('ModalExportCtrl', ['$scope', '$rootScope' , '$modal
             }
         };
     }]);
-/**
- * @class voidEditor.modalControllers.ModalInstanceCtrl
- * @function
+
+ /**
+ *  @description  Modal for Under the hood.
+ *  @memberOf  voidEditor.editorApp.modalControllers
+ *  @class voidEditor.editorApp.modalControllers.ModalInstanceCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
+ *  @param {modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
  */
 modalControllers.controller('ModalInstanceCtrl', ['$rootScope' , '$scope', '$modalInstance', 'voidData',
     function ($rootScope, $scope, $modalInstance, voidData) {
@@ -41,10 +56,16 @@ modalControllers.controller('ModalInstanceCtrl', ['$rootScope' , '$scope', '$mod
             $modalInstance.dismiss('cancel');
         };
     }]);
+
 /**
- * @class voidEditor.modalControllers.ModalAboutCtrl
- * @description Modal which manages about pop up.
- * @function
+ *  @description  Modal which manages "about" pop up.
+ *  @memberOf  voidEditor.editorApp.modalControllers
+ *  @class voidEditor.editorApp.modalControllers.ModalAboutCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$modal} $modal - The Angularjs JS handler for modals.
  */
 modalControllers.controller('ModalAboutCtrl', ['$scope', '$rootScope' , '$modal',
     function ($scope, $rootScope, $modal) {
@@ -56,9 +77,16 @@ modalControllers.controller('ModalAboutCtrl', ['$scope', '$rootScope' , '$modal'
         };
     }]);
 
+
 /**
- * @class voidEditor.modalControllers.ModalInstanceAboutCtrl
- * @function
+ *  @description   "About" functionality.
+ *  @memberOf  voidEditor.editorApp.modalControllers
+ *  @class voidEditor.editorApp.modalControllers.ModalInstanceAboutCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
  */
 modalControllers.controller('ModalInstanceAboutCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {
@@ -66,10 +94,16 @@ modalControllers.controller('ModalInstanceAboutCtrl', ['$rootScope' , '$scope', 
             $modalInstance.dismiss('cancel');
         };
     }]);
+
 /**
- * @class voidEditor.modalControllers.ModalContributorsCtrl
- * @description Modal for adding more than one contributor.
- * @function
+ *  @description Modal for adding more than one contributor.
+ *  @memberOf  voidEditor.editorApp.modalControllers
+ *  @class voidEditor.editorApp.modalControllers.ModalContributorsCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$modal} $modal - The Angularjs JS handler for modals.
  */
 modalControllers.controller('ModalContributorsCtrl', ['$scope', '$rootScope' , '$modal',
     function ($scope, $rootScope, $modal) {
@@ -82,8 +116,14 @@ modalControllers.controller('ModalContributorsCtrl', ['$scope', '$rootScope' , '
         };
     }]);
 /**
- * @function
- * @class voidEditor.modalControllers.ModalInstanceContributorsCtrl
+ *  @description   Contributor functionality.
+ *  @memberOf  voidEditor.editorApp.modalControllers
+ *  @class voidEditor.editorApp.modalControllers.ModalInstanceContributorsCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
  */
 modalControllers.controller('ModalInstanceContributorsCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {
@@ -91,10 +131,16 @@ modalControllers.controller('ModalInstanceContributorsCtrl', ['$rootScope' , '$s
             $modalInstance.dismiss('cancel');
         };
     }]);
+
 /**
- * @class voidEditor.modalControllers.ModalImportCtrl
- * @description Modal which manages import.
- * @function
+ *  @description Modal which manages import.
+ *  @memberOf  voidEditor.editorApp.modalControllers
+ *  @class voidEditor.editorApp.modalControllers.ModalImportCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$modal} $modal - The Angularjs JS handler for modals.
  */
 modalControllers.controller('ModalImportCtrl', ['$scope', '$rootScope' , '$modal',
     function ($scope, $rootScope, $modal) {
@@ -106,8 +152,14 @@ modalControllers.controller('ModalImportCtrl', ['$scope', '$rootScope' , '$modal
         };
     }]);
 /**
- * @function
- * @class voidEditor.modalControllers.ModalInstanceImportCtrl
+ *  @description   Import functionality.
+ *  @memberOf  voidEditor.editorApp.modalControllers
+ *  @class voidEditor.editorApp.modalControllers.ModalInstanceImportCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
  */
 modalControllers.controller('ModalInstanceImportCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>VoID Editor v2 - JavaScript Class: ModalInstanceContributorsCtrl</title>
+	<title>VoID Editor v2 - JavaScript Class: dateControllers</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -42,35 +42,23 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
-							<a href="voidEditor.dateControllers.html">dateControllers</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.dateControllers.DatepickerCtrl.html">DatepickerCtrl</a>
-						</li>
-						
-						<li>
 							<a href="voidEditor.editorApp.html">editorApp</a>
 						</li>
 						
 						<li>
-							<a href="voidEditor.editorAppControllers.html">editorAppControllers</a>
+							<a href="voidEditor.editorApp.dateControllers.html">dateControllers</a>
 						</li>
 						
 						<li>
-							<a href="voidEditor.editorAppDirectives.html">editorAppDirectives</a>
+							<a href="voidEditor.editorApp.editorAppControllers.html">editorAppControllers</a>
 						</li>
 						
 						<li>
-							<a href="voidEditor.modalControllers.html">modalControllers</a>
+							<a href="voidEditor.editorApp.editorAppDirectives.html">editorAppDirectives</a>
 						</li>
 						
 						<li>
-							<a href="voidEditor.modalControllers.ModalInstanceContributorsCtrl.html">ModalInstanceContributorsCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.modalControllers.ModalInstanceImportCtrl.html">ModalInstanceImportCtrl</a>
+							<a href="voidEditor.editorApp.modalControllers.html">modalControllers</a>
 						</li>
 						
 
@@ -84,19 +72,11 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
-							<a href="global.html#callORCIDEndpoint">callORCIDEndpoint</a>
-						</li>
-						
-						<li>
 							<a href="global.html#checkIfUriForSourcesExist">checkIfUriForSourcesExist</a>
 						</li>
 						
 						<li>
 							<a href="global.html#checkSources">checkSources</a>
-						</li>
-						
-						<li>
-							<a href="global.html#closeAlert">closeAlert</a>
 						</li>
 						
 						<li>
@@ -117,14 +97,6 @@
 						
 						<li>
 							<a href="global.html#getTurtle">getTurtle</a>
-						</li>
-						
-						<li>
-							<a href="global.html#letUserUploadData">letUserUploadData</a>
-						</li>
-						
-						<li>
-							<a href="global.html#otherLicence">otherLicence</a>
 						</li>
 						
 						<li>
@@ -175,14 +147,14 @@
 					
 
 
-	<h1 class="page-title">Class: ModalInstanceContributorsCtrl</h1>
+	<h1 class="page-title">Class: dateControllers</h1>
 <section>
 
 <header>
     <h2>
-        <span class="ancestors"><a href="voidEditor.html">voidEditor</a><a href="voidEditor.modalControllers.html">.modalControllers</a>.</span>
+        <span class="ancestors"><a href="voidEditor.html">voidEditor</a><a href="voidEditor.editorApp.html">.editorApp</a>.</span>
     
-    ModalInstanceContributorsCtrl
+    dateControllers
     </h2>
     
 </header>
@@ -194,7 +166,7 @@
     
         
 <dt>
-    <h4 class="name" id="ModalInstanceContributorsCtrl"><span class="type-signature"></span>new ModalInstanceContributorsCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="dateControllers"><span class="type-signature"></span>new dateControllers<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -220,6 +192,13 @@
 
 	
 
+	
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Lefteris Tatakis</li>
+			</ul>
+	</dd>
 	
 
 	
@@ -269,6 +248,155 @@
     
 
     
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="DatepickerCtrl"><span class="type-signature">&lt;static> </span>DatepickerCtrl<span class="signature">($scope, $rootScope)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Controller responsible for the date selection.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>$scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">scope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scope in which this controller operates.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$rootScope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">rootScope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The parent of all the existing scopes.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Lefteris Tatakis</li>
+			</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
 
     
 
@@ -293,7 +421,7 @@
 					
 	<!-- 	<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a>
-		on Tuesday, June 24th 2014, 10:27:05 am using the <a
+		on Tuesday, June 24th 2014, 11:01:57 am using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span> -->
 				</footer>

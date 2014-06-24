@@ -1,14 +1,22 @@
 'use strict';
 
 /**
- *  @class voidEditor.editorAppControllers
+ * @author Lefteris Tatakis
+ * @class voidEditor.editorApp.editorAppControllers
  */
 var editorAppControllers = angular.module('editorAppControllers', ['jsonService', 'voidDataService', 'voidUploadService', 'ORCIDService',
                                 'userDataUploadService','modalControllers' ,'ContributorORCIDService']);
 /**
+ *  @description Main controller that instantiate all the information needed by the UI / VoID creation backend.
+ *  @memberOf  voidEditor.editorApp.editorAppControllers
+ *  @class  voidEditor.editorApp.editorAppControllers.editorCtrl
+ *  @author Lefteris Tatakis
  *  @function
- *  @description Main controller that instanciate all the information needed by the UI / VoID creation backend.
- *  @class voidEditor.editorAppControllers.editorCtrl
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
+ *  @param {Service} uploadUserData - Allows users to upload data to the server.
+ *  @param {Service} ORCIDService - Service that communicates with the ORCID API.
  */
 editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidData', 'uploadUserData', 'ORCIDService',
     function ($scope, $rootScope, voidData, uploadUserData , ORCIDService) {
@@ -211,17 +219,19 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         });
 
         /**
-         * @function
+         * @function closeAlert
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          * @description Closes an alert displayed on screen.
-         * @param index
+         * @param {int} index - Index of alert to be removed.
          */
         $rootScope.closeAlert = function (index) {
             $rootScope.alerts.splice(index, 1);
         };
         /**
-         * @function
+         * @function otherLicence
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          * @description When the user chooses to describe a licence that is not provided.
-         * @param val
+         * @param {String} val
          */
         $rootScope.otherLicence = function (val) {
             if (val == "other") {
@@ -233,9 +243,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         };
 
         /**
-         * @function
+         * @function letUserUploadData
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          * @description User is uploading RDF data for statistical analysis.
-         * @param files
+         * @param {Array} files - An array of inputstreams to be used by the server.
          */
         $rootScope.letUserUploadData = function (files) {
             var data = new FormData();
@@ -246,8 +257,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         };
 
         /**
-         * @function
-         * @description Checks is the information provided is the correct length for an ORCID ID, if so call ORCID API.
+         * @function callORCIDEndpoint
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
+         * @description is the information provided is the correct length for an ORCID ID, if so call ORCID API.
          */
         $rootScope.callORCIDEndpoint = function() {
             if ( $rootScope.data.ORCID !=undefined&&  $rootScope.data.ORCID.length >= 16 )
@@ -259,7 +271,8 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
         }
         /**
-         * @function
+         * @function callSparqlEndpoint
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          * @description Queries Sparql Endpoint for statistical analysis.
          */
         $rootScope.callSparqlEndpoint = function() {
@@ -272,7 +285,8 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         }
 
         /**
-         * @function
+         * @function changeQuestionForDownloadData
+         * @memberOf voidEditor.editorAppControllers.editorCtrl
          * @description Changes the questions displayed to the user depending if the dataset provided is RDF or Not.
          */
         $rootScope.changeQuestionForDownloadData= function(){
@@ -290,7 +304,8 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         }
 
         /**
-         * @function
+         * @function checkMustFieldsOnPreviousPage
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          * @description Checks what fields that are required are not filled.
          * @param index The page to have its fields checked.
          */
@@ -331,10 +346,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }//if
         };
         /**
-         * @function
+         * @function checkIfAlertNeedsAdding
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          * @description Checks if the alert required to be added, is already there.
          * @param id2Check ID of the error.
-         * @returns {boolean}
+         * @returns {boolean} If alert already exists are not.
          */
         $rootScope.checkIfAlertNeedsAdding = function (id2Check){
             var addAlert = true;
@@ -344,9 +360,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             return addAlert;
         };
         /**
-         * @function
+         * @function removeAlert
          * @description Removes an alert by its given ID.
-         * @param id2Remove
+         * @param id2Remove ID of alert to remove.
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          */
         $rootScope.removeAlert =function(id2Remove){
             for (var k = 0; k < $rootScope.alerts.length; k++) {
@@ -356,9 +373,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
 
         /**
-         * @function
+         * @function fieldsToAdd
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          * @description In the final page of the UI display to the user once more what info is needed.
-         * @returns {string}
+         * @returns {string} HTML code to be added on the last slide to show user information that is needed.
          */
         $rootScope.fieldsToAdd = function () {
             var returnString = "",
@@ -427,7 +445,8 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             return returnString;
         };
         /**
-         * @function
+         * @function checkSources
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          */
         $rootScope.checkSources =function(){
             $rootScope.noURI = -1;
@@ -450,9 +469,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
         }
         /**
-         * @function
+         * @function addAlert
          * @description Given the ID add the appropriate Alert / Error .
-         * @param id2Add
+         * @param id2Add ID of alert to be added.
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          * @returns {string}
          */
         $rootScope.addAlert = function(id2Add){
@@ -495,8 +515,17 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             return "failed";
         }
     }]);
+
 /**
- *  @class voidEditor.editorAppControllers.editorFormCtrl
+ *  @description Controller responsible for making the service calls for the creation and the download of the VoID.
+ *  @memberOf  voidEditor.editorApp.editorAppControllers
+ *  @class  voidEditor.editorApp.editorAppControllers.editorFormCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
+ *  @param {http} $http - Allows http connections.
  */
 editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$http', 'voidData',
     function ($rootScope, $scope, $http, voidData) {
@@ -519,7 +548,15 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
     }]);
 
 /**
- *  @class voidEditor.editorAppControllers.editorContributorsCtrl
+ *  @description Controller responsible for the contributor addition functionality.
+ *  @memberOf  voidEditor.editorApp.editorAppControllers
+ *  @class  voidEditor.editorApp.editorAppControllers.editorContributorsCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
+ *  @param {Service} ContributorORCIDService - Makes calls to ORCID Api to retrieve information of the contributors.
  */
 editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scope', 'voidData', 'ContributorORCIDService',
     function ($rootScope, $scope , voidData ,ContributorORCIDService) {
@@ -537,7 +574,8 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
         });
 
         /**
-         * @function
+         * @function callORCIDEndpointContributor
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorContributorsCtrl
          * @description Calling ORCID Api to retrieve info for each contributor.
          * @param value
          */
@@ -565,7 +603,8 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
         });
 
         /**
-         * @function
+         * @function add
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorContributorsCtrl
          * @description Add annother contributor to the list.
          */
         $scope.add = function () {
@@ -578,7 +617,8 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
         };
 
         /**
-         * @function
+         * @function save
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorContributorsCtrl
          * @description Save the contributors the user has provided.
          */
         $scope.save= function(){
@@ -586,7 +626,8 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
         }
 
         /**
-         * @function
+         * @function removeContributor
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorContributorsCtrl
          * @description Remove the selected contributor.
          * @param id
          */
@@ -606,9 +647,17 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
 
     }]);
 
+
 /**
- * @description Allows user to upload a VoID file so it can be updated.
- * @class voidEditor.editorAppControllers.editorUploadCtrl
+ *  @description Allows user to upload a VoID file so it can be updated.
+ *  @memberOf  voidEditor.editorApp.editorAppControllers
+ *  @class  voidEditor.editorApp.editorAppControllers.editorUploadCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {http} $http - Allows http connections.
+ *  @param {Service} uploadVoidData - Allows the user to upload VoID data to the server.
  */
 editorAppControllers.controller('editorUploadCtrl', ['$rootScope' , '$scope', '$http', 'uploadVoidData',
     function ($rootScope, $scope, $http, uploadVoidData) {
@@ -621,8 +670,13 @@ editorAppControllers.controller('editorUploadCtrl', ['$rootScope' , '$scope', '$
     }]);
 
 /**
- * @description The controller which fills the carousel with the appropriate pages.
- * @class voidEditor.editorAppControllers.editorCarouselCtrl
+ *  @description The controller which fills the carousel with the appropriate pages.
+ *  @memberOf  voidEditor.editorApp.editorAppControllers
+ *  @class  voidEditor.editorApp.editorAppControllers.editorCarouselCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
  */
 editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
     function CarouselCtrl($scope, $rootScope) {
@@ -633,6 +687,12 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
         $rootScope.mustFields = [];
 
         var slides = $scope.slides = [];
+        /**
+         * @memberOf voidEditor.editorApp.editorAppControllers.editorCarouselCtrl
+         * @param i Index of the slide to be added
+         * @param title The title to be displayed for that slide.
+         * @param mustFields What fields in that slide are necessary.
+         */
         $scope.addSlide = function (i, title, mustFields) {
             var temp;
             if (i != 0)   temp = "partials/datasets/page" + i + ".html";
@@ -660,8 +720,17 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
 
     }
 ]);
+
 /**
- *  @class voidEditor.editorAppControllers.sourceCtrl
+ *  @description Controller which manages the selection, addition and removal of incorporated sources in the dataset description.
+ *  @memberOf  voidEditor.editorApp.editorAppControllers
+ *  @class  voidEditor.editorApp.editorAppControllers.sourceCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {Service} JsonService - Downloads the OPS sources for the Open PHACTS API.
+ *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
  */
 editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonService', 'voidData',
     function ($rootScope, $scope, JsonService, voidData) {
@@ -674,15 +743,17 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
         $scope.showInputURI = false;
 
         /**
-         * @function
-         * @param item
-         * @returns {boolean}
+         * @function noTitleFilter
+         * @memberOf voidEditor.editorApp.editorAppControllers.sourceCtrl
+         * @param item A Source object.
+         * @returns {boolean} If title is String.
          */
         $scope.noTitleFilter = function (item) {
             return typeof item.title == 'string';
         };
         /**
-         * @function
+         * @function extractTitlesOfSources
+         * @memberOf voidEditor.editorApp.editorAppControllers.sourceCtrl
          * @description Extract titles of the sources from the OPS JSON.
          */
         $scope.extractTitlesOfSources = function () {
@@ -692,16 +763,21 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
                 $scope.descriptionsOfTitles.push($scope.sources[i].description);
             }
         };
-
+        /**
+         * @function JsonService.get
+         * @memberOf voidEditor.editorApp.editorAppControllers.sourceCtrl
+         * @description Retrievs all source information from OPS.
+         */
         JsonService.get(function (data) {
             $scope.sources = data.result.primaryTopic.subset;
             $scope.extractTitlesOfSources();
         });
 
         /**
-         * @function
+         * @function addToSelected
+         * @memberOf voidEditor.editorApp.editorAppControllers.sourceCtrl
          * @description Add a source to the users cited sources.
-         * @param value
+         * @param {String} value
          */
         $scope.addToSelected = function (value) {
             var found = 0;
@@ -730,8 +806,9 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
         };
 
         /**
-         * @function
-         * @param value
+         * @function removeSelected
+         * @memberOf voidEditor.editorApp.editorAppControllers.sourceCtrl
+         * @param {String} value The title to be removed.
          */
         $scope.removeSelected = function (value) {
             var found = false;

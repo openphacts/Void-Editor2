@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>VoID Editor v2 Class: editorAppControllers</title>
+	<title>VoID Editor v2 - JavaScript Class: editorAppControllers</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -16,9 +16,9 @@
 
 <body>
 <div class="container-fluid">
-	<div class="navbar navbar-fixed-top navbar-inverse">
+	<div class="navbar navbar-fixed-top ">
 		<div class="navbar-inner">
-			<a class="brand" href="index.html">VoID Editor v2</a>
+			<a class="brand" href="index.html">VoID Editor v2 - JavaScript</a>
 			<ul class="nav">
 				
 				<li class="dropdown">
@@ -42,15 +42,15 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
-							<a href="voidEditor.dateControllers.html">dateControllers</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.dateControllers.DatepickerCtrl.html">DatepickerCtrl</a>
-						</li>
-						
-						<li>
 							<a href="voidEditor.editorApp.html">editorApp</a>
+						</li>
+						
+						<li>
+							<a href="voidEditor.editorApp.dateControllers.html">dateControllers</a>
+						</li>
+						
+						<li>
+							<a href="voidEditor.editorApp.modalControllers.html">modalControllers</a>
 						</li>
 						
 						<li>
@@ -58,43 +58,7 @@
 						</li>
 						
 						<li>
-							<a href="voidEditor.editorAppControllers.editorCarouselCtrl.html">editorCarouselCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.editorAppControllers.editorContributorsCtrl.html">editorContributorsCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.editorAppControllers.editorCtrl.html">editorCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.editorAppControllers.editorFormCtrl.html">editorFormCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.editorAppControllers.editorUploadCtrl.html">editorUploadCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.editorAppControllers.sourceCtrl.html">sourceCtrl</a>
-						</li>
-						
-						<li>
 							<a href="voidEditor.editorAppDirectives.html">editorAppDirectives</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.modalControllers.html">modalControllers</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.modalControllers.ModalInstanceContributorsCtrl.html">ModalInstanceContributorsCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.modalControllers.ModalInstanceImportCtrl.html">ModalInstanceImportCtrl</a>
 						</li>
 						
 
@@ -102,17 +66,61 @@
 				</li>
 				
 				<li class="dropdown">
-					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Services<b
 						class="caret"></b></a>
 
 					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#checkIfUriForSourcesExist">checkIfUriForSourcesExist</a>
+						</li>
+						
+						<li>
+							<a href="global.html#checkSources">checkSources</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createVoid">createVoid</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createVoidAndDownload">createVoidAndDownload</a>
+						</li>
+						
+						<li>
+							<a href="global.html#getData">getData</a>
+						</li>
+						
+						<li>
+							<a href="global.html#getSourceData">getSourceData</a>
+						</li>
+						
+						<li>
+							<a href="global.html#getTurtle">getTurtle</a>
+						</li>
 						
 						<li>
 							<a href="global.html#querySparqlEndPoint">querySparqlEndPoint</a>
 						</li>
 						
 						<li>
+							<a href="global.html#setContributorData">setContributorData</a>
+						</li>
+						
+						<li>
+							<a href="global.html#setData">setData</a>
+						</li>
+						
+						<li>
+							<a href="global.html#setSourceData">setSourceData</a>
+						</li>
+						
+						<li>
 							<a href="global.html#setTurtle">setTurtle</a>
+						</li>
+						
+						<li>
+							<a href="global.html#setUriForSourcesExist">setUriForSourcesExist</a>
 						</li>
 						
 
@@ -125,7 +133,13 @@
 
 	<div class="row-fluid">
 
+				
 	
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
+			
+
 		
 		<div class="span8">
 			
@@ -179,20 +193,22 @@
 	
 
 	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		controllers.js
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Lefteris Tatakis</li>
+			</ul>
 	</dd>
+	
+
+	
+
+	
+
+	
+
+
+
 	
 
 	
@@ -226,33 +242,1138 @@
     
 
     
-        <h3 class="subsection-title">Classes</h3>
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         <dl>
-            <dt><a href="voidEditor.editorAppControllers.editorCarouselCtrl.html">editorCarouselCtrl</a></dt>
-            <dd></dd>
+            
+<dt>
+    <h4 class="name" id="editorCarouselCtrl"><span class="type-signature">&lt;static> </span>editorCarouselCtrl<span class="signature">($scope, $rootScope)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        The controller which fills the carousel with the appropriate pages.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
         
-            <dt><a href="voidEditor.editorAppControllers.editorContributorsCtrl.html">editorContributorsCtrl</a></dt>
-            <dd></dd>
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>$scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">scope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scope in which this controller operates.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$rootScope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">rootScope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The parent of all the existing scopes.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Lefteris Tatakis</li>
+			</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
         
-            <dt><a href="voidEditor.editorAppControllers.editorCtrl.html">editorCtrl</a></dt>
-            <dd></dd>
+            
+<dt>
+    <h4 class="name" id="editorContributorsCtrl"><span class="type-signature">&lt;static> </span>editorContributorsCtrl<span class="signature">($scope, $rootScope, voidData, ContributorORCIDService)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Controller responsible for the contributor addition functionality.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
         
-            <dt><a href="voidEditor.editorAppControllers.editorFormCtrl.html">editorFormCtrl</a></dt>
-            <dd></dd>
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>$scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">scope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scope in which this controller operates.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$rootScope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">rootScope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The parent of all the existing scopes.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>voidData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Service to handle the creation and retrieval of the VoID.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>ContributorORCIDService</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Makes calls to ORCID Api to retrieve information of the contributors.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Lefteris Tatakis</li>
+			</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
         
-            <dt><a href="voidEditor.editorAppControllers.editorUploadCtrl.html">editorUploadCtrl</a></dt>
-            <dd></dd>
+            
+<dt>
+    <h4 class="name" id="editorCtrl"><span class="type-signature">&lt;static> </span>editorCtrl<span class="signature">($scope, $rootScope, voidData, uploadUserData, ORCIDService)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Main controller that instantiate all the information needed by the UI / VoID creation backend.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
         
-            <dt><a href="voidEditor.editorAppControllers.sourceCtrl.html">sourceCtrl</a></dt>
-            <dd></dd>
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>$scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">scope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scope in which this controller operates.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$rootScope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">rootScope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The parent of all the existing scopes.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>voidData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Service to handle the creation and retrieval of the VoID.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>uploadUserData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Allows users to upload data to the server.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>ORCIDService</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Service that communicates with the ORCID API.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Lefteris Tatakis</li>
+			</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="editorFormCtrl"><span class="type-signature">&lt;static> </span>editorFormCtrl<span class="signature">($scope, $rootScope, voidData, $http)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Controller responsible for making the service calls for the creation and the download of the VoID.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>$scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">scope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scope in which this controller operates.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$rootScope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">rootScope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The parent of all the existing scopes.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>voidData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Service to handle the creation and retrieval of the VoID.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$http</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">http</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Allows http connections.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Lefteris Tatakis</li>
+			</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="editorUploadCtrl"><span class="type-signature">&lt;static> </span>editorUploadCtrl<span class="signature">($scope, $rootScope, $http, uploadVoidData)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Allows user to upload a VoID file so it can be updated.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>$scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">scope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scope in which this controller operates.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$rootScope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">rootScope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The parent of all the existing scopes.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$http</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">http</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Allows http connections.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>uploadVoidData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Allows the user to upload VoID data to the server.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Lefteris Tatakis</li>
+			</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="sourceCtrl"><span class="type-signature">&lt;static> </span>sourceCtrl<span class="signature">($scope, $rootScope, JsonService, voidData)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Controller which manages the selection, addition and removal of incorporated sources in the dataset description.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>$scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">scope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scope in which this controller operates.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$rootScope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">rootScope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The parent of all the existing scopes.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>JsonService</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Downloads the OPS sources for the Open PHACTS API.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>voidData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Service to handle the creation and retrieval of the VoID.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Lefteris Tatakis</li>
+			</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
         </dl>
-    
-
-    
-
-    
-
     
 
     
@@ -276,19 +1397,13 @@
 		</span>
 					<br />
 					
-		<span class="jsdoc-message">
+	<!-- 	<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a>
-		on Monday, June 23rd 2014, 3:20:40 pm using the <a
+		on Tuesday, June 24th 2014, 10:57:10 am using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-		</span>
+		</span> -->
 				</footer>
 			</div>
-			
-
-			<div class="span3">
-				<div id="toc"></div>
-			</div>
-			
 			
 			<br clear="both">
 		</div>
@@ -351,34 +1466,6 @@
 	
 
 	<!--Navigation and Symbol Display-->
-	
-	<script>
-		$( function () {
-			$( '#main' ).localScroll( {
-				offset : { top : 60 } //offset by the height of your header (give or take a few px, see what works for you)
-			} );
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

@@ -4,7 +4,7 @@
  */
 
 /**
- *  App Module
+ * App Module
  * @class voidEditor.editorApp
  */
 var editorApp = angular.module('editorApp', ['ngRoute' , 'editorAppControllers', 'editorAppDirectives', 'ngSanitize'

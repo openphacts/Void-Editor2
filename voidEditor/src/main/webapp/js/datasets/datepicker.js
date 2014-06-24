@@ -1,12 +1,19 @@
 'use strict';
 
 /**
- * @class voidEditor.dateControllers
+ * @author Lefteris Tatakis
+ * @class voidEditor.editorApp.dateControllers
  */
 var dateControllers = angular.module('dateControllers', []);
 
 /**
- * @class voidEditor.dateControllers.DatepickerCtrl
+ *  @description Controller responsible for the date selection.
+ *  @memberOf  voidEditor.editorApp.dateControllers
+ *  @class  voidEditor.editorApp.dateControllers.DatepickerCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
  */
 dateControllers.controller('DatepickerCtrl', ['$scope', '$rootScope' ,
     function ($scope, $rootScope) {

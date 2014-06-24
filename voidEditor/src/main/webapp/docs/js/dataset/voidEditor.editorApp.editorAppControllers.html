@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>VoID Editor v2 - JavaScript Class: modalControllers</title>
+	<title>VoID Editor v2 - JavaScript Class: editorAppControllers</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -42,23 +42,23 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
-							<a href="voidEditor.dateControllers.html">dateControllers</a>
-						</li>
-						
-						<li>
 							<a href="voidEditor.editorApp.html">editorApp</a>
 						</li>
 						
 						<li>
-							<a href="voidEditor.editorAppControllers.html">editorAppControllers</a>
+							<a href="voidEditor.editorApp.dateControllers.html">dateControllers</a>
 						</li>
 						
 						<li>
-							<a href="voidEditor.editorAppDirectives.html">editorAppDirectives</a>
+							<a href="voidEditor.editorApp.editorAppControllers.html">editorAppControllers</a>
 						</li>
 						
 						<li>
-							<a href="voidEditor.modalControllers.html">modalControllers</a>
+							<a href="voidEditor.editorApp.editorAppDirectives.html">editorAppDirectives</a>
+						</li>
+						
+						<li>
+							<a href="voidEditor.editorApp.modalControllers.html">modalControllers</a>
 						</li>
 						
 
@@ -147,14 +147,14 @@
 					
 
 
-	<h1 class="page-title">Class: modalControllers</h1>
+	<h1 class="page-title">Class: editorAppControllers</h1>
 <section>
 
 <header>
     <h2>
-        <span class="ancestors"><a href="voidEditor.html">voidEditor</a>.</span>
+        <span class="ancestors"><a href="voidEditor.html">voidEditor</a><a href="voidEditor.editorApp.html">.editorApp</a>.</span>
     
-    modalControllers
+    editorAppControllers
     </h2>
     
 </header>
@@ -166,16 +166,12 @@
     
         
 <dt>
-    <h4 class="name" id="modalControllers"><span class="type-signature"></span>new modalControllers<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="editorAppControllers"><span class="type-signature"></span>new editorAppControllers<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
 </dt>
 <dd>
     
-    
-    <div class="description">
-        All the Modal that are created here are based on : http://angular-ui.github.io/bootstrap/
-    </div>
     
 
     
@@ -257,7 +253,7 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="ModalAboutCtrl"><span class="type-signature">&lt;static> </span>ModalAboutCtrl<span class="signature">($scope, $rootScope, $modal)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="editorCarouselCtrl"><span class="type-signature">&lt;static> </span>editorCarouselCtrl<span class="signature">($scope, $rootScope)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -265,7 +261,7 @@
     
     
     <div class="description">
-        Modal which manages "about" pop up.
+        The controller which fills the carousel with the appropriate pages.
     </div>
     
 
@@ -342,29 +338,6 @@
         </tr>
 
 	
-
-        <tr>
-            
-                <td class="name"><code>$modal</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">$modal</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The Angularjs JS handler for modals.</td>
-        </tr>
-
-	
 	</tbody>
 </table>
 
@@ -425,7 +398,7 @@
         
             
 <dt>
-    <h4 class="name" id="ModalContributorsCtrl"><span class="type-signature">&lt;static> </span>ModalContributorsCtrl<span class="signature">($scope, $rootScope, $modal)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="editorContributorsCtrl"><span class="type-signature">&lt;static> </span>editorContributorsCtrl<span class="signature">($scope, $rootScope, voidData, ContributorORCIDService)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -433,175 +406,7 @@
     
     
     <div class="description">
-        Modal for adding more than one contributor.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>$scope</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">scope</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The scope in which this controller operates.</td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>$rootScope</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">rootScope</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The parent of all the existing scopes.</td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>$modal</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">$modal</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The Angularjs JS handler for modals.</td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-	<dt class="tag-author">Author:</dt>
-	<dd class="tag-author">
-		<ul>
-			<li>Lefteris Tatakis</li>
-			</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="ModalExportCtrl"><span class="type-signature">&lt;static> </span>ModalExportCtrl<span class="signature">($scope, $rootScope, voidData, $modal)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Modal for Under the hood.
+        Controller responsible for the contributor addition functionality.
     </div>
     
 
@@ -704,13 +509,13 @@
 
         <tr>
             
-                <td class="name"><code>$modal</code></td>
+                <td class="name"><code>ContributorORCIDService</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">$modal</span>
+<span class="param-type">Service</span>
 
 
             
@@ -720,7 +525,7 @@
 
             
 
-            <td class="description last">The Angularjs JS handler for modals.</td>
+            <td class="description last">Makes calls to ORCID Api to retrieve information of the contributors.</td>
         </tr>
 
 	
@@ -784,7 +589,7 @@
         
             
 <dt>
-    <h4 class="name" id="ModalImportCtrl"><span class="type-signature">&lt;static> </span>ModalImportCtrl<span class="signature">($scope, $rootScope, $modal)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="editorCtrl"><span class="type-signature">&lt;static> </span>editorCtrl<span class="signature">($scope, $rootScope, voidData, uploadUserData, ORCIDService)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -792,511 +597,7 @@
     
     
     <div class="description">
-        Modal which manages import.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>$scope</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">scope</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The scope in which this controller operates.</td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>$rootScope</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">rootScope</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The parent of all the existing scopes.</td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>$modal</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">$modal</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The Angularjs JS handler for modals.</td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-	<dt class="tag-author">Author:</dt>
-	<dd class="tag-author">
-		<ul>
-			<li>Lefteris Tatakis</li>
-			</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="ModalInstanceAboutCtrl"><span class="type-signature">&lt;static> </span>ModalInstanceAboutCtrl<span class="signature">($scope, $rootScope, $modalInstance)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        "About" functionality.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>$scope</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">scope</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The scope in which this controller operates.</td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>$rootScope</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">rootScope</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The parent of all the existing scopes.</td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>$modalInstance</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">modalInstance</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The Angularjs JS handler for children of modal instances.</td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-	<dt class="tag-author">Author:</dt>
-	<dd class="tag-author">
-		<ul>
-			<li>Lefteris Tatakis</li>
-			</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="ModalInstanceContributorsCtrl"><span class="type-signature">&lt;static> </span>ModalInstanceContributorsCtrl<span class="signature">($scope, $rootScope, $modalInstance)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Contributor functionality.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>$scope</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">scope</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The scope in which this controller operates.</td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>$rootScope</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">rootScope</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The parent of all the existing scopes.</td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>$modalInstance</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">modalInstance</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The Angularjs JS handler for children of modal instances.</td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-	<dt class="tag-author">Author:</dt>
-	<dd class="tag-author">
-		<ul>
-			<li>Lefteris Tatakis</li>
-			</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="ModalInstanceCtrl"><span class="type-signature">&lt;static> </span>ModalInstanceCtrl<span class="signature">($scope, $rootScope, voidData, $modalInstance)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Modal for Under the hood.
+        Main controller that instantiate all the information needed by the UI / VoID creation backend.
     </div>
     
 
@@ -1399,13 +700,13 @@
 
         <tr>
             
-                <td class="name"><code>$modalInstance</code></td>
+                <td class="name"><code>uploadUserData</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">modalInstance</span>
+<span class="param-type">Service</span>
 
 
             
@@ -1415,7 +716,30 @@
 
             
 
-            <td class="description last">The Angularjs JS handler for children of modal instances.</td>
+            <td class="description last">Allows users to upload data to the server.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>ORCIDService</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Service that communicates with the ORCID API.</td>
         </tr>
 
 	
@@ -1479,7 +803,7 @@
         
             
 <dt>
-    <h4 class="name" id="ModalInstanceImportCtrl"><span class="type-signature">&lt;static> </span>ModalInstanceImportCtrl<span class="signature">($scope, $rootScope, $modalInstance)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="editorFormCtrl"><span class="type-signature">&lt;static> </span>editorFormCtrl<span class="signature">($scope, $rootScope, voidData, $http)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -1487,7 +811,7 @@
     
     
     <div class="description">
-        Import functionality.
+        Controller responsible for making the service calls for the creation and the download of the VoID.
     </div>
     
 
@@ -1567,13 +891,13 @@
 
         <tr>
             
-                <td class="name"><code>$modalInstance</code></td>
+                <td class="name"><code>voidData</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">modalInstance</span>
+<span class="param-type">Service</span>
 
 
             
@@ -1583,7 +907,412 @@
 
             
 
-            <td class="description last">The Angularjs JS handler for children of modal instances.</td>
+            <td class="description last">Service to handle the creation and retrieval of the VoID.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$http</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">http</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Allows http connections.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Lefteris Tatakis</li>
+			</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="editorUploadCtrl"><span class="type-signature">&lt;static> </span>editorUploadCtrl<span class="signature">($scope, $rootScope, $http, uploadVoidData)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Allows user to upload a VoID file so it can be updated.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>$scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">scope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scope in which this controller operates.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$rootScope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">rootScope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The parent of all the existing scopes.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$http</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">http</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Allows http connections.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>uploadVoidData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Allows the user to upload VoID data to the server.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Lefteris Tatakis</li>
+			</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="sourceCtrl"><span class="type-signature">&lt;static> </span>sourceCtrl<span class="signature">($scope, $rootScope, JsonService, voidData)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Controller which manages the selection, addition and removal of incorporated sources in the dataset description.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>$scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">scope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scope in which this controller operates.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>$rootScope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">rootScope</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The parent of all the existing scopes.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>JsonService</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Downloads the OPS sources for the Open PHACTS API.</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>voidData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Service</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Service to handle the creation and retrieval of the VoID.</td>
         </tr>
 
 	
@@ -1670,7 +1399,7 @@
 					
 	<!-- 	<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a>
-		on Tuesday, June 24th 2014, 10:51:55 am using the <a
+		on Tuesday, June 24th 2014, 11:01:57 am using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span> -->
 				</footer>

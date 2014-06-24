@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>VoID Editor v2 Global</title>
+	<title>VoID Editor v2 - JavaScript Global</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -16,9 +16,9 @@
 
 <body>
 <div class="container-fluid">
-	<div class="navbar navbar-fixed-top navbar-inverse">
+	<div class="navbar navbar-fixed-top ">
 		<div class="navbar-inner">
-			<a class="brand" href="index.html">VoID Editor v2</a>
+			<a class="brand" href="index.html">VoID Editor v2 - JavaScript</a>
 			<ul class="nav">
 				
 				<li class="dropdown">
@@ -42,59 +42,23 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
-							<a href="voidEditor.dateControllers.html">dateControllers</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.dateControllers.DatepickerCtrl.html">DatepickerCtrl</a>
-						</li>
-						
-						<li>
 							<a href="voidEditor.editorApp.html">editorApp</a>
 						</li>
 						
 						<li>
-							<a href="voidEditor.editorAppControllers.html">editorAppControllers</a>
+							<a href="voidEditor.editorApp.dateControllers.html">dateControllers</a>
 						</li>
 						
 						<li>
-							<a href="voidEditor.editorAppControllers.editorCarouselCtrl.html">editorCarouselCtrl</a>
+							<a href="voidEditor.editorApp.editorAppControllers.html">editorAppControllers</a>
 						</li>
 						
 						<li>
-							<a href="voidEditor.editorAppControllers.editorContributorsCtrl.html">editorContributorsCtrl</a>
+							<a href="voidEditor.editorApp.editorAppDirectives.html">editorAppDirectives</a>
 						</li>
 						
 						<li>
-							<a href="voidEditor.editorAppControllers.editorCtrl.html">editorCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.editorAppControllers.editorFormCtrl.html">editorFormCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.editorAppControllers.editorUploadCtrl.html">editorUploadCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.editorAppControllers.sourceCtrl.html">sourceCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.editorAppDirectives.html">editorAppDirectives</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.modalControllers.html">modalControllers</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.modalControllers.ModalInstanceContributorsCtrl.html">ModalInstanceContributorsCtrl</a>
-						</li>
-						
-						<li>
-							<a href="voidEditor.modalControllers.ModalInstanceImportCtrl.html">ModalInstanceImportCtrl</a>
+							<a href="voidEditor.editorApp.modalControllers.html">modalControllers</a>
 						</li>
 						
 
@@ -102,17 +66,61 @@
 				</li>
 				
 				<li class="dropdown">
-					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Services<b
 						class="caret"></b></a>
 
 					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#checkIfUriForSourcesExist">checkIfUriForSourcesExist</a>
+						</li>
+						
+						<li>
+							<a href="global.html#checkSources">checkSources</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createVoid">createVoid</a>
+						</li>
+						
+						<li>
+							<a href="global.html#createVoidAndDownload">createVoidAndDownload</a>
+						</li>
+						
+						<li>
+							<a href="global.html#getData">getData</a>
+						</li>
+						
+						<li>
+							<a href="global.html#getSourceData">getSourceData</a>
+						</li>
+						
+						<li>
+							<a href="global.html#getTurtle">getTurtle</a>
+						</li>
 						
 						<li>
 							<a href="global.html#querySparqlEndPoint">querySparqlEndPoint</a>
 						</li>
 						
 						<li>
+							<a href="global.html#setContributorData">setContributorData</a>
+						</li>
+						
+						<li>
+							<a href="global.html#setData">setData</a>
+						</li>
+						
+						<li>
+							<a href="global.html#setSourceData">setSourceData</a>
+						</li>
+						
+						<li>
 							<a href="global.html#setTurtle">setTurtle</a>
+						</li>
+						
+						<li>
+							<a href="global.html#setUriForSourcesExist">setUriForSourcesExist</a>
 						</li>
 						
 
@@ -125,7 +133,13 @@
 
 	<div class="row-fluid">
 
+				
 	
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
+			
+
 		
 		<div class="span8">
 			
@@ -202,6 +216,590 @@
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
+            
+<dt>
+    <h4 class="name" id="checkIfUriForSourcesExist"><span class="type-signature"></span>checkIfUriForSourcesExist<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Value if URI of a source exists.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">string</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="checkSources"><span class="type-signature"></span>checkSources<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Broadcasts a message to main controller to ensure all the correct sources are encapsulated.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="createVoid"><span class="type-signature"></span>createVoid<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Sends a message to the backend to create the VoID for the Modal.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    VoID Dataset Description
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">String</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="createVoidAndDownload"><span class="type-signature"></span>createVoidAndDownload<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Send message to the backend to create VoID and allow the download of it by broadcasting 'SuccessDownload'.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Informing the method has ended.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">boolean</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getData"><span class="type-signature"></span>getData<span class="signature">()</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    All information that the user has entered.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">JSON</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getSourceData"><span class="type-signature"></span>getSourceData<span class="signature">()</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    JSON Object containing all the information of the incorporated sources.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">JSON</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getTurtle"><span class="type-signature"></span>getTurtle<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Allow a controller to retrieve latest user data.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">string</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
             
 <dt>
     <h4 class="name" id="querySparqlEndPoint"><span class="type-signature"></span>querySparqlEndPoint<span class="signature">(endpoint)</span><span class="type-signature"></span></h4>
@@ -289,10 +887,345 @@
 
 
 	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		services.js
-	</dd>
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setContributorData"><span class="type-signature"></span>setContributorData<span class="signature">(value)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Sets the contributors variable and broadcasts a global message of 'ContributorsChanged'.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">JSON Object of contributors and all their information.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setData"><span class="type-signature"></span>setData<span class="signature">(value)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Setting the data object in order to pass information to a separate constructor when needed.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setSourceData"><span class="type-signature"></span>setSourceData<span class="signature">(value)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Sets the incorporated datasources variable and broadcasts a global message of 'DataSourcesChanged'.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A JSON Object containing all the incorporated datasources the user has selected.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
 	
 
 	
@@ -405,10 +1338,115 @@
 
 
 	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		services.js
-	</dd>
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setUriForSourcesExist"><span class="type-signature"></span>setUriForSourcesExist<span class="signature">(value)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Setting if the URI of sources exist.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
 	
 
 	
@@ -456,19 +1494,13 @@
 		</span>
 					<br />
 					
-		<span class="jsdoc-message">
+	<!-- 	<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a>
-		on Monday, June 23rd 2014, 3:20:39 pm using the <a
+		on Tuesday, June 24th 2014, 11:01:56 am using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-		</span>
+		</span> -->
 				</footer>
 			</div>
-			
-
-			<div class="span3">
-				<div id="toc"></div>
-			</div>
-			
 			
 			<br clear="both">
 		</div>
@@ -531,34 +1563,6 @@
 	
 
 	<!--Navigation and Symbol Display-->
-	
-	<script>
-		$( function () {
-			$( '#main' ).localScroll( {
-				offset : { top : 60 } //offset by the height of your header (give or take a few px, see what works for you)
-			} );
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>
