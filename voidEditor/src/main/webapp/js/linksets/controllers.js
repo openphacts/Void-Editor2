@@ -2,7 +2,7 @@
 
 /**
  * @author Lefteris Tatakis
- * @class linksetCreator.linksetApp.editorAppControllers
+ * @class linksetCreator.linksetApp.linksetAppControllers
  */
 var linksetAppControllers = angular.module('linksetAppControllers', ['jsonService', 'voidDataService',  'ORCIDService',
                                'modalControllers' ]);
