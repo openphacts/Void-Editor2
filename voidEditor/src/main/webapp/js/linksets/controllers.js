@@ -1,9 +1,22 @@
 'use strict';
 
-/* Controllers */
+/**
+ * @author Lefteris Tatakis
+ * @class linksetCreator.linksetApp.editorAppControllers
+ */
 var linksetAppControllers = angular.module('linksetAppControllers', ['jsonService', 'voidDataService',  'ORCIDService',
                                'modalControllers' ]);
-
+/**
+ *  @description Main controller that instantiate all the information needed by the UI / VoID creation backend.
+ *  @memberOf  linksetCreator.linksetApp.linksetAppControllers
+ *  @class  linksetCreator.linksetApp.linksetAppControllers.linksetCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
+ *  @param {Service} ORCIDService - Service that communicates with the ORCID API.
+ */
 linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'voidData', 'ORCIDService',
     function ($scope, $rootScope, voidData , ORCIDService) {
         $scope.title = 'Linkset Creator';
@@ -46,7 +59,12 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.data.targetDatatype = "http://semanticscience.org/resource/SIO_010035";
         $rootScope.data.relationship = "http://www.w3.org/2004/02/skos/core#closeMatch";
         $rootScope.data.justification = "http://semanticscience.org/resource/CHEMINF_000059";
-
+        /**
+         * @function otherLicence
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.linksetCtrl
+         * @description When the user chooses to describe a licence that is not provided.
+         * @param {String} val
+         */
         $rootScope.otherLicence = function (val) {
             if (val == "other") {
                 $rootScope.data.licence = "";
@@ -55,7 +73,11 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                 $rootScope.showOther = false;
             }
         };
-
+        /**
+         * @function callORCIDEndpoint
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.linksetCtrl
+         * @description Is the information provided is the correct length for an ORCID ID? If yes, call ORCID API.
+         */
         $rootScope.callORCIDEndpoint = function() {
             if ( $rootScope.data.ORCID !=undefined&&  $rootScope.data.ORCID.length >= 16 )
             {
@@ -74,6 +96,7 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
             $rootScope.data.familyName =details["family-name"].value;
             $rootScope.removeAlert("FailORCIDData");
         });
+
         $rootScope.$on('FailORCIDData', function (event, message) {
             console.log("FailORCIDData =>" + message);
             $rootScope.alerts.push({ id: "FailORCIDData", type: 'error', msg: message });
@@ -101,7 +124,12 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
             console.log("NeedData");
             voidData.setData($rootScope.data);
         });
-
+        /**
+         * @function closeAlert
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.linksetCtrl
+         * @description Closes an alert displayed on screen.
+         * @param {int} index - Index of alert to be removed.
+         */
         $rootScope.closeAlert = function (index) {
             $rootScope.alerts.splice(index, 1);
         };
@@ -133,6 +161,12 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         });
 
         // called by carousel creator in the index.html of the website
+        /**
+         * @function checkMustFieldsOnPreviousPage
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.linksetCtrl
+         * @description Checks what fields that are required are not filled.
+         * @param index The page to have its fields checked.
+         */
         $rootScope.checkMustFieldsOnPreviousPage = function (index) {
             if (index >= 0 && index < $rootScope.mustFields.length) {
                 console.log("Got in checkMustFieldsOnPreviousPage ==>" + index);
@@ -171,7 +205,13 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                 }//for
             }//if
         };
-
+        /**
+         * @function checkIfAlertNeedsAdding
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.linksetCtrl
+         * @description Checks if the alert required to be added, is already there.
+         * @param id2Check ID of the error.
+         * @returns {boolean} If alert already exists are not.
+         */
         $rootScope.checkIfAlertNeedsAdding = function (id2Check){
             var addAlert = true;
             for (var k = 0; k < $rootScope.alerts.length; k++) {
@@ -179,7 +219,12 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
             }
             return addAlert;
         }
-
+        /**
+         * @function removeAlert
+         * @description Removes an alert by its given ID.
+         * @param id2Remove ID of alert to remove.
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.linksetCtrl
+         */
         $rootScope.removeAlert =function(id2Remove){
             for (var k = 0; k < $rootScope.alerts.length; k++) {
                 if ($rootScope.alerts[k].id == id2Remove)$rootScope.alerts.splice(k, 1);
@@ -199,7 +244,12 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
 
             voidData.setUriForSourcesExist(result);
         });
-
+        /**
+         * @function fieldsToAdd
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.linksetCtrl
+         * @description In the final page of the UI display to the user once more what info is needed.
+         * @returns {string} HTML code to be added on the last slide to show user information that is needed.
+         */
         $rootScope.fieldsToAdd = function () {
             var returnString = "",
                 header = "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
@@ -246,7 +296,10 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
             };
             return returnString;
         };
-
+        /**
+         * @function checkSources
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.linksetCtrl
+         */
         $rootScope.checkSources =function(){
             $rootScope.noURI = -1;
             $rootScope.noVersion = -1;
@@ -267,7 +320,13 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                 }
             }
         }
-
+        /**
+         * @function addAlert
+         * @description Given the ID add the appropriate Alert / Error .
+         * @param id2Add ID of alert to be added.
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.linksetCtrl
+         * @returns {string}
+         */
         $rootScope.addAlert = function(id2Add){
             switch(id2Add) {
                 case "licence":
@@ -293,13 +352,30 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         }
     }]);
 
+/**
+ *  @description Controller responsible for making the service calls for the creation and the download of the VoID.
+ *  @memberOf  linksetCreator.linksetApp.linksetAppControllers
+ *  @class  linksetCreator.linksetApp.linksetAppControllers.linksetFormCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
+ *  @param {http} $http - Allows http connections.
+ */
 linksetAppControllers.controller('linksetFormCtrl', ['$rootScope' , '$scope', '$http', 'voidData',
     function ($rootScope, $scope, $http, voidData) {
-
+        /**
+         * @function createVoid
+         * @description Calls the service to create  VoID for Modal.
+         */
         $rootScope.createVoid = function () {
             voidData.createVoid();
         };
-
+        /**
+         * @function downloadFile
+         * @description Calls service to create VoID for download.
+         */
         $rootScope.downloadFile = function () {
             voidData.createVoidAndDownload();
             window.open('/rest/linkset/file');
@@ -308,6 +384,15 @@ linksetAppControllers.controller('linksetFormCtrl', ['$rootScope' , '$scope', '$
 
 
 // This needs cleaning up - and to use json file to determine structure/ number of page
+/**
+ *  @description The controller which fills the carousel with the appropriate pages.
+ *  @memberOf  linksetCreator.linksetApp.linksetAppControllers
+ *  @class  linksetCreator.linksetApp.linksetAppControllers.linksetCarouselCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ */
 linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
     function CarouselCtrl($scope, $rootScope) {
         $scope.interval = -1;
@@ -317,6 +402,12 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
         $rootScope.mustFields = [];
 
         var slides = $scope.slides = [];
+        /**
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.linksetCarouselCtrl
+         * @param i Index of the slide to be added
+         * @param title The title to be displayed for that slide.
+         * @param mustFields What fields in that slide are necessary.
+         */
         $scope.addSlide = function (i, title, mustFields) {
             var temp;
             if (i != 0)   temp = "partials/linksets/page" + i + ".html";
@@ -343,7 +434,17 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
 
     }
 ]);
-
+/**
+ *  @description Controller which manages the selection of target and source of the linkset.
+ *  @memberOf  linksetCreator.linksetApp.linksetAppControllers
+ *  @class  linksetCreator.linksetApp.linksetAppControllers.sourceCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {Service} JsonService - Downloads the OPS sources for the Open PHACTS API.
+ *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
+ */
 linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonService', 'voidData',
     function ($rootScope, $scope, JsonService, voidData) {
         $scope.userSource = {};
@@ -362,11 +463,20 @@ linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSe
         $scope.isTarget = true;
         $scope.userTargetIndex = null;
         $scope.userSourceIndex = null;
-
+        /**
+         * @function noTitleFilter
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.sourceCtrl
+         * @param item A Source object.
+         * @returns {boolean} If title is String.
+         */
         $scope.noTitleFilter = function (item) {
             return typeof item.title == 'string';
         };
-
+        /**
+         * @function extractTitlesOfSources
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.sourceCtrl
+         * @description Extract titles of the sources from the OPS JSON.
+         */
         $scope.extractTitlesOfSources = function () {
             for (var i = 0; i < $scope.sources.length; i++) {
                 if ($scope.sources[i].title != undefined){
@@ -378,12 +488,21 @@ linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSe
                 }
             }
         };
-
+        /**
+         * @function JsonService.get
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.sourceCtrl
+         * @description Retrievs all source information from OPS.
+         */
         JsonService.get(function (data) {
             $scope.sources = data.result.primaryTopic.subset;
             $scope.extractTitlesOfSources();
         });
-
+        /**
+         * @function updateSelection
+         *  @memberOf linksetCreator.linksetApp.linksetAppControllers.sourceCtrl
+         * @param value - Value to be added.
+         * @param from - Source or Target
+         */
         $scope.updateSelection = function(value, from){
             if(from =="source") {
                 voidData.setUserSource(value);
@@ -391,7 +510,12 @@ linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSe
                 voidData.setUserTarget(value);
             }
         }
-
+        /**
+         * @function selectOption
+         * @memberOf linksetCreator.linksetApp.linksetAppControllers.sourceCtrl
+         * @param value - Value selected from option.
+         * @param from -  Source or Target.
+         */
         $scope.selectOption = function(value, from){
             var found = -1;
             for (var i = 0; i < $scope.sources.length; i++) {
@@ -470,6 +594,7 @@ linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSe
 
             }
         }
+
         $rootScope.$on('ChangeInSourcesFromUpload', function (event, sources) {
             $scope.userSources = sources;
         });

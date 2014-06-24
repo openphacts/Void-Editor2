@@ -188,7 +188,7 @@ var voidDataService = angular.module('voidDataService', [])
         }
         /**
          * @function setTurtle
-         * @param {JSON} value All the new information retrieved for the user.
+         * @param {JSON} - value All the new information retrieved for the user.
          */
         this.setTurtle = function (value) {
             turtleData = value;

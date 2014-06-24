@@ -55,8 +55,8 @@ var voidDataService = angular.module('voidDataService', [])
         outputURL = URLPreface + '/rest/linkset/output';
 
         /**
-         * @function
-         * @param value
+         * @function setTurtle
+         * @param value - All the new information retrieved for the user.
          */
         this.setTurtle = function (value) {
             turtleData = value;
@@ -64,7 +64,9 @@ var voidDataService = angular.module('voidDataService', [])
         };
 
         /**
-         * @function
+         * @function setSourceData
+         * @description Sets the sources
+         * @deprecated
          * @param value
          */
         this.setSourceData = function (value) {
@@ -73,16 +75,18 @@ var voidDataService = angular.module('voidDataService', [])
         };
 
         /**
-         * @function
-         * @returns {string}
+         * @function getTurtle
+         * @description  Allow a controller to retrieve latest user data.
+         * @returns {string} VoID Turtle.
          */
-        this.getTurtle = function () {
+        this.getTurtle  = function () {
             return turtleData;
         };
 
         /**
-         * @function
-         * @param value
+         * @function setUserTarget
+         * @description Sets the local variable of the user target selection and broadcasts the "setUserTarget" message.
+         * @param value The selection of the user target dataset.
          */
         this.setUserTarget = function (value) {
             data.userTarget = value;
@@ -90,51 +94,56 @@ var voidDataService = angular.module('voidDataService', [])
         }
 
         /**
-         * @function
-         * @param value
+         * @function setUserSource
+         * @description Sets the local variable of the user source selection and broadcasts the "setUserSource" message.
+         * @param value The selection of the user source dataset.
          */
         this.setUserSource = function (value) {
             data.userSource = value;
             $rootScope.$broadcast('setUserSource', data.userSource);
         };
         /**
-         * @function
-         * @param value
+         * @function setUriForSourcesExist
+         * @description Setting if the URI of sources exist.
+         * @param {} value
          */
         this.setUriForSourcesExist = function (value) {
             uriForSourcesExist = value;
         };
         /**
-         * @function
-         * @param value
+         * @function setData
+         * @description Setting the data object in order to pass information to a separate constructor when needed.
+         * @param (JSON ) value - All the data the user has set.
          */
         this.setData = function (value) {
             data = value;
             $rootScope.$broadcast('DataChanged', data);
         };
         /**
-         * @function
-         * @returns {{}}
+         * @function getData
+         * @returns {JSON} All information that the user has entered.
          */
         this.getData = function () {
             return data;
         };
         /**
-         * @function
-         * @returns {string}
+         * @function checkIfUriForSourcesExist
+         * @returns {string} Value if URI of a source exists.
          */
         this.checkIfUriForSourcesExist = function () {
             return uriForSourcesExist;
         };
         /**
-         * @function
+         * @function checkSources
+         * @description Broadcasts a message to main controller to ensure all the correct sources are encapsulated.
          */
         this.checkSources = function () {
             $rootScope.$broadcast("checkSources");
         };
         /**
-         * @function
-         * @returns {*}
+         * @function createVoid
+         * @description Sends a message to the backend to create the VoID for the Modal.
+         * @returns {String}  VoID Dataset Description
          */
         this.createVoid = function () {
             $rootScope.$broadcast('needData', data);
@@ -155,8 +164,9 @@ var voidDataService = angular.module('voidDataService', [])
 
         };
         /**
-         * @function
-         * @returns {boolean}
+         * @function createVoidAndDownload
+         * @description Send message to the backend to create VoID and allow the download of it by broadcasting 'SuccessDownload'.
+         * @returns {boolean} Informing the method has ended.
          */
         this.createVoidAndDownload = function () {
 
