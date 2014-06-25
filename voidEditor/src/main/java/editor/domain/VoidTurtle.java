@@ -362,7 +362,9 @@ public class VoidTurtle {
                     String property2Check = couple[0];
                     String value = couple[1].replace("}", "");
                     if (property2Check.contains("type")) {
-                        if (value.contains("-")) {
+                        System.out.println("IN TYPE ====>");
+                        System.out.println(value);
+                        if (value.contains("0")) {
                             source.addProperty(RDF.type, DCTypes.Dataset);
                         } else {
                             source.addProperty(RDF.type, Void.Dataset);

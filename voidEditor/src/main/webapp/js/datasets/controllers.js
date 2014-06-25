@@ -66,6 +66,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.LinkToDownloadDataQuestion = "Where could we download your RDF from?*";
         $rootScope.LinkToDownloadDataHelp = "Where could we download the data from if we required to. This information is required and must be URL.";
 
+        /**
+         * @description This message is sent by the services when the information from the ORCID API has been retrieved.
+         */
         $rootScope.$on('SuccessORCIDData', function (event, ORCIDJSON) {
             console.log(ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"]);
             var details = ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"];
@@ -74,12 +77,17 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.removeAlert("FailORCIDData");
         });
 
+        /**
+         * @description This message is sent by the service which uploads data for statistical analysis.
+         */
         $rootScope.$on('SuccessUploadUserData', function (event, uploadResult) {
             $rootScope.showLoader = false;
             console.log("SuccessUploadUserData");
             $rootScope.removeAlert("postFailedDataUpload");
         });
-
+        /**
+         * @description Do when : the statistics on total number of triples is finished.
+         */
         $rootScope.$on('SuccessStatisticsUserDataTotalTriples', function (event, stats) {
             console.log("SuccessStatisticsUserDataTotalTriples");
             console.log(stats);
@@ -92,7 +100,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.haveStatsFinished = 1;
             $rootScope.showLoader = false;
         });
-
+        /**
+         * @description Do when : the statistics on unique subjects is finished.
+         */
         $rootScope.$on('SuccessStatisticsUserDataUniqueSubjects', function (event, stats) {
             console.log("SuccessStatisticsUserDataUniqueSubjects");
             console.log(stats);
@@ -105,7 +115,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.haveStatsFinished = 1;
             $rootScope.showLoader = false;
         });
-
+        /**
+         * @description Do when : the statistics on unique objects is finished.
+         */
         $rootScope.$on('SuccessStatisticsUserDataUniqueObjects', function (event, stats) {
             console.log("SuccessStatisticsUserDataUniqueObjects");
             console.log(stats);
@@ -119,7 +131,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.showLoader = false;
 
         });
-
+        /**
+         * @description When the RDF data the user tried to upload failed.
+         */
         $rootScope.$on('POSTFailedDataUpload', function (event, message) {
             $rootScope.showLoader = false;
             console.log("POSTFailedDataUpload =>" + message);
@@ -127,12 +141,17 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
         });
 
+        /**
+         * @description When the ORCID API call fails - create error.
+         */
         $rootScope.$on('FailORCIDData', function (event, message) {
             console.log("FailORCIDData =>" + message);
             $rootScope.alerts.push({ id: "FailORCIDData", type: 'error', msg: message });
 
         });
-
+        /**
+         * @description When it is not possible to do the stats throw error to user.
+         */
         $rootScope.$on('StatsFailed', function (event, message) {
             console.log("StatsFailed! ==> " + message);
             $rootScope.showLoader = false;
@@ -141,56 +160,84 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
         });
 
+        /**
+         * @description When some other controller changes data used.
+         */
         $rootScope.$on('DataChanged', function (event, x) {
             $rootScope.data = x;
         });
-
+        /**
+         * @description The services request the most recent version of the data.
+         */
         $rootScope.$on('needData', function (event) {
             voidData.setData($rootScope.data);
         });
-
+        /**
+         * @description Download failed. Check services URLPreface.
+         */
         $rootScope.$on("FailedDownload", function (ev, status) {
             $rootScope.alerts.push({ type: 'error', msg: 'Failed to download void.' });
         });
-
+        /**
+         * @description Fields that need to be filled in by the user.
+         */
         $rootScope.$on("changedMustFields", function (ev, data) {
             $rootScope.mustFields = data;
         });
-
+        /**
+         * @deprecated
+         */
         $rootScope.$on('TurtleChanged', function (event, x) {
             $rootScope.turtle = x;
             $rootScope.showLoader = false;
         });
 
+        /**
+         * The user changed the sources he/she has provided.
+         */
         $rootScope.$on('DataSourcesChanged', function (event, x) {
             $rootScope.data.sources = x;
         });
 
+        /**
+         * @description When the services require the most resent information about the contributors.
+         */
         $rootScope.$on('getContributors', function (event) {
             $rootScope.$broadcast('sendContributors' ,  $rootScope.data.contributors);
         });
 
+        /**
+         * @description When the services or another controller change the contributors make sure they are updated here.
+         */
         $rootScope.$on('ContributorsChanged', function (event, x) {
             $rootScope.data.contributors = x;
             console.log( $rootScope.data.contributors);
         });
-
+        /**
+         * @description Starts loader gif - at start of page, when void is created or upload of data is done.
+         */
         $rootScope.$on('StartLoader', function (event) {
             $rootScope.showLoader = true;
         });
-
+        /**
+         * @description When user has been able to download the data - show a friendly congratz.
+         */
         $rootScope.$on('SuccessDownload', function (event) {
             $rootScope.showLoader = false;
             $rootScope.alerts.push({ type: 'success', msg: 'Well done! You successfully downloaded your void.ttl! - If download does not start, please make sure you allow popups.' });
         });
-
+        /**
+         * @description When the services say the VoID has been uploaded successfully notify the user and change all fields of the UI.
+         */
         $rootScope.$on('SuccessUpload', function (event, uploadResult) {
             $rootScope.data = uploadResult;
             $rootScope.showLoader = false;
             $rootScope.$broadcast('ChangeInSourcesFromUpload', $rootScope.data.sources);
             $rootScope.uploadErrorMessages ="<h4 class='h4Success'>Upload was successful!</h4>";
         });
-
+        /**
+         * @description When uploading the VoID to the server and something goes wrong. (format , server , ..)
+         */
         $rootScope.$on('POSTFailedUpload', function (event, message) {
             $rootScope.showLoader = false;
             var returnString = "";
@@ -201,10 +248,12 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.uploadErrorMessages =returnString;
             $rootScope.showLoader = false;
         });
-
+        /**
+         * @description Checking that the information of the sources meets all critiria.
+         */
         $rootScope.$on('checkSources', function (event) {
             var result;
-            $rootScope.checkSources ();
+            $rootScope.checkSources();
 
             if ($rootScope.noURI != -1) result = $rootScope.addAlert("URI")
             else if ($rootScope.noVersion != -1) $rootScope.addAlert("versionSource");
@@ -460,6 +509,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                         || $rootScope.data.sources[i].URI.indexOf("://") == -1) $rootScope.noURI = i;
 
                     if ($rootScope.data.sources[i].version == "") $rootScope.noVersion = i;
+
                     if ($rootScope.data.sources[i].webpage == undefined
                         || $rootScope.data.sources[i].webpage == ""
                         || $rootScope.data.sources[i].webpage.indexOf("://") == -1) $rootScope.noWebpage = i;
@@ -467,7 +517,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                     if ($rootScope.data.sources[i].description == "") $rootScope.noDescription = i;
                 }
             }
-        }
+        };
         /**
          * @function addAlert
          * @description Given the ID add the appropriate Alert / Error .
@@ -530,7 +580,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$http', 'voidData',
     function ($rootScope, $scope, $http, voidData) {
         /**
-         * @function
+         * @function createVoid
          * @description Calls the service to create  VoID for Modal.
          */
         $rootScope.createVoid = function () {
@@ -538,7 +588,7 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
         };
 
         /**
-         * @function
+         * @function downloadFile
          * @description Calls service to create VoID for download.
          */
         $rootScope.downloadFile = function () {

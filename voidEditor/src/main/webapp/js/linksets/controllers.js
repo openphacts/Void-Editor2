@@ -87,7 +87,9 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
                 }
             }
         }
-
+        /**
+         * @description This message is sent by the services when the information from the ORCID API has been retrieved.
+         */
         $rootScope.$on('SuccessORCIDData', function (event, ORCIDJSON) {
             console.log("SuccessORCIDData");
             console.log(ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"]);
@@ -96,29 +98,39 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
             $rootScope.data.familyName =details["family-name"].value;
             $rootScope.removeAlert("FailORCIDData");
         });
-
+        /**
+         * @description When the ORCID API call fails - create error.
+         */
         $rootScope.$on('FailORCIDData', function (event, message) {
             console.log("FailORCIDData =>" + message);
             $rootScope.alerts.push({ id: "FailORCIDData", type: 'error', msg: message });
 
         });
-
+        /**
+         * @description When some other controller changes data used.
+         */
         $rootScope.$on('DataChanged', function (event, x) {
             $rootScope.data = x;
         });
-
+        /**
+         * @description When the user changes the selection of his linkset source - update information here.
+         */
         $rootScope.$on('setUserSource', function (event, x) {
             $rootScope.data.userSource  = x;
             console.log("setUserSource ");
             console.log($rootScope.data.userSource);
         });
-
+        /**
+         * @description When user changes the selection of his linkset target - update the information here.
+         */
         $rootScope.$on('setUserTarget', function (event, x) {
             $rootScope.data.userTarget= x;
             console.log("setUserTarget ");
             console.log($rootScope.data.userTarget );
         });
-
+        /**
+         * @description The services request the most recent version of the data.
+         */
         $rootScope.$on('needData', function (event) {
             console.log($rootScope.data);
             console.log("NeedData");
@@ -133,28 +145,40 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.closeAlert = function (index) {
             $rootScope.alerts.splice(index, 1);
         };
-
+        /**
+         * @description Download failed. Check services URLPreface.
+         */
         $rootScope.$on("FailedDownload", function (ev, status) {
             $rootScope.alerts.push({ type: 'error', msg: 'Failed to download void.' });
         })
-
+        /**
+         * @description Fields that need to be filled in by the user.
+         */
         $rootScope.$on("changedMustFields", function (ev, data) {
             $rootScope.mustFields = data;
         });
-
+        /**
+         * @deprecated
+         */
         $rootScope.$on('TurtleChanged', function (event, x) {
             $rootScope.turtle = x;
             $rootScope.showLoader = false;
         });
-
+        /**
+         * The user changed the sources he/she has provided.
+         */
         $rootScope.$on('DataSourcesChanged', function (event, x) {
             $rootScope.sources = x;
         });
-
+        /**
+         * @description Starts loader gif - at start of page, when void is created or upload of data is done.
+         */
         $rootScope.$on('StartLoader', function (event) {
             $rootScope.showLoader = true;
         });
-
+        /**
+         * @description When user has been able to download the data - show a friendly congratz.
+         */
         $rootScope.$on('SuccessDownload', function (event) {
             $rootScope.showLoader = false;
             $rootScope.alerts.push({ type: 'success', msg: 'Well done! You successfully downloaded your void.ttl! - If download does not start, please make sure you allow popups.' });

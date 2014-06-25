@@ -248,9 +248,10 @@ var voidDataService = angular.module('voidDataService', [])
          * @returns {String}  VoID Dataset Description
          */
         this.createVoid = function () {
+            console.log("CREATE VoID service before broadcast");
             $rootScope.$broadcast('needData', data);
             $rootScope.$broadcast('StartLoader');
-
+            console.log(data);
             return $http({method: 'POST', url: outputURL, data: data}).
                 error(function (data, status) {
                     turtleData = "Error in creating void.";
@@ -272,6 +273,7 @@ var voidDataService = angular.module('voidDataService', [])
          */
         this.setSourceData = function (value) {
             data.sources = value;
+            console.log("In setSourceData!");
             $rootScope.$broadcast('DataSourcesChanged', data.sources);
         };
         /**
@@ -288,6 +290,7 @@ var voidDataService = angular.module('voidDataService', [])
          * @returns {JSON} JSON Object containing all the information of the incorporated sources.
          */
         this.getSourceData = function () {
+            console.log("In GETSourceData!");
             return data.sources;
         };
         /**
