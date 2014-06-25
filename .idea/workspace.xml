@@ -150,13 +150,11 @@
       <file leaf-file-name="documentation.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40402195" vertical-offset="1071" max-vertical-offset="3842">
-              <caret line="136" column="105" selection-start-line="136" selection-start-column="105" selection-end-line="136" selection-end-column="105" />
+            <state vertical-scroll-proportion="0.27142859" vertical-offset="2058" max-vertical-offset="5083">
+              <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
               <folding>
-                <element signature="tag#ul#0;tag#div#0;tag#div#0;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
                 <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="tag#div#0;tag#div#0;tag#div#1;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
                 <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -170,10 +168,10 @@
                 <element signature="n#style#0;n#p#12;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#14;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#16;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1403698018073" expanded="true" signature="990:1349" placeholder="..." />
-                <marker date="1403698018073" expanded="false" signature="1015:1034" placeholder="..." />
-                <marker date="1403698018073" expanded="false" signature="1075:1096" placeholder="..." />
-                <marker date="1403698018073" expanded="true" signature="1097:1336" placeholder="..." />
+                <marker date="1403698665967" expanded="true" signature="990:1349" placeholder="..." />
+                <marker date="1403698665967" expanded="true" signature="1015:1034" placeholder="..." />
+                <marker date="1403698665967" expanded="true" signature="1075:1096" placeholder="..." />
+                <marker date="1403698665967" expanded="true" signature="1097:1336" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -565,6 +563,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
+    <property name="LayoutCode.rearrangeEntriesHTML" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -675,7 +674,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1111,13 +1110,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40402195" vertical-offset="1071" max-vertical-offset="3842">
-          <caret line="136" column="105" selection-start-line="136" selection-start-column="105" selection-end-line="136" selection-end-column="105" />
+        <state vertical-scroll-proportion="0.27142859" vertical-offset="2058" max-vertical-offset="5083">
+          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
           <folding>
-            <element signature="tag#ul#0;tag#div#0;tag#div#0;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="tag#div#0;tag#div#0;tag#div#1;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1131,10 +1128,10 @@
             <element signature="n#style#0;n#p#12;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#14;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#16;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1403698018073" expanded="true" signature="990:1349" placeholder="..." />
-            <marker date="1403698018073" expanded="false" signature="1015:1034" placeholder="..." />
-            <marker date="1403698018073" expanded="false" signature="1075:1096" placeholder="..." />
-            <marker date="1403698018073" expanded="true" signature="1097:1336" placeholder="..." />
+            <marker date="1403698665967" expanded="true" signature="990:1349" placeholder="..." />
+            <marker date="1403698665967" expanded="true" signature="1015:1034" placeholder="..." />
+            <marker date="1403698665967" expanded="true" signature="1075:1096" placeholder="..." />
+            <marker date="1403698665967" expanded="true" signature="1097:1336" placeholder="..." />
           </folding>
         </state>
       </provider>
