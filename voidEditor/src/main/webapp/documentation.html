@@ -16,6 +16,23 @@
     <link rel="stylesheet" href="css/glyphicons.css">
     <script src="lib/jquery/jquery-1.10.2.js"></script>
     <script src="lib/jquery-ui/jquery-ui-1.10.3.custom.js"></script>
+    <script src="lib/angular/angular1.2.2.min.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular/angular-sanitize.js"></script>
+    <script src="lib/angular/angular-resource.js"></script>
+    <script src="lib/angular/angular-loader.js"></script>
+    <script>
+        document.write('<base href="' + document.location + '" />');
+    </script>
+    <script>
+        function MainCtrl($scope, $location, $anchorScroll) {
+            $scope.scrollTo = function(id) {
+                $location.hash(id);
+                console.log($location.hash());
+                $anchorScroll();
+            };
+        };
+    </script>
 </head>
 <body>
 <header>
@@ -46,7 +63,7 @@
 
 </header>
 
-<div class="container">
+<div class="container" >
 <div class="row span12">
     <div class="container">
         <h1 class="pull-left">
@@ -87,7 +104,7 @@
                         </p>
                         <p>
                             In case you have a feature request or want to file a bug, please contact <a
-                                href="mailto:eleftherios.tatakis@student.manchester.com">email</a>.
+                                href="mailto:info@openphactsfoundation.org">email</a>.
                         </p>
                         <br>
                     </div>
@@ -116,20 +133,21 @@
                         </li>
                     </ul>
                 </li>
-                <li><a style="color:white;" href="http://voideditor.cs.man.ac.uk/documentation.html">How to extend</a>
-                </li>
+                <!--<li><a style="color:white;" href="http://voideditor.cs.man.ac.uk/documentation.html">How to extend</a>-->
+                <!--</li>-->
             </ul>
 
         </div>
     </div>
 </div>
 
-<div class="row span12">
-    <div style="height:500px;">
+<div class="row span12"  ng-controller="MainCtrl">
+    <div style="height:500px;" class="span9" role="main" >
 
-        <h3 id="VE"> VoID Editor</h3>
 
-        <div class="span9 offset1" id="main">
+
+        <div  id="main">
+            <h3 id="top"> VoID Editor</h3>
             <p>
 
                 This project focuses on the Life Science domain within the Semantic Web, targeting the importance of
@@ -150,8 +168,8 @@
             <h3 id="underthehood">Under the Hood</h3>
 
             <p>
-                Pressing the under the hood button, you are able to see progress of creation of the VoID for the dataset
-                being described.
+                Pressing the "Under the Hood" button, you are able to see progress of creation of the VoID for the dataset
+                being described (See Figure below).
             </p>
 
             <p style=" text-align: center;">
@@ -170,6 +188,7 @@
             <br>
 
             <h3 id="orcid">ORCID</h3>
+
 
             <p>When providing your information in the "User Info" tab, you are able to provide you <a
                     href="http://orcid.org/" target="_blank">ORCID </a> ID and the VoID Editor will go to the ORCID API
@@ -201,7 +220,7 @@
                      id="types.png"></p>
             <br>
 
-            <h3> Multiple Contributors</h3>
+            <h3 id="contributors"> Multiple Contributors</h3>
 
             <p>The VoID Editor allows you to add all people that contributed to the creation of the dataset. You are
                 also able to define what role each contributor had : author, curator or contributed in some other
@@ -224,7 +243,7 @@
                      id="sources.png"></p>
             <br>
 
-            <h3> Download VoID</h3>
+            <h3 id="export"> Download VoID</h3>
 
             <p> Once you have created the VoID correctly and inputed all the necassery information the user can download
                 the VoID dataset description.</p>
@@ -237,13 +256,88 @@
 
         <br>
 
-        <div class="span9 offset1">
-            <h1 id="linkset">Linkset Creator</h1>
+        <div class="span9">
+            <h1 id="linkset" >Linkset Creator</h1>
+            <h3 id="whatisalinkset">What is a linkset?</h3>
+            <p> A linkset is a set of links relating records in two datasets.
+                All subjects are in one dataset and all objects are in another dataset.
+                These links all use the same link predicate.</p>
+           <br>
+            <h3 id="diff">Is the Linkset creator different from the VoID Editor?</h3>
+            <p> Yes, the VoID editor creates the VoID descriptions for the dataset. While the Linkset Creator creats a VoID
+                describing the links that exist within that dataset. </p>
 
-            <p> Under contruction</p>
+            <br>
+
+            <h3 id="linksetUndertheHood">Under the Hood</h3>
+            <p>
+                Pressing the "Under the Hood" button, you are able to see progress of creation of the VoID for the Linkset.(See Figure below).
+            </p>
+
+            <p style=" text-align: center;">
+                <img alt="" src="img/linkmodal.png"
+                     title="Linkset Creator Modal - To view RDF produces" id="modal.png"></p>
+            <br>
+            <h3 id="sourcetarget">Source / Target</h3>
+            <p>
+
+            </p>
+
+            <p style=" text-align: center;">
+                <img alt="" src="img/sourcetarget.png"
+                     title="Linkset Creator source - target" id="source.png"></p>
+            <br>
+            <h3 id="linking">Linking</h3>
+            <p>
+
+            </p>
+
+            <p style=" text-align: center;">
+                <img alt="" src="img/linking.png"
+                     title="Linkset Creator linking" id="linking.png"></p>
+            <br>
+
+
+
         </div>
+
+    </div>
+<div class="span2">
+    <div class=" pull-right" role="complementary" style="margin-top: 10px;position: fixed; margin-left:2%; cursor:pointer;">
+        <ul class="nav bs-docs-sidenav">
+
+            <li class="active">
+                <h4><a ng-click="scrollTo('top')">VoiD Editor</a></h4>
+                <ul class="nav">
+                    <li class=""><a ng-click="scrollTo('underthehood')">Under the Hood</a></li>
+                    <li class=""><a ng-click="scrollTo('import')">Import VoID </a></li>
+                    <li class=""><a ng-click="scrollTo('orcid')">ORCID</a></li>
+                    <li class=""><a ng-click="scrollTo('datasetypes')">Dataset types</a></li>
+                    <li class=""><a ng-click="scrollTo('stats')">Statistical Analysis</a></li>
+                    <li class=""><a ng-click="scrollTo('contributors')">Multiple Contributors</a></li>
+                    <li class=""><a ng-click="scrollTo('sources')">Incorporating Sources in your dataset</a></li>
+                    <li class=""><a ng-click="scrollTo('export')">Download VoID</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <h4><a ng-click="scrollTo('linkset')">Linkset Creator</a></h4>
+                <ul class="nav">
+                    <li><a ng-click="scrollTo('whatisalinkset')">What is a linkset?</a></li>
+                    <li><a ng-click="scrollTo('diff')">Is the Linkset creator different from the VoID Editor?</a></li>
+                    <li><a ng-click="scrollTo('linksetUndertheHood')">Under the Hood</a></li>
+                    <li><a ng-click="scrollTo('sourcetarget')">Source / Target</a></li>
+                    <li><a ng-click="scrollTo('linking')">Linking</a></li>
+                </ul>
+            </li>
+
+        </ul>
+        <a class="back-to-top" href="#top">
+            Back to top
+        </a>
     </div>
 
+</div>
 
 
 </div>
@@ -254,31 +348,10 @@
         </small>
     </footer>
 </div>
-<!--<script>-->
 
-<!--var ToC =--><!--"<nav role='navigation' class='table-of-contents'>" +--><!--"<h2>On this page:</h2>" +-->
-<!--"<ul>";-->
-
-<!--var newLine, el, title, link;-->
-
-<!--$("#main h3").each(function() {-->
-
-<!--el = $(this);--><!--title = el.text();--><!--link = "#" + el.attr("id");-->
-
-<!--newLine =--><!--"<li>" +--><!--"<a href='" + link + "'>" +--><!--title +--><!--"</a>" +--><!--"</li>";-->
-
-<!--ToC += newLine;-->
-
-<!--});--><!--ToC +=--><!--"</ul>" +--><!--"</nav>";-->
-
-<!--$("#main").prepend(ToC);--><!--</script>-->
 </div>
 
-<script src="lib/angular/angular1.2.2.min.js"></script>
-<script src="lib/angular/angular-route.js"></script>
-<script src="lib/angular/angular-sanitize.js"></script>
-<script src="lib/angular/angular-resource.js"></script>
-<script src="lib/angular/angular-loader.js"></script>
+
 <script src="lib/ui-bootstrap/ui-bootstrap-0.6.0.js"></script>
 <script src="lib/ui-bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
 <script src="lib/moment/moment.min.js"></script>
@@ -289,5 +362,6 @@
 <script src="js/datasets/datepicker.js"></script>
 <script src="js/datasets/directives.js"></script>
 <script src="js/dropdown.js"></script>
+
 </body>
 </html>
