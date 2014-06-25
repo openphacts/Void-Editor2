@@ -3,6 +3,84 @@
   <component name="ChangeListManager">
     <list default="true" id="3dd668c8-7991-416d-81f2-5cfafb1a3a27" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\out\production\main\editor\domain\JsonAttributes.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\classes.list.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\global.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\img\glyphicons-halflings-white.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\img\glyphicons-halflings.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\index.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\namespaces.list.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\scripts\URI.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\scripts\bootstrap-dropdown.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\scripts\bootstrap-tab.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\scripts\docstrap.lib.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\scripts\prettify\Apache-License-2.0.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\scripts\prettify\jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\scripts\prettify\lang-css.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\scripts\prettify\prettify.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\scripts\sunlight.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\scripts\toc.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\darkstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\prettify-tomorrow.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.amelia.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.cerulean.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.cosmo.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.cyborg.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.darkstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.flatly.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.journal.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.readable.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.simplex.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.slate.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.spacelab.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.spruce.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.superhero.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\site.united.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\sunlight.dark.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\styles\sunlight.default.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\voidEditor.editorApp.dateControllers.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\voidEditor.editorApp.editorAppControllers.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\voidEditor.editorApp.editorAppDirectives.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\voidEditor.editorApp.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\voidEditor.editorApp.modalControllers.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\dataset\voidEditor.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\classes.list.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\global.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\img\glyphicons-halflings-white.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\img\glyphicons-halflings.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\index.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\linksetCreator.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\linksetCreator.linksetApp.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\linksetCreator.linksetApp.linksetAppControllers.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\linksetCreator.linksetApp.modalControllers.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\namespaces.list.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\scripts\URI.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\scripts\bootstrap-dropdown.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\scripts\bootstrap-tab.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\scripts\docstrap.lib.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\scripts\prettify\Apache-License-2.0.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\scripts\prettify\jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\scripts\prettify\lang-css.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\scripts\prettify\prettify.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\scripts\sunlight.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\scripts\toc.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\darkstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\prettify-tomorrow.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.amelia.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.cerulean.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.cosmo.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.cyborg.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.darkstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.flatly.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.journal.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.readable.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.simplex.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.slate.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.spacelab.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.spruce.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.superhero.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\site.united.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\sunlight.dark.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\docs\js\linkset\styles\sunlight.default.css" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/BDB.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/BDB.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/Biopax_level3.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/Biopax_level3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/CHEMINF.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/CHEMINF.class" />
@@ -23,6 +101,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/SBO_OWL.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/SBO_OWL.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/Skos.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/Skos.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/Spatial.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/Spatial.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/img/Thumbs.db" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/img/Thumbs.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/Txn.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/Txn.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/validator/Validator.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/validator/Validator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/Voaf.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/ontologies/Voaf.class" />
@@ -41,6 +120,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidTurtle.java" afterPath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidTurtle.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/controllers.js" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page4.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page4.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/services.js" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -70,22 +150,30 @@
       <file leaf-file-name="documentation.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22303474" vertical-offset="2275" max-vertical-offset="2822">
-              <caret line="141" column="51" selection-start-line="141" selection-start-column="51" selection-end-line="141" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.40402195" vertical-offset="1071" max-vertical-offset="3842">
+              <caret line="136" column="105" selection-start-line="136" selection-start-column="105" selection-end-line="136" selection-end-column="105" />
               <folding>
+                <element signature="tag#ul#0;tag#div#0;tag#div#0;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
                 <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="tag#div#0;tag#div#0;tag#div#1;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
                 <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h1#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1403612212531" expanded="true" signature="866:1225" placeholder="..." />
-                <marker date="1403612212531" expanded="false" signature="891:910" placeholder="..." />
-                <marker date="1403612212531" expanded="false" signature="951:972" placeholder="..." />
-                <marker date="1403612212531" expanded="true" signature="973:1212" placeholder="..." />
+                <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#5;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#8;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#10;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#12;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#14;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#16;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1403698018073" expanded="true" signature="990:1349" placeholder="..." />
+                <marker date="1403698018073" expanded="false" signature="1015:1034" placeholder="..." />
+                <marker date="1403698018073" expanded="false" signature="1075:1096" placeholder="..." />
+                <marker date="1403698018073" expanded="true" signature="1097:1336" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -152,7 +240,6 @@
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/modal.js" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/conf.json" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/conf.json" />
-        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page3.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/css/app.css" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/dropdown.js" />
@@ -160,6 +247,7 @@
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/services.js" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/controllers.js" />
+        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html" />
       </list>
     </option>
   </component>
@@ -430,6 +518,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VoidEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Void-Editor2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voidEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -557,7 +675,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -993,22 +1111,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22303474" vertical-offset="2275" max-vertical-offset="2822">
-          <caret line="141" column="51" selection-start-line="141" selection-start-column="51" selection-end-line="141" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.40402195" vertical-offset="1071" max-vertical-offset="3842">
+          <caret line="136" column="105" selection-start-line="136" selection-start-column="105" selection-end-line="136" selection-end-column="105" />
           <folding>
+            <element signature="tag#ul#0;tag#div#0;tag#div#0;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="tag#div#0;tag#div#0;tag#div#1;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1403612212531" expanded="true" signature="866:1225" placeholder="..." />
-            <marker date="1403612212531" expanded="false" signature="891:910" placeholder="..." />
-            <marker date="1403612212531" expanded="false" signature="951:972" placeholder="..." />
-            <marker date="1403612212531" expanded="true" signature="973:1212" placeholder="..." />
+            <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#5;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#8;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#10;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#12;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#14;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#16;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1403698018073" expanded="true" signature="990:1349" placeholder="..." />
+            <marker date="1403698018073" expanded="false" signature="1015:1034" placeholder="..." />
+            <marker date="1403698018073" expanded="false" signature="1075:1096" placeholder="..." />
+            <marker date="1403698018073" expanded="true" signature="1097:1336" placeholder="..." />
           </folding>
         </state>
       </provider>

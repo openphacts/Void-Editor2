@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/glyphicons.css">
-
+    <script src="lib/jquery/jquery-1.10.2.js"></script>
+    <script src="lib/jquery-ui/jquery-ui-1.10.3.custom.js"></script>
 </head>
 <body>
 <header>
@@ -45,6 +46,7 @@
         })();
 
     </script>
+
 </header>
 
 <div class="container" >
@@ -125,8 +127,97 @@
 
     <div class="row span12">
         <div style="height:500px;">
-            <h1 style="vertical-align: middle; text-align:center;">Under construction!</h1>
 
+           <h3 id="VE"> VoID Editor</h3>
+
+            <div class="span9 offset1" id="main">
+                <p>
+
+                    This project focuses on the Life Science domain within the Semantic Web, targeting the
+                    importance of provenance in the global project of <a href="http://www.openphacts.org/">Open PHACTS</a>, Open Pharmaceutical
+                    Space. Open PHACTS is a multi-source pool of information which brings together
+                    Pharmaceutical, Chemical and Biological data. In order to be able to manage the life cycle
+                    of this information within the Open PHACTS repositories, Open PHACTS requires each additional
+                    individual data-source to have a small “header” file which provides all the necessary
+                    information to ensure provenance of the data. This file is called a VoID dataset description.
+
+                </p>
+                <p>This VoID data description is created according to the <a href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/"
+                        target="_blank">Open PHACTS specification</a></p>
+                <br>
+                <h3 id="underthehood">Under the Hood</h3>
+                <p>
+                    Pressing the under the hood button, you are able to see progress of creation of the VoID for
+                the dataset being described.
+                </p>
+                <p style=" text-align: center;">
+                    <img alt="" src="img/modalImage.png"
+                         title="VoID Editor Modal - To view RDF produces" id="modal.png"></p>
+                <br>
+                <h3 id="import">Import VoID </h3>
+                <p>Allows you t oupload previous versions of VoID dataset descriptions. This allows the user to easily update and
+                modify VoID files. The VoID imported must be created by the VoID Editor.</p>
+                <p style=" text-align: center;">
+                    <img alt="" src="img/ShowImport.png"
+                         title="VoID Editor Import - To import previous versions of VoID" id="import.png"></p>
+<br>
+                <h3 id="orcid">ORCID</h3>
+                <p>When providing your information in the "User Info" tab, you are able to provide you
+                    <a href="http://orcid.org/" target="_blank">ORCID </a> ID and the VoID Editor will go to the ORCID API
+                retrieve your full name and add this information in the VoID dataset description. </p>
+                <br>
+
+                <h3 id="stats">Statistical Analysis</h3>
+                <p> Allow the user to provide a RDF dataset or a spraql endpoint and the VoID Editor will query them in order
+                to retrive some basic statistical analysis.</p>
+                <p style=" text-align: center;">
+                    <img alt="" src="img/stats.png"
+                         title="VoID Editor Stats - To import dataset or provide sparql endpoints for statistical analysis."
+                         id="stats.png"></p>
+
+                <br>
+                <h3 id="datasetypes">Dataset types</h3>
+                <p>
+                    Through the VoID editor you are able to describe RDF and Non-RDF datasets and through this process create
+                    a valid VoID dataset descirption for the specific dataset.
+                </p>
+                <p style=" text-align: center;">
+                    <img alt="" src="img/types.png"
+                         title="VoID Editor Dataset Types"
+                         id="types.png"></p>
+                <br>
+                <h3> Multiple Contributors</h3>
+                <p>The VoID Editor allows you to add all people that contributed to the creation of the dataset. You are
+                also able to define what role each contributor had : author, curator or contributed in some other way.</p>
+                <p style=" text-align: center;">
+                    <img alt="" src="img/contributors.png"
+                         title="VoID Editor contributors"
+                         id="contributors.png"></p>
+                <br>
+
+                <h3 id="sources">Incorporating Sources in your dataset</h3>
+                <p> Allow the uses to incorporate data sources used in the dataset their are describing in a key feature of the
+                VoID Editor.</p>
+                <p style=" text-align: center;">
+                    <img alt="" src="img/sources.png"
+                         title="VoID Editor Incorporating sources."
+                         id="sources.png"></p>
+                <br>
+                <h3> Download VoID</h3>
+                <p> Once you have created the VoID correctly and inputed all the necassery information the user can download the
+                VoID dataset description.</p>
+                <p style=" text-align: center;">
+                    <img alt="" src="img/download.png"
+                         title="VoID Editor Download- Downloading data once finished."
+                         id="download.png"></p>
+            </div>
+
+            <br>
+
+            <div class="span9 offset1" >
+                <h1 id="linkset">Linkset Creator</h1>
+                <p> Under contruction</p>
+            </div>
         </div>
 
     </div>
@@ -137,10 +228,39 @@
             </small>
         </footer>
     </div>
+    <!--<script>-->
 
+        <!--var ToC =-->
+                <!--"<nav role='navigation' class='table-of-contents'>" +-->
+                <!--"<h2>On this page:</h2>" +-->
+                <!--"<ul>";-->
+
+        <!--var newLine, el, title, link;-->
+
+        <!--$("#main h3").each(function() {-->
+
+            <!--el = $(this);-->
+            <!--title = el.text();-->
+            <!--link = "#" + el.attr("id");-->
+
+            <!--newLine =-->
+                    <!--"<li>" +-->
+                    <!--"<a href='" + link + "'>" +-->
+                    <!--title +-->
+                    <!--"</a>" +-->
+                    <!--"</li>";-->
+
+            <!--ToC += newLine;-->
+
+        <!--});-->
+        <!--ToC +=-->
+                <!--"</ul>" +-->
+                <!--"</nav>";-->
+
+        <!--$("#main").prepend(ToC);-->
+    <!--</script>-->
     </div>
-<script src="lib/jquery/jquery-1.10.2.js"></script>
-<script src="lib/jquery-ui/jquery-ui-1.10.3.custom.js"></script>
+
 <script src="lib/angular/angular1.2.2.min.js"></script>
 <script src="lib/angular/angular-route.js"></script>
 <script src="lib/angular/angular-sanitize.js"></script>
