@@ -23,6 +23,7 @@ modalControllers.controller('ModalExportCtrl', ['$scope', '$rootScope' , '$modal
         $scope.open = function () {
             console.log("Going to open modal!!");
             voidData.checkSources();
+            voidData.checkDistributions();
             var result = voidData.checkIfUriForSourcesExist();
             if (result == "passed") {
                 $modal.open({

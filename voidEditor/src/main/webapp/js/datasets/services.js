@@ -143,7 +143,7 @@ var voidDataService = angular.module('voidDataService', [])
         data = {};
         uriForSourcesExist = "passed";
         outputURL = URLPreface+'/rest/void/output';
-
+        data.distributions = [];
         data.sources = [];
         data.contributors = [];
 
@@ -235,6 +235,11 @@ var voidDataService = angular.module('voidDataService', [])
         this.checkSources = function () {
             $rootScope.$broadcast("checkSources");
         };
+
+        this.checkDistributions = function () {
+            $rootScope.$broadcast("checkDistributions");
+        };
+
         /**
          * @function checkIfUriForSourcesExist
          * @returns {string} Value if URI of a source exists.
@@ -285,6 +290,8 @@ var voidDataService = angular.module('voidDataService', [])
             data.contributors = value;
             $rootScope.$broadcast('ContributorsChanged', data.contributors);
         }
+
+
         /**
          * @function getSourceData
          * @returns {JSON} JSON Object containing all the information of the incorporated sources.
@@ -293,6 +300,18 @@ var voidDataService = angular.module('voidDataService', [])
             console.log("In GETSourceData!");
             return data.sources;
         };
+
+
+
+        this.setDistributionData = function(value){
+            data.distributions = value;
+            $rootScope.$broadcast('DistributionsChanged', data.distributions);
+        }
+
+        this.getDistributionData = function () {
+            return data.distributions;
+        };
+
         /**
          * @function createVoidAndDownload
          * @description Send message to the backend to create VoID and allow the download of it by broadcasting 'SuccessDownload'.

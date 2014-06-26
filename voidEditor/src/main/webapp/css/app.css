@@ -1,3 +1,4 @@
+
 div.custom_carousel {
     width:100%;
     height:590px;
@@ -10,8 +11,25 @@ div.custom_carousel {
     border-top:1px solid red;
     border-bottom:1px solid red;
 }
+
 .offset1AndABit{margin-left:180px;}
+
+@media (min-width: 1200px){
+    .offset1AndABitCore{margin-left:18%;}
+    .titleCore{margin-left: 10%;}
+    .span6Start{width:575px;}
+    .span2Start{width: 170px}
+}
+@media (max-width: 1199px){
+    .offset1AndABitCore{margin-left:8%;}
+    .titleCore{margin-left: 20%;}
+    .span6Start{width:465px;}
+    .span2Start{width: 150px}
+}
+
+
 .offsetHalf{margin-left:82px;}
+.offset100{margin-left:100px;}
 .span3Half{width:200px;}
 .spanSourcesVersion{width:260px;}
 .carousel-content{
@@ -56,10 +74,11 @@ footer {
 
 .spanLabel130px{width:130px;}
 .spanLabel1{width:220px;}
-.spanLabel2{width:270px;}
+.spanLabel2{width:275px;}
 .spanLabel3{width:410px;}
 .span1AndABit {width:85px;}
 .span3AndABit {width: 280px;}
+.span3AndAllot {width: 335px;}
 .span2AndABit {width: 220px;}
 
 .accordion-heading .accordion-toggle {

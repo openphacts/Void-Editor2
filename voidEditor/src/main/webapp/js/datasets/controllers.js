@@ -36,6 +36,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.data.webpage = "";
         $rootScope.data.sparqlEndpoint = "";
         $rootScope.data.sources = [];
+        $rootScope.data.distributions = [];
         $rootScope.data.contributors = [];
         $rootScope.quantity = 6;
         $rootScope.data.updateFrequency = "Annual";
@@ -45,27 +46,29 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.data.downloadFrom = "";
         $rootScope.mustFields = [];
         $rootScope.isCollapsed = false;
+        $rootScope.isCollapsedDistributions = false;
         $rootScope.showLoader = false;
         $rootScope.isCollapsedContributor = false;
         $rootScope.uploadErrorMessages = "";
         $rootScope.noURI = -1;
         $rootScope.noVersion = -1;
         $rootScope.noWebpage = -1;
+        $rootScope.noURLDistribution =-1;
         $rootScope.noDescription = -1;
         $rootScope.data.totalNumberOfTriples= "";
         $rootScope.data.numberOfUniqueSubjects="";
         $rootScope.data.numberOfUniqueObjects ="";
         $rootScope.haveStatsFinished = 1;
         $rootScope.data.ORCID = "";
-        $rootScope.data.datasetType = "RDF";
+//        $rootScope.data.datasetType = "RDF";
         $rootScope.doYouHaveOrcidValue = true;
 
         var ua = window.navigator.userAgent;
         $rootScope.msie = ua.indexOf ( ".NET" );
         $rootScope.finalHeader = "Almost there...";
-        $rootScope.LinkToDownloadDataQuestion = "Where could we download your RDF from?*";
-        $rootScope.LinkToDownloadDataHelp = "Where could we download the data from if we required to. This information is required and must be URL.";
-
+        $rootScope.LinkToDownloadDataQuestion = "Where could we download your Data from?*";
+        $rootScope.LinkToDownloadDataHelp = "Where could we download the data from if we required to. " +
+            "This information is required and must be URL.";
         /**
          * @description This message is sent by the services when the information from the ORCID API has been retrieved.
          */
@@ -213,6 +216,21 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.data.contributors = x;
             console.log( $rootScope.data.contributors);
         });
+
+
+        $rootScope.$on('getDistributions', function (event) {
+            console.log("Got in get Distributions what do i do?!?!?");
+            //$rootScope.$broadcast('sendDistributions' ,  $rootScope.data.distributions);
+        });
+
+        /**
+         * @description When the services or another controller change the contributors make sure they are updated here.
+         */
+        $rootScope.$on('DistributionsChanged', function (event, x) {
+            $rootScope.data.distributions = x;
+            console.log( $rootScope.data.distributions);
+        });
+
         /**
          * @description Starts loader gif - at start of page, when void is created or upload of data is done.
          */
@@ -233,6 +251,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             $rootScope.data = uploadResult;
             $rootScope.showLoader = false;
             $rootScope.$broadcast('ChangeInSourcesFromUpload', $rootScope.data.sources);
+            $rootScope.$broadcast('ChangeInDistributionsFromUpload', $rootScope.data.distributions);
             $rootScope.uploadErrorMessages ="<h4 class='h4Success'>Upload was successful!</h4>";
         });
         /**
@@ -262,6 +281,17 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
             else if ($rootScope.noWebpage != -1) result=$rootScope.addAlert("webpageSource");
             else if ($rootScope.noDescription != -1) result=$rootScope.addAlert("webpageSource");
+            else result = "passed";
+
+            voidData.setUriForSourcesExist(result);
+        });
+
+        $rootScope.$on('checkDistributions', function (event) {
+            var result;
+            $rootScope.checkDistributions();
+
+            if ($rootScope.noURLDistribution != -1) result = $rootScope.addAlert("URLDistributions")
+
             else result = "passed";
 
             voidData.setUriForSourcesExist(result);
@@ -334,25 +364,6 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         }
 
         /**
-         * @function changeQuestionForDownloadData
-         * @memberOf voidEditor.editorAppControllers.editorCtrl
-         * @description Changes the questions displayed to the user depending if the dataset provided is RDF or Not.
-         */
-        $rootScope.changeQuestionForDownloadData= function(){
-            console.log($rootScope.data.datasetType);
-            if ($rootScope.data.datasetType == "RDF"){
-                $rootScope.LinkToDownloadDataQuestion = "Where could we download your RDF from?*";
-                $rootScope.LinkToDownloadDataHelp = "Where could we download the data from if we required to. " +
-                    "This information is required and must be URL.";
-            }else{
-                $rootScope.LinkToDownloadDataQuestion = "Dataset distribution description for your dataset:*";
-                $rootScope.LinkToDownloadDataHelp = "Where could we find the dataset distribution description, if we required to." +
-                    " This information is required and must be URL.";
-            }
-            $rootScope.removeAlert("downloadFrom");
-        }
-
-        /**
          * @function checkMustFieldsOnPreviousPage
          * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          * @description Checks what fields that are required are not filled.
@@ -384,10 +395,10 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                             } else if (mustFieldsToCheck == "webpage" && $rootScope.data.webpage.indexOf("://") >= 0 ) {
                                 $rootScope.removeAlert("webpage");
                             }
-                            if (mustFieldsToCheck == "downloadFrom" && $rootScope.data.downloadFrom.indexOf("://") == -1) {
-                                if ($rootScope.checkIfAlertNeedsAdding("downloadFrom")) $rootScope.addAlert("downloadFrom");
-                            } else if (mustFieldsToCheck == "downloadFrom" && $rootScope.data.downloadFrom.indexOf("://") >= -1){
-                                $rootScope.removeAlert("downloadFrom");
+                            if (mustFieldsToCheck == "distributions" && $rootScope.data.distributions.length < 1) {
+                                if ($rootScope.checkIfAlertNeedsAdding("distributions")) $rootScope.addAlert("distributions");
+                            } else if (mustFieldsToCheck == "distributions" && $rootScope.data.distributions.length >= 1){
+                                $rootScope.removeAlert("distributions");
                             }
                         }
                     }//if
@@ -432,6 +443,8 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 header = "<h4 class='h4NeededFields'>Please fill in the following fields</h4>";
 
             $rootScope.checkSources ();
+            $rootScope.checkDistributions();
+
             if ($rootScope.data.title == "") {
                 if (returnString == "") returnString += header;
                 returnString += "<p class='neededFields'>Title of your dataset in \"Core Info\"</p>";
@@ -442,23 +455,24 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
             if ($rootScope.data.publisher == "") {
                 if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'>Publishing institution in \"Publishing Info\"</p>";
+                returnString += "<p class='neededFields'>Publishing institution in \"Core Info\"</p>";
             }
             if ($rootScope.data.webpage == "") {
                 if (returnString == "") returnString +=header;
-                returnString += "<p class='neededFields'>Webpage of documentation in \"Publishing Info\" </p>";
+                returnString += "<p class='neededFields'>Webpage of documentation in \"Core Info\" </p>";
             }
-            if ($rootScope.data.downloadFrom == "") {
+            if ($rootScope.data.distributions.length < 1) {
                 if (returnString == "") returnString += header;
-                if ($rootScope.data.datasetType == "RDF") {
-                    returnString += "<p class='neededFields'> RDF download link in \"Publishing Info\" </p> ";
-                }else{
-                    returnString += "<p class='neededFields'> Dataset distribution description in \"Publishing Info\" </p> ";
-                }
+                returnString += "<p class='neededFields'> Provide at least one distribution at \"Distribution Info\" </p> ";
+            }
+
+            if ($rootScope.noURLDistribution != -1) {
+                if (returnString == "") returnString += header;
+                returnString += "<p class='neededFields'> A URL for the distribution you cited in \"Distribution Info \" </p> ";
             }
             if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("http") == -1)) {
                 if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'> A URI for the licence you choose in \"Publishing Info\" </p> ";
+                returnString += "<p class='neededFields'> A URI for the licence you choose in \"Core Info\" </p> ";
             }
             if ($rootScope.noURI != -1) {
                 if (returnString == "") returnString += header;
@@ -518,6 +532,19 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 }
             }
         };
+
+
+        $rootScope.checkDistributions =function(){
+            $rootScope.noURLDistribution = -1;
+            if ($rootScope.data.distributions != undefined ){
+                for (var i = 0; i < $rootScope.data.distributions.length; i++) {
+                    if ($rootScope.data.distributions[i].URL == undefined
+                        || $rootScope.data.distributions[i].URL == ""
+                        || $rootScope.data.distributions[i].URL.indexOf("://") == -1) $rootScope.noURLDistribution = i;
+                }
+            }
+        };
+
         /**
          * @function addAlert
          * @description Given the ID add the appropriate Alert / Error .
@@ -554,12 +581,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 case "webpage":
                     $rootScope.alerts.push({ id: "webpage", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the webpage of your documentation! Please provide this information.' });
                     break;
-                case "downloadFrom":
-                    if ($rootScope.data.datasetType == "RDF") {
-                        $rootScope.alerts.push({ id: "downloadFrom", type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF data from! Please provide this information.' });
-                    }else{
-                        $rootScope.alerts.push({ id: "downloadFrom", type: 'error', msg: 'Ooops! You forgot to gives us a dataset distribution description! Please provide this information.' });
-                    }
+                case "distributions":
+                    $rootScope.alerts.push({ id: "distributions", type: 'error', msg: 'Ooops! You forgot to gives us a distribution of your dataset! Please provide this information.' });
+                    break;
+                case "URLDistributions":
+                    $rootScope.alerts.push({ id: "URLDistributions", type: 'error', msg: 'Ooops! You forgot to gives us a URL for one of the distributions you provided! Please provide this additional information.' });
                     break;
             }
             return "failed";
@@ -758,8 +784,8 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
          * Slides to add - (ID , "Title" , [Fields that must be filled])
          */
         $scope.addSlide(0, "User Info", []);
-        $scope.addSlide(1, "Core Info", ["title" , "description"]);
-        $scope.addSlide(2, "Publishing Info", ["publisher", "webpage" , "downloadFrom"]);
+        $scope.addSlide(1, "Core Info", ["title" , "description", "publisher", "webpage" ]);
+        $scope.addSlide(2, "Distribution Info", [ "distributions"]);
         $scope.addSlide(3, "Versioning", []);
         $scope.addSlide(4, "Sources", []);
         $scope.addSlide(5, "Export RDF", []);
@@ -878,4 +904,53 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
         })
     }]);
 
+
+editorAppControllers.controller('distributionCtrl', [ '$rootScope', '$scope', 'voidData',
+    function ($rootScope, $scope, voidData) {
+        $scope.selected = undefined;
+        $scope.userDistributions = [];
+        $scope.distributions = [{"name":"RDF" },
+                                {"name":"Datadump" },
+                                {"name":"CSV" },
+                                {"name":"SDF" },
+                                {"name":"TSV" },
+                                {"name":"JSON-LD" },
+                                {"name":"XML" }];
+
+
+        $scope.addToSelected = function (value) {
+            var found = 0;
+            if ($scope.userDistributions == undefined ) $scope.userDistributions = [];
+
+            for (var i = 0; i < $scope.userDistributions.length; i++) {
+                if ($scope.userDistributions[i].name == value) found = 1;
+            }
+
+            if (!found && value != undefined && value != "" && value!="RDF") {
+                $scope.userDistributions.push({"name": value, "URL": "", "version": "" , "isRDF": false, "sparqlEndpoint":"" });
+                voidData.setDistributionData($scope.userDistributions);
+            }else if (!found && value != undefined && value != "" ){
+                console.log(value)
+                $scope.userDistributions.push({"name": value, "URL": "", "version": "" , "isRDF": true, "sparqlEndpoint":"" });
+                voidData.setDistributionData($scope.userDistributions);
+            }
+        };
+
+        $scope.removeSelected = function (value) {
+            var found = false;
+            var i = 0;
+            while (i < $scope.userDistributions.length && !found) {
+                if ($scope.userDistributions[i].name == value) found = true;
+                else i++;
+            }
+            if (found) {
+                $scope.userDistributions.splice(i, 1);
+                voidData.setDistributionData($scope.userDistributions);
+            }
+        };
+
+       $rootScope.$on('ChangeInDistributionsFromUpload', function (event, distr) {
+            $scope.userDistributions = distr;
+        })
+    }]);
 
