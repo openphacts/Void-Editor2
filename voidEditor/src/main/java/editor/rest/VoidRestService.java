@@ -143,9 +143,9 @@ public class VoidRestService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public JSONObject sparqlEndpointStatsUniqueObjects(VoidAttributes endpoint) {
-		results.sparqlStatsUniqueObjects(endpoint.sparqlEndpoint);
-		JSONObject result = results.getUserDataStatisticsUniqueObjects();
-		return result;
+		//results.sparqlStatsUniqueObjects(endpoint.sparqlEndpoint);
+		//JSONObject result = results.getUserDataStatisticsUniqueObjects();
+		return null;
 	}
 
     /**
@@ -157,9 +157,9 @@ public class VoidRestService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public JSONObject sparqlEndpointStatsTotalTriples(VoidAttributes endpoint) {
-		results.sparqlStatsTotalTriples(endpoint.sparqlEndpoint);
-		JSONObject result = results.getUserDataStatisticsTotalTriples();
-		return result;
+//		results.sparqlStatsTotalTriples(endpoint.sparqlEndpoint);
+//		JSONObject result = results.getUserDataStatisticsTotalTriples();
+		return null;
 	}
 
     /**
@@ -171,9 +171,9 @@ public class VoidRestService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public JSONObject sparqlEndpointStatsUniqueSubjects(VoidAttributes endpoint) {
-		results.sparqlStatsUniqueSubjects(endpoint.sparqlEndpoint);
-		JSONObject result = results.getUserDataStatisticsUniqueSubjects();
-		return result;
+//		results.sparqlStatsUniqueSubjects(endpoint.sparqlEndpoint);
+//		JSONObject result = results.getUserDataStatisticsUniqueSubjects();
+		return null;
 	}
 
     /**

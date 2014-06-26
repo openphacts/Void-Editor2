@@ -34,7 +34,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.data.title = "";
         $rootScope.data.publisher = "";
         $rootScope.data.webpage = "";
-        $rootScope.data.sparqlEndpoint = "";
+     //  $rootScope.data.sparqlEndpoint = "";
         $rootScope.data.sources = [];
         $rootScope.data.distributions = [];
         $rootScope.data.contributors = [];
@@ -43,7 +43,6 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.postFinished = false;
         $rootScope.data.licence = "http://creativecommons.org/licenses/by-sa/3.0/";
         $rootScope.alerts = [];
-        $rootScope.data.downloadFrom = "";
         $rootScope.mustFields = [];
         $rootScope.isCollapsed = false;
         $rootScope.isCollapsedDistributions = false;
@@ -354,6 +353,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
          * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
          * @description Queries Sparql Endpoint for statistical analysis.
          */
+        //TODO
         $rootScope.callSparqlEndpoint = function() {
             if ( $rootScope.data.sparqlEndpoint !=undefined&&  $rootScope.data.sparqlEndpoint.indexOf("://") != -1)
             {

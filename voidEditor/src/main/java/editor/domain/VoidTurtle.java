@@ -13,15 +13,12 @@ import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.hp.hpl.jena.rdf.model.*;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
 import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 
-import com.hp.hpl.jena.rdf.model.Literal;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.DCTerms;
@@ -60,20 +57,17 @@ public class VoidTurtle {
     private int yearPublish;
     private String webpage;
     private String licence;
-    private String downloadFrom;
-    private String sparqlEndpoint;
+    private ArrayList distributions;
     private String version;
     private String previousVersion;
     private String updateFrequency;
     private File output = null;
     private ArrayList sources = null;
     private ArrayList contributors = null;
-    private String URI;
     private String totalNumberOfTriples = "";
     private String numberOfUniqueSubjects = "";
     private String numberOfUniqueObjects = "";
     private String ORCID = "";
-    private String datasetType = "";
 
     private Validator validator = null;
 
@@ -90,19 +84,16 @@ public class VoidTurtle {
         this.publisher = obj.publisher;
         this.webpage = obj.webpage;
         this.licence = obj.licence;
-        this.downloadFrom = obj.downloadFrom;
-        this.sparqlEndpoint = obj.sparqlEndpoint;
+        this.distributions = (ArrayList)  obj.distributions;
         this.version = obj.version;
         this.previousVersion = obj.previousVersion;
         this.updateFrequency = obj.updateFrequency;
         this.sources = (ArrayList) obj.sources;
-        this.URI = obj.URI;
         this.totalNumberOfTriples = obj.totalNumberOfTriples;
         this.numberOfUniqueSubjects = obj.numberOfUniqueSubjects;
         this.numberOfUniqueObjects = obj.numberOfUniqueObjects;
         this.ORCID = obj.ORCID;
         this.contributors = (ArrayList) obj.contributors;
-        this.datasetType = obj.datasetType;
 
         if (obj.datePublish.equals("N/A")) {
             this.setDatePublish(1);
@@ -166,17 +157,12 @@ public class VoidTurtle {
         } else {
             descriptionLiteral = voidModel.createLiteral(description, "en");
         }
-        //initial data
-        if (URI.equalsIgnoreCase("http://www.openphacts.org/")) {
-            URI = URI + UUID.randomUUID();
-        }
+        //TODO Validator does not accept. NEED TO FIX ERRORS
+        Resource voidBase = voidModel.createResource( new AnonId("dataset"));
 
-        Resource voidBase = voidModel.createResource(URI);
-        if (datasetType != "" && !datasetType.contains("Not")) {
-            voidBase.addProperty(RDF.type, Void.Dataset);
-        } else {
-            voidBase.addProperty(RDF.type, DCTypes.Dataset);
-        }
+        //TODO change this
+        voidBase.addProperty(RDF.type, Void.Dataset);
+        voidBase.addProperty(RDF.type, DCTypes.Dataset);
 
         voidBase.addProperty(DCTerms.title, titleLiteral);
         voidBase.addProperty(DCTerms.description, descriptionLiteral);
@@ -216,26 +202,18 @@ public class VoidTurtle {
             voidBase.addProperty(DCAT.landingPage, landingPage);
         }
 
-        if (downloadFrom != "" && !datasetType.contains("Not")) {
-            Resource mainDatadump = voidModel.createResource(downloadFrom);
-            voidBase.addProperty(Void.dataDump, mainDatadump);
-        } else if (downloadFrom != "") {
-            Resource distribution = voidModel.createResource(downloadFrom);
-            voidBase.addProperty(DCAT.distribution, distribution);
-        }
-
         if (licence != "" && !licence.contains("N/A")) {
             Resource license = voidModel.createResource(licence);
             voidBase.addProperty(DCTerms.license, license);
         } else if (licence.contains("N/A")) {
             //:dataset dct:license [ rdfs:label "unknown" ];
-            voidBase.addProperty(DCTerms.license, voidModel.createResource().addProperty(RDFS.label, "unknown"));
+            String URI4Licence = "http://voideditor.cs.man.ac.uk/" + UUID.randomUUID();
+            Resource resourceForLicence = voidModel.createResource(URI4Licence);
+            resourceForLicence.addProperty(RDFS.label, "unknown");
+            voidBase.addProperty(DCTerms.license, resourceForLicence);
         }
 
-        if (sparqlEndpoint != "") {
-            Resource sparqlEndpointLoc = voidModel.createResource(sparqlEndpoint);
-            voidBase.addProperty(Void.sparqlEndpoint, sparqlEndpointLoc);
-        }
+
         if (version != "") {
             Literal versionUsed = voidModel.createLiteral(version);
             voidBase.addProperty(Pav.version, versionUsed);
@@ -334,6 +312,49 @@ public class VoidTurtle {
                 }
             }//for
         }//if
+
+        if (distributions != null) {
+            //{"name": value, "URL": "", "version": "" , "isRDF": true, "sparqlEndpoint":"" }
+            for (int i = 0; i < distributions.size(); i++) {
+                // Sources provided in wierd format - so manually do parsing.
+                String tmpValue = distributions.get(i).toString();
+                System.out.println(tmpValue);
+                String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val }
+
+                Resource distribution = null;
+
+                // Extract source URI first to be able to create the correct structure in the void.
+                for (int j = 0; j < splitingSetsOfInfo.length; j++) {
+                    String[] couple = splitingSetsOfInfo[j].split("=");
+                    String property2Check = couple[0];
+                    String value = couple[1].replace("}", "");
+                    if (property2Check.contains("name")) {
+                        distribution = voidModel.createResource(new AnonId(value));
+                        voidBase.addProperty(DCAT.distribution, distribution);
+                    }
+                }
+
+                distribution.addProperty(RDF.type ,DCAT.distribution );
+                //TODO do I handle the sparql stats here?
+                for (int j = 0; j < splitingSetsOfInfo.length; j++) {
+                    String[] couple = splitingSetsOfInfo[j].split("=");
+                    String property2Check = couple[0];
+                    String value = couple[1].replace("}", "");
+                    if (property2Check.contains("version")) {
+                        Literal versionLiteralTmp = voidModel.createLiteral(value, "en");
+                        distribution.addProperty(Pav.version, versionLiteralTmp);
+                    } else if (property2Check.contains("URL")) {
+                        Resource webpageResourceTmp = voidModel.createResource(value);
+                        distribution.addProperty(DCAT.downloadURL, webpageResourceTmp);
+                    } else if (property2Check.contains("sparqlEndpoint")) {
+                        Resource sparqlEndpointLoc = voidModel.createResource(value);
+                        distribution.addProperty(Void.sparqlEndpoint, sparqlEndpointLoc);
+                    }
+                    //TODO NEED TO ADD MEDIA TYPE
+                }//for
+            }//for
+        }//if
+
         /**
          *  Extracts data from datasources which the user provides.
          */
@@ -362,8 +383,6 @@ public class VoidTurtle {
                     String property2Check = couple[0];
                     String value = couple[1].replace("}", "");
                     if (property2Check.contains("type")) {
-                        System.out.println("IN TYPE ====>");
-                        System.out.println(value);
                         if (value.contains("0")) {
                             source.addProperty(RDF.type, DCTypes.Dataset);
                         } else {

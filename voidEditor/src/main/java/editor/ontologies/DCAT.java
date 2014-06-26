@@ -26,4 +26,6 @@ public class DCAT {
 
     /** <p> Used to describe a dataset that is not RDF.</p>*/
     public static final Property distribution = m_model.createProperty( "http://www.w3.org/ns/dcat#Distribution" );
+
+    public static final Property downloadURL = m_model.createProperty( "http://www.w3.org/ns/dcat#downloadURL" );
 }
