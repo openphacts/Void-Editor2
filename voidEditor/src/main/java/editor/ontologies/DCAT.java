@@ -28,4 +28,6 @@ public class DCAT {
     public static final Property distribution = m_model.createProperty( "http://www.w3.org/ns/dcat#Distribution" );
 
     public static final Property downloadURL = m_model.createProperty( "http://www.w3.org/ns/dcat#downloadURL" );
+
+    public static final Property mediaType = m_model.createProperty( "http://www.w3.org/ns/dcat#mediaType" );
 }

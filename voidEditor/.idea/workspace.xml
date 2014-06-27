@@ -32,28 +32,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="VoidTurtle.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="VoidTurtle.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidTurtle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46825397" vertical-offset="2526" max-vertical-offset="9333">
-              <caret line="159" column="58" selection-start-line="159" selection-start-column="58" selection-end-line="159" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5282" max-vertical-offset="9979">
+              <caret line="330" column="0" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#22717#22718#0" expanded="true" />
-                <element signature="e#22762#22763#0" expanded="true" />
-                <element signature="e#22993#22994#0" expanded="true" />
-                <element signature="e#23027#23028#0" expanded="true" />
-                <element signature="e#23078#23079#0" expanded="true" />
-                <element signature="e#23124#23125#0" expanded="true" />
-                <element signature="e#23159#23160#0" expanded="true" />
-                <element signature="e#23193#23194#0" expanded="true" />
-                <element signature="e#23244#23245#0" expanded="true" />
-                <element signature="e#23290#23291#0" expanded="true" />
-                <element signature="e#23326#23327#0" expanded="true" />
-                <element signature="e#23361#23362#0" expanded="true" />
-                <element signature="e#23414#23415#0" expanded="true" />
-                <element signature="e#23462#23463#0" expanded="true" />
+                <element signature="e#24935#24936#0" expanded="true" />
+                <element signature="e#24980#24981#0" expanded="true" />
+                <element signature="e#25211#25212#0" expanded="true" />
+                <element signature="e#25245#25246#0" expanded="true" />
+                <element signature="e#25296#25297#0" expanded="true" />
+                <element signature="e#25342#25343#0" expanded="true" />
+                <element signature="e#25377#25378#0" expanded="true" />
+                <element signature="e#25411#25412#0" expanded="true" />
+                <element signature="e#25462#25463#0" expanded="true" />
+                <element signature="e#25508#25509#0" expanded="true" />
+                <element signature="e#25544#25545#0" expanded="true" />
+                <element signature="e#25579#25580#0" expanded="true" />
+                <element signature="e#25632#25633#0" expanded="true" />
+                <element signature="e#25680#25681#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VoidService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/editor/service/VoidService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="586" max-vertical-offset="2465">
+              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DCAT.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/editor/ontologies/DCAT.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="663">
+              <caret line="31" column="105" selection-start-line="31" selection-start-column="105" selection-end-line="31" selection-end-column="105" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,7 +81,7 @@
       <file leaf-file-name="VoidAttributes.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidAttributes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="595">
+            <state vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="595">
               <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
               <folding />
             </state>
@@ -71,8 +91,18 @@
       <file leaf-file-name="VoidUpload.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidUpload.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3723" max-vertical-offset="6103">
+            <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="6528">
               <caret line="49" column="68" selection-start-line="49" selection-start-column="68" selection-end-line="49" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controllers.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/datasets/controllers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.48793566" vertical-offset="15662" max-vertical-offset="16337">
+              <caret line="932" column="126" selection-start-line="932" selection-start-column="126" selection-end-line="932" selection-end-column="126" />
               <folding />
             </state>
           </provider>
@@ -133,11 +163,11 @@
         <option value="$PROJECT_DIR$/src/main/java/editor/ontologies/Voag.java" />
         <option value="$PROJECT_DIR$/src/main/java/editor/ontologies/Biopax_level3.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/datasets/controllers.js" />
-        <option value="$PROJECT_DIR$/src/main/java/editor/ontologies/DCAT.java" />
         <option value="$PROJECT_DIR$/src/main/java/editor/domain/VoidAttributes.java" />
         <option value="$PROJECT_DIR$/src/main/java/editor/rest/VoidRestService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/editor/ontologies/DCAT.java" />
         <option value="$PROJECT_DIR$/src/main/java/editor/domain/VoidTurtle.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/datasets/controllers.js" />
       </list>
     </option>
   </component>
@@ -339,28 +369,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ontologies" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="voidEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="editor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="domain" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -414,6 +422,19 @@
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -440,19 +461,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -489,6 +497,26 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="54643" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
@@ -558,29 +586,9 @@
       </ConfigurationWrapper>
       <method />
     </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="54643" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="VoID Editor" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" editBeforeRun="true" APPLICATION_SERVER_NAME="Tomcat 7.0" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="" show_console_on_std_out="true" show_console_on_std_err="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8090" />
-      <option name="UPDATING_POLICY" value="restart-server" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="voidEditor">
           <settings>
@@ -685,11 +693,12 @@
       <workItem from="1403618676078" duration="3245000" />
       <workItem from="1403684992602" duration="1947000" />
       <workItem from="1403768806630" duration="7036000" />
+      <workItem from="1403854886990" duration="5597000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40508000" />
+    <option name="totallyTimeSpent" value="46105000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -735,7 +744,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2647059" sideWeight="0.54833835" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1925982" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2777778" sideWeight="0.58912385" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3267974" sideWeight="0.58912385" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -787,13 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.27210885" vertical-offset="245" max-vertical-offset="884">
           <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/editor/service/VoidService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.4115646" vertical-offset="0" max-vertical-offset="2465">
-          <caret line="139" column="77" selection-start-line="139" selection-start-column="77" selection-end-line="139" selection-end-column="77" />
         </state>
       </provider>
     </entry>
@@ -1063,7 +1065,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1904762" vertical-offset="7" max-vertical-offset="595">
           <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1071,15 +1072,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/datasets/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.32" vertical-offset="15678" max-vertical-offset="16354">
-          <caret line="933" column="111" selection-start-line="933" selection-start-column="105" selection-end-line="933" selection-end-column="111" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,6 +1079,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.09863946" vertical-offset="1469" max-vertical-offset="2465">
           <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/target/ROOT/WEB-INF/lib/jersey-server-1.17.1.jar!/com/sun/jersey/spi/container/JavaMethodInvokerFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6751055" vertical-offset="27" max-vertical-offset="289">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/editor/rest/VoidRestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.9389315" vertical-offset="1045" max-vertical-offset="3247">
+          <caret line="175" column="18" selection-start-line="175" selection-start-column="18" selection-end-line="175" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidAttributes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="595">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -1099,59 +1112,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidAttributes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="595">
-          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/editor/ontologies/DCAT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="629">
-          <caret line="29" column="109" selection-start-line="29" selection-start-column="109" selection-end-line="29" selection-end-column="109" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="663">
+          <caret line="31" column="105" selection-start-line="31" selection-start-column="105" selection-end-line="31" selection-end-column="105" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/target/ROOT/WEB-INF/lib/jersey-server-1.17.1.jar!/com/sun/jersey/spi/container/JavaMethodInvokerFactory.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/editor/service/VoidService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6751055" vertical-offset="27" max-vertical-offset="289">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/editor/rest/VoidRestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.9389315" vertical-offset="1045" max-vertical-offset="3247">
-          <caret line="175" column="18" selection-start-line="175" selection-start-column="18" selection-end-line="175" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="586" max-vertical-offset="2465">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidTurtle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46825397" vertical-offset="2526" max-vertical-offset="9333">
-          <caret line="159" column="58" selection-start-line="159" selection-start-column="58" selection-end-line="159" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5282" max-vertical-offset="9979">
+          <caret line="330" column="0" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#22717#22718#0" expanded="true" />
-            <element signature="e#22762#22763#0" expanded="true" />
-            <element signature="e#22993#22994#0" expanded="true" />
-            <element signature="e#23027#23028#0" expanded="true" />
-            <element signature="e#23078#23079#0" expanded="true" />
-            <element signature="e#23124#23125#0" expanded="true" />
-            <element signature="e#23159#23160#0" expanded="true" />
-            <element signature="e#23193#23194#0" expanded="true" />
-            <element signature="e#23244#23245#0" expanded="true" />
-            <element signature="e#23290#23291#0" expanded="true" />
-            <element signature="e#23326#23327#0" expanded="true" />
-            <element signature="e#23361#23362#0" expanded="true" />
-            <element signature="e#23414#23415#0" expanded="true" />
-            <element signature="e#23462#23463#0" expanded="true" />
+            <element signature="e#24935#24936#0" expanded="true" />
+            <element signature="e#24980#24981#0" expanded="true" />
+            <element signature="e#25211#25212#0" expanded="true" />
+            <element signature="e#25245#25246#0" expanded="true" />
+            <element signature="e#25296#25297#0" expanded="true" />
+            <element signature="e#25342#25343#0" expanded="true" />
+            <element signature="e#25377#25378#0" expanded="true" />
+            <element signature="e#25411#25412#0" expanded="true" />
+            <element signature="e#25462#25463#0" expanded="true" />
+            <element signature="e#25508#25509#0" expanded="true" />
+            <element signature="e#25544#25545#0" expanded="true" />
+            <element signature="e#25579#25580#0" expanded="true" />
+            <element signature="e#25632#25633#0" expanded="true" />
+            <element signature="e#25680#25681#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/datasets/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48793566" vertical-offset="15662" max-vertical-offset="16337">
+          <caret line="932" column="126" selection-start-line="932" selection-start-column="126" selection-end-line="932" selection-end-column="126" />
+          <folding />
         </state>
       </provider>
     </entry>

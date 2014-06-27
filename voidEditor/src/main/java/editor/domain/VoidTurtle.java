@@ -157,8 +157,8 @@ public class VoidTurtle {
         } else {
             descriptionLiteral = voidModel.createLiteral(description, "en");
         }
-        //TODO Validator does not accept. NEED TO FIX ERRORS
-        Resource voidBase = voidModel.createResource( new AnonId("dataset"));
+        //TODO Make the URI creation a method
+        Resource voidBase = voidModel.createResource("http://www.openphacts.org/" + UUID.randomUUID() );
 
         //TODO change this
         voidBase.addProperty(RDF.type, Void.Dataset);
@@ -320,7 +320,8 @@ public class VoidTurtle {
                 String tmpValue = distributions.get(i).toString();
                 System.out.println(tmpValue);
                 String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val }
-
+                boolean itsRDF = false;
+                String type= "";
                 Resource distribution = null;
 
                 // Extract source URI first to be able to create the correct structure in the void.
@@ -328,30 +329,67 @@ public class VoidTurtle {
                     String[] couple = splitingSetsOfInfo[j].split("=");
                     String property2Check = couple[0];
                     String value = couple[1].replace("}", "");
-                    if (property2Check.contains("name")) {
+                    if (property2Check.contains("name") && value!="RDF") {
                         distribution = voidModel.createResource(new AnonId(value));
                         voidBase.addProperty(DCAT.distribution, distribution);
+                        itsRDF= false;
+                        type = value;
+                    }else if (value == "RDF"){
+                        itsRDF = true;
                     }
                 }
-
-                distribution.addProperty(RDF.type ,DCAT.distribution );
-                //TODO do I handle the sparql stats here?
-                for (int j = 0; j < splitingSetsOfInfo.length; j++) {
-                    String[] couple = splitingSetsOfInfo[j].split("=");
-                    String property2Check = couple[0];
-                    String value = couple[1].replace("}", "");
-                    if (property2Check.contains("version")) {
-                        Literal versionLiteralTmp = voidModel.createLiteral(value, "en");
-                        distribution.addProperty(Pav.version, versionLiteralTmp);
-                    } else if (property2Check.contains("URL")) {
-                        Resource webpageResourceTmp = voidModel.createResource(value);
-                        distribution.addProperty(DCAT.downloadURL, webpageResourceTmp);
-                    } else if (property2Check.contains("sparqlEndpoint")) {
-                        Resource sparqlEndpointLoc = voidModel.createResource(value);
-                        distribution.addProperty(Void.sparqlEndpoint, sparqlEndpointLoc);
+                if (!itsRDF) {
+                    distribution.addProperty(RDF.type, DCAT.distribution);
+                    //TODO do I handle the sparql stats here?
+                    for (int j = 0; j < splitingSetsOfInfo.length; j++) {
+                        String[] couple = splitingSetsOfInfo[j].split("=");
+                        String property2Check = couple[0];
+                        String value = couple[1].replace("}", "");
+                        if (property2Check.contains("version")) {
+                            Literal versionLiteralTmp = voidModel.createLiteral(value, "en");
+                            distribution.addProperty(Pav.version, versionLiteralTmp);
+                        } else if (property2Check.contains("URL")) {
+                            Resource webpageResourceTmp = voidModel.createResource(value);
+                            distribution.addProperty(DCAT.downloadURL, webpageResourceTmp);
+                        }
+                        //TODO NEED TO ADD MEDIA TYPE
+                    }//for
+                    if (type == "Datadump"){
+                        Resource tmp = voidModel.createResource("text");
+                        distribution.addProperty(DCAT.mediaType, tmp);
+                    }else if (type == "CSV"){
+                        Resource tmp = voidModel.createResource("text/csv");
+                        distribution.addProperty(DCAT.mediaType, tmp);
+                    }else if (type == "SDF"){
+                        Resource tmp = voidModel.createResource("text/sdf");
+                        distribution.addProperty(DCAT.mediaType, tmp);
+                    }else if (type == "TSV"){
+                        Resource tmp = voidModel.createResource("text/tsv");
+                        distribution.addProperty(DCAT.mediaType, tmp);
+                    }else if (type == "JSON-LD"){
+                        Resource tmp = voidModel.createResource("application/ld+json");
+                        distribution.addProperty(DCAT.mediaType, tmp);
+                    }else if (type == "XML"){
+                        Resource tmp = voidModel.createResource("text/xml");
+                        distribution.addProperty(DCAT.mediaType, tmp);
+                    }else{
+                        System.out.println("Something went wrong in distribution setting of media type.");
                     }
-                    //TODO NEED TO ADD MEDIA TYPE
-                }//for
+
+                }else {
+                    for (int j = 0; j < splitingSetsOfInfo.length; j++) {
+                        String[] couple = splitingSetsOfInfo[j].split("=");
+                        String property2Check = couple[0];
+                        String value = couple[1].replace("}", "");
+
+                        if (property2Check.contains("URL")) {
+                            voidBase.addProperty(Void.dataDump, value);
+                        } else if (property2Check.contains("sparqlEndpoint") && !value.contains("---")) {
+                            Resource sparqlEndpointLoc = voidModel.createResource(value);
+                            voidBase.addProperty(Void.sparqlEndpoint, sparqlEndpointLoc);
+                        }
+                    }
+                }
             }//for
         }//if
 
