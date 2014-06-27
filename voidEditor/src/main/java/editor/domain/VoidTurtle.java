@@ -320,7 +320,7 @@ public class VoidTurtle {
                 String tmpValue = distributions.get(i).toString();
                 System.out.println(tmpValue);
                 String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val }
-                boolean itsRDF = false;
+                boolean itsRDF = true;
                 String type= "";
                 Resource distribution = null;
 
@@ -328,48 +328,53 @@ public class VoidTurtle {
                 for (int j = 0; j < splitingSetsOfInfo.length; j++) {
                     String[] couple = splitingSetsOfInfo[j].split("=");
                     String property2Check = couple[0];
-                    String value = couple[1].replace("}", "");
-                    if (property2Check.contains("name") && value!="RDF") {
-                        distribution = voidModel.createResource(new AnonId(value));
-                        voidBase.addProperty(DCAT.distribution, distribution);
-                        itsRDF= false;
-                        type = value;
-                    }else if (value == "RDF"){
-                        itsRDF = true;
+                    if (couple.length>1){
+                        String value = couple[1].replace("}", "");
+                        if (property2Check.contains("name") && !value.contains("RDF")) {
+                            String URI = "http://voideditor.cs.man.ac.uk/" + UUID.randomUUID()+"#"+ value;
+                            distribution = voidModel.createResource(URI);
+                            voidBase.addProperty(DCAT.distribution, distribution);
+                            itsRDF= false;
+                            type = value;
+                        }else if (value.contains("RDF")){
+                            itsRDF = true;
+                        }
                     }
                 }
                 if (!itsRDF) {
                     distribution.addProperty(RDF.type, DCAT.distribution);
-                    //TODO do I handle the sparql stats here?
+                    System.out.println("In non rdf distribution");
                     for (int j = 0; j < splitingSetsOfInfo.length; j++) {
                         String[] couple = splitingSetsOfInfo[j].split("=");
                         String property2Check = couple[0];
-                        String value = couple[1].replace("}", "");
-                        if (property2Check.contains("version")) {
-                            Literal versionLiteralTmp = voidModel.createLiteral(value, "en");
-                            distribution.addProperty(Pav.version, versionLiteralTmp);
-                        } else if (property2Check.contains("URL")) {
-                            Resource webpageResourceTmp = voidModel.createResource(value);
-                            distribution.addProperty(DCAT.downloadURL, webpageResourceTmp);
+                        System.out.println("Length ==> " + couple.length);
+                        if (couple.length>1) {
+                            String value = couple[1].replace("}", "");
+                            if (property2Check.contains("version")) {
+                                Literal versionLiteralTmp = voidModel.createLiteral(value, "en");
+                                distribution.addProperty(Pav.version, versionLiteralTmp);
+                            } else if (property2Check.contains("URL")) {
+                                Resource webpageResourceTmp = voidModel.createResource(value);
+                                distribution.addProperty(DCAT.downloadURL, webpageResourceTmp);
+                            }
                         }
-                        //TODO NEED TO ADD MEDIA TYPE
                     }//for
-                    if (type == "Datadump"){
+                    if (type.contains("Datadump")){
                         Resource tmp = voidModel.createResource("text");
                         distribution.addProperty(DCAT.mediaType, tmp);
-                    }else if (type == "CSV"){
+                    }else if (type.contains("CSV")){
                         Resource tmp = voidModel.createResource("text/csv");
                         distribution.addProperty(DCAT.mediaType, tmp);
-                    }else if (type == "SDF"){
+                    }else if (type.contains("SDF")){
                         Resource tmp = voidModel.createResource("text/sdf");
                         distribution.addProperty(DCAT.mediaType, tmp);
-                    }else if (type == "TSV"){
+                    }else if (type.contains( "TSV")){
                         Resource tmp = voidModel.createResource("text/tsv");
                         distribution.addProperty(DCAT.mediaType, tmp);
-                    }else if (type == "JSON-LD"){
+                    }else if (type.contains("JSON-LD")){
                         Resource tmp = voidModel.createResource("application/ld+json");
                         distribution.addProperty(DCAT.mediaType, tmp);
-                    }else if (type == "XML"){
+                    }else if (type.contains("XML")){
                         Resource tmp = voidModel.createResource("text/xml");
                         distribution.addProperty(DCAT.mediaType, tmp);
                     }else{
@@ -383,7 +388,8 @@ public class VoidTurtle {
                         String value = couple[1].replace("}", "");
 
                         if (property2Check.contains("URL")) {
-                            voidBase.addProperty(Void.dataDump, value);
+                            Resource URL = voidModel.createResource(value);
+                            voidBase.addProperty(Void.dataDump, URL);
                         } else if (property2Check.contains("sparqlEndpoint") && !value.contains("---")) {
                             Resource sparqlEndpointLoc = voidModel.createResource(value);
                             voidBase.addProperty(Void.sparqlEndpoint, sparqlEndpointLoc);

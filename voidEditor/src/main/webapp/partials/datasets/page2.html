@@ -59,7 +59,7 @@
                                     </tr>
                                 </table>
 
-                                <div class="form-group row spanSourcesVersion ">
+                                <div class="form-group row spanSourcesVersion "  ng-hide="distribution.isRDF" >
                                     <span ng-hide="isCollapsedDistributions"> Version / Release ID: </span>
                                     <input class="input-small" ng-hide="isCollapsedDistributions" required ng-model="distribution.version"
                                            type="text" collapse="isCollapsedDistributions"

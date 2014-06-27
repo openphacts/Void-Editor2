@@ -927,10 +927,10 @@ editorAppControllers.controller('distributionCtrl', [ '$rootScope', '$scope', 'v
             }
 
             if (!found && value != undefined && value != "" && value!="RDF") {
-                $scope.userDistributions.push({"name": value, "URL": "", "version": "-" , "isRDF": false, "sparqlEndpoint":"---" });
+                $scope.userDistributions.push({"name": value, "URL": "", "version": "" , "isRDF": false, "sparqlEndpoint":"---" });
                 voidData.setDistributionData($scope.userDistributions);
             }else if (!found && value != undefined && value != "" ){
-                $scope.userDistributions.push({"name": value, "URL": "", "version": "-" , "isRDF": true, "sparqlEndpoint":"---" });
+                $scope.userDistributions.push({"name": value, "URL": "", "version": "" , "isRDF": true, "sparqlEndpoint":"---" });
                 voidData.setDistributionData($scope.userDistributions);
             }
         };
