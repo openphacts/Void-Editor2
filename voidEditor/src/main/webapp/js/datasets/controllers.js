@@ -100,7 +100,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
             console.log( $rootScope.data.totalNumberOfTriples);
             $rootScope.haveStatsFinished = 1;
-            $rootScope.showLoader = false;
+          //  $rootScope.showLoader = false;
         });
         /**
          * @description Do when : the statistics on unique subjects is finished.
@@ -115,7 +115,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
             console.log( $rootScope.data.numberOfUniqueSubjects);
             $rootScope.haveStatsFinished = 1;
-            $rootScope.showLoader = false;
+            //$rootScope.showLoader = false;
         });
         /**
          * @description Do when : the statistics on unique objects is finished.
@@ -130,7 +130,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
             console.log( $rootScope.data.numberOfUniqueObjects);
             $rootScope.haveStatsFinished = 1;
-            $rootScope.showLoader = false;
+           // $rootScope.showLoader = false;
 
         });
         /**
@@ -156,7 +156,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
          */
         $rootScope.$on('StatsFailed', function (event, message) {
             console.log("StatsFailed! ==> " + message);
-            $rootScope.showLoader = false;
+            //$rootScope.showLoader = false;
             $rootScope.haveStatsFinished = 1; // if they failed well - no reason to restrict user
             $rootScope.alerts.push({ id: "statsFailed", type: 'warning', msg: 'We were not able to complete all statistical analysis. ' + message });
 
@@ -348,20 +348,6 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                 }
             }
         }
-        /**
-         * @function callSparqlEndpoint
-         * @memberOf voidEditor.editorApp.editorAppControllers.editorCtrl
-         * @description Queries Sparql Endpoint for statistical analysis.
-         */
-        //TODO
-        $rootScope.callSparqlEndpoint = function() {
-            if ( $rootScope.data.sparqlEndpoint !=undefined&&  $rootScope.data.sparqlEndpoint.indexOf("://") != -1)
-            {
-                console.log("got in callSparqlEndpoint");
-                $rootScope.haveStatsFinished = -1;
-                voidData.querySparqlEndPoint($rootScope.data);
-            }
-        }
 
         /**
          * @function checkMustFieldsOnPreviousPage
@@ -501,7 +487,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
             if ($rootScope.haveStatsFinished == -1) {
                 if (returnString == "") returnString +=header;
-                $rootScope.showLoader = true;
+                //$rootScope.showLoader = true;
                 returnString += "<p class='neededFields'> Statistical analysis of you data is being done, if you wanted this included please wait </p> ";
             }
 
@@ -934,6 +920,27 @@ editorAppControllers.controller('distributionCtrl', [ '$rootScope', '$scope', 'v
                 voidData.setDistributionData($scope.userDistributions);
             }
         };
+
+        /**
+         * @function callSparqlEndpoint
+         * @memberOf voidEditor.editorApp.editorAppControllers.distributionCtrl
+         * @description Queries Sparql Endpoint for statistical analysis.
+         */
+        $rootScope.callSparqlEndpoint = function() {
+             console.log("In callSparqlEndpoint");
+            var found = -1;
+            for (var i = 0; i < $scope.userDistributions.length; i++) {
+                if ($scope.userDistributions[i].name== "RDF") found = i;
+            }
+            console.log("found ==>" + found);
+            if ( $scope.userDistributions[found].sparqlEndpoint!=undefined
+                && $scope.userDistributions[found].sparqlEndpoint.indexOf("://") != -1)
+            {
+                console.log("In callSparqlEndpoint -2 ");
+                $rootScope.haveStatsFinished = -1;
+                voidData.querySparqlEndPoint($scope.userDistributions[found].sparqlEndpoint);
+            }
+        }
 
         $scope.removeSelected = function (value) {
             var found = false;

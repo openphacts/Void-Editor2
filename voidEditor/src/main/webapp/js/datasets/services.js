@@ -158,22 +158,26 @@ var voidDataService = angular.module('voidDataService', [])
             URLSub = URLPreface+ '/rest/void/sparqlStatsSubject';
             URLObj = URLPreface+ '/rest/void/sparqlStatsObject';
             URLTriples = URLPreface+ '/rest/void/sparqlStatsTotalTriples';
-
+            console.log("In querySparqlEndPoint");
             $http({method: 'POST', url: URLTriples, data: endpoint}).
                 error(function (data, status) {
                     var message = "Error for total number of triples query run on your dataset." ;
+                    console.log("In error");
                     $rootScope.$broadcast('StatsFailed', message)
                 }).
                 success(function (data) {
+                    console.log("In error");
                     $rootScope.$broadcast('SuccessStatisticsUserDataTotalTriples', data);
                 });
 
             $http({method: 'POST', url: URLSub, data: endpoint}).
                 error(function (data, status) {
                     var message = "Error in stats for unique subjects in your dataset."  ;
+                    console.log("In error");
                     $rootScope.$broadcast('StatsFailed', message)
                 }).
                 success(function (data) {
+                    console.log("In error");
                     $rootScope.$broadcast('SuccessStatisticsUserDataUniqueSubjects', data);
                 });
 
@@ -181,8 +185,10 @@ var voidDataService = angular.module('voidDataService', [])
                 error(function (data, status) {
                     var message = "Error in stats for number of unique objects in your dataset." ;
                     $rootScope.$broadcast('StatsFailed', message)
+                    console.log("In error");
                 }).
                 success(function (data) {
+                    console.log("In error");
                     $rootScope.$broadcast('SuccessStatisticsUserDataUniqueObjects', data);
                 });
         }

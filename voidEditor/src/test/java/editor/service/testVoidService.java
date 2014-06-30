@@ -33,7 +33,7 @@ public class testVoidService {
 		testInput.monthPublish= "12";
 		testInput.yearPublish= "2013";
 		testInput.version= "1.0.0";
-		testInput.URI = "http://testURI.org";
+		//testInput.URI = "http://testURI.org";
 		testObject = new VoidService();
 		testObject.setVoidInfo(testInput);
 	}
@@ -68,10 +68,10 @@ public class testVoidService {
 		assertTrue("Making sure getVoid contains void prefix", testObject.getVoid().contains("<http://rdfs.org/ns/void#>"));
 	}
 	
-	@Test
-	public void testGetVoidOutput7() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
-		assertTrue("Making sure getVoid contains test URI ", testObject.getVoid().contains(testInput.URI));
-	}
+//	@Test
+//	public void testGetVoidOutput7() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+//		assertTrue("Making sure getVoid contains test URI ", testObject.getVoid().contains(testInput.URI));
+//	}
 	
 	@Test
 	public void testGetVoidOutput8() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {

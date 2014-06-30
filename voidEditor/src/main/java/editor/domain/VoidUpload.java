@@ -135,29 +135,21 @@ public class VoidUpload {
                 if (!objectString.equals("date") && !objectString.equals("dataDump") &&  !objectString.equals("sparqlEndpoint")) {
                     result.put(objectString, value);
                 } else if(objectString.equals("dataDump") && !doneRDF) {
-                    if (indexOfRDFDistributionObject == -1 && !doneSparqlEndpoint ) {
+                    if ( !doneSparqlEndpoint ) {
                         distributionObject.put("URL", value);
                         distributionObject.put("name", "RDF");
                         distributionObject.put("isRDF", true);
-                        distributions.add(distributionObject);
-                        indexOfRDFDistributionObject = distributions.indexOf(distributionObject);
                     }else{
-                        JSONObject tmp = (JSONObject) distributions.get(indexOfRDFDistributionObject);
-                        tmp.put("URL", value);
-                        distributions.add( indexOfRDFDistributionObject, tmp);
+                        distributionObject.put("URL", value);
                     }
                     doneRDF =true;
                 } else if(objectString.equals("sparqlEndpoint") && !doneSparqlEndpoint) {
-                    if (indexOfRDFDistributionObject == -1 && !doneRDF) {
+                    if ( !doneRDF) {
                        distributionObject.put("sparqlEndpoint", value);
                        distributionObject.put("name", "RDF");
                        distributionObject.put("isRDF", true);
-                       distributions.add(distributionObject);
-                       indexOfRDFDistributionObject = distributions.indexOf(distributionObject);
                     } else{
-                       JSONObject tmp = (JSONObject) distributions.get(indexOfRDFDistributionObject);
-                       tmp.put("sparqlEndpoint", value);
-                       distributions.add( indexOfRDFDistributionObject, tmp);
+                       distributionObject.put("sparqlEndpoint", value);
                     }
                     doneSparqlEndpoint = true;
                 } else if(objectString.equals("date")) {
@@ -234,7 +226,7 @@ public class VoidUpload {
                              if (distributionMapValue.contains("mediaType")) {
                                  innderDistributionObject.put("isRDF", false);
                                  innderDistributionObject.put("sparqlEndpoint", "");
-                                if (distributionObjectOfInput.contains("text") && distributionObjectOfInput.contains("/")) {
+                                if (distributionObjectOfInput.contains("text") && !distributionObjectOfInput.contains("/")) {
                                     innderDistributionObject.put("name", "Datadump");
                                 } else if (distributionObjectOfInput.contains("text/csv")) {
                                     innderDistributionObject.put("name", "CSV");
@@ -328,6 +320,8 @@ public class VoidUpload {
                 }//for
             }//else
         }//while
+        //If the object is RDF do it once here - otherwise issues arise.
+        distributions.add(distributionObject);
         //Distributions must be added last because it can be RDF or a nonRDF - and have different processing for each.
         result.put("distributions", distributions);
 
