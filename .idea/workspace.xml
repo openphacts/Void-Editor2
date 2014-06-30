@@ -2,285 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dd668c8-7991-416d-81f2-5cfafb1a3a27" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\Apache_License_2.0.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\changes.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\cli.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\conf.json.EXAMPLE" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\jsdoc.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\augment.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\borrow.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\config.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\doclet.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\fs.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\name.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\opts\argparser.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\opts\args.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\package.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\path.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\plugins.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\readme.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\schema.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\src\astbuilder.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\src\astnode.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\src\filter.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\src\handlers.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\src\parser.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\src\scanner.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\src\syntax.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\src\visitor.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\src\walker.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\tag.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\tag\dictionary.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\tag\dictionary\definitions.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\tag\inline.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\tag\type.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\tag\validator.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\template.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\tutorial.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\tutorial\resolver.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\util\doop.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\util\dumper.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\util\error.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\util\logger.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\util\markdown.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\util\runtime.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\lib\jsdoc\util\templateHelper.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node\fs.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\.bin\esparse" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\.bin\esparse.cmd" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\.bin\esvalidate" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\.bin\esvalidate.cmd" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\.bin\marked" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\.bin\marked.cmd" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\.bin\strip-json-comments" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\.bin\strip-json-comments.cmd" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\async\.gitmodules" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\async\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\async\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\async\Makefile" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\async\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\async\index.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\async\lib\async.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\async\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\bin\parseType.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\catharsis.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\lib\describe.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\lib\parser.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\lib\stringify.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\lib\types.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\Gruntfile.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\bower.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\dist\underscore-contrib.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\dist\underscore-contrib.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\index.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.array.builders.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.array.selectors.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.collections.walk.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.function.arity.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.function.combinators.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.function.iterators.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.function.predicates.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.object.builders.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.object.selectors.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.util.existential.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.util.operators.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.util.strings.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\docs\underscore.util.trampolines.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\examples\walk-examples.js.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\index.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\array.builders.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\array.selectors.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\collections.walk.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\dist-concat.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\dist-min.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\function.arity.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\function.combinators.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\function.dispatch.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\function.iterators.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\function.predicates.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\object.builders.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\object.selectors.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\util.existential.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\util.operators.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\util.strings.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\util.trampolines.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\vendor\jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\vendor\jslitmus.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\vendor\qunit.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\vendor\qunit.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\vendor\runner.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\test\vendor\underscore.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\tocdoc.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.array.builders.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.array.selectors.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.collections.walk.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.function.arity.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.function.combinators.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.function.dispatch.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.function.iterators.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.function.predicates.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.object.builders.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.object.selectors.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.util.existential.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.util.operators.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.util.strings.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\node_modules\underscore-contrib\underscore.util.trampolines.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\catharsis\res\en.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\.eslintrc" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\ChangeLog" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\LICENSE.BSD" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\bin\esparse.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\bin\esvalidate.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\component.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\doc\index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\esprima.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\examples\detectnestedternary.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\examples\findbooleantrap.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\examples\tokendist.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\benchmarks.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\benchmarks.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\compare.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\compare.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\compat.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\compat.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\coverage.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\esprima.js.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\harmonytest.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\module.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\module.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\reflect.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\run.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\runner.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\esprima\test\test.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\js2xmlparser\.gitattributes" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\js2xmlparser\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\js2xmlparser\CHANGES.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\js2xmlparser\LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\js2xmlparser\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\js2xmlparser\example\example.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\js2xmlparser\lib\js2xmlparser.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\js2xmlparser\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\Makefile" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\bin\marked" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\component.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\doc\broken.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\doc\todo.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\index.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\lib\marked.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\man\marked.1" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\marked\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\requizzle\CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\requizzle\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\requizzle\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\requizzle\index.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\requizzle\lib\loader.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\requizzle\lib\requizzle.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\requizzle\lib\wrappers\extras.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\requizzle\lib\wrappers\requirepaths.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\requizzle\lib\wrappers\strict.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\requizzle\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\strip-json-comments\cli.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\strip-json-comments\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\strip-json-comments\readme.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\strip-json-comments\strip-json-comments.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\taffydb\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\taffydb\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\taffydb\taffy-test.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\taffydb\taffy.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\underscore\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\underscore\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\underscore\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\underscore\underscore-min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\underscore\underscore.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\lib\wrench.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\lib\x.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\readme.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\tests\mkdir.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\tests\readdir.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\tests\readdir\bar.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\tests\readdir\foo\bar\ipsum.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\tests\readdir\foo\dolor.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\tests\readdir\foo\lorem.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\node_modules\wrench\tests\runner.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\package.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\commentConvert.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\commentsOnly.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\escapeHtml.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\eventDumper.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\markdown.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\overloadHelper.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\partial.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\railsTemplate.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\shout.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\sourcetag.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\test\fixtures\overloadHelper.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\test\fixtures\railsTemplate.js.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\test\fixtures\seetag-markdown.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\test\specs\commentConvert.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\test\specs\escapeHtml.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\test\specs\markdown.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\test\specs\overloadHelper.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\test\specs\railsTemplate.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\test\specs\shout.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\plugins\test\specs\sourcetag.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\publish.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\static\scripts\linenumber.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\static\scripts\prettify\Apache-License-2.0.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\static\scripts\prettify\lang-css.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\static\scripts\prettify\prettify.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\static\styles\jsdoc-default.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\static\styles\prettify-jsdoc.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\static\styles\prettify-tomorrow.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\container.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\details.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\example.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\examples.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\exceptions.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\layout.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\mainpage.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\members.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\method.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\params.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\properties.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\returns.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\source.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\tutorial.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\default\tmpl\type.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\haruki\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\node_modules\jsdoc\templates\haruki\publish.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidAttributes.java" afterPath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidAttributes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/domain/VoidTurtle.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/domain/VoidTurtle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/domain/VoidUpload.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/domain/VoidUpload.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/artifacts/voidEditor/voidEditor.war" afterPath="$PROJECT_DIR$/voidEditor/out/artifacts/voidEditor/voidEditor.war" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidTurtle.java" afterPath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidTurtle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidUpload.java" afterPath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidUpload.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/.idea/workspace.xml" afterPath="$PROJECT_DIR$/voidEditor/.idea/workspace.xml" />
     </list>
@@ -308,9 +35,25 @@
       <file leaf-file-name="controllers.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19636364" vertical-offset="15532" max-vertical-offset="16337">
-              <caret line="920" column="26" selection-start-line="920" selection-start-column="26" selection-end-line="920" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.3495652" vertical-offset="15405" max-vertical-offset="16337">
+              <caret line="918" column="0" selection-start-line="918" selection-start-column="0" selection-end-line="918" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.9615384" vertical-offset="1309" max-vertical-offset="4080">
+              <caret line="80" column="120" selection-start-line="80" selection-start-column="120" selection-end-line="80" selection-end-column="120" />
+              <folding>
+                <marker date="1403706903439" expanded="true" signature="856:1215" placeholder="..." />
+                <marker date="1403706903439" expanded="false" signature="881:900" placeholder="..." />
+                <marker date="1403706903439" expanded="false" signature="941:962" placeholder="..." />
+                <marker date="1403706903439" expanded="true" signature="963:1202" placeholder="..." />
+                <marker date="1403706903439" expanded="true" signature="963:1202" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -318,7 +61,7 @@
       <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="30.6" vertical-offset="4828" max-vertical-offset="5780">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4828" max-vertical-offset="5780">
               <caret line="239" column="53" selection-start-line="239" selection-start-column="35" selection-end-line="239" selection-end-column="53" />
               <folding />
             </state>
@@ -328,25 +71,10 @@
       <file leaf-file-name="page2.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.862745" vertical-offset="721" max-vertical-offset="2822">
-              <caret line="102" column="43" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
+            <state vertical-scroll-proportion="-5.230769" vertical-offset="612" max-vertical-offset="2601">
+              <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
               <folding>
-                <element signature="n#style#0;n#span#0;n#h3#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#span#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#3;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#span#0;n#div#3;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#5;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#span#0;n#div#5;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#5;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#td#0;n#tr#0;n#table#0;n#div#7;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#td#1;n#tr#0;n#table#0;n#div#7;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#1;n#td#1;n#tr#0;n#table#0;n#div#7;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#h3#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -417,10 +145,10 @@
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/css/app.css" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page4.html" />
-        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/services.js" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/modal.js" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js" />
+        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html" />
       </list>
     </option>
   </component>
@@ -464,7 +192,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -657,42 +384,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VoidEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Void-Editor2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="voidEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="datasets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -819,8 +513,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1151,7 +845,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5304" max-vertical-offset="6511">
           <caret line="312" column="10" selection-start-line="312" selection-start-column="10" selection-end-line="312" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1159,13 +852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.5537341" vertical-offset="728" max-vertical-offset="3672">
           <caret line="93" column="153" selection-start-line="93" selection-start-column="153" selection-end-line="93" selection-end-column="153" />
-          <folding>
-            <marker date="1403706910303" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1403706910303" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1403706910303" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1403706910303" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1403706910303" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1173,7 +859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47358835" vertical-offset="1338" max-vertical-offset="1887">
           <caret line="94" column="68" selection-start-line="92" selection-start-column="31" selection-end-line="94" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1181,20 +866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36363637" vertical-offset="21" max-vertical-offset="4284">
           <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="4080">
-          <caret line="6" column="74" selection-start-line="6" selection-start-column="74" selection-end-line="6" selection-end-column="74" />
-          <folding>
-            <marker date="1403706903439" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1403706903439" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1403706903439" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1403706903439" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1202,7 +873,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.576923" vertical-offset="1257" max-vertical-offset="2601">
           <caret line="84" column="97" selection-start-line="84" selection-start-column="75" selection-end-line="84" selection-end-column="97" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1210,7 +880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="56.692307" vertical-offset="1627" max-vertical-offset="2176">
           <caret line="9" column="39" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1218,15 +887,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34" vertical-offset="153" max-vertical-offset="4607">
           <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26334518" vertical-offset="702" max-vertical-offset="1309">
-          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1234,32 +894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.5400764" vertical-offset="2269" max-vertical-offset="4420">
           <caret line="86" column="42" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.862745" vertical-offset="721" max-vertical-offset="2822">
-          <caret line="102" column="43" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#h3#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#3;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#0;n#div#3;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#5;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#0;n#div#5;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#5;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#td#0;n#tr#0;n#table#0;n#div#7;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#1;n#tr#0;n#table#0;n#div#7;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#td#1;n#tr#0;n#table#0;n#div#7;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1267,22 +901,53 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.30195382" vertical-offset="578" max-vertical-offset="2992">
           <caret line="24" column="31" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="30.6" vertical-offset="4828" max-vertical-offset="5780">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4828" max-vertical-offset="5780">
           <caret line="239" column="53" selection-start-line="239" selection-start-column="35" selection-end-line="239" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5482696" vertical-offset="0" max-vertical-offset="1309">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9615384" vertical-offset="1309" max-vertical-offset="4080">
+          <caret line="80" column="120" selection-start-line="80" selection-start-column="120" selection-end-line="80" selection-end-column="120" />
+          <folding>
+            <marker date="1403706903439" expanded="true" signature="856:1215" placeholder="..." />
+            <marker date="1403706903439" expanded="false" signature="881:900" placeholder="..." />
+            <marker date="1403706903439" expanded="false" signature="941:962" placeholder="..." />
+            <marker date="1403706903439" expanded="true" signature="963:1202" placeholder="..." />
+            <marker date="1403706903439" expanded="true" signature="963:1202" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769" vertical-offset="612" max-vertical-offset="2601">
+          <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#h3#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19636364" vertical-offset="15532" max-vertical-offset="16337">
-          <caret line="920" column="26" selection-start-line="920" selection-start-column="26" selection-end-line="920" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.3495652" vertical-offset="15405" max-vertical-offset="16337">
+          <caret line="918" column="0" selection-start-line="918" selection-start-column="0" selection-end-line="918" selection-end-column="0" />
           <folding />
         </state>
       </provider>

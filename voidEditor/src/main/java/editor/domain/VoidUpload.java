@@ -8,18 +8,13 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.hp.hpl.jena.rdf.model.*;
+import editor.ontologies.DCAT;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 
 import editor.ontologies.Pav;
@@ -38,12 +33,14 @@ public class VoidUpload {
     private String authoredBy = "http://purl.org/pav/authoredBy";
     private String contributedBy = "http://purl.org/pav/contributedBy";
     private String curatedBy = "http://purl.org/pav/curatedBy";
+    private String distribution = "http://www.w3.org/ns/dcat#Distribution";
     private File importedFile;
 
     private VoidAttributes attributes = new VoidAttributes();
     private Map<String, Object> mainDatasetSubjects = new HashMap<String, Object>();
     private Map<String, String> sourceDatasetSubjects = new HashMap<String, String>();
     private Map<String, String> contrDatasetSubjects = new HashMap<String, String>();
+    private Map<String, String> distributionDatasetSubjects = new HashMap<String, String>();
     private JSONObject result;
 
     /**
@@ -59,6 +56,7 @@ public class VoidUpload {
         createSubjectMap();
         createSourceMap();
         createContributorMap();
+        createDistributionMap();
         processVoid();
         importedFile.delete();
     }
@@ -106,7 +104,14 @@ public class VoidUpload {
         Resource primaryTopic = mainResourse.getProperty(FOAF.primaryTopic).getResource();
         StmtIterator iter = primaryTopic.listProperties();
         boolean doneSources = false;
+        boolean doneDistributions = false;
+        boolean doneSparqlEndpoint = false;
+        boolean doneRDF = false;
         result.put("URI", primaryTopic.toString());
+
+        JSONArray distributions = new JSONArray();
+        JSONObject distributionObject = new JSONObject();
+        int indexOfRDFDistributionObject = -1;
         /**
          * The 'while' that iterates though the the document.
          */
@@ -120,15 +125,42 @@ public class VoidUpload {
              */
             if (mainDatasetSubjects.get(predicate.toString()) != null && predicate.toString().compareTo(importedFromSource) != 0
                     && predicate.toString().compareTo(curatedBy) != 0 && predicate.toString().compareTo(authoredBy) != 0
+                    && predicate.toString().compareTo(distribution) != 0
                     && predicate.toString().compareTo(contributedBy) != 0) {
 
                 String objectString = (String) mainDatasetSubjects.get(predicate.toString());
                 String value = stmt.getObject().toString().replace("@en", "");
                 value = value.replace("^^http://www.w3.org/2001/XMLSchema#int", "");
 
-                if (!objectString.equals("date")) {
+                if (!objectString.equals("date") && !objectString.equals("dataDump") &&  !objectString.equals("sparqlEndpoint")) {
                     result.put(objectString, value);
-                } else {
+                } else if(objectString.equals("dataDump") && !doneRDF) {
+                    if (indexOfRDFDistributionObject == -1 && !doneSparqlEndpoint ) {
+                        distributionObject.put("URL", value);
+                        distributionObject.put("name", "RDF");
+                        distributionObject.put("isRDF", true);
+                        distributions.add(distributionObject);
+                        indexOfRDFDistributionObject = distributions.indexOf(distributionObject);
+                    }else{
+                        JSONObject tmp = (JSONObject) distributions.get(indexOfRDFDistributionObject);
+                        tmp.put("URL", value);
+                        distributions.add( indexOfRDFDistributionObject, tmp);
+                    }
+                    doneRDF =true;
+                } else if(objectString.equals("sparqlEndpoint") && !doneSparqlEndpoint) {
+                    if (indexOfRDFDistributionObject == -1 && !doneRDF) {
+                       distributionObject.put("sparqlEndpoint", value);
+                       distributionObject.put("name", "RDF");
+                       distributionObject.put("isRDF", true);
+                       distributions.add(distributionObject);
+                       indexOfRDFDistributionObject = distributions.indexOf(distributionObject);
+                    } else{
+                       JSONObject tmp = (JSONObject) distributions.get(indexOfRDFDistributionObject);
+                       tmp.put("sparqlEndpoint", value);
+                       distributions.add( indexOfRDFDistributionObject, tmp);
+                    }
+                    doneSparqlEndpoint = true;
+                } else if(objectString.equals("date")) {
                     value = value.replace("^^http://www.w3.org/2001/XMLSchema#dateTime", "");
                     String[] dateString = value.split("T"); // get first part only that where date is
                     String[] individualDates = dateString[0].split("-");
@@ -140,6 +172,7 @@ public class VoidUpload {
 
             } else if (predicate.toString().compareTo(importedFromSource) == 0 && !doneSources
                     && predicate.toString().compareTo(curatedBy) != 0 && predicate.toString().compareTo(authoredBy) != 0
+                    && predicate.toString().compareTo(distribution) != 0
                     && predicate.toString().compareTo(contributedBy) != 0) {
                 //multiple object handling
                 StmtIterator sources = primaryTopic.listProperties(Pav.importedFrom); // for each source
@@ -175,6 +208,53 @@ public class VoidUpload {
                 result.put("sources", sourcesArrayJson);
                 doneSources = true;
 
+            } else if (predicate.toString().compareTo(distribution) == 0 && !doneDistributions
+                    && predicate.toString().compareTo(curatedBy) != 0 && predicate.toString().compareTo(authoredBy) != 0
+                    && predicate.toString().compareTo(importedFromSource) != 0
+                    && predicate.toString().compareTo(contributedBy) != 0){
+
+                //add the remaining distributions
+                StmtIterator distributionsIter = primaryTopic.listProperties(DCAT.distribution); // for each source
+                /**
+                 * When the property inspected in importedFrom loop through the RDF structure to extract the needed info.
+                 */
+                while (distributionsIter.hasNext()) {
+
+                    Statement distributionsStmt = distributionsIter.nextStatement();  // get next statement
+                    StmtIterator distributionResourceItr = distributionsStmt.getResource().listProperties(); // go to each source
+                    JSONObject innderDistributionObject = new JSONObject();
+
+                    while (distributionResourceItr.hasNext()) { // extract info
+                        Statement distributionStmt = distributionResourceItr.nextStatement();  // get next statement
+                        String distributionPredicate = distributionStmt.getPredicate().toString();
+                        String distributionObjectOfInput = distributionStmt.getObject().toString().replace("@en", "");
+                        String distributionMapValue = distributionDatasetSubjects.get(distributionPredicate);
+                            //{"name": value, "URL": "", "version": "" , "isRDF": true, "sparqlEndpoint":"" }
+                        if (distributionMapValue != null) {
+                             if (distributionMapValue.contains("mediaType")) {
+                                 innderDistributionObject.put("isRDF", false);
+                                 innderDistributionObject.put("sparqlEndpoint", "");
+                                if (distributionObjectOfInput.contains("text") && distributionObjectOfInput.contains("/")) {
+                                    innderDistributionObject.put("name", "Datadump");
+                                } else if (distributionObjectOfInput.contains("text/csv")) {
+                                    innderDistributionObject.put("name", "CSV");
+                                } else if (distributionObjectOfInput.contains("text/sdf")) {
+                                    innderDistributionObject.put("name", "SDF");
+                                } else if (distributionObjectOfInput.contains("text/tsv")) {
+                                    innderDistributionObject.put("name", "TSV");
+                                } else if (distributionObjectOfInput.contains("json")) {
+                                    innderDistributionObject.put("name", "JSON-LD");
+                                } else if (distributionObjectOfInput.contains("text/xml")) {
+                                    innderDistributionObject.put("name", "XML");
+                                }
+                             } else {
+                                 innderDistributionObject.put(distributionMapValue, distributionObjectOfInput);
+                             }
+                        }//if
+                    }//while
+                    distributions.add(innderDistributionObject);
+                }//while
+                doneDistributions = true;
             } else if (predicate.toString().compareTo(curatedBy) == 0 || predicate.toString().compareTo(authoredBy) == 0
                     || predicate.toString().compareTo(contributedBy) == 0) {
                 /**
@@ -183,7 +263,7 @@ public class VoidUpload {
                 Property[] properties = {Pav.authoredBy, Pav.curatedBy, Pav.contributedBy};
                 Map<String, String> urisExist = new HashMap<String, String>();
                 int id = 0;
-                JSONArray contriArrayJson = new JSONArray();
+                JSONArray contributorsArrayJson = new JSONArray();
                 /**
                  * Looping through the RDF data structure of the Constructor node, for each possible role.
                  */
@@ -213,6 +293,7 @@ public class VoidUpload {
                             }
                             finalStmt = sourceStmt;
                         }//while
+
                         contribObjectReference.put("URI", finalStmt.getSubject().getURI());
                         contribObjectReference.put("id", id);
 
@@ -227,26 +308,29 @@ public class VoidUpload {
 
                         if (!urisExist.containsKey(finalStmt.getSubject().getURI())) {
 
-                            contriArrayJson.add(contribObjectReference);
+                            contributorsArrayJson.add(contribObjectReference);
                             urisExist.put(finalStmt.getSubject().getURI(), id + "");
                             id++;
                         } else {
-                            for (int j = 0; j < contriArrayJson.size(); j++) {
+                            for (int j = 0; j < contributorsArrayJson.size(); j++) {
 
-                                JSONObject ttmp = (JSONObject) contriArrayJson.get(j);
+                                JSONObject ttmp = (JSONObject) contributorsArrayJson.get(j);
                                 if (ttmp.get("URI").equals(finalStmt.getSubject().getURI())) {
                                     if (properties[i].equals(Pav.authoredBy)) ttmp.put("author", true);
                                     if (properties[i].equals(Pav.curatedBy)) ttmp.put("curator", true);
                                     if (properties[i].equals(Pav.contributedBy)) ttmp.put("contributor", true);
-                                    contriArrayJson.set(j, ttmp);
+                                    contributorsArrayJson.set(j, ttmp);
                                 }//if
                             }//for
                         }//else
                     }//while
-                    result.put("contributors", contriArrayJson);
+                    result.put("contributors", contributorsArrayJson);
                 }//for
             }//else
         }//while
+        //Distributions must be added last because it can be RDF or a nonRDF - and have different processing for each.
+        result.put("distributions", distributions);
+
     }//processVoid
 
     /**
@@ -291,7 +375,8 @@ public class VoidUpload {
         mainDatasetSubjects.put("http://purl.org/pav/version", "version");
         mainDatasetSubjects.put("http://purl.org/pav/importedFrom", "sources");
         mainDatasetSubjects.put("http://purl.org/dc/terms/license", "licence");
-        mainDatasetSubjects.put("http://rdfs.org/ns/void#dataDump", "downloadFrom");
+        mainDatasetSubjects.put("http://www.w3.org/ns/dcat#Distribution", "distributions");
+        mainDatasetSubjects.put("http://rdfs.org/ns/void#dataDump", "dataDump");
         mainDatasetSubjects.put("http://rdfs.org/ns/void#triples", "totalNumberOfTriples");
         mainDatasetSubjects.put("http://rdfs.org/ns/void#distinctSubjects", "numberOfUniqueSubjects");
         mainDatasetSubjects.put("http://rdfs.org/ns/void#distinctObjects", "numberOfUniqueObjects");
@@ -310,6 +395,13 @@ public class VoidUpload {
         sourceDatasetSubjects.put("http://purl.org/dc/terms/title", "title");
         sourceDatasetSubjects.put("http://purl.org/pav/version", "version");
         sourceDatasetSubjects.put("http://www.w3.org/ns/dcat#landingPage", "webpage");
+    }
+
+
+    private void createDistributionMap() {
+        distributionDatasetSubjects.put("http://purl.org/pav/version", "version");
+        distributionDatasetSubjects.put("http://www.w3.org/ns/dcat#downloadURL", "URL");
+        distributionDatasetSubjects.put("http://www.w3.org/ns/dcat#mediaType", "mediaType");
     }
 
     /**

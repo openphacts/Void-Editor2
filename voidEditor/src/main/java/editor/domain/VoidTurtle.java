@@ -160,9 +160,7 @@ public class VoidTurtle {
         //TODO Make the URI creation a method
         Resource voidBase = voidModel.createResource("http://www.openphacts.org/" + UUID.randomUUID() );
 
-        //TODO change this
         voidBase.addProperty(RDF.type, Void.Dataset);
-        voidBase.addProperty(RDF.type, DCTypes.Dataset);
 
         voidBase.addProperty(DCTerms.title, titleLiteral);
         voidBase.addProperty(DCTerms.description, descriptionLiteral);
@@ -315,6 +313,7 @@ public class VoidTurtle {
 
         if (distributions != null) {
             //{"name": value, "URL": "", "version": "" , "isRDF": true, "sparqlEndpoint":"" }
+            boolean hasNonRDFPart = false;
             for (int i = 0; i < distributions.size(); i++) {
                 // Sources provided in wierd format - so manually do parsing.
                 String tmpValue = distributions.get(i).toString();
@@ -339,15 +338,15 @@ public class VoidTurtle {
                         }else if (value.contains("RDF")){
                             itsRDF = true;
                         }
-                    }
-                }
+                    }//if
+                }//for
+
                 if (!itsRDF) {
                     distribution.addProperty(RDF.type, DCAT.distribution);
                     System.out.println("In non rdf distribution");
                     for (int j = 0; j < splitingSetsOfInfo.length; j++) {
                         String[] couple = splitingSetsOfInfo[j].split("=");
                         String property2Check = couple[0];
-                        System.out.println("Length ==> " + couple.length);
                         if (couple.length>1) {
                             String value = couple[1].replace("}", "");
                             if (property2Check.contains("version")) {
@@ -360,43 +359,47 @@ public class VoidTurtle {
                         }
                     }//for
                     if (type.contains("Datadump")){
-                        Resource tmp = voidModel.createResource("text");
+                        Literal tmp = voidModel.createLiteral("text");
                         distribution.addProperty(DCAT.mediaType, tmp);
                     }else if (type.contains("CSV")){
-                        Resource tmp = voidModel.createResource("text/csv");
+                        Literal tmp = voidModel.createLiteral("text/csv");
                         distribution.addProperty(DCAT.mediaType, tmp);
                     }else if (type.contains("SDF")){
-                        Resource tmp = voidModel.createResource("text/sdf");
+                        Literal tmp = voidModel.createLiteral("text/sdf");
                         distribution.addProperty(DCAT.mediaType, tmp);
                     }else if (type.contains( "TSV")){
-                        Resource tmp = voidModel.createResource("text/tsv");
+                        Literal tmp = voidModel.createLiteral("text/tsv");
                         distribution.addProperty(DCAT.mediaType, tmp);
                     }else if (type.contains("JSON-LD")){
-                        Resource tmp = voidModel.createResource("application/ld+json");
+                        Literal tmp = voidModel.createLiteral("application/ld+json");
                         distribution.addProperty(DCAT.mediaType, tmp);
                     }else if (type.contains("XML")){
-                        Resource tmp = voidModel.createResource("text/xml");
+                        Literal tmp = voidModel.createLiteral("text/xml");
                         distribution.addProperty(DCAT.mediaType, tmp);
                     }else{
                         System.out.println("Something went wrong in distribution setting of media type.");
                     }
-
+                    hasNonRDFPart = true;
                 }else {
                     for (int j = 0; j < splitingSetsOfInfo.length; j++) {
                         String[] couple = splitingSetsOfInfo[j].split("=");
                         String property2Check = couple[0];
-                        String value = couple[1].replace("}", "");
-
-                        if (property2Check.contains("URL")) {
-                            Resource URL = voidModel.createResource(value);
-                            voidBase.addProperty(Void.dataDump, URL);
-                        } else if (property2Check.contains("sparqlEndpoint") && !value.contains("---")) {
-                            Resource sparqlEndpointLoc = voidModel.createResource(value);
-                            voidBase.addProperty(Void.sparqlEndpoint, sparqlEndpointLoc);
-                        }
-                    }
+                        if (couple.length>1) {
+                            String value = couple[1].replace("}", "");
+                            if (property2Check.contains("URL")) {
+                                Resource URL = voidModel.createResource(value);
+                                voidBase.addProperty(Void.dataDump, URL);
+                            } else if (property2Check.contains("sparqlEndpoint") && !value.contains("---")) {
+                                Resource sparqlEndpointLoc = voidModel.createResource(value);
+                                voidBase.addProperty(Void.sparqlEndpoint, sparqlEndpointLoc);
+                            }
+                        }//if
+                    }//for
                 }
             }//for
+            if(hasNonRDFPart){
+                voidBase.addProperty(RDF.type, DCTypes.Dataset);
+            }
         }//if
 
         /**
