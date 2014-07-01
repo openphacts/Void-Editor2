@@ -35,8 +35,18 @@
       <file leaf-file-name="VoidTurtle.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidTurtle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6460" max-vertical-offset="10132">
-              <caret line="380" column="21" selection-start-line="380" selection-start-column="21" selection-end-line="380" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4165" max-vertical-offset="9741">
+              <caret line="278" column="26" selection-start-line="278" selection-start-column="26" selection-end-line="278" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VoidAttributes.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidAttributes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="646">
+              <caret line="29" column="2" selection-start-line="29" selection-start-column="2" selection-end-line="31" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -45,7 +55,7 @@
       <file leaf-file-name="DatasetStatistics.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/DatasetStatistics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2567">
+            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="2431">
               <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
               <folding />
             </state>
@@ -55,18 +65,21 @@
       <file leaf-file-name="VoidUpload.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidUpload.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2159" max-vertical-offset="7990">
-              <caret line="142" column="28" selection-start-line="142" selection-start-column="28" selection-end-line="142" selection-end-column="28" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2742" max-vertical-offset="8007">
+              <caret line="207" column="76" selection-start-line="207" selection-start-column="76" selection-end-line="207" selection-end-column="76" />
+              <folding>
+                <element signature="e#20951#20952#0" expanded="true" />
+                <element signature="e#20980#20981#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VoidRestService.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/editor/rest/VoidRestService.java">
+      <file leaf-file-name="controllers.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/datasets/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45051193" vertical-offset="2201" max-vertical-offset="3247">
-              <caret line="167" column="54" selection-start-line="167" selection-start-column="54" selection-end-line="167" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.25547445" vertical-offset="10536" max-vertical-offset="16490">
+              <caret line="628" column="79" selection-start-line="628" selection-start-column="79" selection-end-line="628" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -75,7 +88,7 @@
       <file leaf-file-name="VoidService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/editor/service/VoidService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1921" max-vertical-offset="2890">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1258" max-vertical-offset="2465">
               <caret line="113" column="16" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="16" />
               <folding />
             </state>
@@ -92,7 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/editor/domain/JsonAttributes.java" />
         <option value="$PROJECT_DIR$/src/main/java/editor/domain/LinksetAttributes.java" />
         <option value="$PROJECT_DIR$/src/main/java/editor/validator/RdfChecker.java" />
         <option value="$PROJECT_DIR$/src/main/java/editor/domain/DataUpload.java" />
@@ -134,15 +146,16 @@
         <option value="$PROJECT_DIR$/src/main/java/editor/ontologies/Voag.java" />
         <option value="$PROJECT_DIR$/src/main/java/editor/ontologies/Biopax_level3.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/editor/domain/VoidAttributes.java" />
         <option value="$PROJECT_DIR$/src/main/java/editor/ontologies/DCAT.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/partials/datasets/page2.html" />
-        <option value="$PROJECT_DIR$/src/main/java/editor/domain/VoidTurtle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/editor/domain/VoidUpload.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/datasets/services.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/datasets/controllers.js" />
         <option value="$PROJECT_DIR$/src/test/java/editor/service/testVoidService.java" />
         <option value="$PROJECT_DIR$/src/main/java/editor/rest/VoidRestService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/editor/domain/VoidAttributes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/editor/domain/VoidTurtle.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/partials/datasets/page.html" />
+        <option value="$PROJECT_DIR$/src/main/java/editor/domain/VoidUpload.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/datasets/controllers.js" />
       </list>
     </option>
   </component>
@@ -735,11 +748,15 @@
       <workItem from="1404128472158" duration="563000" />
       <workItem from="1404129131219" duration="1172000" />
       <workItem from="1404130524139" duration="1736000" />
+      <workItem from="1404136810958" duration="698000" />
+      <workItem from="1404139159689" duration="284000" />
+      <workItem from="1404204098889" duration="1106000" />
+      <workItem from="1404205827190" duration="6500000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69328000" />
+    <option name="totallyTimeSpent" value="77916000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -762,8 +779,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -785,7 +802,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2647059" sideWeight="0.54833835" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18731117" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33169934" sideWeight="0.56570995" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6846405" sideWeight="0.56570995" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -847,13 +864,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/editor/validator/Validator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.15646258" vertical-offset="194" max-vertical-offset="782">
-          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/editor/validator/OpsValidatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20695652" vertical-offset="0" max-vertical-offset="595">
@@ -1136,14 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidAttributes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.664966" vertical-offset="0" max-vertical-offset="595">
-          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/editor/rest/LinksetRestService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="1207">
@@ -1152,26 +1154,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidUpload.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/datasets/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2159" max-vertical-offset="7990">
-          <caret line="142" column="28" selection-start-line="142" selection-start-column="28" selection-end-line="142" selection-end-column="28" />
+        <state vertical-scroll-proportion="-0.3994778" vertical-offset="3009" max-vertical-offset="5882">
+          <caret line="168" column="44" selection-start-line="168" selection-start-column="44" selection-end-line="168" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/editor/service/testVoidService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41018766" vertical-offset="918" max-vertical-offset="1530">
+          <caret line="73" column="5" selection-start-line="70" selection-start-column="4" selection-end-line="73" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/editor/rest/VoidRestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4489796" vertical-offset="2201" max-vertical-offset="3247">
+          <caret line="167" column="54" selection-start-line="167" selection-start-column="54" selection-end-line="167" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/DatasetStatistics.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/datasets/page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1831" max-vertical-offset="2431">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidTurtle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5487" max-vertical-offset="9333">
-          <caret line="380" column="21" selection-start-line="380" selection-start-column="21" selection-end-line="380" selection-end-column="21" />
+        <state vertical-scroll-proportion="1.2120658" vertical-offset="1428" max-vertical-offset="6477">
+          <caret line="123" column="29" selection-start-line="123" selection-start-column="29" selection-end-line="123" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1184,34 +1192,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/datasets/services.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidTurtle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.3994778" vertical-offset="3009" max-vertical-offset="5882">
-          <caret line="168" column="44" selection-start-line="168" selection-start-column="44" selection-end-line="168" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4165" max-vertical-offset="9741">
+          <caret line="278" column="26" selection-start-line="278" selection-start-column="26" selection-end-line="278" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/editor/service/testVoidService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidAttributes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41018766" vertical-offset="918" max-vertical-offset="1530">
-          <caret line="73" column="5" selection-start-line="70" selection-start-column="4" selection-end-line="73" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="58" max-vertical-offset="646">
+          <caret line="29" column="2" selection-start-line="29" selection-start-column="2" selection-end-line="31" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/DatasetStatistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1831" max-vertical-offset="2431">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/editor/domain/VoidUpload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2742" max-vertical-offset="8007">
+          <caret line="207" column="76" selection-start-line="207" selection-start-column="76" selection-end-line="207" selection-end-column="76" />
+          <folding>
+            <element signature="e#20951#20952#0" expanded="true" />
+            <element signature="e#20980#20981#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/datasets/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44504023" vertical-offset="15712" max-vertical-offset="16456">
-          <caret line="934" column="45" selection-start-line="934" selection-start-column="45" selection-end-line="934" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/editor/rest/VoidRestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45051193" vertical-offset="2201" max-vertical-offset="3247">
-          <caret line="167" column="54" selection-start-line="167" selection-start-column="54" selection-end-line="167" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.25547445" vertical-offset="10536" max-vertical-offset="16490">
+          <caret line="628" column="79" selection-start-line="628" selection-start-column="79" selection-end-line="628" selection-end-column="79" />
           <folding />
         </state>
       </provider>

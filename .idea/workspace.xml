@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dd668c8-7991-416d-81f2-5cfafb1a3a27" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/rest/VoidRestService.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/rest/VoidRestService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/domain/VoidUpload.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/domain/VoidUpload.class" />
+      <change type="MOVED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\partials\datasets\page2.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page4.html" />
+      <change type="MOVED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\partials\datasets\page3.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html" />
+      <change type="MOVED" beforePath="C:\Users\Lefteris\Desktop\Void-Editor2\voidEditor\src\main\webapp\partials\datasets\page4.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page3.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/domain/VoidAttributes.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/domain/VoidAttributes.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/production/main/editor/domain/VoidTurtle.class" afterPath="$PROJECT_DIR$/voidEditor/out/production/main/editor/domain/VoidTurtle.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/out/artifacts/voidEditor/voidEditor.war" afterPath="$PROJECT_DIR$/voidEditor/out/artifacts/voidEditor/voidEditor.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/java/editor/rest/VoidRestService.java" afterPath="$PROJECT_DIR$/voidEditor/src/main/java/editor/rest/VoidRestService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidUpload.java" afterPath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidUpload.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidAttributes.java" afterPath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidAttributes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidTurtle.java" afterPath="$PROJECT_DIR$/voidEditor/src/main/java/editor/domain/VoidTurtle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/css/app.css" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/services.js" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/test/java/editor/service/testVoidService.java" afterPath="$PROJECT_DIR$/voidEditor/src/test/java/editor/service/testVoidService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/index.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/linksets.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/linksets.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page.html" afterPath="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voidEditor/.idea/workspace.xml" afterPath="$PROJECT_DIR$/voidEditor/.idea/workspace.xml" />
     </list>
@@ -37,8 +44,37 @@
       <file leaf-file-name="controllers.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.08173913" vertical-offset="4169" max-vertical-offset="16456">
-              <caret line="248" column="54" selection-start-line="248" selection-start-column="54" selection-end-line="248" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.39454547" vertical-offset="14556" max-vertical-offset="16490">
+              <caret line="869" column="10" selection-start-line="869" selection-start-column="10" selection-end-line="869" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.884615" vertical-offset="2301" max-vertical-offset="6477">
+              <caret line="152" column="63" selection-start-line="152" selection-start-column="63" selection-end-line="152" selection-end-column="63" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#2;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#2;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#7;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/css/app.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="4641">
+              <caret line="28" column="24" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -47,13 +83,14 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2584" max-vertical-offset="4080">
-              <caret line="167" column="83" selection-start-line="167" selection-start-column="83" selection-end-line="167" selection-end-column="83" />
+            <state vertical-scroll-proportion="-1.3076923" vertical-offset="1207" max-vertical-offset="4080">
+              <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
               <folding>
-                <marker date="1403706903439" expanded="true" signature="856:1215" placeholder="..." />
-                <marker date="1403706903439" expanded="false" signature="881:900" placeholder="..." />
-                <marker date="1403706903439" expanded="false" signature="941:962" placeholder="..." />
-                <marker date="1403706903439" expanded="true" signature="963:1202" placeholder="..." />
+                <marker date="1404201630608" expanded="true" signature="856:1215" placeholder="..." />
+                <marker date="1404201630608" expanded="false" signature="881:900" placeholder="..." />
+                <marker date="1404201630608" expanded="false" signature="941:962" placeholder="..." />
+                <marker date="1404201630608" expanded="true" signature="963:1202" placeholder="..." />
+                <marker date="1404201630608" expanded="true" signature="963:1202" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -62,18 +99,8 @@
       <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2516" max-vertical-offset="5882">
-              <caret line="156" column="0" selection-start-line="150" selection-start-column="21" selection-end-line="150" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page2.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1441" max-vertical-offset="2601">
-              <caret line="95" column="137" selection-start-line="95" selection-start-column="119" selection-end-line="95" selection-end-column="137" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="5882">
+              <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -97,7 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/page5.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/page1.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/page3.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/page4.html" />
@@ -133,20 +159,21 @@
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/modal.js" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/conf.json" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/conf.json" />
-        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page3.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/dropdown.js" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/linksets/controllers.js" />
-        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html" />
-        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/linksets.html" />
         <option value="$PROJECT_DIR$/voidEditor/target/ROOT/css/app.css" />
-        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/index.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page1.html" />
-        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page.html" />
-        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/css/app.css" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page4.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/modal.js" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/services.js" />
+        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page3.html" />
+        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/index.html" />
+        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/linksets.html" />
+        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/css/app.css" />
+        <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page.html" />
         <option value="$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js" />
       </list>
     </option>
@@ -191,7 +218,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -384,8 +410,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VoidEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Void-Editor2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voidEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="datasets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -512,8 +573,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -578,14 +639,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1441" max-vertical-offset="2601">
-          <caret line="95" column="137" selection-start-line="95" selection-start-column="119" selection-end-line="95" selection-end-column="137" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7021">
@@ -702,6 +755,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3327645" vertical-offset="5874" max-vertical-offset="10370">
           <caret line="357" column="16" selection-start-line="357" selection-start-column="16" selection-end-line="357" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -847,31 +901,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5304" max-vertical-offset="6511">
-          <caret line="312" column="10" selection-start-line="312" selection-start-column="10" selection-end-line="312" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/linksets.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5537341" vertical-offset="728" max-vertical-offset="3672">
-          <caret line="93" column="153" selection-start-line="93" selection-start-column="153" selection-end-line="93" selection-end-column="153" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/linksets/page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47358835" vertical-offset="1338" max-vertical-offset="1887">
           <caret line="94" column="68" selection-start-line="92" selection-start-column="31" selection-end-line="94" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.576923" vertical-offset="1257" max-vertical-offset="2601">
-          <caret line="84" column="97" selection-start-line="84" selection-start-column="75" selection-end-line="84" selection-end-column="97" />
         </state>
       </provider>
     </entry>
@@ -882,20 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34" vertical-offset="153" max-vertical-offset="4607">
-          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5400764" vertical-offset="2269" max-vertical-offset="4420">
-          <caret line="86" column="42" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/modal.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.30195382" vertical-offset="578" max-vertical-offset="2992">
@@ -903,46 +922,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page3.html">
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.5482696" vertical-offset="0" max-vertical-offset="1309">
           <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page2.html">
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page4.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1441" max-vertical-offset="2601">
+        <state vertical-scroll-proportion="0.3169399" vertical-offset="1441" max-vertical-offset="2601">
           <caret line="95" column="137" selection-start-line="95" selection-start-column="119" selection-end-line="95" selection-end-column="137" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2584" max-vertical-offset="4080">
-          <caret line="167" column="83" selection-start-line="167" selection-start-column="83" selection-end-line="167" selection-end-column="83" />
-          <folding>
-            <marker date="1403706903439" expanded="true" signature="856:1215" placeholder="..." />
-            <marker date="1403706903439" expanded="false" signature="881:900" placeholder="..." />
-            <marker date="1403706903439" expanded="false" signature="941:962" placeholder="..." />
-            <marker date="1403706903439" expanded="true" signature="963:1202" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2516" max-vertical-offset="5882">
-          <caret line="156" column="0" selection-start-line="150" selection-start-column="21" selection-end-line="150" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="5882">
+          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48576513" vertical-offset="1886" max-vertical-offset="2601">
+          <caret line="127" column="76" selection-start-line="127" selection-start-column="76" selection-end-line="127" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/linksets.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77959925" vertical-offset="1085" max-vertical-offset="3672">
+          <caret line="89" column="66" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/documentation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6812386" vertical-offset="1326" max-vertical-offset="6511">
+          <caret line="100" column="66" selection-start-line="100" selection-start-column="66" selection-end-line="100" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3321492" vertical-offset="0" max-vertical-offset="563">
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="4641">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/partials/datasets/page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.884615" vertical-offset="2301" max-vertical-offset="6477">
+          <caret line="152" column="63" selection-start-line="152" selection-start-column="63" selection-end-line="152" selection-end-column="63" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#2;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#2;n#div#1;n#div#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#7;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923" vertical-offset="1207" max-vertical-offset="4080">
+          <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
+          <folding>
+            <marker date="1404201630608" expanded="true" signature="856:1215" placeholder="..." />
+            <marker date="1404201630608" expanded="false" signature="881:900" placeholder="..." />
+            <marker date="1404201630608" expanded="false" signature="941:962" placeholder="..." />
+            <marker date="1404201630608" expanded="true" signature="963:1202" placeholder="..." />
+            <marker date="1404201630608" expanded="true" signature="963:1202" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/voidEditor/src/main/webapp/js/datasets/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08173913" vertical-offset="4169" max-vertical-offset="16456">
-          <caret line="248" column="54" selection-start-line="248" selection-start-column="54" selection-end-line="248" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.39454547" vertical-offset="14556" max-vertical-offset="16490">
+          <caret line="869" column="10" selection-start-line="869" selection-start-column="10" selection-end-line="869" selection-end-column="10" />
           <folding />
         </state>
       </provider>

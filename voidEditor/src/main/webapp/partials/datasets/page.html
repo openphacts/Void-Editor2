@@ -1,100 +1,153 @@
 <div class="span12 carousel-content" ng-controller="editorFormCtrl">
-    <span ng-switch="slide.active">
-      <div  ng-switch-when="true">
+<span ng-switch="slide.active">
+      <div ng-switch-when="true">
           <script>
-            $(".carousel-control.left").hide();
+              $(".carousel-control.left").hide();
           </script>
-            {{changeProgressBar(slide.progress)}}</div>
-      <div  ng-switch-when="false">
+          {{changeProgressBar(slide.progress)}}
+      </div>
+      <div ng-switch-when="false">
           <script>
               $(".carousel-control.left").show();
           </script>
       </div>
      </span>
-    <div class="container-fluid">
-        <div class="span6 offset2">
-            <div class="row">
-                <div class="span5 offsetHalf">
-                    <h1>Welcome to VoID Creator </h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="span6Start">
-                     <h3> Let's start making the VoID description!</h3>
-                    <br>
-                </div>
-             </div>
 
-            <div class="form-group row">
-                <div class="span6Start centerText">
-                    <div class="span2Start">
-                        <label for="inputORCID">ORCID: </label>
-                    </div>
-                    <div class="span3 ">
-                        <input type="text" class="form-control input-large " id="inputORCID" onchange="angular.element(this).scope().callORCIDEndpoint()"
-                               placeholder="0000-0000-0000-0000" ng-model="data.ORCID">
-                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                             popover="Please supply your ORCID. You can register at http://orcid.org/">
+<div class="container-fluid">
+<div class="span6 offset2">
+<div class="row">
+    <div class="span5 offsetHalf">
+        <h1>Welcome to VoID Creator </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="span6Start">
+        <h3> Let's start making the VoID description!</h3>
+        <br>
+    </div>
+</div>
 
-                    </div>
-                </div>
-            </div>
+<div class="form-group row">
+    <div class="span6Start centerText">
+        <div class="span2Start">
+            <label for="inputORCID">ORCID: </label>
+        </div>
+        <div class="span3 ">
+            <input type="text" class="form-control input-large " id="inputORCID"
+                   onchange="angular.element(this).scope().callORCIDEndpoint()"
+                   placeholder="0000-0000-0000-0000" ng-model="data.ORCID"> <img src="img/QuestionMarkIcon16.gif"
+                                                                                 popover-placement="right"
+                                                                                 popover-trigger="mouseenter"
+                                                                                 class="pull-right"
+                                                                                 popover="Please supply your ORCID. You can register at http://orcid.org/">
 
-            <br>
-            <div class="form-group row">
-                <div class="span6Start centerText">
-                    <div class="span2Start">
-                        <label for="inputName">Given Name: </label>
-                    </div>
-                    <div class="span3 ">
-                        <input type="text" class="form-control input-large " id="inputName" placeholder="Given name" ng-model="data.givenName">
-                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                                    popover="Please supply your first name." popover-append-to-body="true">
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
+</div>
 
-            <br>
-            <div class="form-group row">
-                <div class="span6Start centerText">
-                    <div class="span2Start">
-                        <label for="inputFamilyName">Family Name: </label>
-                    </div>
-                    <div class="span3 ">
-                        <input type="text" class="form-control input-large " id="inputFamilyName" placeholder="Family name" ng-model="data.familyName">
-                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                             popover="Please supply your last name." popover-append-to-body="true">
-                    </div>
-                 </div>
-            </div>
-            <br>
-            <div class="form-group row">
-                <div class="span6Start centerText">
-                    <div class="span2Start">
-                        <label for="inputEmail">Email:</label>
-                    </div>
-                    <div class="span3">
-                        <input type="email" class="form-control input-large" id="inputEmail"  ng-model="data.userEmail"
-                               placeholder="Enter email">
-                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                             popover="Please supply an active and valid email." popover-append-to-body="true">
-                     </div>
-                 </div>
-            </div>
-            <br>
-            <div class="form-group row">
-                <div class="span6Start centerText">
-                    <div class="span2Start">
-                        <label for="contributors">Has anyone helped?</label>
-                    </div>
-                    <div class="span3">
+<br>
 
-                        <div ng-controller="ModalContributorsCtrl" class="pull-left">
-                            <script type="text/ng-template" id="myModalContentContributors.html">
-                                <div class="modal-header ">
-                                    <h3>Contributors to dataset <span  style="font-size: 12px;line-height: 15px;">
-                                    <img src="img/QuestionMarkIcon16.gif" popover-placement="bottom" popover-trigger="mouseenter" class="pull-right"
-                                         popover-append-to-body="true"
+<div class="form-group row">
+    <div class="span6Start centerText">
+        <div class="span2Start">
+            <label for="inputName">Given Name: </label>
+        </div>
+        <div class="span3 ">
+            <input type="text" class="form-control input-large " id="inputName" placeholder="Given name"
+                   ng-model="data.givenName"> <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                                   popover-trigger="mouseenter" class="pull-right"
+                                                   popover="Please supply your first name."
+                                                   popover-append-to-body="true">
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="form-group row">
+    <div class="span6Start centerText">
+        <div class="span2Start">
+            <label for="inputFamilyName">Family Name: </label>
+        </div>
+        <div class="span3 ">
+            <input type="text" class="form-control input-large " id="inputFamilyName" placeholder="Family name"
+                   ng-model="data.familyName"> <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                                    popover-trigger="mouseenter" class="pull-right"
+                                                    popover="Please supply your last name."
+                                                    popover-append-to-body="true">
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="form-group row">
+    <div class="span6Start centerText">
+        <div class="span2Start">
+            <label for="inputEmail">Email:</label>
+        </div>
+        <div class="span3">
+            <input type="email" class="form-control input-large" id="inputEmail" ng-model="data.userEmail"
+                   placeholder="Enter email"> <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                                   popover-trigger="mouseenter" class="pull-right"
+                                                   popover="Please supply an active and valid email."
+                                                   popover-append-to-body="true">
+        </div>
+    </div>
+</div>
+<br>
+<div class="form-group row ">
+<div class="span6Start centerText">
+    <div class="span2Start">
+        <label for="inputEmail">Contributing role:</label>
+    </div>
+    <div class="span3">
+
+        <input type="checkbox" name="contributorRole" ng-model="data.author" style="margin-bottom: 5px"
+               value="author" class="input-large" id="MainAuthor">
+                                                                <span style="cursor:pointer;"
+                                                                      ng-click="data.author = !data.author">Author</span>
+        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+
+             popover=" Author: Is the person which authored the knowledge expressed by this resource."
+             popover-append-to-body="false"> <br>
+
+        <input type="checkbox" name="contributorRole" ng-model="data.curator" style="margin-bottom: 5px"
+               value="curator" class="input-large" id="UserCurator">
+                                                                <span style="cursor:pointer;"
+                                                                      ng-click="data.curator = !data.curator">Curator</span>
+        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+              srt
+             popover="  Curator : Is the person which curated the knowledge into its current form."
+             popover-append-to-body="false"> <br>
+
+        <input type="checkbox" name="contributorRole" ng-hide="isCollapsedContributor" style="margin-bottom: 5px"
+               ng-model="data.contributor"
+               value="digitalCopy" class="input-large" id="UserDigitalCreator">
+                                                                <span style="cursor:pointer;"
+                                                                      ng-click="data.contributor = !data.contributor">Contributor</span>
+        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
+
+             popover="  Contributor: This person performed some sort of derivation on dataset."
+             popover-append-to-body="false">
+    </div>
+</div>
+</div>
+<br>
+<div class="form-group row " style="margin-left: 1px;">
+<div class="form-group row">
+    <div class="span6Start centerText">
+        <div class="span2Start">
+            <label for="contributors">Has anyone helped?</label>
+        </div>
+        <div class="span3">
+
+            <div ng-controller="ModalContributorsCtrl" class="pull-left">
+                <script type="text/ng-template" id="myModalContentContributors.html">
+                    <div class="modal-header ">
+                        <h3>Contributors to dataset <span style="font-size: 12px;line-height: 15px;">
+                                    <img src="img/QuestionMarkIcon16.gif" popover-placement="bottom"
+                                         popover-trigger="mouseenter" class="pull-right"
+                                         popover-append-to-body="false"
                                          popover="Please provide the personal information of all the contributors to this dataset
                                                     and how they contributed ( can select more than one).
                                           Author: Is the person which authored the knowledge expressed by this resource.
@@ -102,150 +155,218 @@
                                           Contributor: This person performed some sort of derivation on dataset.
                                           ">
                                     </span>
-                                    </h3>
-                                </div>
-                                <div class="modal-body" ng-controller="editorContributorsCtrl">
-                                    <div class="span5 offsetHalf" id="bind-html-with-trust">
+                        </h3>
+                    </div>
+                    <div class="modal-body" ng-controller="editorContributorsCtrl">
+                        <div class="span5 offsetHalf" id="bind-html-with-trust">
 
-                                        <div class="span5">
-                                            <div class="panel panel-primary">
-                                                <!--<div class="panel-heading">-->
-                                                <!--</div>-->
-                                                <br>
-                                                <div class="panel-body ">
-                                                    <ul class="list-group" id="addedContributors" >
-                                                        <li ng-repeat="contributor in contributors" class="thumbnail" id="listOfContributors">
-                                                            <div class="form-group row " style="margin-left:30px;">
-                                                                <h5><span>{{contributor.name}} {{contributor.surname}}</span>
-                                                             <span class="glyphicon glyphicon-minus pull-right" ng-click="removeContributor( contributor.id)">
+                            <div class="spanForContributors">
+                                <div class="panel panel-primary">
+                                    <br>
+
+                                    <div class="panel-body ">
+                                        <ul class="list-group" id="addedContributors">
+                                            <li ng-repeat="contributor in contributors" class="thumbnail"
+                                                id="listOfContributors">
+                                                <div class="form-group row " style="margin-left:30px;">
+                                                    <h5><span>{{contributor.name}} {{contributor.surname}}</span>
+                                                             <span class="glyphicon glyphicon-minus pull-right"
+                                                                   ng-click="removeContributor( contributor.id)">
                                                              </span>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="form-group row " style="margin-left: 5px;">
-                                                                <div class="spanLabel130px">
-                                                                    <label for="nameContributor" ng-hide="isCollapsedContributor">  ORCID:</label>
-                                                                </div>
-                                                                <div class="span2">
-                                                                    <input class="input-large" ng-hide="isCollapsedContributor"  ng-model="contributor.orcid"
-                                                                           type="text" collapse="isCollapsedContributor"  onchange="angular.element(this).scope().callORCIDEndpointContributor(this)"
-                                                                           placeholder="0000-0000-0000-0000">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row " style="margin-left: 5px;">
-                                                                <div class="spanLabel130px">
-                                                                    <label for="nameContributor" ng-hide="isCollapsedContributor">  First Name*:</label>
-                                                                </div>
-                                                                <div class="span2">
-                                                                    <input class="input-large" ng-hide="isCollapsedContributor" required ng-model="contributor.name"
-                                                                           type="text" collapse="isCollapsedContributor" id="nameContributor"
-                                                                           placeholder="Given Name">
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="form-group row " style="margin-left: 5px;">
-                                                                <div class="spanLabel130px">
-                                                                    <label for="nameContributor" ng-hide="isCollapsedContributor">  Surname*:</label>
-                                                                </div>
-                                                                <div class="span2">
-                                                                    <input class="input-large" ng-hide="isCollapsedContributor" required ng-model="contributor.surname"
-                                                                           type="text" collapse="isCollapsedContributor"
-                                                                           placeholder="Family Name">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group row " style="margin-left: 5px;">
-                                                                <div class="spanLabel130px">
-                                                                    <label for="nameContributor" ng-hide="isCollapsedContributor">  Email:</label>
-                                                                </div>
-                                                                <div class="span2">
-                                                                    <input class="input-large" ng-hide="isCollapsedContributor"  ng-model="contributor.email"
-                                                                           type="email" collapse="isCollapsedContributor"
-                                                                           placeholder="Enter email">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group row " style="margin-left: 5px;" collapse="isCollapsedContributor" ng-hide="isCollapsedContributor">
-                                                                <div class="spanLabel130px">
-                                                                    <label for="author" ng-hide="isCollapsedContributor">  Contributing role:</label>
-                                                                </div>
-                                                                <div class="span2" collapse="isCollapsedContributor" ng-hide="isCollapsedContributor">
-                                                                    <input  type="checkbox" name="contributorRole" ng-hide="isCollapsedContributor"  ng-model="contributor.author"
-                                                                            value="author" class="input-large" id="author">
-                                                                <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" style="cursor:pointer;"
-                                                                       ng-click="contributor.author = !contributor.author" >Author</span>
-                                                                    <br>
-
-                                                                    <input type="checkbox" name="contributorRole" ng-hide="isCollapsedContributor"  ng-model="contributor.curator"
-                                                                           value="curator" class="input-large" id="curator" >
-                                                                <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" style="cursor:pointer;"
-                                                                       ng-click="contributor.curator = !contributor.curator" >Curator</span>
-                                                                    <br>
-
-                                                                    <input type="checkbox" name="contributorRole" ng-hide="isCollapsedContributor"  ng-model="contributor.contributor"
-                                                                           value="digitalCopy" class="input-large" id="digitalCreator" >
-                                                                <span  collapse="isCollapsedContributor" ng-hide="isCollapsedContributor" style="cursor:pointer;"
-                                                                       ng-click="contributor.contributor = !contributor.contributor">Contributor</span>
-                                                                </div>
-                                                            </div>
-
-
-
-                                                            <br  ng-hide="isCollapsedContributor">
-                                                            <div class="form-group row" style="margin-left:30px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="span4">
-                                                                            <p style="font-size:12px;  cursor: pointer;" ng-show="isCollapsedContributor"
-                                                                               ng-click="isCollapsedContributor = !isCollapsedContributor">Additional Information</p>
-                                                                        </td>
-                                                                        <td class="">
-                                                                            <button class="btn  btn-primary"
-                                                                                    style="vertical-align: middle; text-align: center;"
-                                                                                    ng-show="isCollapsedContributor" ng-click="isCollapsedContributor = !isCollapsedContributor ">Edit
-                                                                            </button>
-                                                                            <button class="btn  btn-primary"
-                                                                                    style="vertical-align: middle; text-align: center;"
-                                                                                    ng-show="!isCollapsedContributor" ng-click="isCollapsedContributor = !isCollapsedContributor ; save()">Save
-                                                                            </button>
-
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </div>
-                                                        </li>
-
-                                                    </ul>
-                                                    <br>
-                                                    <span class="span2"></span>
-                                                    <button class="btn btn-primary " ng-click="add('new')">Add Contributor</button>
+                                                    </h5>
                                                 </div>
-                                            </div>
-                                        </div>
+                                                <div class="form-group row " style="margin-left: 5px;">
+                                                    <div class="spanLabel130px">
+                                                        <label for="nameContributor" ng-hide="isCollapsedContributor">
+                                                            ORCID:</label>
+                                                    </div>
+                                                    <div class="span2AndABit">
+                                                        <input class="input-medium" ng-hide="isCollapsedContributor"
+                                                               ng-model="contributor.orcid"
+                                                               type="text" collapse="isCollapsedContributor"
+                                                               onchange="angular.element(this).scope().callORCIDEndpointContributor(this)"
+                                                               placeholder="0000-0000-0000-0000"> <img
+                                                            src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                                            popover-trigger="mouseenter" class="pull-right"
+                                                            ng-hide="isCollapsedContributor"
+                                                            popover="Please supply your ORCID. You can register at http://orcid.org/">
+                                                    </div>
+                                                </div>
+                                                <br>
 
-                                        <!--<div ng-bind-html="uploadErrorMessages" style="text-align: center;vertical-align: middle;"></div>-->
+                                                <div class="form-group row " style="margin-left: 5px;">
+                                                    <div class="spanLabel130px">
+                                                        <label for="nameContributor" ng-hide="isCollapsedContributor">
+                                                            First Name*:</label>
+                                                    </div>
+                                                    <div class="span2AndABit">
+                                                        <input class="input-medium" ng-hide="isCollapsedContributor"
+                                                               required ng-model="contributor.name"
+                                                               type="text" collapse="isCollapsedContributor"
+                                                               id="nameContributor"
+                                                               placeholder="Given Name"> <img
+                                                            src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                                            popover-trigger="mouseenter" class="pull-right"
+                                                            ng-hide="isCollapsedContributor"
+                                                            popover="Please supply your first name."
+                                                            popover-append-to-body="false">
+                                                    </div>
+
+                                                </div>
+                                                <br>
+
+                                                <div class="form-group row " style="margin-left: 5px;">
+                                                    <div class="spanLabel130px">
+                                                        <label for="nameContributor" ng-hide="isCollapsedContributor">
+                                                            Surname*:</label>
+                                                    </div>
+                                                    <div class="span2AndABit">
+                                                        <input class="input-medium" required
+                                                               ng-model="contributor.surname"
+                                                               type="text" collapse="isCollapsedContributor"
+                                                               ng-hide="isCollapsedContributor"
+                                                               placeholder="Family Name"> <img
+                                                            src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                                            popover-trigger="mouseenter" class="pull-right"
+                                                            ng-hide="isCollapsedContributor"
+                                                            popover="Please supply your last name."
+                                                            popover-append-to-body="false">
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="form-group row " style="margin-left: 5px;">
+                                                    <div class="spanLabel130px">
+                                                        <label for="nameContributor" ng-hide="isCollapsedContributor">
+                                                            Email:</label>
+                                                    </div>
+                                                    <div class="span2AndABit">
+                                                        <input class="input-medium" ng-hide="isCollapsedContributor"
+                                                               ng-model="contributor.email"
+                                                               type="email" collapse="isCollapsedContributor"
+                                                               placeholder="Enter email"> <img
+                                                            src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                                            popover-trigger="mouseenter" class="pull-right"
+                                                            ng-hide="isCollapsedContributor"
+                                                            popover="Please supply an active and valid email."
+                                                            popover-append-to-body="false">
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="form-group row " style="margin-left: 5px;">
+                                                    <div class="spanLabel130px">
+                                                        <label for="author" ng-hide="isCollapsedContributor">
+                                                            Contributing role:</label>
+                                                    </div>
+                                                    <div class="span2AndABit">
+
+                                                        <input type="checkbox" name="contributorRole"
+                                                               ng-hide="isCollapsedContributor"
+                                                               ng-model="contributor.author"
+                                                               value="author" class="input-large" id="author">
+                                                                <span ng-hide="isCollapsedContributor"
+                                                                      style="cursor:pointer;"
+                                                                      ng-click="contributor.author = !contributor.author">Author</span>
+                                                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                                             popover-trigger="mouseenter" class="pull-right"
+                                                             ng-hide="isCollapsedContributor"
+                                                             popover=" Author: Is the person which authored the knowledge expressed by this resource."
+                                                             popover-append-to-body="false"> <br>
+
+                                                        <input type="checkbox" name="contributorRole"
+                                                               ng-hide="isCollapsedContributor"
+                                                               ng-model="contributor.curator"
+                                                               value="curator" class="input-large" id="curator">
+                                                                <span ng-hide="isCollapsedContributor"
+                                                                      style="cursor:pointer;"
+                                                                      ng-click="contributor.curator = !contributor.curator">Curator</span>
+                                                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                                             popover-trigger="mouseenter" class="pull-right"
+                                                             ng-hide="isCollapsedContributor"
+                                                             popover="  Curator : Is the person which curated the knowledge into its current form."
+                                                             popover-append-to-body="false"> <br>
+
+                                                        <input type="checkbox" name="contributorRole"
+                                                               ng-hide="isCollapsedContributor"
+                                                               ng-model="contributor.contributor"
+                                                               value="digitalCopy" class="input-large"
+                                                               id="digitalCreator">
+                                                                <span ng-hide="isCollapsedContributor"
+                                                                      style="cursor:pointer;"
+                                                                      ng-click="contributor.contributor = !contributor.contributor">Contributor</span>
+                                                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                                             popover-trigger="mouseenter" class="pull-right"
+                                                             ng-hide="isCollapsedContributor"
+                                                             popover="  Contributor: This person performed some sort of derivation on dataset."
+                                                             popover-append-to-body="false">
+                                                    </div>
+                                                </div>
+
+
+                                                <br ng-hide="isCollapsedContributor">
+
+                                                <div class="form-group row" style="margin-left:30px;">
+                                                    <table>
+                                                        <tr>
+                                                            <td class="span4">
+                                                                <p style="font-size:12px;  cursor: pointer;"
+                                                                   ng-show="isCollapsedContributor"
+                                                                   ng-click="isCollapsedContributor = !isCollapsedContributor">
+                                                                    Additional Information</p>
+                                                            </td>
+                                                            <td class="">
+                                                                <button class="btn  btn-primary"
+                                                                        style="vertical-align: middle; text-align: center;"
+                                                                        ng-show="isCollapsedContributor"
+                                                                        ng-click="isCollapsedContributor = !isCollapsedContributor ">
+                                                                    Edit
+                                                                </button>
+                                                                <button class="btn  btn-primary"
+                                                                        style="vertical-align: middle; text-align: center;"
+                                                                        ng-show="!isCollapsedContributor"
+                                                                        ng-click="isCollapsedContributor = !isCollapsedContributor ; save()">
+                                                                    Save
+                                                                </button>
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                        <br> <span class="span2"></span>
+                                        <button class="btn btn-primary " ng-click="add('new')">Add Contributor</button>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" ng-click="closeModal()">Done</button>
-                                </div>
-                            </script>
-                            <button type="button" class="btn btn-default pull-right" id="contributors" ng-click="open();">
-                                Add Contributors
-                            </button>
+                            </div>
 
+                            <!--<div ng-bind-html="uploadErrorMessages" style="text-align: center;vertical-align: middle;"></div>-->
                         </div>
-                        <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter" class="pull-right"
-                             popover-append-to-body="true"
-                             popover="Please provide any additional contributors to the creation of this dataset which you are currently
-                         describing.">
                     </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-click="closeModal()">Done</button>
                     </div>
+                </script>
+                <button type="button" class="btn btn-default pull-right" id="contributors" ng-click="open();">
+                    Add Contributors
+                </button>
+
             </div>
-            <br>
-
-
+            <img src="img/QuestionMarkIcon16.gif" popover-placement="right" popover-trigger="mouseenter"
+                 class="pull-right" style="margin-right: 3px;"
+                 popover-append-to-body="true"
+                 popover="Please provide any additional contributors to the creation of this dataset which you are currently
+                         describing.">
         </div>
     </div>
+</div>
+<br>
+
+
+</div>
+</div>
 </div>
 
 

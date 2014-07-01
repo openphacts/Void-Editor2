@@ -68,6 +68,9 @@ public class VoidTurtle {
     private String numberOfUniqueSubjects = "";
     private String numberOfUniqueObjects = "";
     private String ORCID = "";
+    private String contributor ="";
+    private String curator ="";
+    private String author ="";
 
     private Validator validator = null;
 
@@ -94,7 +97,9 @@ public class VoidTurtle {
         this.numberOfUniqueObjects = obj.numberOfUniqueObjects;
         this.ORCID = obj.ORCID;
         this.contributors = (ArrayList) obj.contributors;
-
+        this.contributor =obj.contributor;
+        this.curator =obj.curator;
+        this.author =obj.author ;
         if (obj.datePublish.equals("N/A")) {
             this.setDatePublish(1);
         } else {
@@ -188,6 +193,17 @@ public class VoidTurtle {
 
         voidDescriptionBase.addLiteral(Pav.createdOn, nowDescriptionLiteral);
         voidDescriptionBase.addProperty(FOAF.primaryTopic, voidBase);
+
+        //The contributotions of this user
+        if (curator.contains("true")) {
+            voidBase.addProperty(Pav.curatedBy, resourceForPerson);
+        }
+        if (contributor.contains("true")) {
+            voidBase.addProperty(Pav.contributedBy, resourceForPerson);
+        }
+        if (author.contains("true")) {
+            voidBase.addProperty(Pav.authoredBy, resourceForPerson);
+        }
 
         //Dataset void - conditional
         if (publisher != "") {
@@ -287,7 +303,7 @@ public class VoidTurtle {
                     }//if
                 }//for
                 String URI4Contributor = "";
-                if (this.ORCID == null || this.ORCID == "") {
+                if (tmpOrcid == null || tmpOrcid == ""|| tmpOrcid == "-") {
                     URI4Contributor = "http://voideditor.cs.man.ac.uk/" + UUID.randomUUID();
                 } else {
                     URI4Contributor = "http://orcid.org/" + tmpOrcid;
@@ -413,42 +429,50 @@ public class VoidTurtle {
                 String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val }
 
                 Resource source = null;
-
+                boolean noURI = false;
                 // Extract source URI first to be able to create the correct structure in the void.
                 for (int j = 0; j < splitingSetsOfInfo.length; j++) {
                     String[] couple = splitingSetsOfInfo[j].split("=");
                     String property2Check = couple[0];
-                    String value = couple[1].replace("}", "");
-                    if (property2Check.contains("URI") && !property2Check.contains("no")) {
-                        source = voidModel.createResource(value);
-                        voidBase.addProperty(Pav.importedFrom, source);
+                    if(couple.length >1 ) {
+                        String value = couple[1].replace("}", "");
+                        if (property2Check.contains("URI") && !property2Check.contains("no")) {
+                            source = voidModel.createResource(value);
+                            voidBase.addProperty(Pav.derivedFrom, source);
+                        }
+                        if (property2Check.contains("noURI")) {
+                            noURI = value.contains("true"); // if true then it is NOT an OPS but a custom one.
+                        }
                     }
                 }
-
-                for (int j = 0; j < splitingSetsOfInfo.length; j++) {
-                    String[] couple = splitingSetsOfInfo[j].split("=");
-                    String property2Check = couple[0];
-                    String value = couple[1].replace("}", "");
-                    if (property2Check.contains("type")) {
-                        if (value.contains("0")) {
-                            source.addProperty(RDF.type, DCTypes.Dataset);
-                        } else {
-                            source.addProperty(RDF.type, Void.Dataset);
+                if (noURI) {
+                    for (int j = 0; j < splitingSetsOfInfo.length; j++) {
+                        String[] couple = splitingSetsOfInfo[j].split("=");
+                        String property2Check = couple[0];
+                        String value = couple[1].replace("}", "");
+                        if (couple.length>1) {
+                            if (property2Check.contains("type")) {
+                                if (value.contains("0")) {
+                                    source.addProperty(RDF.type, DCTypes.Dataset);
+                                } else {
+                                    source.addProperty(RDF.type, Void.Dataset);
+                                }
+                            } else if (property2Check.contains("title")) {
+                                Literal titleLiteralTmp = voidModel.createLiteral(value, "en");
+                                source.addProperty(DCTerms.title, titleLiteralTmp);
+                            } else if (property2Check.contains("version")) {
+                                Literal versionLiteralTmp = voidModel.createLiteral(value, "en");
+                                source.addProperty(Pav.version, versionLiteralTmp);
+                            } else if (property2Check.contains("webpage")) {
+                                Resource webpageResourceTmp = voidModel.createResource(value);
+                                source.addProperty(DCAT.landingPage, webpageResourceTmp);
+                            } else if (property2Check.contains("description")) {
+                                Literal descriptionLiteralTmp = voidModel.createLiteral(value, "en");
+                                source.addProperty(DCTerms.description, descriptionLiteralTmp);
+                            }
                         }
-                    } else if (property2Check.contains("title")) {
-                        Literal titleLiteralTmp = voidModel.createLiteral(value, "en");
-                        source.addProperty(DCTerms.title, titleLiteralTmp);
-                    } else if (property2Check.contains("version")) {
-                        Literal versionLiteralTmp = voidModel.createLiteral(value, "en");
-                        source.addProperty(Pav.version, versionLiteralTmp);
-                    } else if (property2Check.contains("webpage")) {
-                        Resource webpageResourceTmp = voidModel.createResource(value);
-                        source.addProperty(DCAT.landingPage, webpageResourceTmp);
-                    } else if (property2Check.contains("description")) {
-                        Literal descriptionLiteralTmp = voidModel.createLiteral(value, "en");
-                        source.addProperty(DCTerms.description, descriptionLiteralTmp);
-                    }
-                }//for
+                    }//for
+                }// only do if NOT OPS source.
             }//for
         }//if
 

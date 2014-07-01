@@ -19,12 +19,14 @@ div.custom_carousel {
     .titleCore{margin-left: 10%;}
     .span6Start{width:575px;}
     .span2Start{width: 170px}
+    .spanForContributors{width: 470px;}
 }
 @media (max-width: 1199px){
     .offset1AndABitCore{margin-left:8%;}
     .titleCore{margin-left: 20%;}
     .span6Start{width:465px;}
     .span2Start{width: 150px}
+    .spanForContributors{width: 460px;}
 }
 
 

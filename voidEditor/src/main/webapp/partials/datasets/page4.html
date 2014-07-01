@@ -1,147 +1,148 @@
-<div class="span12 carousel-content" ng-controller="editorFormCtrl">
-         <span ng-switch="slide.active">
-      <div ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
-      <div ng-switch-when="false"></div>
+<div class="span12 carousel-content  " ng-controller="editorFormCtrl" >
+      <span ng-switch="slide.active">
+      <div  ng-switch-when="true">{{changeProgressBar(slide.progress)}}</div>
+      <div  ng-switch-when="false"></div>
      </span>
 
-    <h1>Is your dataset incorporating other sources you can cite?</h1>
-    <br>
+        <h1>Distribution information for your dataset</h1>
+        <br>
 
-    <div class="container-fluid" ng-controller="sourceCtrl">
-        <div class='span2'></div>
-        <div class="span3AndABit">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Can you name them?
+        <div class="container-fluid" ng-controller="distributionCtrl">
+            <div class='span2'></div>
+            <div class="span3AndABit">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Can you cite them?
                               <span style="font-weight: normal; font-size:16px;line-height: 20px;"><img
                                       src="img/QuestionMarkIcon16.gif" popover-placement="right"
                                       popover-trigger="mouseenter" popover-append-to-body="true"
-                                      popover=" Dataset sources you are referencing. If you own these data, please skip this step.
-                                                 To remove a selected source, please press the '-' symbol.">
+                                      popover="To add a distribution, please press the '+' symbol.">
                                   </span>
-                    </h3>
+                        </h3>
 
-                </div>
-                <div class="panel-body" id="accordion" style="font-size:17px;">
-                    <ul class="list-group" id="OPSSources">
-                        <li ng-repeat="source in sources  | limitTo:quantity" class="thumbnail" id="{{ source.title }}">
-                            {{source.title}}
+                    </div>
+                    <div class="panel-body" id="accordion" style="font-size:17px;">
+                        <ul class="list-group" id="OPSSources" style="text-align:center;">
+                            <li ng-repeat="distribution in distributions" class="thumbnail" id="{{ distribution.name }}">
+                                {{distribution.name}}
                             <span class="glyphicon glyphicon-plus pull-right"
-                                  ng-click="addToSelected( source.title)"></span>
-                        </li>
+                                  ng-click="addToSelected( distribution.name)"></span>
+                            </li>
 
-                    </ul>
-
-                    <input type="text" class="form-control input-large " placeholder="Source..."
-                           typeahead-on-select="addToSelected(selected); selected = '' "
-                           ng-enter="addToSelected(selected);  selected = ''"
-                           ng-model="selected"
-                           typeahead="title for title in titles | filter:$viewValue | limitTo:3">
-                    <input type="Button" value="Add" class="btn btn-primary" style="width: 63px;"
-                           data-ng-click="addToSelected(selected); selected = ''">
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="span1"></div>
-        <div class="span3AndABit">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Your selected sources</h3>
-                </div>
-                <div class="panel-body ">
-                    <ul class="list-group" id="selectedSources" >
-                        <li ng-repeat="source in userSources" class="thumbnail" id="listOfSources">
-                            <table>
-                                <tr>
-                                    <td class="span3" style="font-size:14px;">
-                                        {{ source.title}}
-                                    </td>
-                                    <td class="">
-                                        <select class="select-mini selectpicker" id="selectType"required ng-model="source.type">
-                                            <option ng-value="RDF" selected>RDF</option>
-                                            <option ng-value="Non-RDF">Non-RDF</option>
-                                        </select>
-                                    </td>
-                                    <td class="">
-                                                 <span class="glyphicon glyphicon-minus pull-right"
-                                                       ng-click="removeSelected( source.title)">
-                                                </span>
-                                    </td>
-                                </tr>
-                            </table>
-
-                            <div class="form-group row spanSourcesVersion ">
-                                <span ng-hide="isCollapsed"> Version / Release ID*: </span>
-                                <input class="input-small" ng-hide="isCollapsed" required ng-model="source.version"
-                                       type="text" collapse="isCollapsed"
-                                       placeholder="1.0.0">
-                                <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
-                                     popover-placement="right" popover-trigger="mouseenter" popover-append-to-body="true"
-                                     popover="Please specify version of dataset you are referencing. This information is required.">
-                            </div>
-
-                            <div class="form-group row spanSourcesVersion" collapse="isCollapsed"></div>
-                            <div class="form-group row spanSourcesVersion" ng-show="source.noURI">
-                                <span style="margin-right: 37px;" ng-hide="isCollapsed">URI*:</span>
-                                <input class="input-medium" ng-hide="isCollapsed" name="noURI" required
-                                       collapse="isCollapsed"
-                                       ng-model="source.URI" type="url" placeholder="http://">
-                                <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed" popover-append-to-body="true"
-                                     popover-placement="right" popover-trigger="mouseenter"
-                                     popover="Please make sure URL specified which contains 'http://'. This information is required.">
-                            </div>
-
-                            <div class="form-group row span3" ng-show="source.noURI"></div>
-                            <div class="form-group row spanSourcesVersion" ng-show="source.noURI">
-                                <span ng-hide="isCollapsed">Webpage*:</span>
-                                <input class="input-medium" ng-hide="isCollapsed" name="noURI"
-                                       collapse="isCollapsed"
-                                       ng-model="source.webpage" type="url" placeholder="http://">
-                                <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
-                                     popover-placement="right" popover-trigger="mouseenter" popover-append-to-body="true"
-                                     popover="A Web page that can be navigated to in a Web browser
-                                      to gain access to the dataset, its distributions and/or additional information.
-                                       This information is required and must be a URL.">
-                            </div>
-                            <div class="form-group row span3" ng-show="source.noURI"></div>
-                            <div class="form-group row spanSourcesVersion" ng-show="source.noURI">
-                                <span ng-hide="isCollapsed">Description*:</span>
-                                <input class="input-medium-description" ng-hide="isCollapsed" name="noURI"
-                                       collapse="isCollapsed"
-                                       ng-model="source.description" type="text" placeholder="Please provide...">
-                                <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsed"
-                                     popover-placement="right" popover-trigger="mouseenter" popover-append-to-body="true"
-                                     popover="A description of the dataset so we can understand it contains. This information is required.">
-                            </div>
-
-                            <div class="form-group row">
+            <div class="span1"></div>
+            <div class="span3AndABit">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Your distributions
+                            <span style="font-weight: normal; font-size:16px;line-height: 20px;"><img
+                                src="img/QuestionMarkIcon16.gif" popover-placement="right"
+                                popover-trigger="mouseenter" popover-append-to-body="true"
+                                popover="To remove a selected distribution, please press the '-' symbol.">
+                                  </span></h3>
+                    </div>
+                    <div class="panel-body ">
+                        <ul class="list-group" id="selectedSources" >
+                            <li ng-repeat="distribution in userDistributions" class="thumbnail" id="listOfSources">
                                 <table>
                                     <tr>
-                                        <td class="span3">
-                                            <p style="font-size:12px;  cursor: pointer;" ng-show="isCollapsed"
-                                               ng-click="isCollapsed = !isCollapsed">Additional Information</p>
+                                        <td class="span3" style="font-size:14px;">
+                                            {{ distribution.name}}
                                         </td>
                                         <td class="">
-                                            <button class="btn  btn-primary"
-                                                    style="vertical-align: middle; text-align: center;"
-                                                    ng-show="isCollapsed" ng-click="isCollapsed = !isCollapsed ">Edit
-                                            </button>
-                                            <button class="btn  btn-primary"
-                                                    style="vertical-align: middle; text-align: center;"
-                                                    ng-show="!isCollapsed" ng-click="isCollapsed = !isCollapsed">Save
-                                            </button>
 
+                                        </td>
+                                        <td class="">
+                                                 <span class="glyphicon glyphicon-minus pull-right"
+                                                       ng-click="removeSelected( distribution.name)">
+                                                </span>
                                         </td>
                                     </tr>
                                 </table>
-                            </div>
 
-                        </li>
-                    </ul>
+                                <div class="form-group row spanSourcesVersion "  ng-hide="distribution.isRDF" >
+                                    <span ng-hide="isCollapsedDistributions"> Version / Release ID: </span>
+                                    <input class="input-small" ng-hide="isCollapsedDistributions" required ng-model="distribution.version"
+                                           type="text" collapse="isCollapsedDistributions"
+                                           placeholder="1.0.0">
+                                    <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsedDistributions"
+                                         popover-placement="right" popover-trigger="mouseenter" popover-append-to-body="true"
+                                         popover="Please specify version of dataset you are referencing. This information is required.">
+                                </div>
+
+
+                                <div class="form-group row spanSourcesVersion"  style="margin-top:5px;" >
+                                     <span class="span1" style="margin-left: 1px;"  ng-hide="isCollapsedDistributions">
+                                          <span style="margin-right: 37px;" ng-hide="isCollapsedDistributions">URL*:</span>
+                                     </span>
+                                    <input class="input-medium" ng-hide="isCollapsedDistributions" name="noURI" required
+                                           collapse="isCollapsedDistributions"
+                                           ng-model="distribution.URL" type="url" placeholder="http://">
+                                    <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsedDistributions" popover-append-to-body="true"
+                                         popover-placement="right" popover-trigger="mouseenter"
+                                         popover="Where is this file available from? Please make sure URL specified which contains 'http://'. This information is required.">
+                                </div>
+
+                                <div class="form-group row span3"></div>
+                                <div class="form-group row spanSourcesVersion" ng-show="distribution.isRDF" style="margin-top: 5px;">
+                                    <span class="span1" style="margin-left: 1px;"  ng-hide="isCollapsedDistributions">
+                                        <span style="margin-right: 37px;" ng-hide="isCollapsedDistributions">Sparql Endpoint:</span>
+                                    </span>
+                                    <input class="input-medium" ng-hide="isCollapsedDistributions" name="inputSparql" required
+                                           collapse="isCollapsedDistributions" onchange="angular.element(this).scope().callSparqlEndpoint()"
+                                           ng-model="distribution.sparqlEndpoint" type="url" placeholder="http://">
+                                    <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsedDistributions" popover-append-to-body="true"
+                                         popover-placement="right" popover-trigger="mouseenter"
+                                         popover="If you do not have one, please leave blank. An example of a sparql endpoint URL is: 'http://bioportal.bio2rdf.org/sparql' ">
+                                </div>
+
+                                <div class="form-group row span3"></div>
+
+                                <div class="form-group row spanSourcesVersion"  collapse="isCollapsedDistributions" ng-show="distribution.isRDF">
+                                    <span class="span1" style="margin-left: 1px;"  ng-hide="isCollapsedDistributions">
+                                        <span style="margin-right: 37px;" ng-hide="isCollapsedDistributions">Statistical Analysis:</span>
+                                    </span>
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="1000" />
+                                    <input type="file" style="width: 140px" id="inputUserData" collapse="isCollapsedDistributions" name="file" size="40" onchange="angular.element(this).scope().letUserUploadData(this.files)"/>
+                                    <img src="img/QuestionMarkIcon16.gif" ng-hide="isCollapsedDistributions" popover-append-to-body="true"
+                                         popover-placement="right" popover-trigger="mouseenter"
+                                         popover="Not mandatory. If you have provided a sparql endpoint statistical analysis will be done on the endpoint.
+                                                  Please provide your RDF data file. Maximum size 10MB. ZIPs are not accepted.">
+                                </div>
+                                <div class="form-group row span3"></div>
+                                <div class="form-group row">
+                                    <table>
+                                        <tr>
+                                            <td class="span3">
+                                                <p style="font-size:12px;  cursor: pointer;" ng-show="isCollapsedDistributions"
+                                                   ng-click="isCollapsedDistributions = !isCollapsedDistributions">Additional Information</p>
+                                            </td>
+                                            <td class="">
+                                                <button class="btn  btn-primary"
+                                                        style="vertical-align: middle; text-align: center;"
+                                                        ng-show="isCollapsedDistributions" ng-click="isCollapsedDistributions = !isCollapsedDistributions ">Edit
+                                                </button>
+                                                <button class="btn  btn-primary"
+                                                        style="vertical-align: middle; text-align: center;"
+                                                        ng-show="!isCollapsedDistributions" ng-click="isCollapsedDistributions = !isCollapsedDistributions">Save
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        <br>
 
     </div>
+
 </div>

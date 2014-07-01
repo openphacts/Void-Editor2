@@ -59,7 +59,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.data.numberOfUniqueObjects ="";
         $rootScope.haveStatsFinished = 1;
         $rootScope.data.ORCID = "";
-//        $rootScope.data.datasetType = "RDF";
+        $rootScope.data.contributor = true;
+        $rootScope.data.curator = false;
+        $rootScope.data.author = false;
         $rootScope.doYouHaveOrcidValue = true;
 
         var ua = window.navigator.userAgent;
@@ -624,9 +626,9 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
     function ($rootScope, $scope , voidData ,ContributorORCIDService) {
         $scope.contributors = $rootScope.data.contributors;
         $scope.orcidCheck = 0;
-
+        if ($scope.contributors.length == undefined ) $scope.contributors = [];
         if ( $scope.contributors.length == 0 ){
-            $scope.contributors.push({name : "New" , surname : "Contributor" , orcid:"", email:"-" , id:0, author:false ,curator:false, contributor:true});
+            $scope.contributors.push({name : "" , surname : "" , orcid:"", email:"-" , id:0, author:false ,curator:false, contributor:true});
         }
 
         $rootScope.$on('sendContributors', function (event , x ) {
@@ -771,9 +773,9 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
          */
         $scope.addSlide(0, "User Info", []);
         $scope.addSlide(1, "Core Info", ["title" , "description", "publisher", "webpage" ]);
-        $scope.addSlide(2, "Distribution Info", [ "distributions"]);
-        $scope.addSlide(3, "Versioning", []);
-        $scope.addSlide(4, "Sources", []);
+        $scope.addSlide(2, "Versioning", []);
+        $scope.addSlide(3, "Sources", []);
+        $scope.addSlide(4, "Distribution Info", [ "distributions"]);
         $scope.addSlide(5, "Export RDF", []);
 
         $scope.changeProgressBar = function (change) {
@@ -858,7 +860,7 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
                 var _about =value ;
                 if (foundURI != -1) {
                     _about = $scope.aboutOfTitles[foundURI];
-                    $scope.userSources.push({"title": value, "type": "RDF", "URI": _about, "version": "", "webpage": _about, "description":  $scope.descriptionsOfTitles[foundURI], "noURI": false });
+                    $scope.userSources.push({"title": value, "type": "RDF", "URI": _about, "version": "--", "webpage": "http://--", "description": "--", "noURI": false });
                 } else {
                     $scope.showInputURI = true;
                     $scope.userSources.push({"title": value, "type": "RDF", "URI": "", "version": "", "webpage": "", "description": "", "noURI": true });

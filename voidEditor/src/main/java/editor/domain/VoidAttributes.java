@@ -27,4 +27,7 @@ public class VoidAttributes{
 	  public String numberOfUniqueSubjects="";
 	  public String numberOfUniqueObjects ="";
 	  public String ORCID ="";
+      public String contributor ="";
+      public String curator ="";
+      public String author ="";
 }

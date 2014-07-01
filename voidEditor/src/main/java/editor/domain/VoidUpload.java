@@ -29,7 +29,7 @@ import editor.validator.RdfChecker;
  */
 public class VoidUpload {
 
-    private String importedFromSource = "http://purl.org/pav/importedFrom";
+    private String derivedFromource = "http://purl.org/pav/derivedFrom";
     private String authoredBy = "http://purl.org/pav/authoredBy";
     private String contributedBy = "http://purl.org/pav/contributedBy";
     private String curatedBy = "http://purl.org/pav/curatedBy";
@@ -98,7 +98,7 @@ public class VoidUpload {
             String temp = createdBy.getURI().replace("http://orcid.org/", "");
             result.put("ORCID", temp);
         }
-
+        String PersonFromCreatedBy = createdBy.toString();
         //Get primary topic and iterate
         if (!mainResourse.hasProperty(FOAF.primaryTopic)) System.err.println("Primary topic is missing..");
         Resource primaryTopic = mainResourse.getProperty(FOAF.primaryTopic).getResource();
@@ -123,7 +123,7 @@ public class VoidUpload {
              * <p>Else if - loops through sources information.</p>
              * <p>Else if - lopps through contributor information provided. (Name, Surname, Email, Orcid)</p>
              */
-            if (mainDatasetSubjects.get(predicate.toString()) != null && predicate.toString().compareTo(importedFromSource) != 0
+            if (mainDatasetSubjects.get(predicate.toString()) != null && predicate.toString().compareTo(derivedFromource) != 0
                     && predicate.toString().compareTo(curatedBy) != 0 && predicate.toString().compareTo(authoredBy) != 0
                     && predicate.toString().compareTo(distribution) != 0
                     && predicate.toString().compareTo(contributedBy) != 0) {
@@ -162,39 +162,52 @@ public class VoidUpload {
                     result.put("datePublish", Integer.parseInt(individualDates[2]));
                 }
 
-            } else if (predicate.toString().compareTo(importedFromSource) == 0 && !doneSources
+            } else if (predicate.toString().compareTo(derivedFromource) == 0 && !doneSources
                     && predicate.toString().compareTo(curatedBy) != 0 && predicate.toString().compareTo(authoredBy) != 0
                     && predicate.toString().compareTo(distribution) != 0
                     && predicate.toString().compareTo(contributedBy) != 0) {
                 //multiple object handling
-                StmtIterator sources = primaryTopic.listProperties(Pav.importedFrom); // for each source
+                StmtIterator sources = primaryTopic.listProperties(Pav.derivedFrom); // for each source
                 JSONArray sourcesArrayJson = new JSONArray();
                 /**
                  * When the property inspected in importedFrom loop through the RDF structure to extract the needed info.
                  */
+                System.out.println("=========================");
                 while (sources.hasNext()) {
 
                     Statement sourcesStmt = sources.nextStatement();  // get next statement
                     StmtIterator sourcesResourceItr = sourcesStmt.getResource().listProperties(); // go to each source
                     JSONObject attributeSourcesObjectReference = new JSONObject();
-
-                    while (sourcesResourceItr.hasNext()) { // extract info
-                        Statement sourceStmt = sourcesResourceItr.nextStatement();  // get next statement
-                        // Check JSON for sources
-                        String sourcePredicate = sourceStmt.getPredicate().toString();
-                        String sourceObject = sourceStmt.getObject().toString().replace("@en", "");
-
-                        if (sourceDatasetSubjects.get(sourcePredicate) != null) {
-                            attributeSourcesObjectReference.put("URI", sourceStmt.getSubject().toString());
-                            attributeSourcesObjectReference.put(sourceDatasetSubjects.get(sourcePredicate), sourceObject);
-                            // To know if it was a custom Source or a OPS one
-                            if (sourceDatasetSubjects.get(sourcePredicate).equals("description") && sourceObject.equals("N/A")) {
-                                attributeSourcesObjectReference.put("noURI", false);
-                            } else if (sourceDatasetSubjects.get(sourcePredicate).equals("description") && !sourceObject.equals("N/A")) {
-                                attributeSourcesObjectReference.put("noURI", true);
+                    System.out.println(sourcesStmt);
+                    if (sourcesResourceItr.hasNext()) {
+                        while (sourcesResourceItr.hasNext()) { // extract info
+                            Statement sourceStmt = sourcesResourceItr.nextStatement();  // get next statement
+                            // Check JSON for sources
+                            String sourcePredicate = sourceStmt.getPredicate().toString();
+                            String sourceObject = sourceStmt.getObject().toString().replace("@en", "");
+                            System.out.println(sourceStmt);
+                            System.out.println("==============");
+                            if (sourceDatasetSubjects.get(sourcePredicate) != null) {
+                                attributeSourcesObjectReference.put("URI", sourceStmt.getSubject().toString());
+                                attributeSourcesObjectReference.put(sourceDatasetSubjects.get(sourcePredicate), sourceObject);
+                                // To know if it was a custom Source or a OPS one
+                                if (sourceDatasetSubjects.get(sourcePredicate).equals("description") && sourceObject.equals("N/A")) {
+                                    attributeSourcesObjectReference.put("noURI", false);
+                                } else if (sourceDatasetSubjects.get(sourcePredicate).equals("description") && !sourceObject.equals("N/A")) {
+                                    attributeSourcesObjectReference.put("noURI", true);
+                                }
                             }
-                        }
-                    }//while
+                        }//while
+                    }else{
+                      //({"title": value, "type": "RDF", "URI": _about, "version": "--", "webpage": "http://--", "description": "--", "noURI": false });
+                        attributeSourcesObjectReference.put("noURI", false);
+                        attributeSourcesObjectReference.put("version", "--");
+                        attributeSourcesObjectReference.put("webpage", "http://--");
+                        attributeSourcesObjectReference.put("description", "--");
+                        attributeSourcesObjectReference.put("type", "RDF");
+                        attributeSourcesObjectReference.put("title", "oops..");
+                        attributeSourcesObjectReference.put("URI", sourcesStmt.getResource().getURI());
+                    }
                     sourcesArrayJson.add(attributeSourcesObjectReference);
                 }
                 result.put("sources", sourcesArrayJson);
@@ -202,7 +215,7 @@ public class VoidUpload {
 
             } else if (predicate.toString().compareTo(distribution) == 0 && !doneDistributions
                     && predicate.toString().compareTo(curatedBy) != 0 && predicate.toString().compareTo(authoredBy) != 0
-                    && predicate.toString().compareTo(importedFromSource) != 0
+                    && predicate.toString().compareTo(derivedFromource) != 0
                     && predicate.toString().compareTo(contributedBy) != 0){
 
                 //add the remaining distributions
@@ -259,6 +272,7 @@ public class VoidUpload {
                 /**
                  * Looping through the RDF data structure of the Constructor node, for each possible role.
                  */
+                boolean contributorNotMainUser = true;
                 for (int i = 0; i < properties.length; i++) {
                     StmtIterator sources = primaryTopic.listProperties(properties[i]); // for each source
                     while (sources.hasNext()) {
@@ -266,28 +280,29 @@ public class VoidUpload {
                         StmtIterator contribResourceItr = contribStmt.getResource().listProperties(); // go to each source
                         JSONObject contribObjectReference = new JSONObject();
                         Statement finalStmt = null;
-                        while (contribResourceItr.hasNext()) { // extract info
-                            Statement sourceStmt = contribResourceItr.nextStatement();  // get next statement
-                            // Check JSON for sources
-                            String sourcePredicate = sourceStmt.getPredicate().toString();
-                            String sourceObject = sourceStmt.getObject().toString().replace("@en", "");
-                            if (contrDatasetSubjects.get(sourcePredicate) != null) {
-                                if (contrDatasetSubjects.get(sourcePredicate).equals("name")) {
-                                    contribObjectReference.put("name", sourceObject);
-                                } else if (contrDatasetSubjects.get(sourcePredicate).equals("surname")) {
-                                    contribObjectReference.put("surname", sourceObject);
-                                } else if (contrDatasetSubjects.get(sourcePredicate).equals("email")) {
-                                    contribObjectReference.put("email", sourceObject.toString().replace("mailto:", ""));
-                                } else if (sourceStmt.getSubject().getURI().contains("orcid")) {
-                                    String temp = createdBy.getURI().replace("http://orcid.org/", "");
-                                    contribObjectReference.put("orcid", temp);
+                            while (contribResourceItr.hasNext()) { // extract info
+                                Statement sourceStmt = contribResourceItr.nextStatement();  // get next statement
+                                // Check JSON for sources
+                                String sourcePredicate = sourceStmt.getPredicate().toString();
+                                String sourceObject = sourceStmt.getObject().toString().replace("@en", "");
+                                if (contrDatasetSubjects.get(sourcePredicate) != null) {
+                                    if (contrDatasetSubjects.get(sourcePredicate).equals("name")) {
+                                        contribObjectReference.put("name", sourceObject);
+                                    } else if (contrDatasetSubjects.get(sourcePredicate).equals("surname")) {
+                                        contribObjectReference.put("surname", sourceObject);
+                                    } else if (contrDatasetSubjects.get(sourcePredicate).equals("email")) {
+                                        contribObjectReference.put("email", sourceObject.toString().replace("mailto:", ""));
+                                    } else if (sourceStmt.getSubject().getURI().contains("orcid")) {
+                                        String temp = createdBy.getURI().replace("http://orcid.org/", "");
+                                        contribObjectReference.put("orcid", temp);
+                                    }
                                 }
-                            }
-                            finalStmt = sourceStmt;
-                        }//while
-
+                                finalStmt = sourceStmt;
+                            }//while
                         contribObjectReference.put("URI", finalStmt.getSubject().getURI());
                         contribObjectReference.put("id", id);
+
+                        if (finalStmt.getSubject().getURI().contains(PersonFromCreatedBy )) contributorNotMainUser =  false;
 
                         if (properties[i].equals(Pav.authoredBy)) contribObjectReference.put("author", true);
                         else contribObjectReference.put("author", false);
@@ -298,12 +313,11 @@ public class VoidUpload {
                         if (properties[i].equals(Pav.contributedBy)) contribObjectReference.put("contributor", true);
                         else contribObjectReference.put("contributor", false);
 
-                        if (!urisExist.containsKey(finalStmt.getSubject().getURI())) {
-
+                        if (!urisExist.containsKey(finalStmt.getSubject().getURI()) && contributorNotMainUser) {
                             contributorsArrayJson.add(contribObjectReference);
                             urisExist.put(finalStmt.getSubject().getURI(), id + "");
                             id++;
-                        } else {
+                        } else if (contributorNotMainUser) {
                             for (int j = 0; j < contributorsArrayJson.size(); j++) {
 
                                 JSONObject ttmp = (JSONObject) contributorsArrayJson.get(j);
@@ -314,9 +328,14 @@ public class VoidUpload {
                                     contributorsArrayJson.set(j, ttmp);
                                 }//if
                             }//for
-                        }//else
+                        }else{
+                            if (properties[i].equals(Pav.authoredBy)) result.put("author", true);
+                            if (properties[i].equals(Pav.curatedBy)) result.put("curator", true);
+                            if (properties[i].equals(Pav.contributedBy)) result.put("contributor", true);
+                        }
+
                     }//while
-                    result.put("contributors", contributorsArrayJson);
+                    if (contributorNotMainUser ) result.put("contributors", contributorsArrayJson);
                 }//for
             }//else
         }//while
