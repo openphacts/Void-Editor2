@@ -26,7 +26,7 @@ public class VoidUploadJunitTest {
 	public static void setup() {
 		try {
 			 is = new FileInputStream("C:\\Users\\Lefteris\\Desktop\\Void-Editor2\\voidEditor\\src\\test\\res\\editor\\domain\\testVoid.ttl");
-			 VoidUpload temp = new VoidUpload(is);
+			 VoidUpload temp = new VoidUpload(is , null);
 			 result = temp.getResult();
 		} catch (RDFParseException  e) {
 			e.printStackTrace();

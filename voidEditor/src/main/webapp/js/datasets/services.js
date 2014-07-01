@@ -13,7 +13,7 @@ var jsonService = angular.module('jsonService', ['ngResource'])
     });
 
 var URLPreface = "" ;
-
+var opsSources = [];
 /**
  * @function uploadVoidData
  * @memberOf voidEditor.editorApp.voidUploadService
@@ -21,8 +21,20 @@ var URLPreface = "" ;
  */
 var voidUploadService = angular.module('voidUploadService', [])
     .service('uploadVoidData', function ($rootScope, $http) {
-         var URL = URLPreface+  '/rest/void/uploadVoid';
+        var URL = URLPreface+  '/rest/void/uploadVoid';
         this.process = function (file) {
+            //need to send to the server the names and uris of all the OPS sources
+            console.log(opsSources);
+            $.ajax({
+                type: 'POST',
+                url: URLPreface+  '/rest/void/opsSources',
+                data: JSON.stringify(opsSources),
+                contentType: "application/json",
+                success: function () {console.log("success of ops sources post");},
+                error: function (status) {console.log("EPIC failure for sources post");},
+                async: false
+            });
+            console.log("After async called for ops sources")
             $http.post(URL, file, {
                 withCredentials: true,
                 headers: {'Content-Type': undefined },
@@ -209,6 +221,10 @@ var voidDataService = angular.module('voidDataService', [])
         this.getTurtle = function () {
             return turtleData;
         };
+
+        this.setTitlesAndURIsOfOPSSouces = function(data){
+            opsSources= data;
+        }
 
         /**
          * @function setUriForSourcesExist

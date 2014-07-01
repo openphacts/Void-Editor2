@@ -3,16 +3,13 @@ package editor.service;
 import java.io.IOException;
 import java.io.InputStream;
 
+import editor.domain.*;
+
 import org.json.simple.JSONObject;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
 import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
-import editor.domain.DataUpload;
-import editor.domain.DatasetStatistics;
-import editor.domain.VoidAttributes;
-import editor.domain.VoidTurtle;
-import editor.domain.VoidUpload;
 import editor.rest.VoidRestService;
 /**
  * Provides the {@link VoidRestService} with a variety of functions that are used in the RESTful communications with th UI.
@@ -33,6 +30,7 @@ public class VoidService {
 	private VoidUpload upload;
 	private DataUpload uploadData;
 	private JSONObject jsonUpload;
+    private Object sources ;
 	public VoidService  (){}
 
     /**
@@ -43,6 +41,9 @@ public class VoidService {
 		voidInfo = info;
 	}
 
+    public void setOPSSources(Object sources){
+        this.sources = sources;
+    }
     /**
      * Returns the VoID created using the voidInfo in a String format in order to be displayed in the "Under the Hood"
      * functionality.
@@ -95,7 +96,7 @@ public class VoidService {
      * @throws RDFHandlerException
      */
 	public void uploadVoid(InputStream uploadedInputStream) throws RDFParseException, RDFHandlerException  {
-		upload = new VoidUpload(uploadedInputStream );
+		upload = new VoidUpload(uploadedInputStream  , sources);
 		jsonUpload = upload.getResult();
 	}
 

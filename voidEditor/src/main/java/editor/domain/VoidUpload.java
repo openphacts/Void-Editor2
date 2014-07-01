@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,6 +42,8 @@ public class VoidUpload {
     private Map<String, String> sourceDatasetSubjects = new HashMap<String, String>();
     private Map<String, String> contrDatasetSubjects = new HashMap<String, String>();
     private Map<String, String> distributionDatasetSubjects = new HashMap<String, String>();
+    private Map<String, String> OPSSources = new HashMap<String, String>();
+    private ArrayList sources ;
     private JSONObject result;
 
     /**
@@ -50,9 +53,14 @@ public class VoidUpload {
      * @throws RDFParseException
      * @throws RDFHandlerException
      */
-    public VoidUpload(InputStream uploadedInputStream) throws RDFParseException, RDFHandlerException {
+    public VoidUpload(InputStream uploadedInputStream , Object OPSSources) throws RDFParseException, RDFHandlerException {
         importedFile = writeToTempFile(uploadedInputStream);
         result = new JSONObject();
+
+        if (OPSSources!= null )sources =(ArrayList) OPSSources;
+        else  sources = new ArrayList();
+
+        createOPSSourcesMap();
         createSubjectMap();
         createSourceMap();
         createContributorMap();
@@ -166,27 +174,24 @@ public class VoidUpload {
                     && predicate.toString().compareTo(curatedBy) != 0 && predicate.toString().compareTo(authoredBy) != 0
                     && predicate.toString().compareTo(distribution) != 0
                     && predicate.toString().compareTo(contributedBy) != 0) {
+
                 //multiple object handling
                 StmtIterator sources = primaryTopic.listProperties(Pav.derivedFrom); // for each source
                 JSONArray sourcesArrayJson = new JSONArray();
                 /**
                  * When the property inspected in importedFrom loop through the RDF structure to extract the needed info.
                  */
-                System.out.println("=========================");
                 while (sources.hasNext()) {
 
                     Statement sourcesStmt = sources.nextStatement();  // get next statement
                     StmtIterator sourcesResourceItr = sourcesStmt.getResource().listProperties(); // go to each source
                     JSONObject attributeSourcesObjectReference = new JSONObject();
-                    System.out.println(sourcesStmt);
                     if (sourcesResourceItr.hasNext()) {
                         while (sourcesResourceItr.hasNext()) { // extract info
                             Statement sourceStmt = sourcesResourceItr.nextStatement();  // get next statement
                             // Check JSON for sources
                             String sourcePredicate = sourceStmt.getPredicate().toString();
                             String sourceObject = sourceStmt.getObject().toString().replace("@en", "");
-                            System.out.println(sourceStmt);
-                            System.out.println("==============");
                             if (sourceDatasetSubjects.get(sourcePredicate) != null) {
                                 attributeSourcesObjectReference.put("URI", sourceStmt.getSubject().toString());
                                 attributeSourcesObjectReference.put(sourceDatasetSubjects.get(sourcePredicate), sourceObject);
@@ -199,14 +204,17 @@ public class VoidUpload {
                             }
                         }//while
                     }else{
-                      //({"title": value, "type": "RDF", "URI": _about, "version": "--", "webpage": "http://--", "description": "--", "noURI": false });
+                        //({"title": value, "type": "RDF", "URI": _about, "version": "--", "webpage": "http://--", "description": "--", "noURI": false });
                         attributeSourcesObjectReference.put("noURI", false);
                         attributeSourcesObjectReference.put("version", "--");
                         attributeSourcesObjectReference.put("webpage", "http://--");
                         attributeSourcesObjectReference.put("description", "--");
                         attributeSourcesObjectReference.put("type", "RDF");
-                        attributeSourcesObjectReference.put("title", sourcesStmt.getResource().getURI());
                         attributeSourcesObjectReference.put("URI", sourcesStmt.getResource().getURI());
+                        if (OPSSources.containsKey(sourcesStmt.getResource().getURI())){
+                            attributeSourcesObjectReference.put("title",OPSSources.get(sourcesStmt.getResource().getURI()));
+                        }
+                        else attributeSourcesObjectReference.put("title", sourcesStmt.getResource().getURI());
                     }
                     sourcesArrayJson.add(attributeSourcesObjectReference);
                 }
@@ -333,7 +341,7 @@ public class VoidUpload {
                             if (properties[i].equals(Pav.authoredBy)) result.put("author", true);
                             if (properties[i].equals(Pav.curatedBy)) result.put("curator", true);
                             if (properties[i].equals(Pav.contributedBy)) result.put("contributor", true);
-                            contributorsArrayJson=null;
+                          //  contributorsArrayJson=null;
                         }
 
                     }//while
@@ -378,6 +386,36 @@ public class VoidUpload {
         StmtIterator iter = model.listStatements();
         printIterator(iter);
     }
+
+
+    private void createOPSSourcesMap(){
+        //TODO OPSSources
+        for (int i = 0; i < sources.size(); i++) {
+            // Sources provided in wierd format - so manually do parsing.
+            String tmpValue = sources.get(i).toString();
+            System.out.println(tmpValue);
+            String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val }
+            String URI = "";
+            String title ="";
+            // Extract source URI first to be able to create the correct structure in the void.
+            for (int j = 0; j < splitingSetsOfInfo.length; j++) {
+                String[] couple = splitingSetsOfInfo[j].split("=");
+                String property = couple[0].replace("{", "").replace("}", "");;
+                if(couple.length >1 ) {
+                    String value = couple[1].replace("}", "").replace("{", "");
+                    //value
+                    if (property.contains("title") && !property.contains("http://")){
+                        title = value;
+                    } else if (property.contains("URI") && !property.contains("http://")){
+                        URI = value;
+                    }
+                }
+            }
+            OPSSources.put( URI, title);
+        }
+
+    }
+
 
     /**
      * Main / Core information regarding dataset.

@@ -134,6 +134,15 @@ public class VoidRestService {
 		return result;
 	}
 
+
+
+    @Path("/opsSources")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void uploadOPSSources(Object sources){
+        results.setOPSSources(sources);
+    }
+
     /**
      *
      * @param endpoint The sparql endpoint the user wants to be statistically analysed.

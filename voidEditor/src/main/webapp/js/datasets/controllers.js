@@ -805,6 +805,7 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
         $scope.descriptionsOfTitles = [];
         $scope.sources = [];
         $scope.showInputURI = false;
+        $scope.titlesAndURIs = [];
 
         /**
          * @function noTitleFilter
@@ -825,7 +826,9 @@ editorAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSer
                 $scope.titles.push($scope.sources[i].title);
                 $scope.aboutOfTitles.push($scope.sources[i]._about);
                 $scope.descriptionsOfTitles.push($scope.sources[i].description);
+                $scope.titlesAndURIs.push({"title":$scope.sources[i].title , "URI":$scope.sources[i]._about });
             }
+            voidData.setTitlesAndURIsOfOPSSouces( $scope.titlesAndURIs);
         };
         /**
          * @function JsonService.get
