@@ -205,7 +205,7 @@ public class VoidUpload {
                         attributeSourcesObjectReference.put("webpage", "http://--");
                         attributeSourcesObjectReference.put("description", "--");
                         attributeSourcesObjectReference.put("type", "RDF");
-                        attributeSourcesObjectReference.put("title", "oops..");
+                        attributeSourcesObjectReference.put("title", sourcesStmt.getResource().getURI());
                         attributeSourcesObjectReference.put("URI", sourcesStmt.getResource().getURI());
                     }
                     sourcesArrayJson.add(attributeSourcesObjectReference);
@@ -272,9 +272,10 @@ public class VoidUpload {
                 /**
                  * Looping through the RDF data structure of the Constructor node, for each possible role.
                  */
-                boolean contributorNotMainUser = true;
+
                 for (int i = 0; i < properties.length; i++) {
                     StmtIterator sources = primaryTopic.listProperties(properties[i]); // for each source
+
                     while (sources.hasNext()) {
                         Statement contribStmt = sources.nextStatement();  // get next statement
                         StmtIterator contribResourceItr = contribStmt.getResource().listProperties(); // go to each source
@@ -301,7 +302,7 @@ public class VoidUpload {
                             }//while
                         contribObjectReference.put("URI", finalStmt.getSubject().getURI());
                         contribObjectReference.put("id", id);
-
+                        boolean contributorNotMainUser = true;
                         if (finalStmt.getSubject().getURI().contains(PersonFromCreatedBy )) contributorNotMainUser =  false;
 
                         if (properties[i].equals(Pav.authoredBy)) contribObjectReference.put("author", true);
@@ -332,10 +333,11 @@ public class VoidUpload {
                             if (properties[i].equals(Pav.authoredBy)) result.put("author", true);
                             if (properties[i].equals(Pav.curatedBy)) result.put("curator", true);
                             if (properties[i].equals(Pav.contributedBy)) result.put("contributor", true);
+                            contributorsArrayJson=null;
                         }
 
                     }//while
-                    if (contributorNotMainUser ) result.put("contributors", contributorsArrayJson);
+                    if (contributorsArrayJson!=null ) result.put("contributors", contributorsArrayJson);
                 }//for
             }//else
         }//while
