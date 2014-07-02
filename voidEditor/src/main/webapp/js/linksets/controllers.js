@@ -5,7 +5,7 @@
  * @class linksetCreator.linksetApp.linksetAppControllers
  */
 var linksetAppControllers = angular.module('linksetAppControllers', ['jsonService', 'voidDataService',  'ORCIDService',
-                               'modalControllers' ]);
+                               'modalControllers' , 'ContributorORCIDService']);
 /**
  *  @description Main controller that instantiate all the information needed by the UI / VoID creation backend.
  *  @memberOf  linksetCreator.linksetApp.linksetAppControllers
@@ -33,6 +33,7 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.data.title = "";
         $rootScope.data.publisher = "";
         $rootScope.data.webpage = "";
+        $rootScope.data.updateFrequency = "Annual";
         $rootScope.quantity = 6;
         $rootScope.postFinished = false;
         $rootScope.data.licence = "http://creativecommons.org/licenses/by-sa/3.0/";
@@ -55,6 +56,11 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.finalHeader = "Almost there...";
         $rootScope.data.userSource = {};
         $rootScope.data.userTarget = {};
+        $rootScope.data.contributors = [];
+        $rootScope.isCollapsedContributor = false;
+        $rootScope.data.contributor = true;
+        $rootScope.data.curator = false;
+        $rootScope.data.author = false;
         $rootScope.data.subjectDatatype = "http://semanticscience.org/resource/SIO_010299";
         $rootScope.data.targetDatatype = "http://semanticscience.org/resource/SIO_010035";
         $rootScope.data.relationship = "http://www.w3.org/2004/02/skos/core#closeMatch";
@@ -112,6 +118,23 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.$on('DataChanged', function (event, x) {
             $rootScope.data = x;
         });
+
+        /**
+         * @description When the services require the most resent information about the contributors.
+         */
+        $rootScope.$on('getContributors', function () {
+            $rootScope.$broadcast('sendContributors' ,  $rootScope.data.contributors);
+        });
+
+        /**
+         * @description When the services or another controller change the contributors make sure they are updated here.
+         */
+        $rootScope.$on('ContributorsChanged', function (event, x) {
+            $rootScope.data.contributors = x;
+            console.log( $rootScope.data.contributors);
+        });
+
+
         /**
          * @description When the user changes the selection of his linkset source - update information here.
          */
@@ -285,19 +308,15 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
             }
             if ($rootScope.data.publisher == "") {
                 if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'>Publishing institution in \"Publishing Info\"</p>";
+                returnString += "<p class='neededFields'>Publishing institution in \"Core Info\"</p>";
             }
             if ($rootScope.data.downloadFrom == "") {
                 if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'> RDF download link in \"Publishing Info\" </p> ";
+                returnString += "<p class='neededFields'> RDF download link in \"Core Info\" </p> ";
             }
             if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("http") == -1)) {
                 if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'> A URI for the licence you choose in \"Publishing Info\" </p> ";
-            }
-            if ($rootScope.noURI != -1) {
-                if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'> A URI for the source you cited in \"Sources \" </p> ";
+                returnString += "<p class='neededFields'> A URI for the licence you choose in \"Core Info\" </p> ";
             }
 
             if (Object.keys($rootScope.data.userSource).length ===0) {
@@ -354,22 +373,22 @@ linksetAppControllers.controller('linksetCtrl', [  '$scope', '$rootScope', 'void
         $rootScope.addAlert = function(id2Add){
             switch(id2Add) {
                 case "licence":
-                    $rootScope.alerts.push({ id: "licence", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the licence you choose! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "licence", type: 'error', msg: 'Ooops! You forgot to give us a URI for the licence you choose! Please provide this information.' });
                     break;
                 case "description":
-                    $rootScope.alerts.push({ id: "description", type: 'error', msg: 'Ooops! You forgot to gives us a Linkset description! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "description", type: 'error', msg: 'Ooops! You forgot to give us a Linkset description! Please provide this information.' });
                     break;
                 case "publisher":
-                    $rootScope.alerts.push({ id: "publisher", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the publisher you choose! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "publisher", type: 'error', msg: 'Ooops! You forgot to give us a URI for the publisher you choose! Please provide this information.' });
                     break;
                 case "downloadFrom":
-                    $rootScope.alerts.push({ id: "downloadFrom", type: 'error', msg: 'Ooops! You forgot to gives us a URL to download your RDF from! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "downloadFrom", type: 'error', msg: 'Ooops! You forgot to give us a URL to download your RDF from! Please provide this information.' });
                     break;
                 case "userSource":
-                    $rootScope.alerts.push({ id: "userSource", type: 'error', msg: 'Ooops! You forgot to gives us the Source Dataset of your Linkset! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "userSource", type: 'error', msg: 'Ooops! You forgot to give us the Source Dataset of your Linkset! Please provide this information.' });
                     break;
                 case "userTarget":
-                    $rootScope.alerts.push({ id: "userTarget", type: 'error', msg: 'Ooops! You forgot to gives us the Target Dataset of your Linkset! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "userTarget", type: 'error', msg: 'Ooops! You forgot to give us the Target Dataset of your Linkset! Please provide this information.' });
                     break;
             }
             return "failed";
@@ -445,9 +464,8 @@ linksetAppControllers.controller('linksetCarouselCtrl', ['$scope', '$rootScope',
         };
 
         $scope.addSlide(0, "User Info", []);
-        $scope.addSlide(1, "Core Info", [ "description"]);
-        $scope.addSlide(2, "Publishing Info", ["publisher",  "downloadFrom"]);
-       // $scope.addSlide(3, "Versioning", []);
+        $scope.addSlide(1, "Core Info", [ "description", "publisher",  "downloadFrom"]);
+        $scope.addSlide(2, "Versioning", []);
         $scope.addSlide(3, "Source / Target", ["userSource" ,"userTarget"]);
         $scope.addSlide(4, "Link Info", []);
         $scope.addSlide(5, "Export RDF", []);
@@ -625,3 +643,102 @@ linksetAppControllers.controller('sourceCtrl', [ '$rootScope', '$scope', 'JsonSe
     }]);
 
 
+/**
+ *  @description Controller responsible for the contributor addition functionality.
+ *  @memberOf  linksetCreator.linksetApp.editorAppControllers
+ *  @class  linksetCreator.linksetApp.editorAppControllers.editorContributorsCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
+ *  @param {Service} ContributorORCIDService - Makes calls to ORCID Api to retrieve information of the contributors.
+ */
+linksetAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scope', 'voidData', 'ContributorORCIDService',
+    function ($rootScope, $scope , voidData ,ContributorORCIDService) {
+        $scope.contributors = $rootScope.data.contributors;
+        $scope.orcidCheck = 0;
+        if ($scope.contributors.length == undefined ) $scope.contributors = [];
+        if ( $scope.contributors.length == 0 ){
+            $scope.contributors.push({name : "" , surname : "" , orcid:"", email:"-" , id:0, author:false ,curator:false, contributor:true});
+        }
+
+        $rootScope.$on('sendContributors', function (event , x ) {
+            console.log("retrieve contributors " );
+            console.log(x);
+            $scope.contributors = x;
+        });
+
+        /**
+         * @function callORCIDEndpointContributor
+         * @memberOf linksetCreator.linksetApp.editorAppControllers.editorContributorsCtrl
+         * @description Calling ORCID Api to retrieve info for each contributor.
+         * @param value
+         */
+        $scope.callORCIDEndpointContributor = function(value) {
+            console.log(angular.element(value).scope().$index);
+            var index = angular.element(value).scope().$index;
+
+            if (   $scope.contributors[index].orcid !=undefined&&    $scope.contributors[index].orcid.length >= 16 )
+            {
+                $scope.orcidCheck =  index;
+                var tmp =   $scope.contributors[index].orcid.replace(/-/g, '');
+                if (tmp.length>=16){
+                    ContributorORCIDService.callORCIDEndpointContributor(  $scope.contributors[index].orcid);
+                }
+            }
+        };
+
+        $rootScope.$on('SuccessORCIDDataContributor', function (event, ORCIDJSON) {
+            console.log(ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"]);
+            var details = ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"];
+            $scope.contributors[ $scope.orcidCheck].name =details["given-names"].value;
+            $scope.contributors[ $scope.orcidCheck].surname =details["family-name"].value;
+            $scope.save();
+            $scope.$apply();
+        });
+
+        /**
+         * @function add
+         * @memberOf linksetCreator.linksetApp.editorAppControllers.editorContributorsCtrl
+         * @description Add annother contributor to the list.
+         */
+        $scope.add = function () {
+            if ($scope.contributors == undefined ) $scope.contributors = [];
+            if ($scope.contributors.length>0 )
+                $scope.contributors.push({name : "" , surname : "" , orcid:"", email:"-" ,
+                    id:( $scope.contributors[$scope.contributors.length -1].id +1) , author:false ,curator:false, contributor:true});
+            else $scope.contributors.push({name : "" , surname : "" , orcid:"", email:"-" , id:0, author:false ,curator:false, contributor:true });
+            voidData.setContributorData($scope.contributors);
+        };
+
+        /**
+         * @function save
+         * @memberOf linksetCreator.linksetApp.editorAppControllers.editorContributorsCtrl
+         * @description Save the contributors the user has provided.
+         */
+        $scope.save= function(){
+            voidData.setContributorData($scope.contributors);
+        };
+
+        /**
+         * @function removeContributor
+         * @memberOf linksetCreator.linksetApp.editorAppControllers.editorContributorsCtrl
+         * @description Remove the selected contributor.
+         * @param id
+         */
+        $scope.removeContributor = function (id) {
+            var found = false;
+            console.log("removeContributor - " + $scope.contributors.length);
+            var i = 0;
+            while (i < $scope.contributors.length && !found) {
+                if ($scope.contributors[i].id == id ) found = true;
+                else i++;
+            }
+            if (found) {
+                $scope.contributors.splice(i, 1);
+                voidData.setContributorData($scope.contributors);
+            }
+        };
+
+    }]);

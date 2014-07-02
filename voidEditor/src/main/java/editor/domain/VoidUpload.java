@@ -377,9 +377,6 @@ public class VoidUpload {
         doneSources = true;
     }
 
-
-
-
     /**
      * @return The created JSON Object containing all information captured.
      */
@@ -421,7 +418,7 @@ public class VoidUpload {
         for (int i = 0; i < sources.size(); i++) {
             // Sources provided in wierd format - so manually do parsing.
             String tmpValue = sources.get(i).toString();
-            System.out.println(tmpValue);
+            //System.out.println(tmpValue);
             String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val }
             String URI = "";
             String title ="";

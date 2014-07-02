@@ -279,7 +279,6 @@ public class VoidTurtle {
         try {
             output = File.createTempFile("void", ".ttl");
             bw = new BufferedWriter(new FileWriter(output));
-            System.out.println("Temp file : " + output.getAbsolutePath());
             voidModel.write(bw, "TURTLE");
             System.out.println("Done");
         } catch (IOException e) {
@@ -520,8 +519,6 @@ public class VoidTurtle {
             voidBase.addProperty(RDF.type, DCTypes.Dataset);
         }
     }
-
-
 
     /**
      * Validating the RDF against the RDF spec found at

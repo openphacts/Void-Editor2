@@ -39,7 +39,33 @@ var ORCIDService = angular.module('ORCIDService', [])
             });
         }
     });
+/**
+ * @function ContributorORCIDService
+ * @memberOf linksetCreator.linksetApp.ContributorORCIDService
+ * @description Service to allow the retrieval of ORCID infomation for an contributor.
+ */
+var ContributorORCIDService = angular.module('ContributorORCIDService', [])
+    .service('ContributorORCIDService', function ($rootScope) {
 
+        this.callORCIDEndpointContributor = function (id) {
+            var URL =  'http://pub.orcid.org/' + id + '/orcid-bio';
+            $.ajax({
+                type: 'GET',
+                url: URL,
+                headers: {
+                    "Accept":"application/orcid+json"
+                },
+                success: function (data) {
+                    $rootScope.$broadcast('SuccessORCIDDataContributor', data);
+                },
+                error: function (status) {
+                    console.log("ORCID SERVICE ERROR + status => " + status);
+                    var er = "Could not retrieve information from your ORCID." ;
+                    $rootScope.$broadcast('FailORCIDData', er);
+                }
+            });
+        }
+    });
 /**
  * @function voidData
  * @memberOf linksetCreator.linksetApp.voidDataService
@@ -53,6 +79,7 @@ var voidDataService = angular.module('voidDataService', [])
         data = {};
         uriForSourcesExist = "passed";
         outputURL = URLPreface + '/rest/linkset/output';
+        data.contributors = [];
 
         /**
          * @function setTurtle
@@ -72,6 +99,16 @@ var voidDataService = angular.module('voidDataService', [])
         this.setSourceData = function (value) {
             data.sources = value;
             $rootScope.$broadcast('DataSourcesChanged', data.sources);
+        };
+
+        /**
+         * @function setContributorData
+         * @description Sets the contributors variable and broadcasts a global message of 'ContributorsChanged'.
+         * @param {JSON} value - JSON Object of contributors and all their information.
+         */
+        this.setContributorData = function (value){
+            data.contributors = value;
+            $rootScope.$broadcast('ContributorsChanged', data.contributors);
         };
 
         /**

@@ -94,3 +94,40 @@ modalControllers.controller('ModalInstanceAboutCtrl', ['$rootScope' , '$scope', 
             $modalInstance.dismiss('cancel');
         };
     }]);
+
+/**
+ *  @description Modal for adding more than one contributor.
+ *  @memberOf  linksetCreator.linksetApp.modalControllers
+ *  @class linksetCreator.linksetApp.modalControllers.ModalContributorsCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$modal} $modal - The Angularjs JS handler for modals.
+ */
+modalControllers.controller('ModalContributorsCtrl', ['$scope', '$rootScope' , '$modal',
+    function ($scope, $rootScope, $modal) {
+        $scope.open = function () {
+            $modal.open({
+                templateUrl: 'myModalContentContributors.html',
+                controller: "ModalInstanceContributorsCtrl"
+            });
+            $rootScope.$broadcast('getContributors');
+        };
+    }]);
+/**
+ *  @description   Contributor functionality.
+ *  @memberOf  linksetCreator.linksetApp.modalControllers
+ *  @class linksetCreator.linksetApp.modalControllers.ModalInstanceContributorsCtrl
+ *  @author Lefteris Tatakis
+ *  @function
+ *  @param {scope} $scope - The scope in which this controller operates.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
+ */
+modalControllers.controller('ModalInstanceContributorsCtrl', ['$rootScope' , '$scope', '$modalInstance',
+    function ($rootScope, $scope, $modalInstance) {
+        $scope.closeModal = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    }]);

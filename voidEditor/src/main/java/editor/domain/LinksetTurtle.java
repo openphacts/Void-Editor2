@@ -7,10 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.UUID;
+import java.util.*;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -58,7 +55,7 @@ public class LinksetTurtle {
 	private String givenName ;	
 	private String familyName;	
     private String userEmail;
-    private String title;
+    private String title ="";
     private String description ; 
     private String publisher;
     private int  datePublish;
@@ -72,13 +69,24 @@ public class LinksetTurtle {
 	private String ORCID = "";
 	private String relationship ="";
 	private String justification ="";
+    private String version;
+    private String previousVersion;
+    private String updateFrequency;
+    private ArrayList contributors = null;
 	private LinkedHashMap userTarget =null;
 	private LinkedHashMap userSource =null;
 	private String assertionMethod = "";
 	private String subjectDatatype = "";
 	private String targetDatatype = "";
+    private String contributor ="";
+    private String curator ="";
+    private String author ="";
 	private Validator validator = null;
+
 	private HashMap<String, String> justificationDataset  = new HashMap<String, String>();
+    private Resource voidBase;
+    private Model voidModel;
+    private String referenceURL ="http://voideditor.cs.man.ac.uk/";
 
 	/**
      * Takes in the parameters provided by the user and starts the process of the VoID creation.
@@ -101,17 +109,21 @@ public class LinksetTurtle {
 	    this.assertionMethod = obj.assertionMethod;
 	    this.subjectDatatype = obj.subjectDatatype;
 	    this.targetDatatype = obj.targetDatatype;
-	    
+        this.contributors = (ArrayList) obj.contributors;
+        this.contributor =obj.contributor;
+        this.curator =obj.curator;
+        this.author =obj.author ;
+        this.version = obj.version;
+        this.previousVersion = obj.previousVersion;
+        this.updateFrequency = obj.updateFrequency;
+
 	    if (obj.datePublish.equals("N/A")){
 	    	this.setDatePublish(1) ;
 	    }else {
 	    	this.setDatePublish(Integer.parseInt(obj.datePublish));
 	    }
 	    
-	    System.out.println(obj.monthPublish);
 	    this.setMonthPublish(Integer.parseInt(obj.monthPublish));
-	    
-	    System.out.println(obj.yearPublish);
 	    this.setYearPublish(Integer.parseInt(obj.yearPublish));
 	    
 	    createJustificationMap();
@@ -128,7 +140,7 @@ public class LinksetTurtle {
 	 */
 	public void createVoid() throws VoidValidatorException, RDFParseException, RDFHandlerException, IOException{
 		
-		 Model voidModel = ModelFactory.createDefaultModel();
+		 voidModel = ModelFactory.createDefaultModel();
 		 voidModel.setNsPrefix("xsd", XSD.getURI());
          voidModel.setNsPrefix("void", Void.getURI());
          voidModel.setNsPrefix("pav", Pav.getURI());
@@ -183,7 +195,7 @@ public class LinksetTurtle {
         	 URI = URI + UUID.randomUUID();
          }
          
-         Resource voidBase = voidModel.createResource(URI);
+         voidBase = voidModel.createResource(URI);
          voidBase.addProperty(RDF.type, Void.Linkset);
          voidBase.addProperty(DCTerms.title, titleLiteral);
          voidBase.addProperty(DCTerms.description, descriptionLiteral);
@@ -211,7 +223,18 @@ public class LinksetTurtle {
          
          voidDescriptionBase.addLiteral(Pav.createdOn, nowDescriptionLiteral);
          voidDescriptionBase.addProperty(FOAF.primaryTopic,voidBase );
-         
+         //The contributotions of this user
+         //The contributotions of this user
+         if (curator.contains("true")) {
+            voidBase.addProperty(Pav.curatedBy, resourceForPerson);
+         }
+         if (contributor.contains("true")) {
+            voidBase.addProperty(Pav.contributedBy, resourceForPerson);
+         }
+         if (author.contains("true")) {
+            voidBase.addProperty(Pav.authoredBy, resourceForPerson);
+         }
+
          //Dataset void - conditional
          if (publisher !=""){
         	 Resource identifiersOrg = voidModel.createResource(publisher);
@@ -222,19 +245,39 @@ public class LinksetTurtle {
         	   Resource mainDatadump = voidModel.createResource(downloadFrom);
         	   voidBase.addProperty(Void.dataDump, mainDatadump);
          }
-         
-         if (licence !="" && !licence.contains("N/A")){
+
+         if (version != "") {
+            Literal versionUsed = voidModel.createLiteral(version);
+            voidBase.addProperty(Pav.version, versionUsed);
+         }
+
+         if (previousVersion != "") { // Will validator allow it?
+            Resource prevVersion = voidModel.createResource(previousVersion);
+            voidBase.addProperty(Pav.previousVersion, prevVersion);
+         }
+
+         if (updateFrequency != "") {
+            Literal updateFrequencyDef = voidModel.createLiteral(updateFrequency);
+            voidBase.addProperty(DCTerms.accrualPeriodicity, updateFrequencyDef);
+         }
+
+
+        if (licence !="" && !licence.contains("N/A")){
         	 Resource license = voidModel.createResource(licence);
         	 voidBase.addProperty(DCTerms.license, license);
-         }else if (licence.contains("N/A")){
+        }else if (licence.contains("N/A")){
         	 //:dataset dct:license [ rdfs:label "unknown" ];
         	 voidBase.addProperty(DCTerms.license, voidModel.createResource().addProperty(RDFS.label , "unknown"));
-         }
+        }
          
-         if (relationship !="" ){
+        if (relationship !="" ){
         	 Resource relationshipR = voidModel.createResource(relationship);
         	 voidBase.addProperty(Void.linkPredicate, relationshipR);
-         }
+        }
+
+        if (contributors != null) {
+            additionOfContributorInformationToVoID();
+        }//if
 
          if (userSource !=null && userSource.get("URI") != null ){
 	        Resource userSourceR = voidModel.createResource((userSource.get("URI")).toString());
@@ -277,7 +320,7 @@ public class LinksetTurtle {
          {
         	output = File.createTempFile("linksetVoid", ".ttl"); 
      	    bw = new BufferedWriter(new FileWriter(output));
-     	    System.out.println("Temp file : " + output.getAbsolutePath());
+     	    //System.out.println("Temp file : " + output.getAbsolutePath());
      	    voidModel.write(bw,  "TURTLE");
      	    System.out.println("Done");
      	 }
@@ -287,7 +330,78 @@ public class LinksetTurtle {
          
          checkRDF();
 	}
+    /**
+     *  Creating the structure needed for of the contributors.
+     */
+    private void additionOfContributorInformationToVoID(){
 
+        for (int i = 0; i < contributors.size(); i++) {
+            String tmpValue = contributors.get(i).toString();
+            String[] splitingSetsOfInfo = tmpValue.split(","); // for example { var = val , var2 = val }
+
+            String tmpOrcid = "";
+            Literal contributorGivenNameLiteral = null;
+            Literal tmpSurname = null;
+            Resource contributorEmailResource = null;
+
+            String tmpCurator = "false";
+            String tmpAuthor = "false";
+            String tmpContributedBy = "false";
+
+            Resource source = null;
+            for (int j = 0; j < splitingSetsOfInfo.length; j++) {
+                String[] couple = splitingSetsOfInfo[j].split("=");
+                String property2Check = couple[0];
+                if (couple.length > 1) {
+                    String value = couple[1].replace("}", "");
+
+                    if (property2Check.contains("name") && !property2Check.contains("sur") && value != "-") {
+                        contributorGivenNameLiteral = voidModel.createLiteral(value);
+                    } else if ((property2Check.contains("surname") && value != "-")) {
+                        tmpSurname = voidModel.createLiteral(value);
+                    } else if ((property2Check.contains("orcid") && value != "-")) {
+                        tmpOrcid = value;
+                    } else if ((property2Check.contains("email") && value != "-")) {
+                        contributorEmailResource = voidModel.createResource("mailto:" + value);
+                    } else if ((property2Check.contains("curator"))) {
+                        tmpCurator = value;
+                    } else if ((property2Check.contains("author"))) {
+                        tmpAuthor = value;
+                    } else if ((property2Check.contains("contributor"))) {
+                        tmpContributedBy = value;
+                    } else {
+                        System.out.println("Something escaped = >" + value);
+                    }
+                }//if
+            }//for
+            String URI4Contributor = "";
+            if (tmpOrcid == null || tmpOrcid == ""|| tmpOrcid == "-") {
+                URI4Contributor = referenceURL + UUID.randomUUID();
+            } else {
+                URI4Contributor = "http://orcid.org/" + tmpOrcid;
+            }
+
+            Resource resourceForContributor = voidModel.createResource(URI4Contributor);
+            resourceForContributor.addProperty(RDF.type, FOAF.Person);
+
+            if (contributorGivenNameLiteral != null)
+                resourceForContributor.addProperty(FOAF.givenname, contributorGivenNameLiteral);
+
+            if (tmpSurname != null) resourceForContributor.addProperty(FOAF.family_name, tmpSurname);
+
+            if (contributorEmailResource != null)
+                resourceForContributor.addProperty(FOAF.mbox, contributorEmailResource);
+            if (tmpCurator.contains("true")) {
+                voidBase.addProperty(Pav.curatedBy, resourceForContributor);
+            }
+            if (tmpContributedBy.contains("true")) {
+                voidBase.addProperty(Pav.contributedBy, resourceForContributor);
+            }
+            if (tmpAuthor.contains("true")) {
+                voidBase.addProperty(Pav.authoredBy, resourceForContributor);
+            }
+        }//for
+    }
     /**
      * Checks if the RDF outputted is correct and valid.
      * @throws RDFParseException

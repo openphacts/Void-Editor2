@@ -225,7 +225,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         });
 
         /**
-         * @description When the services or another controller change the contributors make sure they are updated here.
+         * @description When the services or another controller change the distributions make sure they are updated here.
          */
         $rootScope.$on('DistributionsChanged', function (event, x) {
             $rootScope.data.distributions = x;
