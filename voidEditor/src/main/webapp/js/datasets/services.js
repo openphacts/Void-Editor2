@@ -31,10 +31,10 @@ var voidUploadService = angular.module('voidUploadService', [])
                 data: JSON.stringify(opsSources),
                 contentType: "application/json",
                 success: function () {console.log("success of ops sources post");},
-                error: function (status) {console.log("EPIC failure for sources post");},
+                error: function (status) {console.log("Failure for sources post");},
                 async: false
             });
-            console.log("After async called for ops sources")
+            console.log("After async called for ops sources");
             $http.post(URL, file, {
                 withCredentials: true,
                 headers: {'Content-Type': undefined },
@@ -47,7 +47,7 @@ var voidUploadService = angular.module('voidUploadService', [])
                         $rootScope.$broadcast('POSTFailedUpload', data.error);
                     }
             })
-            .error(function (data, status) {
+            .error(function () {
                    var message = "Error in upload of void data - please contact support." ;//+ "=> " + data ;
                    $rootScope.$broadcast('POSTFailedUpload', message)
             });
@@ -60,7 +60,7 @@ var voidUploadService = angular.module('voidUploadService', [])
  * @description Service to allow the retrieval of ORCID infomation for an individual.
  */
 var ORCIDService = angular.module('ORCIDService', [])
-    .service('ORCIDService', function ($rootScope, $http) {
+    .service('ORCIDService', function ($rootScope) {
 
         this.callORCIDEndpoint = function (id) {
             var URL =  'http://pub.orcid.org/' + id + '/orcid-bio';
@@ -88,7 +88,7 @@ var ORCIDService = angular.module('ORCIDService', [])
  * @description Service to allow the retrieval of ORCID infomation for an contributor.
  */
 var ContributorORCIDService = angular.module('ContributorORCIDService', [])
-    .service('ContributorORCIDService', function ($rootScope, $http) {
+    .service('ContributorORCIDService', function ($rootScope) {
 
         this.callORCIDEndpointContributor = function (id) {
             var URL =  'http://pub.orcid.org/' + id + '/orcid-bio';
@@ -136,8 +136,8 @@ var dataUploadService = angular.module('userDataUploadService', [])
                         $rootScope.$broadcast('POSTFailedDataUpload', data.error);
                     }
             })
-            .error(function (data, status) {
-                 var message = "Error in upload User Data.";// + "=> " + data ;
+            .error(function () {
+                 var message = "Error in upload User Data.";
                   $rootScope.$broadcast('POSTFailedDataUpload', message)
             });
         }
@@ -172,7 +172,7 @@ var voidDataService = angular.module('voidDataService', [])
             URLTriples = URLPreface+ '/rest/void/sparqlStatsTotalTriples';
             console.log("In querySparqlEndPoint");
             $http({method: 'POST', url: URLTriples, data: endpoint}).
-                error(function (data, status) {
+                error(function () {
                     var message = "Error for total number of triples query run on your dataset." ;
                     console.log("In error");
                     $rootScope.$broadcast('StatsFailed', message)
@@ -183,7 +183,7 @@ var voidDataService = angular.module('voidDataService', [])
                 });
 
             $http({method: 'POST', url: URLSub, data: endpoint}).
-                error(function (data, status) {
+                error(function () {
                     var message = "Error in stats for unique subjects in your dataset."  ;
                     console.log("In error");
                     $rootScope.$broadcast('StatsFailed', message)
@@ -194,19 +194,19 @@ var voidDataService = angular.module('voidDataService', [])
                 });
 
             $http({method: 'POST', url: URLObj, data: endpoint}).
-                error(function (data, status) {
+                error(function () {
                     var message = "Error in stats for number of unique objects in your dataset." ;
-                    $rootScope.$broadcast('StatsFailed', message)
+                    $rootScope.$broadcast('StatsFailed', message);
                     console.log("In error");
                 }).
                 success(function (data) {
                     console.log("In error");
                     $rootScope.$broadcast('SuccessStatisticsUserDataUniqueObjects', data);
                 });
-        }
+        };
         /**
          * @function setTurtle
-         * @param {JSON} - value All the new information retrieved for the user.
+         * @param {JSON} value -  All the new information retrieved for the user.
          */
         this.setTurtle = function (value) {
             turtleData = value;
@@ -224,12 +224,12 @@ var voidDataService = angular.module('voidDataService', [])
 
         this.setTitlesAndURIsOfOPSSouces = function(data){
             opsSources= data;
-        }
+        };
 
         /**
          * @function setUriForSourcesExist
          * @description Setting if the URI of sources exist.
-         * @param {} value
+         * @param {String} value
          */
         this.setUriForSourcesExist = function (value) {
             uriForSourcesExist = value;
@@ -280,7 +280,7 @@ var voidDataService = angular.module('voidDataService', [])
             $rootScope.$broadcast('StartLoader');
             console.log(data);
             return $http({method: 'POST', url: outputURL, data: data}).
-                error(function (data, status) {
+                error(function () {
                     turtleData = "Error in creating void.";
                     console.log(turtleData);
                     $rootScope.$broadcast('TurtleChanged', turtleData);
@@ -311,7 +311,7 @@ var voidDataService = angular.module('voidDataService', [])
         this.setContributorData = function (value){
             data.contributors = value;
             $rootScope.$broadcast('ContributorsChanged', data.contributors);
-        }
+        };
 
 
         /**
@@ -328,7 +328,7 @@ var voidDataService = angular.module('voidDataService', [])
         this.setDistributionData = function(value){
             data.distributions = value;
             $rootScope.$broadcast('DistributionsChanged', data.distributions);
-        }
+        };
 
         this.getDistributionData = function () {
             return data.distributions;

@@ -37,7 +37,14 @@ public class VoidUpload {
     private String distribution = "http://www.w3.org/ns/dcat#Distribution";
     private File importedFile;
 
-    private VoidAttributes attributes = new VoidAttributes();
+    private JSONArray distributions;
+    private boolean doneSources = false;
+    private boolean doneDistributions = false;
+    private boolean doneSparqlEndpoint = false;
+    private boolean doneRDF = false;
+    private String PersonFromCreatedBy;
+
+    private Resource createdBy;
     private Map<String, Object> mainDatasetSubjects = new HashMap<String, Object>();
     private Map<String, String> sourceDatasetSubjects = new HashMap<String, String>();
     private Map<String, String> contrDatasetSubjects = new HashMap<String, String>();
@@ -46,6 +53,8 @@ public class VoidUpload {
     private ArrayList sources ;
     private JSONObject result;
 
+
+    private Resource primaryTopic;
     /**
      * Initialises the HashMaps and processes the input stream (file).
      *
@@ -94,7 +103,7 @@ public class VoidUpload {
         /**
          * Get createdBy information. (Name, Surname, Email, Orcid).
          */
-        Resource createdBy = mainResourse.getProperty(Pav.createdBy).getResource();
+        createdBy = mainResourse.getProperty(Pav.createdBy).getResource();
         if (createdBy.hasProperty(FOAF.family_name))
             result.put("familyName", createdBy.getProperty(FOAF.family_name).getString());
         if (createdBy.hasProperty(FOAF.givenname))
@@ -106,18 +115,16 @@ public class VoidUpload {
             String temp = createdBy.getURI().replace("http://orcid.org/", "");
             result.put("ORCID", temp);
         }
-        String PersonFromCreatedBy = createdBy.toString();
+        PersonFromCreatedBy = createdBy.toString();
         //Get primary topic and iterate
         if (!mainResourse.hasProperty(FOAF.primaryTopic)) System.err.println("Primary topic is missing..");
-        Resource primaryTopic = mainResourse.getProperty(FOAF.primaryTopic).getResource();
+
+        primaryTopic = mainResourse.getProperty(FOAF.primaryTopic).getResource();
         StmtIterator iter = primaryTopic.listProperties();
-        boolean doneSources = false;
-        boolean doneDistributions = false;
-        boolean doneSparqlEndpoint = false;
-        boolean doneRDF = false;
+
         result.put("URI", primaryTopic.toString());
 
-        JSONArray distributions = new JSONArray();
+        distributions = new JSONArray();
         JSONObject distributionObject = new JSONObject();
         int indexOfRDFDistributionObject = -1;
         /**
@@ -175,178 +182,19 @@ public class VoidUpload {
                     && predicate.toString().compareTo(distribution) != 0
                     && predicate.toString().compareTo(contributedBy) != 0) {
 
-                //multiple object handling
-                StmtIterator sources = primaryTopic.listProperties(Pav.derivedFrom); // for each source
-                JSONArray sourcesArrayJson = new JSONArray();
-                /**
-                 * When the property inspected in importedFrom loop through the RDF structure to extract the needed info.
-                 */
-                while (sources.hasNext()) {
-
-                    Statement sourcesStmt = sources.nextStatement();  // get next statement
-                    StmtIterator sourcesResourceItr = sourcesStmt.getResource().listProperties(); // go to each source
-                    JSONObject attributeSourcesObjectReference = new JSONObject();
-                    if (sourcesResourceItr.hasNext()) {
-                        while (sourcesResourceItr.hasNext()) { // extract info
-                            Statement sourceStmt = sourcesResourceItr.nextStatement();  // get next statement
-                            // Check JSON for sources
-                            String sourcePredicate = sourceStmt.getPredicate().toString();
-                            String sourceObject = sourceStmt.getObject().toString().replace("@en", "");
-                            if (sourceDatasetSubjects.get(sourcePredicate) != null) {
-                                attributeSourcesObjectReference.put("URI", sourceStmt.getSubject().toString());
-                                attributeSourcesObjectReference.put(sourceDatasetSubjects.get(sourcePredicate), sourceObject);
-                                // To know if it was a custom Source or a OPS one
-                                if (sourceDatasetSubjects.get(sourcePredicate).equals("description") && sourceObject.equals("N/A")) {
-                                    attributeSourcesObjectReference.put("noURI", false);
-                                } else if (sourceDatasetSubjects.get(sourcePredicate).equals("description") && !sourceObject.equals("N/A")) {
-                                    attributeSourcesObjectReference.put("noURI", true);
-                                }
-                            }
-                        }//while
-                    }else{
-                        //({"title": value, "type": "RDF", "URI": _about, "version": "--", "webpage": "http://--", "description": "--", "noURI": false });
-                        attributeSourcesObjectReference.put("noURI", false);
-                        attributeSourcesObjectReference.put("version", "--");
-                        attributeSourcesObjectReference.put("webpage", "http://--");
-                        attributeSourcesObjectReference.put("description", "--");
-                        attributeSourcesObjectReference.put("type", "RDF");
-                        attributeSourcesObjectReference.put("URI", sourcesStmt.getResource().getURI());
-                        if (OPSSources.containsKey(sourcesStmt.getResource().getURI())){
-                            attributeSourcesObjectReference.put("title",OPSSources.get(sourcesStmt.getResource().getURI()));
-                        }
-                        else attributeSourcesObjectReference.put("title", sourcesStmt.getResource().getURI());
-                    }
-                    sourcesArrayJson.add(attributeSourcesObjectReference);
-                }
-                result.put("sources", sourcesArrayJson);
-                doneSources = true;
+                dealWithSourcesOfVoID();
 
             } else if (predicate.toString().compareTo(distribution) == 0 && !doneDistributions
                     && predicate.toString().compareTo(curatedBy) != 0 && predicate.toString().compareTo(authoredBy) != 0
                     && predicate.toString().compareTo(derivedFromource) != 0
                     && predicate.toString().compareTo(contributedBy) != 0){
 
-                //add the remaining distributions
-                StmtIterator distributionsIter = primaryTopic.listProperties(DCAT.distribution); // for each source
-                /**
-                 * When the property inspected in importedFrom loop through the RDF structure to extract the needed info.
-                 */
-                while (distributionsIter.hasNext()) {
+                dealWithDistributionsOfVoID();
 
-                    Statement distributionsStmt = distributionsIter.nextStatement();  // get next statement
-                    StmtIterator distributionResourceItr = distributionsStmt.getResource().listProperties(); // go to each source
-                    JSONObject innderDistributionObject = new JSONObject();
-
-                    while (distributionResourceItr.hasNext()) { // extract info
-                        Statement distributionStmt = distributionResourceItr.nextStatement();  // get next statement
-                        String distributionPredicate = distributionStmt.getPredicate().toString();
-                        String distributionObjectOfInput = distributionStmt.getObject().toString().replace("@en", "");
-                        String distributionMapValue = distributionDatasetSubjects.get(distributionPredicate);
-                            //{"name": value, "URL": "", "version": "" , "isRDF": true, "sparqlEndpoint":"" }
-                        if (distributionMapValue != null) {
-                             if (distributionMapValue.contains("mediaType")) {
-                                 innderDistributionObject.put("isRDF", false);
-                                 innderDistributionObject.put("sparqlEndpoint", "");
-                                if (distributionObjectOfInput.contains("text") && !distributionObjectOfInput.contains("/")) {
-                                    innderDistributionObject.put("name", "Datadump");
-                                } else if (distributionObjectOfInput.contains("text/csv")) {
-                                    innderDistributionObject.put("name", "CSV");
-                                } else if (distributionObjectOfInput.contains("text/sdf")) {
-                                    innderDistributionObject.put("name", "SDF");
-                                } else if (distributionObjectOfInput.contains("text/tsv")) {
-                                    innderDistributionObject.put("name", "TSV");
-                                } else if (distributionObjectOfInput.contains("json")) {
-                                    innderDistributionObject.put("name", "JSON-LD");
-                                } else if (distributionObjectOfInput.contains("text/xml")) {
-                                    innderDistributionObject.put("name", "XML");
-                                }
-                             } else {
-                                 innderDistributionObject.put(distributionMapValue, distributionObjectOfInput);
-                             }
-                        }//if
-                    }//while
-                    distributions.add(innderDistributionObject);
-                }//while
-                doneDistributions = true;
             } else if (predicate.toString().compareTo(curatedBy) == 0 || predicate.toString().compareTo(authoredBy) == 0
                     || predicate.toString().compareTo(contributedBy) == 0) {
-                /**
-                 * A contributor can have multiple instances in the RDF( up to 3 per contributor).
-                 */
-                Property[] properties = {Pav.authoredBy, Pav.curatedBy, Pav.contributedBy};
-                Map<String, String> urisExist = new HashMap<String, String>();
-                int id = 0;
-                JSONArray contributorsArrayJson = new JSONArray();
-                /**
-                 * Looping through the RDF data structure of the Constructor node, for each possible role.
-                 */
 
-                for (int i = 0; i < properties.length; i++) {
-                    StmtIterator sources = primaryTopic.listProperties(properties[i]); // for each source
-
-                    while (sources.hasNext()) {
-                        Statement contribStmt = sources.nextStatement();  // get next statement
-                        StmtIterator contribResourceItr = contribStmt.getResource().listProperties(); // go to each source
-                        JSONObject contribObjectReference = new JSONObject();
-                        Statement finalStmt = null;
-                            while (contribResourceItr.hasNext()) { // extract info
-                                Statement sourceStmt = contribResourceItr.nextStatement();  // get next statement
-                                // Check JSON for sources
-                                String sourcePredicate = sourceStmt.getPredicate().toString();
-                                String sourceObject = sourceStmt.getObject().toString().replace("@en", "");
-                                if (contrDatasetSubjects.get(sourcePredicate) != null) {
-                                    if (contrDatasetSubjects.get(sourcePredicate).equals("name")) {
-                                        contribObjectReference.put("name", sourceObject);
-                                    } else if (contrDatasetSubjects.get(sourcePredicate).equals("surname")) {
-                                        contribObjectReference.put("surname", sourceObject);
-                                    } else if (contrDatasetSubjects.get(sourcePredicate).equals("email")) {
-                                        contribObjectReference.put("email", sourceObject.toString().replace("mailto:", ""));
-                                    } else if (sourceStmt.getSubject().getURI().contains("orcid")) {
-                                        String temp = createdBy.getURI().replace("http://orcid.org/", "");
-                                        contribObjectReference.put("orcid", temp);
-                                    }
-                                }
-                                finalStmt = sourceStmt;
-                            }//while
-                        contribObjectReference.put("URI", finalStmt.getSubject().getURI());
-                        contribObjectReference.put("id", id);
-                        boolean contributorNotMainUser = true;
-                        if (finalStmt.getSubject().getURI().contains(PersonFromCreatedBy )) contributorNotMainUser =  false;
-
-                        if (properties[i].equals(Pav.authoredBy)) contribObjectReference.put("author", true);
-                        else contribObjectReference.put("author", false);
-
-                        if (properties[i].equals(Pav.curatedBy)) contribObjectReference.put("curator", true);
-                        else contribObjectReference.put("curator", false);
-
-                        if (properties[i].equals(Pav.contributedBy)) contribObjectReference.put("contributor", true);
-                        else contribObjectReference.put("contributor", false);
-
-                        if (!urisExist.containsKey(finalStmt.getSubject().getURI()) && contributorNotMainUser) {
-                            contributorsArrayJson.add(contribObjectReference);
-                            urisExist.put(finalStmt.getSubject().getURI(), id + "");
-                            id++;
-                        } else if (contributorNotMainUser) {
-                            for (int j = 0; j < contributorsArrayJson.size(); j++) {
-
-                                JSONObject ttmp = (JSONObject) contributorsArrayJson.get(j);
-                                if (ttmp.get("URI").equals(finalStmt.getSubject().getURI())) {
-                                    if (properties[i].equals(Pav.authoredBy)) ttmp.put("author", true);
-                                    if (properties[i].equals(Pav.curatedBy)) ttmp.put("curator", true);
-                                    if (properties[i].equals(Pav.contributedBy)) ttmp.put("contributor", true);
-                                    contributorsArrayJson.set(j, ttmp);
-                                }//if
-                            }//for
-                        }else{
-                            if (properties[i].equals(Pav.authoredBy)) result.put("author", true);
-                            if (properties[i].equals(Pav.curatedBy)) result.put("curator", true);
-                            if (properties[i].equals(Pav.contributedBy)) result.put("contributor", true);
-                          //  contributorsArrayJson=null;
-                        }
-
-                    }//while
-                    if (contributorsArrayJson!=null ) result.put("contributors", contributorsArrayJson);
-                }//for
+                dealWithContributorsOfVoID();
             }//else
         }//while
         //If the object is RDF do it once here - otherwise issues arise.
@@ -355,6 +203,182 @@ public class VoidUpload {
         result.put("distributions", distributions);
 
     }//processVoid
+
+    private void dealWithContributorsOfVoID(){
+        /**
+         * A contributor can have multiple instances in the RDF( up to 3 per contributor).
+         */
+        Property[] properties = {Pav.authoredBy, Pav.curatedBy, Pav.contributedBy};
+        Map<String, String> urisExist = new HashMap<String, String>();
+        int id = 0;
+        JSONArray contributorsArrayJson = new JSONArray();
+        /**
+         * Looping through the RDF data structure of the Constructor node, for each possible role.
+         */
+
+        for (int i = 0; i < properties.length; i++) {
+            StmtIterator sources = primaryTopic.listProperties(properties[i]); // for each source
+
+            while (sources.hasNext()) {
+                Statement contribStmt = sources.nextStatement();  // get next statement
+                StmtIterator contribResourceItr = contribStmt.getResource().listProperties(); // go to each source
+                JSONObject contribObjectReference = new JSONObject();
+                Statement finalStmt = null;
+                while (contribResourceItr.hasNext()) { // extract info
+                    Statement sourceStmt = contribResourceItr.nextStatement();  // get next statement
+                    // Check JSON for sources
+                    String sourcePredicate = sourceStmt.getPredicate().toString();
+                    String sourceObject = sourceStmt.getObject().toString().replace("@en", "");
+                    if (contrDatasetSubjects.get(sourcePredicate) != null) {
+                        if (contrDatasetSubjects.get(sourcePredicate).equals("name")) {
+                            contribObjectReference.put("name", sourceObject);
+                        } else if (contrDatasetSubjects.get(sourcePredicate).equals("surname")) {
+                            contribObjectReference.put("surname", sourceObject);
+                        } else if (contrDatasetSubjects.get(sourcePredicate).equals("email")) {
+                            contribObjectReference.put("email", sourceObject.toString().replace("mailto:", ""));
+                        } else if (sourceStmt.getSubject().getURI().contains("orcid")) {
+                            String temp = createdBy.getURI().replace("http://orcid.org/", "");
+                            contribObjectReference.put("orcid", temp);
+                        }
+                    }
+                    finalStmt = sourceStmt;
+                }//while
+                contribObjectReference.put("URI", finalStmt.getSubject().getURI());
+                contribObjectReference.put("id", id);
+                boolean contributorNotMainUser = true;
+                if (finalStmt.getSubject().getURI().contains(PersonFromCreatedBy )) contributorNotMainUser =  false;
+
+                if (properties[i].equals(Pav.authoredBy)) contribObjectReference.put("author", true);
+                else contribObjectReference.put("author", false);
+
+                if (properties[i].equals(Pav.curatedBy)) contribObjectReference.put("curator", true);
+                else contribObjectReference.put("curator", false);
+
+                if (properties[i].equals(Pav.contributedBy)) contribObjectReference.put("contributor", true);
+                else contribObjectReference.put("contributor", false);
+
+                if (!urisExist.containsKey(finalStmt.getSubject().getURI()) && contributorNotMainUser) {
+                    contributorsArrayJson.add(contribObjectReference);
+                    urisExist.put(finalStmt.getSubject().getURI(), id + "");
+                    id++;
+                } else if (contributorNotMainUser) {
+                    for (int j = 0; j < contributorsArrayJson.size(); j++) {
+
+                        JSONObject ttmp = (JSONObject) contributorsArrayJson.get(j);
+                        if (ttmp.get("URI").equals(finalStmt.getSubject().getURI())) {
+                            if (properties[i].equals(Pav.authoredBy)) ttmp.put("author", true);
+                            if (properties[i].equals(Pav.curatedBy)) ttmp.put("curator", true);
+                            if (properties[i].equals(Pav.contributedBy)) ttmp.put("contributor", true);
+                            contributorsArrayJson.set(j, ttmp);
+                        }//if
+                    }//for
+                }else{
+                    if (properties[i].equals(Pav.authoredBy)) result.put("author", true);
+                    if (properties[i].equals(Pav.curatedBy)) result.put("curator", true);
+                    if (properties[i].equals(Pav.contributedBy)) result.put("contributor", true);
+                    //  contributorsArrayJson=null;
+                }
+
+            }//while
+            if (contributorsArrayJson!=null ) result.put("contributors", contributorsArrayJson);
+        }//for
+    }
+
+    private void dealWithDistributionsOfVoID(){
+        //add the remaining distributions
+        StmtIterator distributionsIter = primaryTopic.listProperties(DCAT.distribution); // for each source
+        /**
+         * When the property inspected in importedFrom loop through the RDF structure to extract the needed info.
+         */
+        while (distributionsIter.hasNext()) {
+
+            Statement distributionsStmt = distributionsIter.nextStatement();  // get next statement
+            StmtIterator distributionResourceItr = distributionsStmt.getResource().listProperties(); // go to each source
+            JSONObject innderDistributionObject = new JSONObject();
+
+            while (distributionResourceItr.hasNext()) { // extract info
+                Statement distributionStmt = distributionResourceItr.nextStatement();  // get next statement
+                String distributionPredicate = distributionStmt.getPredicate().toString();
+                String distributionObjectOfInput = distributionStmt.getObject().toString().replace("@en", "");
+                String distributionMapValue = distributionDatasetSubjects.get(distributionPredicate);
+                //{"name": value, "URL": "", "version": "" , "isRDF": true, "sparqlEndpoint":"" }
+                if (distributionMapValue != null) {
+                    if (distributionMapValue.contains("mediaType")) {
+                        innderDistributionObject.put("isRDF", false);
+                        innderDistributionObject.put("sparqlEndpoint", "");
+                        if (distributionObjectOfInput.contains("text") && !distributionObjectOfInput.contains("/")) {
+                            innderDistributionObject.put("name", "Datadump");
+                        } else if (distributionObjectOfInput.contains("text/csv")) {
+                            innderDistributionObject.put("name", "CSV");
+                        } else if (distributionObjectOfInput.contains("text/sdf")) {
+                            innderDistributionObject.put("name", "SDF");
+                        } else if (distributionObjectOfInput.contains("text/tsv")) {
+                            innderDistributionObject.put("name", "TSV");
+                        } else if (distributionObjectOfInput.contains("json")) {
+                            innderDistributionObject.put("name", "JSON-LD");
+                        } else if (distributionObjectOfInput.contains("text/xml")) {
+                            innderDistributionObject.put("name", "XML");
+                        }
+                    } else {
+                        innderDistributionObject.put(distributionMapValue, distributionObjectOfInput);
+                    }
+                }//if
+            }//while
+            distributions.add(innderDistributionObject);
+        }//while
+        doneDistributions = true;
+    }
+
+    private void dealWithSourcesOfVoID(){
+        //multiple object handling
+        StmtIterator sources = primaryTopic.listProperties(Pav.derivedFrom); // for each source
+        JSONArray sourcesArrayJson = new JSONArray();
+        /**
+         * When the property inspected in importedFrom loop through the RDF structure to extract the needed info.
+         */
+        while (sources.hasNext()) {
+
+            Statement sourcesStmt = sources.nextStatement();  // get next statement
+            StmtIterator sourcesResourceItr = sourcesStmt.getResource().listProperties(); // go to each source
+            JSONObject attributeSourcesObjectReference = new JSONObject();
+            if (sourcesResourceItr.hasNext()) {
+                while (sourcesResourceItr.hasNext()) { // extract info
+                    Statement sourceStmt = sourcesResourceItr.nextStatement();  // get next statement
+                    // Check JSON for sources
+                    String sourcePredicate = sourceStmt.getPredicate().toString();
+                    String sourceObject = sourceStmt.getObject().toString().replace("@en", "");
+                    if (sourceDatasetSubjects.get(sourcePredicate) != null) {
+                        attributeSourcesObjectReference.put("URI", sourceStmt.getSubject().toString());
+                        attributeSourcesObjectReference.put(sourceDatasetSubjects.get(sourcePredicate), sourceObject);
+                        // To know if it was a custom Source or a OPS one
+                        if (sourceDatasetSubjects.get(sourcePredicate).equals("description") && sourceObject.equals("N/A")) {
+                            attributeSourcesObjectReference.put("noURI", false);
+                        } else if (sourceDatasetSubjects.get(sourcePredicate).equals("description") && !sourceObject.equals("N/A")) {
+                            attributeSourcesObjectReference.put("noURI", true);
+                        }
+                    }
+                }//while
+            }else{
+                //({"title": value, "type": "RDF", "URI": _about, "version": "--", "webpage": "http://--", "description": "--", "noURI": false });
+                attributeSourcesObjectReference.put("noURI", false);
+                attributeSourcesObjectReference.put("version", "--");
+                attributeSourcesObjectReference.put("webpage", "http://--");
+                attributeSourcesObjectReference.put("description", "--");
+                attributeSourcesObjectReference.put("type", "RDF");
+                attributeSourcesObjectReference.put("URI", sourcesStmt.getResource().getURI());
+                if (OPSSources.containsKey(sourcesStmt.getResource().getURI())){
+                    attributeSourcesObjectReference.put("title",OPSSources.get(sourcesStmt.getResource().getURI()));
+                }
+                else attributeSourcesObjectReference.put("title", sourcesStmt.getResource().getURI());
+            }
+            sourcesArrayJson.add(attributeSourcesObjectReference);
+        }
+        result.put("sources", sourcesArrayJson);
+        doneSources = true;
+    }
+
+
+
 
     /**
      * @return The created JSON Object containing all information captured.
@@ -382,6 +406,10 @@ public class VoidUpload {
         }
     }
 
+    /**
+     * Used for initial debugging purposes.
+     * @param model The model you want printing.
+     */
     private void printModel(Model model) {
         StmtIterator iter = model.listStatements();
         printIterator(iter);
@@ -400,7 +428,7 @@ public class VoidUpload {
             // Extract source URI first to be able to create the correct structure in the void.
             for (int j = 0; j < splitingSetsOfInfo.length; j++) {
                 String[] couple = splitingSetsOfInfo[j].split("=");
-                String property = couple[0].replace("{", "").replace("}", "");;
+                String property = couple[0].replace("{", "").replace("}", "");
                 if(couple.length >1 ) {
                     String value = couple[1].replace("}", "").replace("{", "");
                     //value
@@ -469,7 +497,7 @@ public class VoidUpload {
 
     /**
      * Printing function to allow debugging - general understanding of input.
-     * @param iter
+     * @param iter An Iterator for the model we want printing.
      */
     private void printIterator(StmtIterator iter) {
         while (iter.hasNext()) {
@@ -491,7 +519,7 @@ public class VoidUpload {
     }
 
     /**
-     * @param uploadedInputStream
+     * @param uploadedInputStream An input stream provided by the UI, which represents the uploaded VoID file the user wants parsing.
      * @return A temporary file to be processed.
      */
     private File writeToTempFile(InputStream uploadedInputStream) {
@@ -511,7 +539,7 @@ public class VoidUpload {
             e.printStackTrace();
         } finally {
             try {
-                out.close();
+                if (out!= null )out.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

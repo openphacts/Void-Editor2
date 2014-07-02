@@ -14,7 +14,7 @@ var modalControllers = angular.module('modalControllers', ['voidDataService']);
  *  @author Lefteris Tatakis
  *  @function
  *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
  *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
  *  @param {$modal} $modal - The Angularjs JS handler for modals.
  */
@@ -41,9 +41,9 @@ modalControllers.controller('ModalExportCtrl', ['$scope', '$rootScope' , '$modal
  *  @author Lefteris Tatakis
  *  @function
  *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
  *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
- *  @param {modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
+ *  @param {$modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
  */
 modalControllers.controller('ModalInstanceCtrl', ['$rootScope' , '$scope', '$modalInstance', 'voidData',
     function ($rootScope, $scope, $modalInstance, voidData) {
@@ -65,7 +65,7 @@ modalControllers.controller('ModalInstanceCtrl', ['$rootScope' , '$scope', '$mod
  *  @author Lefteris Tatakis
  *  @function
  *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
  *  @param {$modal} $modal - The Angularjs JS handler for modals.
  */
 modalControllers.controller('ModalAboutCtrl', ['$scope', '$rootScope' , '$modal',
@@ -86,8 +86,8 @@ modalControllers.controller('ModalAboutCtrl', ['$scope', '$rootScope' , '$modal'
  *  @author Lefteris Tatakis
  *  @function
  *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
- *  @param {modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
  */
 modalControllers.controller('ModalInstanceAboutCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {
@@ -103,7 +103,7 @@ modalControllers.controller('ModalInstanceAboutCtrl', ['$rootScope' , '$scope', 
  *  @author Lefteris Tatakis
  *  @function
  *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
  *  @param {$modal} $modal - The Angularjs JS handler for modals.
  */
 modalControllers.controller('ModalContributorsCtrl', ['$scope', '$rootScope' , '$modal',
@@ -123,8 +123,8 @@ modalControllers.controller('ModalContributorsCtrl', ['$scope', '$rootScope' , '
  *  @author Lefteris Tatakis
  *  @function
  *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
- *  @param {modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
  */
 modalControllers.controller('ModalInstanceContributorsCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {
@@ -140,7 +140,7 @@ modalControllers.controller('ModalInstanceContributorsCtrl', ['$rootScope' , '$s
  *  @author Lefteris Tatakis
  *  @function
  *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
  *  @param {$modal} $modal - The Angularjs JS handler for modals.
  */
 modalControllers.controller('ModalImportCtrl', ['$scope', '$rootScope' , '$modal',
@@ -159,8 +159,8 @@ modalControllers.controller('ModalImportCtrl', ['$scope', '$rootScope' , '$modal
  *  @author Lefteris Tatakis
  *  @function
  *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
- *  @param {modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$modalInstance} $modalInstance - The Angularjs JS handler for children of modal instances.
  */
 modalControllers.controller('ModalInstanceImportCtrl', ['$rootScope' , '$scope', '$modalInstance',
     function ($rootScope, $scope, $modalInstance) {

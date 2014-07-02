@@ -58,7 +58,7 @@
                                         {{ source.title}}
                                     </td>
                                     <td class="">
-                                        <select class="select-mini selectpicker" id="selectType"required ng-model="source.type">
+                                        <select ng-show="source.noURI" class="select-mini selectpicker" id="selectType"required ng-model="source.type">
                                             <option ng-value="RDF" selected>RDF</option>
                                             <option ng-value="Non-RDF">Non-RDF</option>
                                         </select>

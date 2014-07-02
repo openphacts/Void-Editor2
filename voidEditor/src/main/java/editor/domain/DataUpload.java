@@ -31,7 +31,6 @@ import editor.validator.RdfChecker;
  * This class handles potential datasets which will be eventually statistically analysed.
  *
  * @author Lefteris Tatakis
- * @since 19/06/2014
  */
 public class DataUpload {
     private File importedFile;

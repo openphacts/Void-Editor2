@@ -12,8 +12,8 @@ var editorAppControllers = angular.module('editorAppControllers', ['jsonService'
  *  @class  voidEditor.editorApp.editorAppControllers.editorCtrl
  *  @author Lefteris Tatakis
  *  @function
- *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$scope} $scope - The scope in which this controller operates.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
  *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
  *  @param {Service} uploadUserData - Allows users to upload data to the server.
  *  @param {Service} ORCIDService - Service that communicates with the ORCID API.
@@ -84,7 +84,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         /**
          * @description This message is sent by the service which uploads data for statistical analysis.
          */
-        $rootScope.$on('SuccessUploadUserData', function (event, uploadResult) {
+        $rootScope.$on('SuccessUploadUserData', function () {
             $rootScope.showLoader = false;
             console.log("SuccessUploadUserData");
             $rootScope.removeAlert("postFailedDataUpload");
@@ -173,7 +173,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         /**
          * @description The services request the most recent version of the data.
          */
-        $rootScope.$on('needData', function (event) {
+        $rootScope.$on('needData', function () {
             voidData.setData($rootScope.data);
         });
         /**
@@ -206,7 +206,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         /**
          * @description When the services require the most resent information about the contributors.
          */
-        $rootScope.$on('getContributors', function (event) {
+        $rootScope.$on('getContributors', function () {
             $rootScope.$broadcast('sendContributors' ,  $rootScope.data.contributors);
         });
 
@@ -218,9 +218,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             console.log( $rootScope.data.contributors);
         });
 
-
-        $rootScope.$on('getDistributions', function (event) {
-            console.log("Got in get Distributions what do i do?!?!?");
+        //todo check!
+        $rootScope.$on('getDistributions', function () {
+            console.log("===>Got in get Distributions what do i do?!?!?");
             //$rootScope.$broadcast('sendDistributions' ,  $rootScope.data.distributions);
         });
 
@@ -271,11 +271,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         /**
          * @description Checking that the information of the sources meets all critiria.
          */
-        $rootScope.$on('checkSources', function (event) {
+        $rootScope.$on('checkSources', function () {
             var result;
             $rootScope.checkSources();
 
-            if ($rootScope.noURI != -1) result = $rootScope.addAlert("URI")
+            if ($rootScope.noURI != -1) result = $rootScope.addAlert("URI");
             else if ($rootScope.noVersion != -1) $rootScope.addAlert("versionSource");
             else if ($rootScope.showOther == true && ( $rootScope.data.licence.indexOf("://") == -1)) {
                 result = $rootScope.addAlert("licence");
@@ -287,7 +287,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             voidData.setUriForSourcesExist(result);
         });
 
-        $rootScope.$on('checkDistributions', function (event) {
+        $rootScope.$on('checkDistributions', function () {
             var result;
             $rootScope.checkDistributions();
 
@@ -349,7 +349,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                     ORCIDService.callORCIDEndpoint($rootScope.data.ORCID);
                 }
             }
-        }
+        };
 
         /**
          * @function checkMustFieldsOnPreviousPage
@@ -480,12 +480,12 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
 
             if (returnString == ""){
-                 $rootScope.disabledExport = false
+                 $rootScope.disabledExport = false;
                  $rootScope.finalHeader = "Congratulations you now have a dataset description!";
             } else{
                 $rootScope.finalHeader = "You have almost created a dataset description...";
                 $rootScope.disabledExport = true
-            };
+            }
 
             if ($rootScope.haveStatsFinished == -1) {
                 if (returnString == "") returnString +=header;
@@ -521,7 +521,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             }
         };
 
-
+        /**
+         * @function checkDistributions
+         */
         $rootScope.checkDistributions =function(){
             $rootScope.noURLDistribution = -1;
             if ($rootScope.data.distributions != undefined ){
@@ -586,8 +588,8 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
  *  @class  voidEditor.editorApp.editorAppControllers.editorFormCtrl
  *  @author Lefteris Tatakis
  *  @function
- *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$scope} $scope - The scope in which this controller operates.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
  *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
  *  @param {http} $http - Allows http connections.
  */
@@ -655,7 +657,7 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
                     ContributorORCIDService.callORCIDEndpointContributor(  $scope.contributors[index].orcid);
                 }
             }
-        }
+        };
 
         $rootScope.$on('SuccessORCIDDataContributor', function (event, ORCIDJSON) {
             console.log(ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"]);
@@ -687,7 +689,7 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
          */
         $scope.save= function(){
             voidData.setContributorData($scope.contributors);
-        }
+        };
 
         /**
          * @function removeContributor
@@ -719,7 +721,7 @@ editorAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$scop
  *  @author Lefteris Tatakis
  *  @function
  *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
  *  @param {http} $http - Allows http connections.
  *  @param {Service} uploadVoidData - Allows the user to upload VoID data to the server.
  */
@@ -792,7 +794,7 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
  *  @author Lefteris Tatakis
  *  @function
  *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
  *  @param {Service} JsonService - Downloads the OPS sources for the Open PHACTS API.
  *  @param {Service} voidData - Service to handle the creation and retrieval of the VoID.
  */
@@ -945,7 +947,7 @@ editorAppControllers.controller('distributionCtrl', [ '$rootScope', '$scope', 'v
                 $rootScope.haveStatsFinished = -1;
                 voidData.querySparqlEndPoint($scope.userDistributions[found].sparqlEndpoint);
             }
-        }
+        };
 
         $scope.removeSelected = function (value) {
             var found = false;

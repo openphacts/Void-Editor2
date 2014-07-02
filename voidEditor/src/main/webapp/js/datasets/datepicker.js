@@ -13,7 +13,7 @@ var dateControllers = angular.module('dateControllers', []);
  *  @author Lefteris Tatakis
  *  @function
  *  @param {scope} $scope - The scope in which this controller operates.
- *  @param {rootScope} $rootScope - The parent of all the existing scopes.
+ *  @param {$rootScope} $rootScope - The parent of all the existing scopes.
  */
 dateControllers.controller('DatepickerCtrl', ['$scope', '$rootScope' ,
     function ($scope, $rootScope) {
