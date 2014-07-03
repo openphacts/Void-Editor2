@@ -162,7 +162,7 @@
 
             <p>This VoID data description is created according to the <a
                     href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/"
-                    target="_blank">Open PHACTS specification</a></p>
+                    target="_blank">Open PHACTS specification</a> . </p>
             <br>
 
             <h3 id="underthehood">Under the Hood</h3>
@@ -207,11 +207,10 @@
 
             <br>
 
-            <h3 id="datasetypes">Dataset types</h3>
+            <h3 id="datasetypes">Dataset Distributions</h3>
 
             <p>
-                Through the VoID editor you are able to describe RDF and Non-RDF datasets and through this process
-                create a valid VoID dataset descirption for the specific dataset.
+                Through the VoID editor you are able to describe the distributions of the dataset you wish to describe.
             </p>
 
             <p style=" text-align: center;">
@@ -278,6 +277,18 @@
                 <img alt="" src="img/linkmodal.png"
                      title="Linkset Creator Modal - To view RDF produces" id="linkmodal.png"></p>
             <br>
+            <h3 id="linksetContributors"> Multiple Contributors</h3>
+
+            <p>The Linkset Creator allows you to add all people that contributed to the creation of the linkset. You are
+                also able to define what role each contributor had : author, curator or contributed in some other
+                way.</p>
+
+            <p style=" text-align: center;">
+                <img alt="" src="img/linksetContributors.png"
+                     title="Linkset creator contributors UI"
+                     id="linksetContributors.png"></p>
+            <br>
+
             <h3 id="sourcetarget">Source / Target</h3>
             <p>
 
@@ -287,6 +298,8 @@
                 <img alt="" src="img/sourcetarget.png"
                      title="Linkset Creator source - target" id="source.png"></p>
             <br>
+
+
             <h3 id="linking">Linking</h3>
             <p>
 
@@ -335,6 +348,7 @@
                     <li><a ng-click="scrollTo('whatisalinkset')">What is a linkset?</a></li>
                     <li><a ng-click="scrollTo('diff')">Is the Linkset creator different from the VoID Editor?</a></li>
                     <li><a ng-click="scrollTo('linksetUndertheHood')">Under the Hood</a></li>
+                    <li><a ng-click="scrollTo('linksetContributors')">Multiple Contributors</a></li>
                     <li><a ng-click="scrollTo('sourcetarget')">Source / Target</a></li>
                     <li><a ng-click="scrollTo('linking')">Linking</a></li>
                     <li><a ng-click="scrollTo('linksetdownload')">Download</a></li>

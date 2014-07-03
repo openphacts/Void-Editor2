@@ -218,12 +218,6 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
             console.log( $rootScope.data.contributors);
         });
 
-        //todo check!
-        $rootScope.$on('getDistributions', function () {
-            console.log("===>Got in get Distributions what do i do?!?!?");
-            //$rootScope.$broadcast('sendDistributions' ,  $rootScope.data.distributions);
-        });
-
         /**
          * @description When the services or another controller change the distributions make sure they are updated here.
          */

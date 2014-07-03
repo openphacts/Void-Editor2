@@ -412,9 +412,11 @@ public class VoidUpload {
         printIterator(iter);
     }
 
-
+    /**
+     * Populated the HashMap containing the URIS(key) and the titles (values) of a datasets used in OPS.
+     */
     private void createOPSSourcesMap(){
-        //TODO OPSSources
+
         for (int i = 0; i < sources.size(); i++) {
             // Sources provided in wierd format - so manually do parsing.
             String tmpValue = sources.get(i).toString();

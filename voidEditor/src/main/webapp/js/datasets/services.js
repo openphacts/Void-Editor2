@@ -85,7 +85,7 @@ var ORCIDService = angular.module('ORCIDService', [])
 /**
  * @function ContributorORCIDService
  * @memberOf voidEditor.editorApp.ContributorORCIDService
- * @description Service to allow the retrieval of ORCID infomation for an contributor.
+ * @description Service to allow the retrieval of ORCID infomation for an getDistributionsbutor.
  */
 var ContributorORCIDService = angular.module('ContributorORCIDService', [])
     .service('ContributorORCIDService', function ($rootScope) {
@@ -278,7 +278,6 @@ var voidDataService = angular.module('voidDataService', [])
             console.log("CREATE VoID service before broadcast");
             $rootScope.$broadcast('needData', data);
             $rootScope.$broadcast('StartLoader');
-            console.log(data);
             return $http({method: 'POST', url: outputURL, data: data}).
                 error(function () {
                     turtleData = "Error in creating void.";
@@ -319,17 +318,23 @@ var voidDataService = angular.module('voidDataService', [])
          * @returns {JSON} JSON Object containing all the information of the incorporated sources.
          */
         this.getSourceData = function () {
-            console.log("In GETSourceData!");
             return data.sources;
         };
 
 
-
+        /**
+         * @function setDistributionData
+         * @description Sets the distributors variable and broadcasts a global message of 'DistributionsChanged'.
+         * @param {JSON} value -  JSON Object of distributions and all their information.
+         */
         this.setDistributionData = function(value){
             data.distributions = value;
             $rootScope.$broadcast('DistributionsChanged', data.distributions);
         };
-
+        /**
+         * @function  getDistributionData
+         * @returns {Array} The most resent version of the distributions used.
+         */
         this.getDistributionData = function () {
             return data.distributions;
         };

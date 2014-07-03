@@ -135,7 +135,11 @@ public class VoidRestService {
 	}
 
 
-
+    /**
+     *  This method retrieves the OPS Sources for OPS API, in order to be able to decode the URIs provided in an uploaded
+     *  VoID.
+     * @param sources The Sources that are retrieved from the OPS API.
+     */
     @Path("/opsSources")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

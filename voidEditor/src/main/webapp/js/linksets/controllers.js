@@ -688,7 +688,10 @@ linksetAppControllers.controller('editorContributorsCtrl', ['$rootScope' , '$sco
                 }
             }
         };
-
+        /**
+         * @memberOf linksetCreator.linksetApp.editorAppControllers.editorContributorsCtrl
+         * @description When ORCID API returns with information from the contributor.
+         */
         $rootScope.$on('SuccessORCIDDataContributor', function (event, ORCIDJSON) {
             console.log(ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"]);
             var details = ORCIDJSON["orcid-profile"]["orcid-bio"]["personal-details"];
