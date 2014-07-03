@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en" id="ng-app" ng-app="editorApp" ng-controller="editorCtrl">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Dataset Description Tool">
+    <meta name="author" content="Lefteris Tatakis">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/ops_logo.png">
+    <title ng-bind="title">Documentation</title>
+    <link rel="stylesheet" href="css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="css/progressbar.css">
+    <link rel="stylesheet" href="css/bootstrap-combined.min.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/glyphicons.css">
+    <script src="lib/jquery/jquery-1.10.2.js"></script>
+    <script src="lib/jquery-ui/jquery-ui-1.10.3.custom.js"></script>
+    <script src="lib/angular/angular1.2.2.min.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular/angular-sanitize.js"></script>
+    <script src="lib/angular/angular-resource.js"></script>
+    <script src="lib/angular/angular-loader.js"></script>
+    <script>
+        document.write('<base href="' + document.location + '" />');
+    </script>
+    <script>
+        function MainCtrl($scope, $location, $anchorScroll) {
+            $scope.scrollTo = function(id) {
+                $location.hash(id);
+                console.log($location.hash());
+                $anchorScroll();
+            };
+        };
+    </script>
+</head>
+<body>
+<header>
+    <!--[if lt IE 10]>
+    <alert>
+        <strong style="vertical-align: top">Warning:</strong>
+
+        <div style="display: inline-block">
+            Your experience of this application may suffer in outdated versions of Internet Explorer, including the
+            potential corruption or loss of important information.<br/> You are strongly advised to update.
+        </div>
+    </alert><![endif]--><!--[if lte IE 8]>
+    <script src="lib/json2.js"></script><![endif]-->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46552073-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</header>
+
+<div class="container" >
+<div class="row span12">
+    <div class="container">
+        <h1 class="pull-left">
+            <a href="http://www.openphacts.org" target="_blank"> <img class="pull-left" src="img/ops_logo.png"
+                                                                      alt="Logo"> </a>
+            <span>VoID Editor Documentation</span>
+        </h1>
+        <ul class="nav nav-pills pull-right" ng-controller="ModalAboutCtrl"
+            style="text-align: center; vertical-align: middle; margin-top: 25px;">
+            <li><a style="" href="http://voideditor.cs.man.ac.uk/linksets.html" target="_blank">Linkset Creator</a></li>
+            <li><a href="http://voideditor.cs.man.ac.uk" target="_blank">VoID Editor</a></li>
+            <li>
+                <script type="text/ng-template" id="myModalContentAbout.html">
+                    <div class="modal-header">
+                        <img src="img/manch.png" alt="UoM logo"/>
+
+                        <h3 class="h3NeededFields "> About the Void Editor v2</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>The Open PHACTS VoID editor v2 is developed and maintained by <a
+                                href="http://ltatakis.com" target="_blank"
+                                rel="dcterms:creator doap:maintainer">Lefteris Tatakis</a>, as a final year
+                            undergraduate project at the University of Manchester, UK.
+                        </p>
+
+                        <p>This project is supervised by Prof Carole Goble and has been developed within the context of
+                            the <a href="http://www.openphacts.com/" target="_blank">Open PHACTS</a> project and aims to
+                            help dataset publishers to create a valid, according to the <a
+                                    href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/"
+                                    target="_blank">Open PHACTS specification</a>, VoID description for deployment with
+                            their dataset.
+                        </p>
+
+                        <p>The code was last updated on <span property="dcterms:modified">
+                                <datatype property="xsd:date">July 2014</datatype> </span>. The code for the Open PHACTS
+                            editor is available from <a href="https://github.com/openphacts/Void-Editor2"
+                                                        target="_blank"> https://github.com/openphacts/Void-Editor2</a>.
+                        </p>
+                        <p>
+                            In case you have a feature request or want to file a bug, please contact <a
+                                href="mailto:info@openphactsfoundation.org">email</a>.
+                        </p>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" ng-click="closeModal()">Close</button>
+                    </div>
+                </script>
+                <a ng-click="open();" style="cursor: pointer;" target="_blank">About</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row span12">
+    <div class="">
+        <div class="fluid menu ng-scope" ng-controller="DropdownCtrl">
+            <ul class="nav nav-pills pull-left"
+                style="text-align: center; vertical-align: middle; width: 100%;margin-top:6px; color:white">
+                <li><a style="margin-left:10px; color:white;" href="http://voideditor.cs.man.ac.uk/documentation.html">How
+                    to use</a></li>
+                <li><a style="color:white;" href="/documents/java/index.html">Java Documentation</a></li>
+                <li class="dropdown" on-toggle="toggled(open)">
+                    <a href class="dropdown-toggle " style="color:white;"> Javascript Documentation </a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="choice in items">
+                            <a href="{{choice.link}}">{{choice.name}}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a style="color:white;" href="/extend.html">How to extend</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<div class="row span12"  ng-controller="MainCtrl">
+    <div style="min-height:500px;" class="span9" role="main" >
+        <div  id="main">
+            <h3 id="order">Changing Order of pages</h3>
+            <p>
+
+            </p>
+            <br>
+
+
+            <h3 id="fields">Adding fields</h3>
+            <p>
+                Html , javascript controller, void attributes, RDF, upload functionality.
+            </p>
+            <br>
+
+
+            <h3 id="moveFields">Moving fields to other pages </h3>
+            <p>
+                if its a required field you need to change controller for needed fields.
+            </p>
+             <br>
+
+            <h3 id="errors">Adding Errors </h3>
+            <p>
+             Adding it into the slide controller, adding an alert, checking mechanism
+            </p>
+            <br>
+
+
+            <h3 id="sources">Sources</h3>
+             <p>
+                 From OPS API - where to change link.
+             </p>
+            <br>
+
+
+            <h3 id="rdfpredicate">Changing RDF predicates used</h3>
+            <p>Backend</p>
+            <br>
+
+            <h3 id="docs">Creating documentation of code </h3>
+            <p>in JavaDocs and in JSDoc 3.</p>
+        </div>
+    </div>
+
+    <div class="span2">
+        <div class=" pull-right" role="complementary" style="margin-top: 10px;position: fixed; margin-left:2%; cursor:pointer;">
+            <ul class="nav bs-docs-sidenav">
+
+                <li class="active">
+                    <h4><a ng-click="scrollTo('top')">VoiD Editor</a></h4>
+                    <ul class="nav">
+                        <li class=""><a ng-click="scrollTo('order')"> Changing order of pages</a></li>
+                        <li class=""><a ng-click="scrollTo('fields')">Adding fields</a></li>
+                        <li class=""><a ng-click="scrollTo('moveFields')">Moving fields to other pages</a></li>
+                        <li class=""><a ng-click="scrollTo('errors')">Adding Errors</a></li>
+                        <li class=""><a ng-click="scrollTo('sources')">Sources</a></li>
+                        <li class=""><a ng-click="scrollTo('rdfpredicate')">Changing RDF predicates used</a></li>
+                        <li class=""><a ng-click="scrollTo('docs')">Creating documentation of code</a></li>
+                    </ul>
+                </li>
+
+             </ul>
+            <a class="back-to-top" href="#top">
+                Back to top
+            </a>
+        </div>
+</div>
+
+    <div class="row span12">
+    <footer>
+        <small>
+            <span class="muted"><span ng-bind="title">...</span> v2 copyright &copy; 2014 OpenPhacts - Lefteris Tatakis</span>
+        </small>
+    </footer>
+</div>
+
+</div>
+</div>
+
+<script src="lib/ui-bootstrap/ui-bootstrap-0.6.0.js"></script>
+<script src="lib/ui-bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+<script src="lib/moment/moment.min.js"></script>
+<script src="js/datasets/controllers.js"></script>
+<script src="js/datasets/services.js"></script>
+<script src="js/datasets/app.js"></script>
+<script src="js/datasets/modal.js"></script>
+<script src="js/datasets/datepicker.js"></script>
+<script src="js/datasets/directives.js"></script>
+<script src="js/dropdown.js"></script>
+
+</body>
+</html>
