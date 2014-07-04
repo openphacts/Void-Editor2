@@ -771,7 +771,7 @@ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
         $scope.addSlide(1, "Core Info", ["title" , "description", "publisher", "webpage" ]);
         $scope.addSlide(2, "Versioning", []);
         $scope.addSlide(3, "Sources", []);
-        $scope.addSlide(4, "Distribution Info", [ "distributions"]);
+        $scope.addSlide(4, "Distribution Formats", [ "distributions"]);
         $scope.addSlide(5, "Export RDF", []);
 
         $scope.changeProgressBar = function (change) {
