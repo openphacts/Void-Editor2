@@ -145,29 +145,109 @@
 <div class="row span12"  ng-controller="MainCtrl">
     <div style="min-height:500px;" class="span9" role="main" >
         <div  id="main">
-            <h3 id="order">Changing Order of pages</h3>
-            <p>
-
-            </p>
+            <h3 id="git">Git Repository </h3>
+            <p> All the code for the VoID Editor and the Linkset Creator are on the Open PHACTS GitHub, which can be found
+                <a href="github.com/openphacts/Void-Editor2"> here</a>.</p>
             <br>
 
+            <h3 id="order">Changing  order or Adding pages</h3>
+            <p>
+                To change the order of the pages or add additional ones in the VoID Editor / Linkset Creator, changes
+                must be made in the controller "<b>editorCarouselCtrl</b>" or in "<b>linksetCarouselCtrl</b>".
+            </p>
+            <p>
+                The naming convention used here for the pages is : "page"+ <b>Index of the page in the carousel</b> +".html" .
+                For the first page of the carousel <b>page.html</b> is only used.
+            </p>
+            <p>
+                When adding a new page to the carousel it must be stored in the folder "<b>partials/datasets</b>" for the
+                VoID Editor or  "<b>partials/linksets</b>" for the Linkset Creator.
+            </p>
+
+            <p>
+                Once the HTML page exists in the one of the folders in <b>partials</b> the page is added into the carousel
+                using the function <b>$scope.addSlide</b>. The information to be provided is :
+            </p>
+
+            <p >
+            <ol style="margin-left: 150px;">
+                <li> Index of page in the Carousel ( 0 is first item, 1 is second etc.). </li>
+                <li> The title you require for your page.</li>
+                <li> An array of all the fields that are required on that page.</li>
+            </ol>
+            </p>
+            <p> If the fields on this page do not exist in the following list you must add your field into the validation mechanism
+             explained at section <a ng-click="scrollTo('errors')">Adding Errors</a>.  Pre-existing validation fields :  </p>
+            <p>VoID Editor: "title" , "description", "publisher", "webpage", "distributions". </p>
+            <p>Linset Creator:  "description", "publisher",  "downloadFrom","userSource" ,"userTarget" .</p>
+            <br>
+            <pre >
+                <code>
+ editorAppControllers.controller('editorCarouselCtrl', ['$scope', '$rootScope',
+    function CarouselCtrl($scope, $rootScope) {
+        ....
+
+      $scope.addSlide = function (i, title, mustFields) {
+         var temp;
+         //Locations stored
+         if (i != 0)   temp = "partials/datasets/page" + i + ".html";
+         else  temp = "partials/datasets/page.html";
+
+         //Setting percentage
+         ...
+      }
+        //Adding slides in order required.
+        $scope.addSlide(0, "User Info", []);
+        //FORMAT :
+        //<b>("Index - Position in carousel", "Title" , Array of fields required on the page   )</b>
+        $scope.addSlide(1, "Core Info", ["title" , "description", "publisher", "webpage" ]);
+        ...
+
+   }]);
+            </code>
+            </pre>
+            <br>
 
             <h3 id="fields">Adding fields</h3>
+            <!--<p>        Html , javascript controller, void attributes, RDF, upload functionality.            </p>-->
+            <p> Adding fields to the systems must be done in an E2E fashion. This process involves:
+                <ol style="margin-left: 150px;">
+                    <li> Adding the field to the HTML page wished to be added to.</li>
+                    <li> Creation of a JavaScript variable in the main controller( "linksetCtrl" or "editorCtrl").</li>
+                    <li> Adding this JavaScript variable to the Java classes responsible for retrieving information for the
+                     UI side. These classes are: <b> LinksetAttributes </b> and <b>VoidAttributes</b>.</li>
+                    <li> In order, to actually add them to the VoID  must go to <b>VoidTurtle</b> or <b>LinksetTurtle</b>,
+                    and include them into the RDF model used.</li>
+                    <li> Finally, if the changes are made to the VoID Editor, you much ensure the you are able to parse
+                        any uploaded VoID given by the users. This must be done in the <b>VoidUpload</b>.</li>
+                </ol>
             <p>
-                Html , javascript controller, void attributes, RDF, upload functionality.
-            </p>
+            <p> An example will be used here for the field of "version" in the VoID Editor.</p>
+
             <br>
 
 
             <h3 id="moveFields">Moving fields to other pages </h3>
             <p>
-                if its a required field you need to change controller for needed fields.
+                If its a required field you need to change controller for needed fields.
             </p>
              <br>
 
             <h3 id="errors">Adding Errors </h3>
             <p>
-             Adding it into the slide controller, adding an alert, checking mechanism
+             Adding it into the slide controller, adding an alert, checking mechanism.
+            </p>
+            <p>
+                The  <b>$rootScope.checkMustFieldsOnPreviousPage</b> checks that the fields in the mustFields array are defined appropriately.
+                Please define your specifications for each field in here.
+            </p>
+            <p>
+                In <b>$rootScope.addAlert</b> - you define an alert. This alert has an ID, a type (what colour you would like it)
+                and a message to display to the users.
+            </p>
+            <p>
+                If you wish to add a small error message / notification to appear  before exporting the RDF you need to add
+                an error and its condition in <b>$rootScope.fieldsToAdd</b>.
             </p>
             <br>
 
@@ -176,15 +256,32 @@
              <p>
                  From OPS API - where to change link.
              </p>
+            <pre><code>
+        var jsonService = angular.module('jsonService', ['ngResource'])
+        .factory('JsonService', function ($resource) {
+                return $resource('<b>URL TO API HERE</b>');
+        });
+            </code></pre>
             <br>
 
 
             <h3 id="rdfpredicate">Changing RDF predicates used</h3>
-            <p>Backend</p>
-            <br>
+            <p>
+                In the Java class <b> VoidUpload </b>  the method <b>processVoid</b> (and its submethods) contains all the  declarations of the data
+                in the VoID. Examples of predicates used are:
+            </p>
+            <p>
+            <ul style="text-align: center;">
+                <li>Void.Dataset </li>
+                <li> DCAT.distribution </li>
+                <li> Pav.contributedBy</li>
+                <li>FOAF.family_name </li>
+                <li>FOAF.primaryTopic </li>
+                <li>DCAT.mediaType</li>
+            </ul>
+            </p>
 
-            <h3 id="docs">Creating documentation of code </h3>
-            <p>in JavaDocs and in JSDoc 3.</p>
+            <br>
         </div>
     </div>
 
@@ -193,15 +290,15 @@
             <ul class="nav bs-docs-sidenav">
 
                 <li class="active">
-                    <h4><a ng-click="scrollTo('top')">VoiD Editor</a></h4>
+                    <h4><a ng-click="scrollTo('top')">VoiD Editor / Linkset Creator </a></h4>
                     <ul class="nav">
-                        <li class=""><a ng-click="scrollTo('order')"> Changing order of pages</a></li>
+                        <li class=""><a ng-click="scrollTo('git')"> Git Repository</a></li>
+                        <li class=""><a ng-click="scrollTo('order')"> Changing  order or Adding pages</a></li>
                         <li class=""><a ng-click="scrollTo('fields')">Adding fields</a></li>
                         <li class=""><a ng-click="scrollTo('moveFields')">Moving fields to other pages</a></li>
                         <li class=""><a ng-click="scrollTo('errors')">Adding Errors</a></li>
                         <li class=""><a ng-click="scrollTo('sources')">Sources</a></li>
                         <li class=""><a ng-click="scrollTo('rdfpredicate')">Changing RDF predicates used</a></li>
-                        <li class=""><a ng-click="scrollTo('docs')">Creating documentation of code</a></li>
                     </ul>
                 </li>
 
