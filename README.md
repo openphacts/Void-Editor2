@@ -29,7 +29,3 @@ Features :
 - Selecting the source amd target datasets of the Linkset
 - Exports VoID
 - Allows users to view there progress so far - with "under the hood"
-
-
-![alt tag](https://github.com/openphacts/Void-Editor2/blob/master/voidEditor/src/main/webapp/img/manch.png)
-![alt tag](https://github.com/openphacts/Void-Editor2/blob/master/voidEditor/src/main/webapp/img/ops_logo.png)
