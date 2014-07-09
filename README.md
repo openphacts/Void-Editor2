@@ -1,5 +1,4 @@
 #VoID Editor v2
-==============
 
 The Open PHACTS VoID editor v2 is developed and maintained by <a href="http://ltatakis.com" target="_blank"
 rel="dcterms:creator doap:maintainer">Lefteris Tatakis</a>, as a final year undergraduate project at the University of Manchester, UK.
@@ -11,7 +10,7 @@ with their dataset.The code was last updated on <span property="dcterms:modified
 https://github.com/openphacts/Void-Editor2</a>. In case you have a feature request or want to file a bug, please contact 
 <a href="mailto:eleftherios.tatakis@student.manchester.com">email</a>.
 Features :
--Create VoID according to OPS specs
+- Create VoID according to OPS specs
 - Upload existing VoID to continue work on it
 - Upload your data to allow statistical analysis
 - Connect to your sparql endpoint to allow statistical analysis
@@ -20,7 +19,7 @@ Features :
 - Allows users to view there progress so far - with "under the hood"
 									
 ##Linkset Creator 
---------------
+
 An extension of the VoID Editor to allow the creation of descriptions of the links between two datasets.
 Features :
 - Create VoID according to OPS specs
