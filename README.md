@@ -15,6 +15,8 @@ Features :
 - Upload your data to allow statistical analysis
 - Connect to your sparql endpoint to allow statistical analysis
 - Connects to ORCID to get information about dataset owner
+- Cite the distribution formats the data is available in
+- Reference incorporating datasets
 - Exports VoID
 - Allows users to view there progress so far - with "under the hood"
 									
@@ -24,5 +26,10 @@ An extension of the VoID Editor to allow the creation of descriptions of the lin
 Features :
 - Create VoID according to OPS specs
 - Connects to ORCID to get information about dataset owner
+- Selecting the source amd target datasets of the Linkset
 - Exports VoID
 - Allows users to view there progress so far - with "under the hood"
+
+
+![alt tag](https://github.com/openphacts/Void-Editor2/blob/master/voidEditor/src/main/webapp/img/manch.png)
+![alt tag](https://github.com/openphacts/Void-Editor2/blob/master/voidEditor/src/main/webapp/img/ops_logo.png)
