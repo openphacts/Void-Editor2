@@ -429,11 +429,11 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
             if ($rootScope.data.title == "") {
                 if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'>Title of your dataset in \"Core Info\"</p>";
+                returnString += "<p class='neededFields'>Title of your database in \"Core Info\"</p>";
             }
             if ($rootScope.data.description == "") {
                 if (returnString == "") returnString += header;
-                returnString += "<p class='neededFields'>Description for your dataset in \"Core Info\"</p>";
+                returnString += "<p class='neededFields'>Description for your database in \"Core Info\"</p>";
             }
             if ($rootScope.data.publisher == "") {
                 if (returnString == "") returnString += header;
@@ -475,9 +475,9 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
 
             if (returnString == ""){
                  $rootScope.disabledExport = false;
-                 $rootScope.finalHeader = "Congratulations you now have a dataset description!";
+                 $rootScope.finalHeader = "Congratulations you now have a database description!";
             } else{
-                $rootScope.finalHeader = "You have almost created a dataset description...";
+                $rootScope.finalHeader = "You have almost created a database description...";
                 $rootScope.disabledExport = true
             }
 
@@ -539,22 +539,22 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.addAlert = function(id2Add){
             switch(id2Add) {
                 case "URI":
-                    $rootScope.alerts.push({ id: "URI", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the source you cited! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "URI", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the dataset you cited! Please provide this information.' });
                     break;
                 case "licence":
                     $rootScope.alerts.push({ id: "licence", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the licence you choose! Please provide this information.' });
                     break;
                 case "versionSource":
-                    $rootScope.alerts.push({ id: "versionSource", type: 'error', msg: 'Ooops! You forgot to gives us a version for the source you cited! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "versionSource", type: 'error', msg: 'Ooops! You forgot to gives us a version for the dataset you cited! Please provide this information.' });
                     break;
                 case "webpageSource":
-                    $rootScope.alerts.push({ id: "webpageSource", type: 'error', msg: 'Ooops! You forgot to gives us a webpage for source you cited! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "webpageSource", type: 'error', msg: 'Ooops! You forgot to gives us a webpage for dataset you cited! Please provide this information.' });
                     break;
                 case "descriptionSource":
-                    $rootScope.alerts.push({ id: "descriptionSource", type: 'error', msg: 'Ooops! You forgot to gives us a description for source you cited! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "descriptionSource", type: 'error', msg: 'Ooops! You forgot to gives us a description for dataset you cited! Please provide this information.' });
                     break;
                 case "title":
-                    $rootScope.alerts.push({ id: "title", type: 'error', msg: 'Ooops! You forgot to gives us a title for your dataset! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "title", type: 'error', msg: 'Ooops! You forgot to gives us a title for your database! Please provide this information.' });
                     break;
                 case "description":
                     $rootScope.alerts.push({ id: "description", type: 'error', msg: 'Ooops! You forgot to gives us a description! Please provide this information.' });
@@ -566,7 +566,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
                     $rootScope.alerts.push({ id: "webpage", type: 'error', msg: 'Ooops! You forgot to gives us a URI for the webpage of your documentation! Please provide this information.' });
                     break;
                 case "distributions":
-                    $rootScope.alerts.push({ id: "distributions", type: 'error', msg: 'Ooops! You forgot to gives us a distribution of your dataset! Please provide this information.' });
+                    $rootScope.alerts.push({ id: "distributions", type: 'error', msg: 'Ooops! You forgot to gives us a distribution of your database! Please provide this information.' });
                     break;
                 case "URLDistributions":
                     $rootScope.alerts.push({ id: "URLDistributions", type: 'error', msg: 'Ooops! You forgot to gives us a URL for one of the distributions you provided! Please provide this additional information.' });

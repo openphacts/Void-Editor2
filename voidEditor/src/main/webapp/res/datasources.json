@@ -28,7 +28,6 @@
                     "_about": "http://purl.obolibrary.org/obo/fma.owl",
                     "title_en": "Foundational Model of Anatomy",
                     "title": "Foundational Model of Anatomy",
-
                     "isPrimaryTopicOf": "http://purl.obolibrary.org/obo/fma.owl"
                 },
                 {
@@ -46,7 +45,7 @@
                 }
             ],
             "type": "http://rdfs.org/ns/void#Dataset",
-            "isPrimaryTopicOf": "https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all"
+            "isPrimaryTopicOf": ""
         }
     }
 }
