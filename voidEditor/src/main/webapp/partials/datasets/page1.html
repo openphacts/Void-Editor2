@@ -16,7 +16,7 @@
         </div>
         <div class="form-group row">
             <div class="span3AndAllot offset100">
-                <label for="inputTitle">Title of your dataset*:</label>
+                <label for="inputTitle">Title of your database*:</label>
             </div>
             <div class="span3">
                 <input type="text" class="form-control input-large" id="inputTitle" placeholder=""
@@ -31,7 +31,7 @@
 
         <div class="form-group row">
             <div class="span3AndAllot offset100">
-                <label for="inputWebpage">Webpage of documentation for your dataset*:</label>
+                <label for="inputWebpage">Webpage of documentation for your database*:</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-large" id="inputWebpage" ng-model="data.webpage" required
@@ -47,7 +47,7 @@
 
         <div class="form-group row">
             <div class="span3AndAllot offset100 ">
-                <label for="inputLicence">License to be applied to the dataset*:</label>
+                <label for="inputLicence">License to be applied to the database*:</label>
             </div>
             <div class="span3">
                 <select class="selectpicker" id='inputLicence' ng-model="data.licence" ng-change="otherLicence(data.licence)">
@@ -71,7 +71,7 @@
         <br>
         <div  class="form-group row" ng-controller="DatepickerCtrl">
             <div class="span3AndAllot offset100">
-                <label for="inputDateofPublishment">When did this dataset get published?*</label>
+                <label for="inputDateofPublishment">When did this database get published?*</label>
             </div>
             <div class="span3">
                 <select class="select-mini-date " ng-model="data.datePublish"  >
@@ -96,7 +96,7 @@
         <br>
         <div class="form-group row">
             <div class="span3AndAllot offset100">
-                <label for="inputPublisher">Institution/company publishing these data:*</label>
+                <label for="inputPublisher">Institution/company publishing this database:*</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-large" id="inputPublisher"   ng-model="data.publisher" placeholder="http://" required>
@@ -108,7 +108,7 @@
         <br>
         <div class="form-group row">
             <div class="span3AndAllot offset100">
-                <label for="inputDescription">Description of your data*:</label>
+                <label for="inputDescription">Description of your database*:</label>
             </div>
             <div class="span3">
                 <textarea type="text" class="form-control" rows="5" id="inputDescription" required name="inputDescription"

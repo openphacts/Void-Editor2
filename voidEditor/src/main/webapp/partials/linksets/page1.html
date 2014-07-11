@@ -17,7 +17,7 @@
 
         <div class="form-group row">
             <div class="span3AndAllot offset100">
-                <label for="inputPublisher">Institution/company publishing these data:*</label>
+                <label for="inputPublisher">Institution/company publishing this database:*</label>
             </div>
             <div class="span3">
                 <input type="url" class="form-control input-large" id="inputPublisher"   ng-model="data.publisher" placeholder="http://" required>
@@ -31,7 +31,7 @@
 
         <div class="form-group row">
             <div class="span3AndAllot offset100 ">
-                <label for="inputLicence">License to be applied to the dataset*:</label>
+                <label for="inputLicence">License to be applied to the database*:</label>
             </div>
             <div class="span3">
                 <select class="selectpicker" id='inputLicence' ng-model="data.licence" ng-change="otherLicence(data.licence)">

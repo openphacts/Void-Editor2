@@ -1,7 +1,7 @@
 'use strict';
 
 /* Services -- Singletons */
-
+var URLPreface = "/BioDBCore" ;
 /**
  * @function JsonService
  * @memberOf voidEditor.editorApp.jsonService
@@ -9,10 +9,10 @@
  */
 var jsonService = angular.module('jsonService', ['ngResource'])
     .factory('JsonService', function ($resource) {
-        return $resource('https://beta.openphacts.org/1.3/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json');
+        return $resource(URLPreface +'/res/datasources.json');
     });
 
-var URLPreface = "/VoidEditor" ;
+
 var opsSources = [];
 /**
  * @function uploadVoidData

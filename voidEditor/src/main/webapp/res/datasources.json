@@ -2,261 +2,47 @@
     "format": "linked-data-api",
     "version": "0.2",
     "result": {
-        "_about": "https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-        "format": [
-            {
-                "_about": "https://beta.openphacts.org/sources.rdf?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "format": {
-                    "label": "application/rdf+xml"
-                },
-                "isFormatOf": "https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "name": "rdf",
-                "label": "RDF/XML"
-            },
-            {
-                "_about": "https://beta.openphacts.org/sources.rdfjson?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "format": {
-                    "label": "application/json"
-                },
-                "isFormatOf": "https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "name": "rdfjson",
-                "label": "RDF/JSON"
-            },
-            {
-                "_about": "https://beta.openphacts.org/sources.ttl?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "format": {
-                    "label": "text/turtle"
-                },
-                "isFormatOf": "https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "name": "ttl",
-                "label": "Turtle"
-            },
-            {
-                "_about": "https://beta.openphacts.org/sources.json?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "format": {
-                    "label": "application/json"
-                },
-                "isFormatOf": "https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "name": "json",
-                "label": "Simple JSON"
-            },
-            {
-                "_about": "https://beta.openphacts.org/sources.xml?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "format": {
-                    "label": "application/xml"
-                },
-                "isFormatOf": "https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "name": "xml",
-                "label": "Simple XML"
-            },
-            {
-                "_about": "https://beta.openphacts.org/sources.tsv?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "format": {
-                    "label": "text/tab-separated-values"
-                },
-                "isFormatOf": "https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-                "name": "tsv",
-                "label": "Comma Seperated Variables"
-            }
-        ],
-        "version": {
-            "_about": "https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all&_view=dataSourcesViewer",
-            "isVersionOf": "https://beta.openphacts.org/sources?app_id=b9eff02c&app_key=3f9a38bd5bcf831b79d40e04dfe99338&_format=json&_metadata=all",
-            "label": "dataSourcesViewer"
-        },
-        "definition": "https://beta.openphacts.org/api-config",
-        "wasResultOf": {
-            "processor": {
-                "software": {
-                    "releaseOf": {
-                        "doap_bug_database": "http://code.google.com/p/puelia-php/issues/list",
-                        "homepage": "http://code.google.com/p/puelia-php/",
-                        "implements": {
-                            "_about": "http://code.google.com/p/linked-data-api/wiki/Specification",
-                            "type": "http://usefulinc.com/ns/doap#Specification",
-                            "label_en": "Linked Data API Specification",
-                            "label": "Linked Data API Specification"
-                        },
-                        "doap_programming_language": "PHP",
-                        "repository": {
-                            "browse": "http://code.google.com/p/puelia-php/source/browse/",
-                            "location": "http://puelia-php.googlecode.com/svn/trunk/",
-                            "type": "http://usefulinc.com/ns/doap#SVNRepository"
-                        },
-                        "wiki": "http://code.google.com/p/puelia-php/w/list",
-                        "type": "http://usefulinc.com/ns/doap#Project",
-                        "label": "Puelia"
-                    },
-                    "revision": "0.9",
-                    "type": "http://usefulinc.com/ns/doap#Version",
-                    "label": "Puelia v0.9"
-                },
-                "type": "http://purl.org/linked-data/api/vocab#Service"
-            },
-            "selectedAPI": {
-                "_about": "http://www.openphacts.org/api#dataSources",
-                "label": "Data Sources"
-            },
-            "selectedEndpoint": "https://beta.openphacts.org/api-config",
-            "selectedViewer": "http://www.openphacts.org/api#dataSourcesViewer",
-            "variableBinding": [
-                {
-                    "name": "app_id",
-                    "value": "b9eff02c"
-                },
-                {
-                    "name": "app_key",
-                    "value": "3f9a38bd5bcf831b79d40e04dfe99338"
-                },
-                {
-                    "name": "_format",
-                    "value": "json"
-                },
-                {
-                    "name": "_metadata",
-                    "value": "all"
-                }
-            ],
-            "viewingResult": {
-                "endpoint": {
-                    "type": "http://www.w3.org/ns/sparql-service-description#Service",
-                    "url": "http://ops-virt:8891/sparql/"
-                },
-                "query": {
-                    "value": "PREFIX void: \nPREFIX foaf: \nPREFIX dcterms: \nPREFIX prov: \nCONSTRUCT {  a void:Dataset ;\n                                       void:subset ?top_dataset .\n?top_dataset foaf:isPrimaryTopicOf ?description .\n?dataset dcterms:title ?title .\n?dataset void:subset ?subset .\n?dataset prov:wasDerivedFrom ?derivedFrom .\n?dataset void:triples ?tripleNo .\n?dataset void:dataDump ?dataDump .\n?dataset foaf:homepage ?homepage . }  WHERE { GRAPH  \n{ ?dataset a void:Dataset .\n?description foaf:primaryTopic ?top_dataset .\nOPTIONAL { ?dataset dcterms:title ?title . }\nOPTIONAL { ?dataset void:subset ?subset . } \nOPTIONAL { ?dataset prov:wasDerivedFrom ?derivedFrom . } \nOPTIONAL { ?dataset void:dataDump ?dataDump . }\nOPTIONAL { ?dataset void:triples ?tripleNo . }\nOPTIONAL { ?dataset foaf:homepage ?homepage . }\n}  }"
-                },
-                "type": "http://purl.org/net/opmv/types/sparql#QueryResult"
-            },
-            "type": "http://purl.org/linked-data/api/vocab#Execution"
-        },
-        "site": {
-            "_about": "http://www.openphacts.org/api#dataSources",
-            "label": "Data Sources"
-        },
         "primaryTopic": {
             "_about": "http://www.openphacts.org/linked_data_cache",
             "subset": [
                 {
-                    "_about": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chemSpiderDataset",
-                    "title_en": "ChemSpider Dataset",
-                    "title": "ChemSpider Dataset",
-                    "subset": [
-                        {
-                            "_about": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chemspider-chebi",
-                            "title_en": "ChemSpider ChEBI Subset",
-                            "title": "ChemSpider ChEBI Subset",
-                            "dataDump": [
-                                "ftp://ftp.rsc-us.org/OPS/20130117/PROPERTIES_CHEBI20130117.ttl.gz",
-                                "ftp://ftp.rsc-us.org/OPS/20130117/SYNONYMS_CHEBI20130117.ttl.gz"
-                            ],
-                            "subset": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chebi_exactMatch",
-                            "wasDerivedFrom": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chebi"
-                        },
-                        {
-                            "_about": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chemspider-chembl",
-                            "title_en": "ChemSpider ChEMBL Subset",
-                            "title": "ChemSpider ChEMBL Subset",
-                            "dataDump": [
-                                "ftp://ftp.rsc-us.org/OPS/20130117/SYNONYMS_CHEMBL20130117.ttl.gz",
-                                "ftp://ftp.rsc-us.org/OPS/20130117/PROPERTIES_CHEMBL20130117.ttl.gz"
-                            ],
-                            "subset": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chembl_exactMatch",
-                            "wasDerivedFrom": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chembl"
-                        },
-                        {
-                            "_about": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chemspider-drugbank",
-                            "title_en": "ChemSpider DrugBank Subset",
-                            "title": "ChemSpider DrugBank Subset",
-                            "dataDump": [
-                                "ftp://ftp.rsc-us.org/OPS/20130117/PROPERTIES_DRUGBANK20130117.ttl.gz",
-                                "ftp://ftp.rsc-us.org/OPS/20130117/SYNONYMS_DRUGBANK20130117.ttl.gz"
-                            ],
-                            "subset": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#drugbank_exactMatch",
-                            "wasDerivedFrom": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#drugbank"
-                        },
-                        {
-                            "_about": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chemspider-mesh",
-                            "title_en": "ChemSpider MeSH Subset",
-                            "title": "ChemSpider MeSH Subset",
-                            "dataDump": [
-                                "ftp://ftp.rsc-us.org/OPS/20130117/SYNONYMS_MESH20130117.ttl.gz",
-                                "ftp://ftp.rsc-us.org/OPS/20130117/PROPERTIES_MESH20130117.ttl.gz"
-                            ],
-                            "subset": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#mesh_exactMatch",
-                            "wasDerivedFrom": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#mesh"
-                        },
-                        {
-                            "_about": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#chemspider-pdb",
-                            "title_en": "ChemSpider PDB Subset",
-                            "title": "ChemSpider PDB Subset",
-                            "dataDump": [
-                                "ftp://ftp.rsc-us.org/OPS/20130117/PROPERTIES_PDB20130117.ttl.gz",
-                                "ftp://ftp.rsc-us.org/OPS/20130117/SYNONYMS_PDB20130117.ttl.gz"
-                            ],
-                            "subset": [
-                                "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#pdb_exactMatch",
-                                "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#pdb_relatedMatch"
-                            ],
-                            "wasDerivedFrom": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl#pdb"
-                        }
-                    ],
-                    "homepage": "http://rdf.chemspider.com/",
-                    "isPrimaryTopicOf": "ftp://ftp.rsc-us.org/OPS/20130117/void_2013-01-17.ttl"
+                    "_about":  "ftp://ftp.nextprot.org/pub/current_release/controlled_vocabularies/caloha.obo#",
+                    "title_en": "Caloha tissue ontology",
+                    "title": "Caloha tissue ontology",
+                    "isPrimaryTopicOf": "ftp://ftp.nextprot.org/pub/current_release/controlled_vocabularies/caloha.obo#"
                 },
                 {
-                    "_about": "https://github.com/openphacts/ops-platform-setup/raw/master/void/uniprot_void_stub.ttl#uniprot",
-                    "title_en": "Uniprot dataset",
-                    "title": "Uniprot dataset",
-                    "isPrimaryTopicOf": "https://github.com/openphacts/ops-platform-setup/raw/master/void/uniprot_void_stub.ttl"
+                    "_about": "http://www.brenda-enzymes.info/ontology/tissue/tree/update/update_files/BrendaTissueOBO",
+                    "title_en": "Brenda Tissue Ontology",
+                    "title": "Brenda Tissue Ontology",
+                    "homepage": "http://www.brenda-enzymes.info/ontology/tissue/tree/update/update_files/BrendaTissueOBO",
+                    "isPrimaryTopicOf": "http://www.brenda-enzymes.info/ontology/tissue/tree/update/update_files/BrendaTissueOBO"
                 },
                 {
-                    "_about": "https://github.com/openphacts/ops-platform-setup/raw/master/void/go_void_stub.ttl#go",
-                    "title_en": "GO/GOA dataset",
-                    "title": "GO/GOA dataset",
-                    "subset": [
-                        {
-                            "_about": "https://github.com/openphacts/ops-platform-setup/raw/master/void/go_void_stub.ttl#go-subset1",
-                            "title_en": "GO subset 1",
-                            "title": "GO subset 1",
-                            "subset": [
-                                {
-                                    "_about": "https://github.com/openphacts/ops-platform-setup/raw/master/void/go_void_stub.ttl#go-subsubset11",
-                                    "title_en": "GO subset 11",
-                                    "title": "GO subset 11",
-                                    "subset": "https://github.com/openphacts/ops-platform-setup/raw/master/void/go_void_stub.ttl#go-subsubsubset111"
-                                },
-                                {
-                                    "_about": "https://github.com/openphacts/ops-platform-setup/raw/master/void/go_void_stub.ttl#go-subsubset12",
-                                    "title_en": "GO subset 12",
-                                    "title": "GO subset 12"
-                                }
-                            ]
-                        },
-                        "https://github.com/openphacts/ops-platform-setup/raw/master/void/go_void_stub.ttl#go-subset2"
-                    ],
-                    "isPrimaryTopicOf": "https://github.com/openphacts/ops-platform-setup/raw/master/void/go_void_stub.ttl"
+                    "_about":  "http://purl.obolibrary.org/obo/cl.obo",
+                    "title_en": "Cell Ontology",
+                    "title": "Cell Ontology",
+                    "isPrimaryTopicOf": "http://purl.obolibrary.org/obo/cl.obo"
                 },
                 {
-                    "_about": "https://github.com/openphacts/ops-platform-setup/raw/master/void/drugbank_void.ttl#drugbank-rdf",
-                    "title_en": "DrugBank RDF",
-                    "title": "DrugBank RDF",
-                    "dataDump": "http://www4.wiwiss.fu-berlin.de/drugbank/drugbank_dump.nt",
-                    "subset": [
-                        "https://github.com/openphacts/ops-platform-setup/raw/master/void/drugbank_void.ttl#db-targets",
-                        {
-                            "_about": "https://github.com/openphacts/ops-platform-setup/raw/master/void/drugbank_void.ttl#db-drugs",
-                            "triples": 4772
-                        }
-                    ],
-                    "triples": 765936,
-                    "homepage": "http://www4.wiwiss.fu-berlin.de/drugbank/",
-                    "isPrimaryTopicOf": "https://github.com/openphacts/ops-platform-setup/raw/master/void/drugbank_void.ttl"
+                    "_about": "http://purl.obolibrary.org/obo/fma.owl",
+                    "title_en": "Foundational Model of Anatomy",
+                    "title": "Foundational Model of Anatomy",
+
+                    "isPrimaryTopicOf": "http://purl.obolibrary.org/obo/fma.owl"
                 },
                 {
-                    "_about": "https://github.com/openphacts/ops-platform-setup/raw/master/void/enzyme_void_stub.ttl#enzyme",
-                    "title_en": "Enzyme dataset",
-                    "title": "Enzyme dataset",
-                    "isPrimaryTopicOf": "https://github.com/openphacts/ops-platform-setup/raw/master/void/enzyme_void_stub.ttl"
+                    "_about": "http://purl.bioontology.org/ontology/MESH/",
+                    "title_en": "Medical Subject Headings",
+                    "title": "Medical Subject Headings",
+                    "homepage": "http://purl.bioontology.org/ontology/MESH/",
+                    "isPrimaryTopicOf": "http://purl.bioontology.org/ontology/MESH/"
+                },
+                {
+                    "_about": "http://purl.obolibrary.org/obo/UBERON_",
+                    "title_en": "Uber anatomy ontology",
+                    "title": "Uber anatomy ontology",
+                    "isPrimaryTopicOf": "http://purl.obolibrary.org/obo/UBERON_"
                 }
             ],
             "type": "http://rdfs.org/ns/void#Dataset",
