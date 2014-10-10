@@ -9,7 +9,8 @@ with their dataset.The code was last updated on <span property="dcterms:modified
 <datatype="xsd:date">July 2014</datatype> </span>. The code for the Open PHACTS editor is available from <a href="https://github.com/openphacts/Void-Editor2" target="_blank">
 https://github.com/openphacts/Void-Editor2</a>. In case you have a feature request or want to file a bug, please contact 
 <a href="mailto:eleftherios.tatakis@student.manchester.com">email</a>.
-Features :
+
+__Features:__
 - Create VoID according to OPS specs
 - Upload existing VoID to continue work on it
 - Upload your data to allow statistical analysis
