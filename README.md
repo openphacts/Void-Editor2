@@ -31,3 +31,15 @@ __Features:__
 - Selecting the source and target datasets of the Linkset
 - Exports VoID
 - Allows users to view there progress so far - with "under the hood"
+
+#Installation
+
+The VoID Editor and Linkset Editor require a servlet engine such as [tomcat server](http://tomcat.apache.org/) to be running on your machine. We have tested the editors with Tomcat 7 running on CentOS.
+
+The files can be built using [maven](http://maven.apache.org/) and issuing the command from the `voidEditor` directory.
+```mvn clean package -DskipTest```
+The resulting war file, in the target directory, can be deployed on your servlet engine in the usual way.
+
+##Configuration
+
+The name of the war file will determine is deployment location, i.e. `http://localhost:8080/name-of-war-file`. If you change this value, then you need to edit the `URLPreface` variable in `voidEditor/src/main/webapp/js/datasets/services.js`.
