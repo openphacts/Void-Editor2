@@ -37,7 +37,9 @@ __Features:__
 The VoID Editor and Linkset Editor require a servlet engine such as [tomcat server](http://tomcat.apache.org/) to be running on your machine. We have tested the editors with Tomcat 7 running on CentOS.
 
 The files can be built using [maven](http://maven.apache.org/) and issuing the command from the `voidEditor` directory.
+
 ```mvn clean package -DskipTest```
+
 The resulting war file, in the target directory, can be deployed on your servlet engine in the usual way.
 
 ##Configuration
