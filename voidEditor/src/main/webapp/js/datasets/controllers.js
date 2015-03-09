@@ -603,7 +603,7 @@ editorAppControllers.controller('editorFormCtrl', ['$rootScope' , '$scope', '$ht
          */
         $rootScope.downloadFile = function () {
             voidData.createVoidAndDownload();
-            window.open('/VoidEditor/rest/void/file');
+            window.open('/rest/void/file');
         };
     }]);
 

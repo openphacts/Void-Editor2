@@ -421,7 +421,7 @@ linksetAppControllers.controller('linksetFormCtrl', ['$rootScope' , '$scope', '$
          */
         $rootScope.downloadFile = function () {
             voidData.createVoidAndDownload();
-            window.open('/VoidEditor/rest/linkset/file');
+            window.open('/rest/linkset/file');
         };
     }]);
 
