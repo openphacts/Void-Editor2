@@ -33,12 +33,15 @@ dateControllers.controller('DatepickerCtrl', ['$scope', '$rootScope' ,
             {"name": "Jul", "num": 7},
             {"name": "Aug", "num": 8},
             {"name": "Sep", "num": 9},
+            {"name": "Oct", "num": 10},
             {"name": "Nov", "num": 11},
             {"name": "Dec", "num": 12},
             {"name": "N/A", "num": 1}
         ];
 
         $scope.years = [
+            {"name": "2016"},
+            {"name": "2015"},
             {"name": "2014"},
             {"name": "2013"},
             {"name": "2012"},
