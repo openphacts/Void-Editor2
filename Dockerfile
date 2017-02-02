@@ -1,4 +1,4 @@
-FROM tomcat
+FROM tomcat:8-jre7
 RUN rm -rf /usr/local/tomcat/webapps/ && mkdir /usr/local/tomcat/webapps/ /usr/local/src/voidEditor
 WORKDIR /usr/local/src/voidEditor
 COPY voidEditor/src /usr/local/src/voidEditor/src
