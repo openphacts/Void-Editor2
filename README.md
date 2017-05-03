@@ -1,4 +1,4 @@
-#VoID Editor v2
+# VoID Editor v2
 
 The Open PHACTS VoID editor v2 is developed and maintained by <a href="http://ltatakis.com" target="_blank"
 rel="dcterms:creator doap:maintainer">Lefteris Tatakis</a>, as a final year undergraduate project at the University of Manchester, UK.
@@ -20,7 +20,7 @@ __Features:__
 - Exports VoID
 - Allows users to view there progress so far - with "under the hood"
 									
-##Linkset Creator 
+## Linkset Creator 
 
 An extension of the VoID Editor to allow the creation of descriptions of the links between two datasets.
 
