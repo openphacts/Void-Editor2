@@ -7,8 +7,7 @@ project and aims to help dataset publishers to create a valid, according to the 
 target="_blank">Open PHACTS specification</a>, VoID description for deployment
 with their dataset.The code was last updated on <span property="dcterms:modified">
 May 2016 </span>. The code for the Open PHACTS editor is available from <a href="https://github.com/openphacts/Void-Editor2" target="_blank">
-https://github.com/openphacts/Void-Editor2</a>. In case you have a feature request or want to file a bug, please contact 
-<a href="mailto:lefteris.tatakis@manchester.ac.uk">email</a>.
+https://github.com/openphacts/Void-Editor2</a>. In case you have a feature request or want to file a bug, please raise a GitHub issue.
 
 __Features:__
 - Create VoID according to [OPS specs](http://www.openphacts.org/specs/2013/WD-datadesc-20130912/)
