@@ -40,6 +40,7 @@ dateControllers.controller('DatepickerCtrl', ['$scope', '$rootScope' ,
         ];
 
         $scope.years = [
+            {"name": "2017"},
             {"name": "2016"},
             {"name": "2015"},
             {"name": "2014"},

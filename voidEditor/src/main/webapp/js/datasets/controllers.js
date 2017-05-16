@@ -28,7 +28,7 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.showOther = false;
         $rootScope.data.datePublish = 1;
         $rootScope.data.monthPublish = 1;
-        $rootScope.data.yearPublish = 2014;
+        $rootScope.data.yearPublish = 2017;
         $rootScope.fileLocation = "";
         $rootScope.data.description = "";
         $rootScope.data.title = "";
