@@ -1,3 +1,8 @@
-voidEditor/logs
-voidEditor/out
-voidEditor/target
+/target
+/target
+/target
+/out
+/out
+.idea/*
+.idea/
+.settings
