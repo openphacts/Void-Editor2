@@ -25,7 +25,6 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
-import editor.validator.RdfChecker;
 
 /**
  * This class handles potential datasets which will be eventually statistically analysed.
@@ -56,8 +55,6 @@ public class DataUpload {
      */
     private void processData() throws RDFParseException, RDFHandlerException {
 
-        checkRDF();
-
         Model model = ModelFactory.createDefaultModel();
         String path = importedFile.getAbsolutePath();
         model.read(path);//, "TURTLE") ;
@@ -80,24 +77,6 @@ public class DataUpload {
         return result;
     }
 
-    /**
-     * Checks that the RDF which is imported is valid.
-     *
-     * @throws RDFParseException
-     * @throws RDFHandlerException
-     */
-    private void checkRDF() throws RDFParseException, RDFHandlerException {
-        RdfChecker checker = new RdfChecker();
-        try {
-            checker.check(importedFile);
-        } catch (RDFParseException e) {
-            throw new RDFParseException("Input file parse error. Is it RDF?");
-        } catch (RDFHandlerException e) {
-            throw new RDFHandlerException("Input file Handling error. Is it RDF?");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Testing class - to print all statements.

@@ -14,8 +14,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
-import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
-
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -33,8 +31,6 @@ import editor.ontologies.Freq;
 import editor.ontologies.Pav;
 import editor.ontologies.Prov;
 import editor.ontologies.Void;
-import editor.validator.RdfChecker;
-import editor.validator.Validator;
 
 /**
  * Main class for the creation of the VoID file for the Linkset descriptions.
@@ -81,7 +77,6 @@ public class LinksetTurtle {
     private String contributor ="";
     private String curator ="";
     private String author ="";
-	private Validator validator = null;
 
 	private HashMap<String, String> justificationDataset  = new HashMap<String, String>();
     private Resource voidBase;
@@ -133,12 +128,11 @@ public class LinksetTurtle {
 	/**
 	 * Using data from the constructor it creates the Linkset VoID .
      *
-	 * @throws VoidValidatorException 
-	 * @throws IOException 
+	 * @throws IOException
 	 * @throws RDFHandlerException 
 	 * @throws RDFParseException 
 	 */
-	public void createVoid() throws VoidValidatorException, RDFParseException, RDFHandlerException, IOException{
+	public void createVoid() throws RDFParseException, RDFHandlerException, IOException{
 		
 		 voidModel = ModelFactory.createDefaultModel();
 		 voidModel.setNsPrefix("xsd", XSD.getURI());
@@ -167,7 +161,7 @@ public class LinksetTurtle {
          Literal createdByFamilyNameLiteral = voidModel.createLiteral(familyName);
          Resource createdByEmailResource = voidModel.createResource( "mailto:"+ userEmail);
          Resource createdWith = voidModel.createResource("http://voideditor.cs.man.ac.uk/");
-         
+
          Calendar publishmentDate = Calendar.getInstance();
          publishmentDate.set( getYearPublish(),getMonthPublish() -1 , getDatePublish() , 0, 0, 0);
          Literal publishmentLiteral = voidModel.createTypedLiteral(publishmentDate);
@@ -251,7 +245,7 @@ public class LinksetTurtle {
             voidBase.addProperty(Pav.version, versionUsed);
          }
 
-         if (previousVersion != "") { // Will validator allow it?
+         if (previousVersion != "") {
             Resource prevVersion = voidModel.createResource(previousVersion);
             voidBase.addProperty(Pav.previousVersion, prevVersion);
          }
@@ -328,7 +322,6 @@ public class LinksetTurtle {
          finally { try {bw.close();} catch (IOException e) {e.printStackTrace();}
          }
          
-         checkRDF();
 	}
     /**
      *  Creating the structure needed for of the contributors.
@@ -402,27 +395,6 @@ public class LinksetTurtle {
             }
         }//for
     }
-    /**
-     * Checks if the RDF outputted is correct and valid.
-     * @throws RDFParseException
-     * @throws RDFHandlerException
-     * @throws IOException
-     */
-	private void checkRDF() throws RDFParseException, RDFHandlerException, IOException {
-		RdfChecker checker = new RdfChecker();
-         try {
-			checker.check(output);
-	  	 } catch (RDFParseException e) {
-			e.printStackTrace();
-			throw new RDFParseException("The editor created a wrong file - please contact Lefteris.");
-		 } catch (RDFHandlerException e) {
-			e.printStackTrace();
-			throw new RDFHandlerException("The editor handled a wrong file - please contact Lefteris.");
-		 } catch (IOException e) {
-			e.printStackTrace();
-			throw new IOException("The editor could not find the file - please contact Lefteris.");
-		 }
-	}
 
     /**
      * A mapping function to help find the appropriate value for the information which is returned from the user side.
@@ -459,11 +431,6 @@ public class LinksetTurtle {
 		output.delete();
 		
 		return outputString;
-	}
-
-    @Deprecated
-	public String getValidationResults(){
-		return validator.showResult();
 	}
 
     /**

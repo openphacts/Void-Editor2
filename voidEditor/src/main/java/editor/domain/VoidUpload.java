@@ -19,7 +19,6 @@ import org.openrdf.rio.RDFParseException;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 
 import editor.ontologies.Pav;
-import editor.validator.RdfChecker;
 
 /**
  * This class handles the VoID uploaded by the users.
@@ -86,7 +85,6 @@ public class VoidUpload {
      */
     private void processVoid() throws RDFParseException, RDFHandlerException {
         //Check that the inputted RDF is correct and not an MP3 file(example).
-        checkRDF();
 
         Model model = ModelFactory.createDefaultModel();
         String path = importedFile.getAbsolutePath();
@@ -382,25 +380,6 @@ public class VoidUpload {
      */
     public JSONObject getResult() {
         return result;
-    }
-
-    /**
-     * Checks if RDF consumed is correct.
-     *
-     * @throws RDFParseException
-     * @throws RDFHandlerException
-     */
-    private void checkRDF() throws RDFParseException, RDFHandlerException {
-        RdfChecker checker = new RdfChecker();
-        try {
-            checker.check(importedFile);
-        } catch (RDFParseException e) {
-            throw new RDFParseException("Inputed VOID file parse error. Is it RDF?");
-        } catch (RDFHandlerException e) {
-            throw new RDFHandlerException("Input VOID file Handling error. Is it RDF?");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

@@ -9,7 +9,7 @@ import org.json.simple.JSONObject;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
-import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
+
 import editor.rest.VoidRestService;
 /**
  * Provides the {@link VoidRestService} with a variety of functions that are used in the RESTful communications with th UI.
@@ -51,27 +51,12 @@ public class VoidService {
      * @return The VoID created in a String format.
      * @throws RDFParseException
      * @throws RDFHandlerException
-     * @throws VoidValidatorException
      * @throws IOException
      */
-	public String getVoid() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+	public String getVoid() throws RDFParseException, RDFHandlerException, IOException {
 		tmp = new VoidTurtle(voidInfo);
 		tmp.createVoid();
 		return tmp.getVoid();
-	}
-
-    /**
-     * Validates created VoID to the OPS validator and returns the results.
-     * @return The result of the OPS validator regarding the quality of the created RDF.
-     * @throws RDFParseException
-     * @throws RDFHandlerException
-     * @throws VoidValidatorException
-     * @throws IOException
-     */
-	public String getVoidValidationResults() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
-		tmp = new VoidTurtle(voidInfo);
-		tmp.createVoid();
-		return tmp.getValidationResults();
 	}
 
     /**
@@ -79,10 +64,9 @@ public class VoidService {
      * @return  Location of the temporary file containing the VoID.
      * @throws RDFParseException
      * @throws RDFHandlerException
-     * @throws VoidValidatorException
      * @throws IOException
      */
-	public String getLocation() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+	public String getLocation() throws RDFParseException, RDFHandlerException,  IOException {
 		tmp = new VoidTurtle(voidInfo);
 		tmp.createVoid();
 		return tmp.getLocation();

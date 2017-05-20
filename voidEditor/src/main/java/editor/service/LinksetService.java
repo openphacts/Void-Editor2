@@ -6,7 +6,6 @@ import org.json.simple.JSONObject;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
-import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 import editor.domain.DataUpload;
 import editor.domain.LinksetAttributes;
 import editor.domain.LinksetTurtle;
@@ -36,7 +35,7 @@ public class LinksetService {
      * @throws VoidValidatorException
      * @throws IOException
      */
-	public String getVoid() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+	public String getVoid() throws RDFParseException, RDFHandlerException, IOException {
 		tmp = new LinksetTurtle(linksetInfo);
 		tmp.createVoid();
 		return tmp.getVoid();
@@ -50,7 +49,7 @@ public class LinksetService {
      * @throws VoidValidatorException
      * @throws IOException
      */
-	public String getLocation() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+	public String getLocation() throws RDFParseException, RDFHandlerException, IOException {
 		tmp = new LinksetTurtle(linksetInfo);
 		tmp.createVoid();
 		return tmp.getLocation();

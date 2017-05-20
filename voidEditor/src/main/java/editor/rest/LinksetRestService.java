@@ -15,7 +15,6 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
-import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 import editor.domain.LinksetAttributes;
 import editor.domain.VoidAttributes;
 import editor.service.LinksetService;
@@ -50,9 +49,6 @@ public class LinksetRestService {
 		} catch (RDFHandlerException e) {
 			output = e.getMessage();
 			e.printStackTrace();
-		} catch (VoidValidatorException e) {
-			output = e.getMessage();
-			e.printStackTrace();
 		} catch (IOException e) {
 			output = e.getMessage();
 		}
@@ -71,7 +67,7 @@ public class LinksetRestService {
 	@Path("/file")
 	@GET
 	@Produces("application/text")
-	public Response  getVoidFile() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+	public Response  getVoidFile() throws RDFParseException, RDFHandlerException,  IOException {
 		File file;
 		file = new File(results.getLocation());
 		System.out.println("IN linkset REST -- file");

@@ -38,21 +38,11 @@ dateControllers.controller('DatepickerCtrl', ['$scope', '$rootScope' ,
             {"name": "Dec", "num": 12},
             {"name": "N/A", "num": 1}
         ];
-
-        $scope.years = [
-            {"name": "2017"},
-            {"name": "2016"},
-            {"name": "2015"},
-            {"name": "2014"},
-            {"name": "2013"},
-            {"name": "2012"},
-            {"name": "2011"},
-            {"name": "2011"},
-            {"name": "2010"},
-            {"name": "2009"},
-            {"name": "2008"},
-            {"name": "2007"}
-        ];
+        var currentYear = new Date().getFullYear() ;
+        $scope.years = [];
+        for (var i = currentYear; i >= (currentYear - 10); i--) {
+            $scope.years.push({"name": i});
+        }
 
         $scope.checkDates = function (tmpYear, tmpMonth) {
             var checkDate;

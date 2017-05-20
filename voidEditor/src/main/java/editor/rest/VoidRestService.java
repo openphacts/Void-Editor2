@@ -17,8 +17,6 @@ import org.json.simple.JSONObject;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
-import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
-
 import com.sun.jersey.multipart.FormDataParam;
 
 import editor.domain.VoidAttributes;
@@ -52,10 +50,7 @@ public class VoidRestService {
 		} catch (RDFHandlerException e) {
 			output = e.getMessage();
 			e.printStackTrace();
-		} catch (VoidValidatorException e) {
-			output = e.getMessage();
-			e.printStackTrace();
-		} catch (IOException e) {
+		}  catch (IOException e) {
 			output = e.getMessage();
 		}
 		return output;
@@ -74,7 +69,7 @@ public class VoidRestService {
 	@Path("/file")
 	@GET
 	@Produces("application/text")
-	public Response  getVoidFile() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+	public Response  getVoidFile() throws RDFParseException, RDFHandlerException, IOException {
 		File file;
 		file = new File(results.getLocation());
 		
@@ -189,33 +184,5 @@ public class VoidRestService {
 		return result;
 	}
 
-    /**
-     * API service to check if the created VoID is correctly validated by OPS Validator.
-     * @param data The user input from the UI.
-     * @return The result produced by the OPS Validator.
-     */
-	@Path("/validation")
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	public String validateVoid(VoidAttributes data) {
-		results.setVoidInfo(data);
-		String output;
-		try {
-			output = results.getVoidValidationResults();
-		} catch (RDFParseException e) {
-			output = e.getMessage();
-			e.printStackTrace();
-		} catch (RDFHandlerException e) {
-			output = e.getMessage();
-			e.printStackTrace();
-		} catch (VoidValidatorException e) {
-			output = e.getMessage();
-			e.printStackTrace();
-		} catch (IOException e) {
-			output = e.getMessage();
-		}
-		return output;
-	}
-	
 
 }

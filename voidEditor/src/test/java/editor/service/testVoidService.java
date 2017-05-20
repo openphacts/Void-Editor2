@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
-import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
 import editor.domain.VoidAttributes;
 
 /**
@@ -39,54 +38,50 @@ public class testVoidService {
 	}
 
 	@Test
-	public void testGetVoidOutput1() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+	public void testGetVoidOutput1() throws RDFParseException, RDFHandlerException,  IOException {
 		assertTrue("Making sure getVoid returns a string", testObject.getVoid() instanceof String );
 	}
 	
 	@Test
-	public void testGetVoidOutput2()  throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException{
+	public void testGetVoidOutput2()  throws RDFParseException, RDFHandlerException, IOException{
 		assertTrue("Making sure getVoid contains my email", testObject.getVoid().contains(testInput.userEmail) );
 	}
 	
 	@Test
-	public void testGetVoidOutput3() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+	public void testGetVoidOutput3() throws RDFParseException, RDFHandlerException, IOException {
 		assertTrue("Making sure getVoid contains description", testObject.getVoid().contains(testInput.description) );
 	}
 	
 	@Test
-	public void testGetVoidOutput4()  throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException{
+	public void testGetVoidOutput4()  throws RDFParseException, RDFHandlerException, IOException{
 		assertTrue("Making sure getVoid contains version", testObject.getVoid().contains(testInput.version));
 	}
 	
 	@Test
-	public void testGetVoidOutput5()  throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException{
+	public void testGetVoidOutput5()  throws RDFParseException, RDFHandlerException, IOException{
 		assertTrue("Making sure getVoid contains date", testObject.getVoid().contains(testInput.yearPublish +"-"+testInput.monthPublish+"-0"+testInput.datePublish));
 	}
 	
 	@Test
-	public void testGetVoidOutput6()  throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException{
+	public void testGetVoidOutput6()  throws RDFParseException, RDFHandlerException, IOException{
 		assertTrue("Making sure getVoid contains void prefix", testObject.getVoid().contains("<http://rdfs.org/ns/void#>"));
 	}
-	
-//	@Test
-//	public void testGetVoidOutput7() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
-//		assertTrue("Making sure getVoid contains test URI ", testObject.getVoid().contains(testInput.URI));
-//	}
+
 	
 	@Test
-	public void testGetVoidOutput8() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+	public void testGetVoidOutput8() throws RDFParseException, RDFHandlerException, IOException {
 		assertTrue("Making sure getVoid contains pav prexif", testObject.getVoid().contains("http://purl.org/pav/"));
 	}
 	
 	
 	@Test
-	public void testGetVoidOutput9()  throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException{
+	public void testGetVoidOutput9()  throws RDFParseException, RDFHandlerException, IOException{
 		assertTrue("Making sure getVoid contains dcterms:issued", testObject.getVoid().contains("dcterms:issued"));
 	}
 	
 	
 	@Test
-	public void testGetLocation() throws RDFParseException, RDFHandlerException, VoidValidatorException, IOException {
+	public void testGetLocation() throws RDFParseException, RDFHandlerException, IOException {
 		assertTrue("Testing it returns a string > 4 for a location", testObject.getLocation().length() > 4);
 	}
 	

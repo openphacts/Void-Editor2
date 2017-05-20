@@ -34,7 +34,6 @@ editorAppControllers.controller('editorCtrl', [  '$scope', '$rootScope', 'voidDa
         $rootScope.data.title = "";
         $rootScope.data.publisher = "";
         $rootScope.data.webpage = "";
-     //  $rootScope.data.sparqlEndpoint = "";
         $rootScope.data.sources = [];
         $rootScope.data.distributions = [];
         $rootScope.data.contributors = [];

@@ -18,18 +18,14 @@ import com.hp.hpl.jena.rdf.model.Model;
 
 public class DatasetStatistics {
 
-	//get total number of triples
-	//select count(*) where {?x ?y ?z}  
+
 	private String totalNumberOfTriples = "SELECT DISTINCT (COUNT(*) as ?count) WHERE {?s ?p ?o} ";
 	private Query totalNumberOfTriplesQuery = null;
 	private int resultTotalNumberOfTriples = 0;
-	//get number of unique subjects
-	//select count(distinct ?x) where{?x ?y ?z}
+
     private String numberOfUniqueSubjects = "SELECT DISTINCT (COUNT(DISTINCT ?s) as ?count) WHERE {?s ?p ?o} ";
     private Query  numberOfUniqueSubjectsQuery = null;
     private int resultNumberOfUniqueSubjects = 0;
-	//get number of unique predicates
-	//select count(distinct ?y) where{?x ?y ?z}
     private String numberOfUniqueObjects = "SELECT DISTINCT (COUNT(DISTINCT ?o) as ?count) WHERE {?s ?p ?o} ";
     private Query numberOfUniqueObjectsQuery =null ;
     private int resultNumberOfUniqueObjects = 0 ;

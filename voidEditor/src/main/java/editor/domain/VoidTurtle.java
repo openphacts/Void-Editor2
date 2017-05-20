@@ -17,8 +17,6 @@ import com.hp.hpl.jena.rdf.model.*;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
 
-import uk.ac.manchester.cs.datadesc.validator.rdftools.VoidValidatorException;
-
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.DCTerms;
@@ -32,8 +30,6 @@ import editor.ontologies.Freq;
 import editor.ontologies.Pav;
 import editor.ontologies.Prov;
 import editor.ontologies.Void;
-import editor.validator.RdfChecker;
-import editor.validator.Validator;
 
 /**
  * Main class for the creation of the VoID file for the dataset descriptions.
@@ -71,8 +67,6 @@ public class VoidTurtle {
     private String contributor ="";
     private String curator ="";
     private String author ="";
-
-    private Validator validator = null;
 
     private String referenceURL = "http://voideditor.cs.man.ac.uk/";
     private String OpenPHACTSURL = "http://www.openphacts.org/";
@@ -115,12 +109,11 @@ public class VoidTurtle {
     /**
      * Using data from the constructor it creates the VoID dataset description.
      *
-     * @throws VoidValidatorException
      * @throws IOException
      * @throws RDFHandlerException
      * @throws RDFParseException
      */
-    public void createVoid() throws VoidValidatorException, RDFParseException, RDFHandlerException, IOException {
+    public void createVoid() throws RDFParseException, RDFHandlerException, IOException {
         voidModel = ModelFactory.createDefaultModel();
         voidModel.setNsPrefix("xsd", XSD.getURI());
         voidModel.setNsPrefix("void", Void.getURI());
@@ -236,7 +229,7 @@ public class VoidTurtle {
             voidBase.addProperty(Pav.version, versionUsed);
         }
 
-        if (previousVersion != "") { // Will validator allow it?
+        if (previousVersion != "") {
             Resource prevVersion = voidModel.createResource(previousVersion);
             voidBase.addProperty(Pav.previousVersion, prevVersion);
         }
@@ -290,8 +283,6 @@ public class VoidTurtle {
                 e.printStackTrace();
             }
         }
-        checkRDF();
-        validateRDFForOPS();
     }
 
     /**
@@ -521,48 +512,6 @@ public class VoidTurtle {
     }
 
     /**
-     * Validating the RDF against the RDF spec found at
-     * <a href="http://www.openphacts.org/specs/2013/WD-datadesc-20130912/" > OPS specification</a>.
-     *
-     * @throws VoidValidatorException
-     */
-    private void validateRDFForOPS() throws VoidValidatorException {
-
-        try {
-            validator = new Validator(output);
-        } catch (VoidValidatorException e) {
-            System.err.println("Got a VoidValidatorException!! ");
-            e.printStackTrace();
-            throw new VoidValidatorException("The editor created a not valid file - please contact Lefteris.");
-        }
-        if (!validator.passedTests())
-            throw new VoidValidatorException("The editor created a not valid file - please contact Lefteris.");
-    }
-
-    /**
-     * Checks if the RDF produced in correct.
-     *
-     * @throws RDFParseException
-     * @throws RDFHandlerException
-     * @throws IOException
-     */
-    private void checkRDF() throws RDFParseException, RDFHandlerException, IOException {
-        RdfChecker checker = new RdfChecker();
-        try {
-            checker.check(output);
-        } catch (RDFParseException e) {
-            e.printStackTrace();
-            throw new RDFParseException("The editor created a wrong file - please contact Lefteris.");
-        } catch (RDFHandlerException e) {
-            e.printStackTrace();
-            throw new RDFHandlerException("The editor handled a wrong file - please contact Lefteris.");
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new IOException("The editor could not find the file - please contact Lefteris.");
-        }
-    }
-
-    /**
      * <p>Return the VoID created in a string format.</p>
      * Used  the "Under the Hood" modal.
      *
@@ -594,12 +543,6 @@ public class VoidTurtle {
         return outputString;
     }
 
-    /**
-     * @return The result the OPS validator produces for the VoID file created.
-     */
-    public String getValidationResults() {
-        return validator.showResult();
-    }
 
     /**
      * @return Location of the temporary file containing the VoID.
